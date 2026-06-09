@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tay Marais | Official Author Website</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* MODO CLARO (Default) */
+            --bg-color: #FDFBF7;
+            --text-main: #261C19;
+            --accent-color: #D4A396;
+            --btn-text: #261C19;
+            --border-color: rgba(38, 28, 25, 0.1);
+            --font-header: 'Playfair Display SC', serif;
+            --font-ui: 'Montserrat', sans-serif;
+            --font-reading: 'Lora', serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* MODO ESCURO */
+                --bg-color: #1A1210;
+                --text-main: #EAE5DE;
+                --accent-color: #D4A396;
+                --btn-text: #1A1210;
+                --border-color: rgba(234, 229, 222, 0.1);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- Header --- */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: var(--font-header);
+            font-size: 1.6rem;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            font-family: var(--font-ui);
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: 25px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* --- Bio Section --- */
+        .bio-section {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid var(--accent-color);
+        }
+
+        .bio-text h2 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .bio-text p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 650px;
+        }
+
+        /* --- Library Section --- */
+        .library { padding: 80px 0; border-top: 1px solid var(--border-color); }
+        .library h2 { 
+            font-family: var(--font-header); 
+            font-size: 1.2rem; 
+            margin-bottom: 40px; 
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        .book-item {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .book-cover {
+            width: 100%;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 2px;
+        }
+
+        .book-details h3 {
+            font-family: var(--font-header);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .book-details p {
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        /* --- Global Button Style --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--btn-text);
+            padding: 16px 35px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-main);
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .bio-section, .book-item { flex-direction: column; text-align: center; display: block; }
+            .profile-img { margin-bottom: 20px; }
+            .book-cover { max-width: 240px; margin: 0 auto 30px; display: block; }
+            header { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">TAY MARAIS</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#library">Library</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <section class="bio-section">
+            <img src="profile.webp" alt="Tay Marais" class="profile-img">
+            <div class="bio-text">
+                <h2>The Art of the Unspoken</h2>
+                <p>Based in the Pacific Northwest, Tay Marais crafts literary romance that dwells in the shadows between longing and fulfillment. Her prose seeks to capture the atmospheric tension of the soul's most quiet moments.</p>
+            </div>
+        </section>
+
+        <section class="library" id="library">
+            <h2>LATEST RELEASE</h2>
+            <div class="book-item">
+                <img src="cover.webp" alt="Where the Ocean Ends" class="book-cover">
+                <div class="book-details">
+                    <h3>Where the Ocean Ends</h3>
+                    <p>A hauntingly beautiful journey through the salt-stained memories of a love that refused to drown. In the silence of Blackwood Cove, some secrets are finally ready to be told.</p>
+                    <a href="books/where-the-ocean-ends.html" class="btn">Read Sample</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 TAY MARAIS. ALL RIGHTS RESERVED.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
