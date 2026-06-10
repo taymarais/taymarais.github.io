@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where the Ocean Ends | Tay Marais Reading Area</title>
+    <title>Where the Ocean Ends | Tay Marais </title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +16,10 @@
             --text-main: #261C19;
             --accent-color: #D4A396;
             --btn-text: #261C19;
+            --muted-text: #5E534F;
             --border-color: rgba(38, 28, 25, 0.1);
-            --font-header: 'Playfair Display SC', serif;
+            
+            --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
             --font-reading: 'Lora', serif;
         }
@@ -28,6 +30,7 @@
                 --text-main: #EAE5DE;
                 --accent-color: #D4A396;
                 --btn-text: #1A1210;
+                --muted-text: #A8A29E;
                 --border-color: rgba(234, 229, 222, 0.1);
             }
         }
@@ -40,11 +43,11 @@
             font-family: var(--font-reading);
             line-height: 1.8;
             transition: background-color 0.4s ease;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 750px; margin: 0 auto; padding: 0 25px; }
 
-        /* --- Header --- */
         header {
             padding: 40px 0;
             display: flex;
@@ -55,12 +58,14 @@
         }
 
         .logo {
-            font-family: var(--font-header);
+            font-family: var(--font-heading);
             font-size: 1.2rem;
             text-decoration: none;
             color: var(--text-main);
             letter-spacing: 1px;
         }
+
+        nav { display: flex; align-items: center; }
 
         .back-link {
             text-decoration: none;
@@ -68,18 +73,35 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             font-weight: 600;
+            letter-spacing: 1px;
         }
 
-        /* --- Book Intro --- */
-        .book-intro {
-            padding: 60px 0;
-            text-align: center;
+        .lang-selector {
+            border: 1px solid var(--accent-color);
+            padding: 4px 8px;
+            border-radius: 2px;
+            font-size: 0.7rem !important;
+            margin-left: 25px !important;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            font-weight: 600;
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
+        .lang-selector:hover {
+            opacity: 1;
+            background-color: var(--accent-color);
+            color: var(--btn-text) !important;
+        }
+
+        /* --- Reading Experience --- */
+        .book-intro { padding: 60px 0 40px; text-align: center; }
         .book-intro h1 {
-            font-family: var(--font-header);
+            font-family: var(--font-heading);
             font-size: 2.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 400;
             line-height: 1.2;
         }
@@ -87,15 +109,12 @@
         .synopsis {
             font-family: var(--font-ui);
             font-size: 0.95rem;
-            color: var(--text-main);
-            opacity: 0.7;
+            color: var(--muted-text);
             max-width: 500px;
             margin: 0 auto;
         }
 
-        /* --- Reading Experience --- */
-        .reading-area { padding-bottom: 60px; }
-
+        .reading-area { padding-bottom: 100px; }
         .chapter-num {
             display: block;
             text-align: center;
@@ -107,13 +126,8 @@
             margin-bottom: 40px;
         }
 
-        .reading-text p {
-            font-size: 1.15rem;
-            margin-bottom: 2rem;
-            color: var(--text-main);
-        }
+        .reading-text p { font-size: 1.15rem; margin-bottom: 2rem; color: var(--text-main); }
 
-        /* --- Drop Cap --- */
         .drop-cap::first-letter {
             float: left;
             font-size: 3.5rem;
@@ -121,12 +135,12 @@
             padding-top: 10px;
             padding-right: 12px;
             color: var(--accent-color);
-            font-family: var(--font-header);
+            font-family: var(--font-heading);
         }
 
-        /* --- Capture Block --- */
+        /* --- Capture Box --- */
         .capture-box {
-            margin: 100px 0 60px;
+            margin-top: 100px;
             padding: 60px 40px;
             background-color: var(--border-color);
             text-align: center;
@@ -143,7 +157,7 @@
         .capture-box p {
             font-family: var(--font-ui);
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: var(--muted-text);
             margin-bottom: 30px;
         }
 
@@ -165,8 +179,6 @@
             outline: none;
         }
 
-        input[type="email"]:focus { border-color: var(--accent-color); }
-
         .btn-submit {
             background-color: var(--accent-color);
             color: var(--btn-text);
@@ -180,10 +192,7 @@
             transition: all 0.3s ease;
         }
 
-        .btn-submit:hover {
-            opacity: 0.85;
-            transform: scale(1.02);
-        }
+        .btn-submit:hover { opacity: 0.85; transform: scale(1.02); }
 
         footer {
             padding: 60px 0;
@@ -204,7 +213,11 @@
     <div class="container">
         <header>
             <a href="../index.html" class="logo">TAY MARAIS</a>
-            <a href="../index.html" class="back-link">← Library</a>
+            <nav>
+                <a href="../index.html" class="back-link">← Home</a>
+                <!-- Link Relativo subindo uma pasta, entrando em pt/books/ -->
+                <a href="../pt/books/onde-o-oceano-acaba.html" class="lang-selector">PT</a>
+            </nav>
         </header>
 
         <main>
@@ -216,11 +229,9 @@
             <section class="reading-area">
                 <span class="chapter-num">Chapter One</span>
                 <div class="reading-text">
-                    <p class="drop-cap">The sea has a way of claiming what isn't its to keep. It starts with the edges of a photograph left too long in the sun, then moves to the wooden planks of a pier that once held the weight of a summer's promise. By the time I returned to Blackwood Cove, I realized it had also claimed the memories I thought I’d buried miles away from the salt and the spray.</p>
+                    <p class="drop-cap">The sea has a way of claiming what isn't its to keep. It starts with the edges of a photograph left too long in the sun, then moves to the wooden planks of a pier that once held the weight of a summer's promise. By the time I returned to Blackwood Cove, I realized it had also claimed the memories I thought I’d buried miles away.</p>
                     
                     <p>Julian was standing there, exactly where the maps said the town ended. He looked like a ghost carved from granite, the Pacific wind tearing at his coat. He didn't turn when the gravel crunched under my boots. He didn't have to. The ocean had told him I was coming long before I even crossed the state line.</p>
-                    
-                    <p>"You're late, Elena," he said, his voice a low vibration that matched the churning of the water below. "Seven years late."</p>
 
                     <div class="capture-box">
                         <h4>Want to know what happens next?</h4>
@@ -238,58 +249,6 @@
             <p>&copy; 2024 TAY MARAIS. ALL RIGHTS RESERVED.</p>
         </footer>
     </div>
-<script>
-    // URL gerada após o Deploy no Google Apps Script
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
-    
-    const form = document.querySelector('form');
-    const btnSubmit = form.querySelector('.btn-submit');
-    const captureBox = document.querySelector('.capture-box');
 
-    form.addEventListener('submit', e => {
-        e.preventDefault(); // Impede recarregamento
-
-        // Estado de "Enviando"
-        btnSubmit.disabled = true;
-        btnSubmit.innerText = "Sending to the tide...";
-        btnSubmit.style.opacity = "0.6";
-
-        fetch(scriptURL, { 
-            method: 'POST', 
-            body: new FormData(form)
-        })
-        .then(response => {
-            // Sucesso Visual
-            captureBox.style.transition = "opacity 0.5s ease";
-            captureBox.style.opacity = "0";
-            
-            setTimeout(() => {
-                captureBox.innerHTML = `
-                    <div style="animation: fadeIn 1s ease forwards; text-align: center;">
-                        <h4 style="font-family: 'Playfair Display SC', serif; color: var(--accent-color); font-size: 1.5rem; margin-bottom: 15px;">A delivery from the sea...</h4>
-                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--text-main);">
-                            Thank you! Chapter 2 is flying to your inbox right now.<br> 
-                            <small>(Don't forget to check your spam folder if it doesn't arrive in a minute.)</small>
-                        </p>
-                    </div>
-                `;
-                captureBox.style.opacity = "1";
-            }, 500);
-        })
-        .catch(error => {
-            console.error('Error!', error.message);
-            btnSubmit.disabled = false;
-            btnSubmit.innerText = "Try Again";
-            alert("The ocean is restless. Please try again in a few moments.");
-        });
-    });
-</script>
-
-<style>
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-</style>
 </body>
 </html>
