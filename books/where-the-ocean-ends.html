@@ -239,49 +239,53 @@
         </footer>
     </div>
 <script>
-    // 1. Substitua pela URL que você copiou no Deploy do Google Script
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxQMVUx7XwSfodne_zL0gNhhE8QsmY2oLBG5fe3i2UVulgUxKFOJ4ruf3CQRnyFqCGG/exec';
+    // URL gerada após o Deploy no Google Apps Script
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
     
-    // 2. Seleção dos elementos
-    const form = document.querySelector('form'); // Seleciona o formulário da página
+    const form = document.querySelector('form');
     const btnSubmit = form.querySelector('.btn-submit');
-    const captureBlock = document.querySelector('.capture-box');
+    const captureBox = document.querySelector('.capture-box');
 
     form.addEventListener('submit', e => {
-        e.preventDefault(); // Impede o recarregamento da página
+        e.preventDefault(); // Impede recarregamento
 
-        // Feedback visual de carregamento
+        // Estado de "Enviando"
         btnSubmit.disabled = true;
-        btnSubmit.innerText = "Sending...";
-        btnSubmit.style.opacity = "0.7";
+        btnSubmit.innerText = "Sending to the tide...";
+        btnSubmit.style.opacity = "0.6";
 
-        // Envio dos dados via Fetch API
         fetch(scriptURL, { 
             method: 'POST', 
             body: new FormData(form)
         })
         .then(response => {
-            console.log('Success!', response);
+            // Sucesso Visual
+            captureBox.style.transition = "opacity 0.5s ease";
+            captureBox.style.opacity = "0";
             
-            // Feedback elegante de sucesso
-            captureBlock.innerHTML = `
-                <div style="animation: fadeIn 0.8s ease forwards;">
-                    <h4 style="color: var(--accent-color); margin-bottom: 10px;">Thank you!</h4>
-                    <p style="font-family: var(--font-ui); font-size: 0.9rem;">The tide is bringing Chapter 2 to your inbox shortly. Check your spam folder just in case.</p>
-                </div>
-            `;
+            setTimeout(() => {
+                captureBox.innerHTML = `
+                    <div style="animation: fadeIn 1s ease forwards; text-align: center;">
+                        <h4 style="font-family: 'Playfair Display SC', serif; color: var(--accent-color); font-size: 1.5rem; margin-bottom: 15px;">A delivery from the sea...</h4>
+                        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--text-main);">
+                            Thank you! Chapter 2 is flying to your inbox right now.<br> 
+                            <small>(Don't forget to check your spam folder if it doesn't arrive in a minute.)</small>
+                        </p>
+                    </div>
+                `;
+                captureBox.style.opacity = "1";
+            }, 500);
         })
         .catch(error => {
             console.error('Error!', error.message);
             btnSubmit.disabled = false;
             btnSubmit.innerText = "Try Again";
-            alert("Something went wrong. Please try again later.");
+            alert("The ocean is restless. Please try again in a few moments.");
         });
     });
 </script>
 
 <style>
-    /* Animação simples para a mensagem de sucesso */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
