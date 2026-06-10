@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where the Ocean Ends | Tay Marais </title>
+    <title>Where the Ocean Ends | Thay Marais</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,6 @@
             --btn-text: #261C19;
             --muted-text: #5E534F;
             --border-color: rgba(38, 28, 25, 0.1);
-            
             --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
             --font-reading: 'Lora', serif;
@@ -36,176 +35,43 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-reading);
-            line-height: 1.8;
-            transition: background-color 0.4s ease;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-reading); line-height: 1.8; transition: background-color 0.4s ease; -webkit-font-smoothing: antialiased; }
         .container { max-width: 750px; margin: 0 auto; padding: 0 25px; }
 
-        header {
-            padding: 40px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            font-family: var(--font-ui);
-        }
-
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: var(--text-main);
-            letter-spacing: 1px;
-        }
-
+        header { padding: 40px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-family: var(--font-ui); }
+        .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 1px; }
         nav { display: flex; align-items: center; }
+        .back-link { text-decoration: none; color: var(--text-main); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        
+        .lang-selector { border: 1px solid var(--accent-color); padding: 4px 8px; border-radius: 2px; font-size: 0.7rem !important; margin-left: 25px !important; text-decoration: none; color: var(--text-main); font-family: var(--font-ui); font-weight: 600; opacity: 0.8; transition: all 0.3s ease; }
+        .lang-selector:hover { opacity: 1; background-color: var(--accent-color); color: var(--btn-text) !important; }
 
-        .back-link {
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .lang-selector {
-            border: 1px solid var(--accent-color);
-            padding: 4px 8px;
-            border-radius: 2px;
-            font-size: 0.7rem !important;
-            margin-left: 25px !important;
-            text-decoration: none;
-            color: var(--text-main);
-            font-family: var(--font-ui);
-            font-weight: 600;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-
-        .lang-selector:hover {
-            opacity: 1;
-            background-color: var(--accent-color);
-            color: var(--btn-text) !important;
-        }
-
-        /* --- Reading Experience --- */
         .book-intro { padding: 60px 0 40px; text-align: center; }
-        .book-intro h1 {
-            font-family: var(--font-heading);
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 400;
-            line-height: 1.2;
-        }
-
-        .synopsis {
-            font-family: var(--font-ui);
-            font-size: 0.95rem;
-            color: var(--muted-text);
-            max-width: 500px;
-            margin: 0 auto;
-        }
+        .book-intro h1 { font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 15px; font-weight: 400; }
+        .synopsis { font-family: var(--font-ui); font-size: 0.95rem; color: var(--muted-text); max-width: 500px; margin: 0 auto; }
 
         .reading-area { padding-bottom: 100px; }
-        .chapter-num {
-            display: block;
-            text-align: center;
-            font-family: var(--font-ui);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--accent-color);
-            margin-bottom: 40px;
-        }
-
+        .chapter-num { display: block; text-align: center; font-family: var(--font-ui); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-color); margin-bottom: 40px; }
         .reading-text p { font-size: 1.15rem; margin-bottom: 2rem; color: var(--text-main); }
+        .drop-cap::first-letter { float: left; font-size: 3.5rem; line-height: 0.8; padding-top: 10px; padding-right: 12px; color: var(--accent-color); font-family: var(--font-heading); }
 
-        .drop-cap::first-letter {
-            float: left;
-            font-size: 3.5rem;
-            line-height: 0.8;
-            padding-top: 10px;
-            padding-right: 12px;
-            color: var(--accent-color);
-            font-family: var(--font-heading);
-        }
-
-        /* --- Capture Box --- */
-        .capture-box {
-            margin-top: 100px;
-            padding: 60px 40px;
-            background-color: var(--border-color);
-            text-align: center;
-            border-radius: 2px;
-        }
-
-        .capture-box h4 {
-            font-family: var(--font-ui);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .capture-box p {
-            font-family: var(--font-ui);
-            font-size: 0.9rem;
-            color: var(--muted-text);
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 380px;
-            margin: 0 auto;
-        }
-
-        input[type="email"] {
-            padding: 18px;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            font-family: var(--font-ui);
-            text-align: center;
-            outline: none;
-        }
-
-        .btn-submit {
-            background-color: var(--accent-color);
-            color: var(--btn-text);
-            padding: 18px;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
+        /* Form Styling */
+        .capture-box { margin-top: 100px; padding: 60px 40px; background-color: var(--border-color); text-align: center; border-radius: 2px; }
+        .capture-box h4 { font-family: var(--font-ui); font-size: 1.1rem; margin-bottom: 15px; font-weight: 600; }
+        .capture-box p { font-family: var(--font-ui); font-size: 0.9rem; color: var(--muted-text); margin-bottom: 30px; }
+        .form-group { display: flex; flex-direction: column; gap: 15px; max-width: 380px; margin: 0 auto; }
+        input[type="email"] { padding: 18px; background: transparent; border: 1px solid var(--border-color); color: var(--text-main); font-family: var(--font-ui); text-align: center; outline: none; }
+        input[type="email"]:focus { border-color: var(--accent-color); }
+        .btn-submit { background-color: var(--accent-color); color: var(--btn-text); padding: 18px; text-transform: uppercase; font-weight: 600; letter-spacing: 2px; font-size: 0.85rem; border: none; cursor: pointer; transition: all 0.3s ease; }
         .btn-submit:hover { opacity: 0.85; transform: scale(1.02); }
+        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        footer {
-            padding: 60px 0;
-            text-align: center;
-            font-family: var(--font-ui);
-            font-size: 0.75rem;
-            opacity: 0.5;
-        }
+        #form-message { margin-top: 25px; font-family: var(--font-ui); font-size: 0.9rem; display: none; transition: all 0.5s ease; }
+        .success-msg { color: var(--accent-color); font-weight: 600; }
 
-        @media (max-width: 600px) {
-            .book-intro h1 { font-size: 2rem; }
-            .reading-text p { font-size: 1.1rem; }
-        }
+        footer { padding: 60px 0; text-align: center; font-family: var(--font-ui); font-size: 0.75rem; opacity: 0.5; }
+
+        @media (max-width: 600px) { .book-intro h1 { font-size: 2rem; } .reading-text p { font-size: 1.1rem; } }
     </style>
 </head>
 <body>
@@ -215,7 +81,6 @@
             <a href="../index.html" class="logo">TAY MARAIS</a>
             <nav>
                 <a href="../index.html" class="back-link">← Home</a>
-                <!-- Link Relativo subindo uma pasta, entrando em pt/books/ -->
                 <a href="../pt/books/onde-o-oceano-acaba.html" class="lang-selector">PT</a>
             </nav>
         </header>
@@ -227,29 +92,54 @@
             </div>
 
             <section class="reading-area">
-                <span class="chapter-num">ADAM</span>
+                <span class="chapter-num">Chapter One</span>
                 <div class="reading-text">
-                    <p class="drop-cap">The sea has a way of claiming what isn't its to keep. It starts with the edges of a photograph left too long in the sun, then moves to the wooden planks of a pier that once held the weight of a summer's promise. By the time I returned to Blackwood Cove, I realized it had also claimed the memories I thought I’d buried miles away.</p>
-                    
+                    <p class="drop-cap">The sea has a way of claiming what isn't its to keep. It starts with the edges of a photograph left too long in the sun, then moves to the wooden planks of a pier that once held the weight of a summer's promise.</p>
                     <p>Julian was standing there, exactly where the maps said the town ended. He looked like a ghost carved from granite, the Pacific wind tearing at his coat. He didn't turn when the gravel crunched under my boots. He didn't have to. The ocean had told him I was coming long before I even crossed the state line.</p>
 
                     <div class="capture-box">
                         <h4>Want to know what happens next?</h4>
                         <p>Enter your email below to receive Chapter 2 directly in your inbox.</p>
-                        <form class="form-group" action="" method="POST">
+                        
+                        <form id="email-form" class="form-group">
                             <input type="hidden" name="lang" value="en">
                             <input type="email" name="email" placeholder="Email Address" required>
                             <button type="submit" class="btn-submit">Send Me Chapter 2</button>
                         </form>
+                        <div id="form-message"></div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer>
-            <p>&copy; 2024 TAY MARAIS. ALL RIGHTS RESERVED.</p>
-        </footer>
+        <footer><p>&copy; 2024 TAY MARAIS. ALL RIGHTS RESERVED.</p></footer>
     </div>
 
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
+        const form = document.getElementById('email-form');
+        const btnSubmit = form.querySelector('.btn-submit');
+        const messageDiv = document.getElementById('form-message');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = "Sending...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerText = "Send Me Chapter 2";
+                    form.reset();
+                    messageDiv.style.display = "block";
+                    messageDiv.innerHTML = '<span class="success-msg">Thank you! Check your inbox for Chapter 2 shortly.</span>';
+                })
+                .catch(error => {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerText = "Try Again";
+                    alert('Error! Please try again later.');
+                });
+        });
+    </script>
 </body>
 </html>
