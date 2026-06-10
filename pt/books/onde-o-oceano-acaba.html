@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onde o Oceano Acaba | Tay Marais</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FDFBF7;
+            --text-main: #261C19;
+            --accent-color: #D4A396;
+            --btn-text: #261C19;
+            --muted-text: #5E534F;
+            --border-color: rgba(38, 28, 25, 0.1);
+            
+            --font-heading: 'Playfair Display SC', serif;
+            --font-ui: 'Montserrat', sans-serif;
+            --font-reading: 'Lora', serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1A1210;
+                --text-main: #EAE5DE;
+                --accent-color: #D4A396;
+                --btn-text: #1A1210;
+                --muted-text: #A8A29E;
+                --border-color: rgba(234, 229, 222, 0.1);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-reading);
+            line-height: 1.8;
+            transition: background-color 0.4s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 750px; margin: 0 auto; padding: 0 25px; }
+
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-family: var(--font-ui);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        nav { display: flex; align-items: center; }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .lang-selector {
+            border: 1px solid var(--accent-color);
+            padding: 4px 8px;
+            border-radius: 2px;
+            font-size: 0.7rem !important;
+            margin-left: 25px !important;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            font-weight: 600;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .lang-selector:hover {
+            opacity: 1;
+            background-color: var(--accent-color);
+            color: var(--btn-text) !important;
+        }
+
+        .book-intro { padding: 60px 0 40px; text-align: center; }
+        .book-intro h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .synopsis {
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            color: var(--muted-text);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .reading-area { padding-bottom: 100px; }
+        .chapter-num {
+            display: block;
+            text-align: center;
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+        }
+
+        .reading-text p { font-size: 1.15rem; margin-bottom: 2rem; color: var(--text-main); }
+
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-top: 10px;
+            padding-right: 12px;
+            color: var(--accent-color);
+            font-family: var(--font-heading);
+        }
+
+        .capture-box {
+            margin-top: 100px;
+            padding: 60px 40px;
+            background-color: var(--border-color);
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        .capture-box h4 {
+            font-family: var(--font-ui);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .capture-box p {
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--muted-text);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        input[type="email"] {
+            padding: 18px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            text-align: center;
+            outline: none;
+        }
+
+        .btn-submit {
+            background-color: var(--accent-color);
+            color: var(--btn-text);
+            padding: 18px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover { opacity: 0.85; transform: scale(1.02); }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            .book-intro h1 { font-size: 2rem; }
+            .reading-text p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">TAY MARAIS</a>
+            <nav>
+                <a href="../index.html" class="back-link">← Início</a>
+                <!-- Link Relativo subindo duas pastas para o arquivo em inglês -->
+                <a href="../../books/where-the-ocean-ends.html" class="lang-selector">EN</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="book-intro">
+                <h1>Onde o Oceano Acaba</h1>
+                <p class="synopsis">Um conto melancólico sobre o que resta quando a maré baixa e o silêncio assume o controle.</p>
+            </div>
+
+            <section class="reading-area">
+                <span class="chapter-num">Capítulo Um</span>
+                <div class="reading-text">
+                    <p class="drop-cap">O mar tem uma maneira de reivindicar o que não lhe pertence. Começa com as bordas de uma fotografia deixada por muito tempo ao sol, depois avança para as tábuas de madeira de um trapiche que outrora sustentou o peso das promessas de um verão. Quando retornei a Blackwood Cove, percebi que ele também havia reivindicado as memórias que eu julgava ter enterrado a quilômetros de distância.</p>
+                    
+                    <p>Julian estava parado ali, exatamente onde os mapas diziam que a cidade terminava. Ele parecia um fantasma esculpido em granito, com o vento do Pacífico fustigando seu casaco. Ele não se virou quando o cascalho rangeu sob minhas botas. Ele não precisava. O oceano já havia contado a ele que eu estava chegando muito antes de eu sequer cruzar a fronteira do estado.</p>
+
+                    <div class="capture-box">
+                        <h4>Quer saber o que acontece a seguir?</h4>
+                        <p>Insira seu e-mail abaixo para receber o <strong>Capítulo 2</strong> diretamente na sua caixa de entrada.</p>
+                        <form class="form-group" action="" method="POST">
+                            <input type="email" name="email" placeholder="Endereço de E-mail" required>
+                            <button type="submit" class="btn-submit">QUERO O CAPÍTULO 2</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 TAY MARAIS. TODOS OS DIREITOS RESERVADOS.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
