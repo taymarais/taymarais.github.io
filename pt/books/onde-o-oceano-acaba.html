@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onde o Oceano Acaba | Tay Marais</title>
+    <title>Tay Marais | Site Oficial</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,134 +12,292 @@
 
     <style>
         :root {
-            --bg-color: #FDFBF7;
-            --text-main: #261C19;
+            --bg-color: #1A1210;
+            --surface-color: #261C19;
+            --text-main: #EAE5DE;
             --accent-color: #D4A396;
-            --btn-text: #261C19;
-            --muted-text: #5E534F;
-            --border-color: rgba(38, 28, 25, 0.1);
+            --btn-text: #1A1210;
+            --muted-text: #A8A29E;
+            --border-color: rgba(234, 229, 222, 0.1);
+            
             --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
             --font-reading: 'Lora', serif;
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #1A1210;
-                --text-main: #EAE5DE;
-                --accent-color: #D4A396;
-                --btn-text: #1A1210;
-                --muted-text: #A8A29E;
-                --border-color: rgba(234, 229, 222, 0.1);
-            }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-reading); line-height: 1.8; transition: background-color 0.4s ease; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 750px; margin: 0 auto; padding: 0 25px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-        header { padding: 40px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-family: var(--font-ui); }
-        .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 1px; }
-        nav { display: flex; align-items: center; }
-        .back-link { text-decoration: none; color: var(--text-main); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
-        
-        .lang-selector { border: 1px solid var(--accent-color); padding: 4px 8px; border-radius: 2px; font-size: 0.7rem !important; margin-left: 25px !important; text-decoration: none; color: var(--text-main); font-family: var(--font-ui); font-weight: 600; opacity: 0.8; transition: all 0.3s ease; }
-        .lang-selector:hover { opacity: 1; background-color: var(--accent-color); color: var(--btn-text) !important; }
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-        .book-intro { padding: 60px 0 40px; text-align: center; }
-        .book-intro h1 { font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 15px; font-weight: 400; }
-        .synopsis { font-family: var(--font-ui); font-size: 0.95rem; color: var(--muted-text); max-width: 500px; margin: 0 auto; }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: 2px;
+        }
 
-        .reading-area { padding-bottom: 100px; }
-        .chapter-num { display: block; text-align: center; font-family: var(--font-ui); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-color); margin-bottom: 40px; }
-        .reading-text p { font-size: 1.15rem; margin-bottom: 2rem; color: var(--text-main); }
-        .drop-cap::first-letter { float: left; font-size: 3.5rem; line-height: 0.8; padding-top: 10px; padding-right: 12px; color: var(--accent-color); font-family: var(--font-heading); }
+        nav { display: flex; align-items: center; gap: 20px; }
 
-        .capture-box { margin-top: 100px; padding: 60px 40px; background-color: var(--border-color); text-align: center; border-radius: 2px; }
-        .capture-box h4 { font-family: var(--font-ui); font-size: 1.1rem; margin-bottom: 15px; font-weight: 600; }
-        .capture-box p { font-family: var(--font-ui); font-size: 0.9rem; color: var(--muted-text); margin-bottom: 30px; }
-        .form-group { display: flex; flex-direction: column; gap: 15px; max-width: 380px; margin: 0 auto; }
-        input[type="email"] { padding: 18px; background: transparent; border: 1px solid var(--border-color); color: var(--text-main); font-family: var(--font-ui); text-align: center; outline: none; }
-        input[type="email"]:focus { border-color: var(--accent-color); }
-        .btn-submit { background-color: var(--accent-color); color: var(--btn-text); padding: 18px; text-transform: uppercase; font-weight: 600; letter-spacing: 2px; font-size: 0.85rem; border: none; cursor: pointer; transition: all 0.3s ease; }
-        .btn-submit:hover { opacity: 0.85; transform: scale(1.02); }
-        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
 
-        #form-message { margin-top: 25px; font-family: var(--font-ui); font-size: 0.9rem; display: none; transition: all 0.5s ease; }
-        .success-msg { color: var(--accent-color); font-weight: 600; }
+        .lang-selector {
+            border: 1px solid var(--accent-color);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem !important;
+            transition: 0.3s;
+        }
 
-        footer { padding: 60px 0; text-align: center; font-family: var(--font-ui); font-size: 0.75rem; opacity: 0.5; }
+        .lang-selector:hover {
+            background-color: var(--accent-color);
+            color: var(--btn-text) !important;
+        }
 
-        @media (max-width: 600px) { .book-intro h1 { font-size: 2rem; } .reading-text p { font-size: 1.1rem; } }
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        .btn-cta {
+            background-color: var(--accent-color);
+            color: var(--btn-text);
+            padding: 16px 35px;
+            font-size: 0.85rem;
+            border: none;
+        }
+
+        .btn-cta:hover {
+            opacity: 0.9;
+            transform: scale(1.03);
+        }
+
+        .btn-social {
+            background: transparent;
+            border: 1px solid rgba(212, 163, 150, 0.2);
+            color: var(--muted-text);
+            padding: 8px 20px;
+            font-size: 0.7rem;
+        }
+
+        .btn-social:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: rgba(212, 163, 150, 0.05);
+        }
+
+        .bio-section {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .bio-text h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .bio-text p {
+            color: var(--muted-text);
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 5px;
+            margin-bottom: 50px;
+            opacity: 0.5;
+        }
+
+        .book-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            margin-bottom: 100px;
+        }
+
+        .book-cover-area {
+            background-color: #120d0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .book-cover-area img {
+            width: 100%;
+            max-width: 200px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .book-details {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            opacity: 0.5;
+            border: 1px solid rgba(212, 163, 150, 0.3);
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+
+        .book-details h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: var(--accent-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .description {
+            color: var(--muted-text);
+            font-size: 1rem;
+            margin-bottom: 35px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.4;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 850px) {
+            .book-card { grid-template-columns: 1fr; }
+            .bio-section { flex-direction: column; text-align: center; }
+            header { flex-direction: column; gap: 20px; }
+            .social-links { justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <a href="../index.html" class="logo">TAY MARAIS</a>
+            <a href="index.html" class="logo">TAY MARAIS</a>
             <nav>
-                <a href="../index.html" class="back-link">← Início</a>
-                <!-- Sobe dois níveis para encontrar o arquivo original em inglês -->
-                <a href="../../books/where-the-ocean-ends.html" class="lang-selector">EN</a>
+                <a href="#books">Livros</a>
+                <a href="contato.html">Contato</a>
+                <a href="../index.html" class="lang-selector">EN</a>
             </nav>
         </header>
 
-        <main>
-            <div class="book-intro">
-                <h1>Onde o Oceano Acaba</h1>
-                <p class="synopsis">Um conto melancólico sobre o que resta quando a maré baixa e o silêncio assume o controle.</p>
-            </div>
-
-            <section class="reading-area">
-                <span class="chapter-num">Capítulo Um</span>
-                <div class="reading-text">
-                    <p class="drop-cap">O mar tem uma maneira de reivindicar o que não lhe pertence. Começa com as bordas de uma fotografia deixada por muito tempo ao sol, depois avança para as tábuas de madeira de um trapiche que outrora sustentou o peso das promessas de um verão.</p>
-                    <p>Julian estava parado ali, exatamente onde os mapas diziam que a cidade terminava. Ele parecia um fantasma esculpido em granito, com o vento do Pacífico fustigando seu casaco. Ele não se virou quando o cascalho rangeu sob minhas botas. Ele não precisava.</p>
-
-                    <div class="capture-box">
-                        <h4>Quer saber o que acontece a seguir?</h4>
-                        <p>Insira seu e-mail abaixo para receber o <strong>Capítulo 2</strong> diretamente na sua caixa de entrada.</p>
-                        
-                        <form id="email-form" class="form-group">
-                            <input type="hidden" name="lang" value="pt">
-                            <input type="email" name="email" placeholder="Endereço de E-mail" required>
-                            <button type="submit" class="btn-submit">QUERO O CAPÍTULO 2</button>
-                        </form>
-                        <div id="form-message"></div>
-                    </div>
+        <section class="bio-section">
+            <img src="../assets/profile.webp" alt="Tay Marais" class="profile-img">
+            <div class="bio-text">
+                <h2>O coração tem muitas vozes.</h2>
+                <p>Autora de ficção contemporânea focada na resiliência silenciosa do espírito humano e nos segredos que guardamos.</p>
+                <div class="social-links">
+                    <a href="#" class="btn btn-social">Pinterest</a>
+                    <a href="#" class="btn btn-social">Instagram</a>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <footer><p>&copy; 2024 TAY MARAIS. TODOS OS DIREITOS RESERVADOS.</p></footer>
+        <h2 class="section-title" id="books">BIBLIOTECA</h2>
+
+        <article class="book-card">
+            <div class="book-cover-area">
+                <img src="../assets/capa.webp" alt="Onde o Oceano Acaba">
+            </div>
+            <div class="book-details">
+                <div class="tags">
+                    <span class="tag">Romance</span>
+                    <span class="tag">Ficção Literária</span>
+                </div>
+                <h3>Onde o Oceano Acaba</h3>
+                <p class="tagline">O oceano termina em dois corações feridos.</p>
+                <p class="description">
+                    Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador e o peso de segredos que se recusam a permanecer enterrados, ele retorna à costa em busca de silêncio.
+                </p>
+                <a href="books/onde-o-oceano-acaba.html" class="btn btn-cta">Abrir Livro</a>
+            </div>
+        </article>
+
+        <footer>
+            <p>&copy; 2024 TAY MARAIS. TODOS OS DIREITOS RESERVADOS.</p>
+        </footer>
     </div>
 
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
-        const form = document.getElementById('email-form');
-        const btnSubmit = form.querySelector('.btn-submit');
-        const messageDiv = document.getElementById('form-message');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btnSubmit.disabled = true;
-            btnSubmit.innerText = "Enviando...";
-
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    btnSubmit.disabled = false;
-                    btnSubmit.innerText = "QUERO O CAPÍTULO 2";
-                    form.reset();
-                    messageDiv.style.display = "block";
-                    messageDiv.innerHTML = '<span class="success-msg">Obrigada! Verifique seu e-mail em breve para ler o Capítulo 2.</span>';
-                })
-                .catch(error => {
-                    btnSubmit.disabled = false;
-                    btnSubmit.innerText = "Tentar Novamente";
-                    alert('Erro! Por favor, tente novamente mais tarde.');
-                });
-        });
-    </script>
 </body>
 </html>
