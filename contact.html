@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Tay Marais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #1A1210; --surface: #261C19; --accent: #D4A396; --text: #EAE5DE; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        
+        header { padding: 40px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display SC', serif; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: 2px; }
+        nav { display: flex; align-items: center; gap: 20px; }
+        nav a { text-decoration: none; color: var(--text); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; }
+        .lang-selector { border: 1px solid var(--accent); padding: 5px 12px; border-radius: 50px; font-size: 0.7rem!important; }
+
+        .contact-section { padding: 60px 0; text-align: center; }
+        h1 { font-family: 'Playfair Display SC', serif; font-size: 2rem; margin-bottom: 40px; letter-spacing: 4px; }
+        
+        .contact-form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; text-align: left; }
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); opacity: 0.8; }
+        input, textarea { background: transparent; border: 1px solid rgba(212, 163, 150, 0.2); padding: 15px; border-radius: 10px; color: var(--text); font-family: 'Montserrat', sans-serif; transition: 0.3s; outline: none; }
+        input:focus, textarea:focus { border-color: var(--accent); background: rgba(212, 163, 150, 0.05); }
+        
+        .btn-capsule { background: var(--accent); color: var(--bg); padding: 16px; border-radius: 50px; border: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-capsule:hover { opacity: 0.9; transform: scale(1.02); }
+
+        #success-msg { display: none; margin-top: 40px; font-style: italic; opacity: 0.8; animation: fadeIn 1s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">TAY MARAIS</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#books">Books</a>
+                <a href="pt/contact.html" class="lang-selector">PT</a>
+            </nav>
+        </header>
+
+        <section class="contact-section">
+            <h1>Contact</h1>
+            <form class="contact-form" id="contact-form">
+                <input type="hidden" name="lang" value="en">
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label>Subject</label>
+                    <input type="text" name="subject" required>
+                </div>
+                <div class="input-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-capsule">Send Message</button>
+            </form>
+            <div id="success-msg">The waves have carried your words into the dark. I will reply when the silence permits.</div>
+        </section>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
+        const form = document.getElementById('contact-form');
+        const msg = document.getElementById('success-msg');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                form.style.display = 'none';
+                msg.style.display = 'block';
+            })
+            .catch(error => {
+                btn.disabled = false;
+                btn.innerText = "Try Again";
+                alert("The tide is too strong. Please try again later.");
+            });
+        });
+    </script>
+</body>
+</html>
