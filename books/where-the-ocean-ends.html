@@ -12,68 +12,96 @@
 
     <style>
         :root {
-            --bg-deep: #1A1210;
-            --surface: #261C19;
-            --accent: #D4A396;
+            --bg-color: #1A1210;
+            --surface-color: #261C19;
             --text-main: #EAE5DE;
-            --text-muted: #A8A29E;
+            --accent-color: #D4A396;
+            --btn-text: #1A1210;
+            --muted-text: #A8A29E;
+            --border-color: rgba(234, 229, 222, 0.1);
             --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
             --font-reading: 'Lora', serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-        /* Navigation */
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
+        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
         .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-left: 20px; }
+        nav { display: flex; align-items: center; gap: 20px; }
+        nav a { text-decoration: none; color: var(--text-main); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
 
-        /* Goodreads Style Header */
+        /* Book Hero */
         .book-hero { padding: 60px 0; display: grid; grid-template-columns: 300px 1fr; gap: 50px; align-items: start; }
-        .book-cover-wrapper { position: relative; }
-        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.6), 5px 5px 15px rgba(0,0,0,0.3); object-fit: cover; }
-        
-        .book-info h1 { font-family: var(--font-heading); font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; color: var(--text-main); }
-        .meta-tags { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
-        .tag { font-size: 0.65rem; padding: 5px 12px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); opacity: 0.8; }
-        .synopsis { font-family: var(--font-reading); font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 35px; }
+        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); object-fit: cover; }
+        .book-info h1 { font-family: var(--font-heading); font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; }
+        .meta-tags { display: flex; gap: 10px; margin-bottom: 25px; }
+        .tag { font-size: 0.65rem; padding: 5px 12px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent-color); opacity: 0.7; }
+        .synopsis { font-family: var(--font-reading); font-size: 1.05rem; line-height: 1.7; color: var(--muted-text); margin-bottom: 35px; }
 
-        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-capsule { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.3s; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
 
-        /* Reading Area */
-        .reading-section { max-width: 700px; margin: 80px auto; padding-top: 60px; border-top: 1px solid rgba(212, 163, 150, 0.1); }
-        .chapter-title { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; letter-spacing: 5px; text-align: center; margin-bottom: 50px; color: var(--accent); }
-        .reading-content { font-family: var(--font-reading); font-size: 1.2rem; line-height: 1.9; color: var(--text-main); text-align: left; }
-        .reading-content p { margin-bottom: 1.8rem; }
+        /* Reading Section */
+        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 700px; margin: 80px auto; position: relative; }
+        .chapter-header { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; letter-spacing: 5px; text-align: center; margin-bottom: 50px; color: var(--accent-color); text-transform: uppercase; }
+        
+        /* Aggressive Block Logic */
+        .reading-content { 
+            font-family: var(--font-reading); 
+            font-size: 1.25rem; 
+            line-height: 1.9; 
+            color: var(--text-main);
+            height: 2.5rem; /* Shows approx. only the first line */
+            overflow: hidden;
+            position: relative;
+        }
 
-        /* Fade Out & Capture */
-        .fade-gate { position: relative; margin-top: -150px; padding-top: 150px; text-align: center; background: linear-gradient(to bottom, transparent, var(--bg-deep) 40%, var(--bg-deep) 100%); }
-        .capture-card { background-color: var(--surface); padding: 50px 40px; border-radius: 4px; margin-top: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .tide-gate { 
+            position: relative; 
+            margin-top: -30px; 
+            padding-top: 60px; 
+            background: linear-gradient(to bottom, transparent, var(--bg-color) 5%, var(--bg-color) 100%); 
+            text-align: center;
+            z-index: 10;
+        }
+
+        .capture-card { background-color: var(--surface-color); padding: 50px 40px; border-radius: 4px; margin-top: 10px; }
         .capture-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; }
-        .capture-card p { font-family: var(--font-ui); font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
+        .capture-card p { font-size: 0.95rem; color: var(--muted-text); margin-bottom: 30px; line-height: 1.6; font-family: var(--font-ui); }
         
         .form-group { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-        input[type="email"] { padding: 18px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; font-family: var(--font-ui); text-align: center; outline: none; }
-        input[type="email"]:focus { border-color: var(--accent); }
+        input[type="email"] { padding: 18px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; text-align: center; outline: none; }
 
-        /* Success Overlay */
-        #success-modal { position: fixed; inset: 0; background: rgba(26, 18, 16, 0.95); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 40px; text-align: center; }
-        .success-content { max-width: 500px; animation: fadeInUp 0.6s ease; }
-        .success-content h2 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 20px; color: var(--accent); }
-        .success-content p { font-family: var(--font-ui); font-size: 1.1rem; line-height: 1.6; color: var(--text-main); }
+        /* Success Modal Compact */
+        #success-modal { 
+            position: fixed; inset: 0; background: rgba(26, 18, 16, 0.8); backdrop-filter: blur(8px); 
+            display: none; justify-content: center; align-items: center; z-index: 9999; padding: 20px;
+        }
+        .success-box { 
+            background: var(--surface-color); 
+            padding: 50px 30px; 
+            border-radius: 4px; 
+            max-width: 420px; 
+            width: 100%; 
+            position: relative; 
+            text-align: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .success-box h2 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-color); margin-bottom: 15px; }
+        .success-box p { font-family: var(--font-ui); font-size: 0.95rem; line-height: 1.6; color: var(--text-main); }
+        .close-x { 
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem; 
+            color: var(--accent-color); cursor: pointer; opacity: 0.6; transition: 0.3s;
+        }
+        .close-x:hover { opacity: 1; }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Responsiveness */
         @media (max-width: 850px) {
-            .book-hero { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .book-hero { grid-template-columns: 1fr; text-align: center; }
             .book-cover { max-width: 220px; margin: 0 auto; }
             .meta-tags { justify-content: center; }
-            .book-info h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -82,70 +110,71 @@
     <div class="container">
         <header>
             <a href="../index.html" class="logo">TAY MARAIS</a>
-            <div class="nav-links">
+            <nav>
                 <a href="../index.html">Home</a>
                 <a href="../pt/books/onde-o-oceano-acaba.html">PT</a>
-            </div>
+            </nav>
         </header>
 
         <section class="book-hero">
-            <div class="book-cover-wrapper">
-                <img src="../assets/cover.webp" alt="Where the Ocean Ends" class="book-cover">
-            </div>
+            <img src="../assets/cover.webp" alt="Where the Ocean Ends" class="book-cover">
             <div class="book-info">
                 <div class="meta-tags">
                     <span class="tag">20 Chapters</span>
-                    <span class="tag">Dual POV</span>
+                    <span class="tag">POV: Adam/Madeleine</span>
                     <span class="tag">EN-US</span>
                 </div>
                 <h1>Where the Ocean Ends</h1>
                 <p class="synopsis">
-                    Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce and the weight of secrets that refuse to stay buried, he returns to the coast seeking silence. But the sea has a way of returning everything we try to leave behind.
+                    Adam Walker has the world at his feet and a deafening void in his chest. After a devastating divorce and the weight of secrets that refuse to stay buried, he returns to the coast seeking silence.
                 </p>
-                <a href="#reading" class="btn-capsule">Open Book</a>
+                <button class="btn-capsule" id="btn-open">Open Book</button>
             </div>
         </section>
 
-        <main id="reading" class="reading-section">
-            <h2 class="chapter-title">ADAM</h2>
+        <section id="reading-section">
+            <h2 class="chapter-header">ADAM</h2>
             <div class="reading-content">
                 <p>The sea has a way of claiming what isn't its to keep. It starts with the edges of a photograph left too long in the sun, then moves to the wooden planks of a pier that once held the weight of a summer's promise. By the time I returned to Blackwood Cove, I realized it had also claimed the memories I thought I’d buried miles away from the salt and the spray.</p>
-                <p>Julian was standing there, exactly where the maps said the town ended. He looked like a ghost carved from granite, the Pacific wind tearing at his coat. He didn't turn when the gravel crunched under my boots. He didn't have to. The ocean had told him I was coming long before I even crossed the state line.</p>
-                <p>I looked down at the silver key in my hand. It was cold, heavy, and carried the weight of a door that had been locked for a reason. But the curiosity that had always been my greatest flaw was now my only compass. The house on the hill was waiting, and the silence was finally ready to speak.</p>
-                
-                <!-- FADE OUT GATE -->
-                <div class="fade-gate">
-                    <div class="capture-card">
-                        <h3>The tide is rising...</h3>
-                        <p>Don't get left behind in the dark. Enter your email to unlock the rest of Chapter 1 and receive Chapter 2 directly in your inbox.</p>
-                        <form id="lead-form">
-                            <input type="hidden" name="lang" value="en">
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="Enter your email address" required>
-                                <button type="submit" class="btn-capsule">Unlock Chapters</button>
-                            </div>
-                        </form>
-                    </div>
+            </div>
+            
+            <div class="tide-gate">
+                <div class="capture-card">
+                    <h3>The tide is rising...</h3>
+                    <p>Don't get left behind in the dark. Enter your email to unlock the rest of Chapter 1 and receive Chapter 2 directly in your inbox.</p>
+                    <form id="capture-form">
+                        <input type="hidden" name="lang" value="en">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn-capsule">Unlock Chapters</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </main>
-
-        <footer>
-            <p style="text-align: center; padding: 40px 0; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px;">&copy; 2024 TAY MARAIS. ALL RIGHTS RESERVED.</p>
-        </footer>
+        </section>
     </div>
 
     <!-- Success Modal -->
     <div id="success-modal">
-        <div class="success-content">
+        <div class="success-box">
+            <span class="close-x" id="close-modal">×</span>
             <h2>The tide is turning...</h2>
-            <p>Your journey into Blackwood Cove has officially begun. Check your inbox shortly—Chapter Two is waiting for you.</p>
+            <p>Your journey into Blackwood Cove has officially begun.<br>Check your inbox shortly—Chapter Two is waiting for you.</p>
         </div>
     </div>
 
     <script>
+        document.getElementById('btn-open').addEventListener('click', function() {
+            const section = document.getElementById('reading-section');
+            section.style.display = 'block';
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.scrollIntoView({ behavior: 'smooth' });
+            }, 10);
+        });
+
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
-        const form = document.getElementById('lead-form');
+        const form = document.getElementById('capture-form');
         const modal = document.getElementById('success-modal');
 
         form.addEventListener('submit', e => {
@@ -160,10 +189,14 @@
                 form.reset();
             })
             .catch(error => {
-                alert('The tide is too strong. Please try again later.');
                 btn.disabled = false;
                 btn.innerText = "UNLOCK CHAPTERS";
+                alert("The tide is too strong. Try again later.");
             });
+        });
+
+        document.getElementById('close-modal').addEventListener('click', () => {
+            modal.style.display = 'none';
         });
     </script>
 </body>
