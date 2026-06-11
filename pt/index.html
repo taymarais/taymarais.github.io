@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tay Marais | Escritora</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,44 +14,43 @@
             --font-ui: 'Montserrat', sans-serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); font-size: 0.95rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); font-size: 0.9rem; line-height: 1.5; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
-        .logo { font-family: var(--font-heading); font-size: 1.3rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
+        header { padding: 25px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+        .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
         nav { display: flex; align-items: center; gap: 15px; }
         nav a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
         .lang-selector { border: 1px solid var(--accent-color); padding: 5px 12px; border-radius: 50px; font-size: 0.65rem!important; transition: 0.3s; }
-        .lang-selector:hover { background: var(--accent-color); color: var(--btn-text)!important; }
         
-        .btn { display: inline-block; text-decoration: none; text-transform: uppercase; font-weight: 600; letter-spacing: 2px; transition: 0.3s; cursor: pointer; text-align: center; border-radius: 50px; }
-        .btn-cta { background-color: var(--accent-color); color: var(--btn-text); padding: 14px 30px; font-size: 0.75rem; border: none; width: 100%; }
-        .btn-social { background: transparent; border: 1px solid rgba(212, 163, 150, 0.2); color: var(--muted-text); padding: 6px 18px; font-size: 0.65rem; }
+        .btn { display: inline-block; text-decoration: none; text-transform: uppercase; font-weight: 600; letter-spacing: 1.5px; transition: 0.3s; cursor: pointer; text-align: center; border-radius: 50px; font-size: 0.75rem; }
+        .btn-cta { background-color: var(--accent-color); color: var(--btn-text); padding: 12px 25px; border: none; }
+        .btn-social { background: transparent; border: 1px solid rgba(212, 163, 150, 0.2); color: var(--muted-text); padding: 6px 15px; font-size: 0.6rem; }
 
-        .bio-section { padding: 60px 0; display: flex; align-items: center; gap: 35px; }
-        .profile-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); flex-shrink: 0; }
-        .bio-text h2 { font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 8px; font-weight: 400; }
-        .social-links { display: flex; gap: 10px; margin-top: 15px; }
+        .bio-section { padding: 50px 0; display: flex; align-items: center; gap: 30px; }
+        .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); flex-shrink: 0; }
+        .bio-text h2 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 5px; }
+        .bio-text p { color: var(--muted-text); font-size: 0.85rem; max-width: 500px; }
+        .social-links { display: flex; gap: 8px; margin-top: 12px; }
 
-        .book-card { 
-            background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 4px; 
-            overflow: hidden; display: grid; grid-template-columns: 240px 1fr; margin-bottom: 80px; align-items: stretch;
-        }
-        .book-cover-area { background-color: #120d0c; display: flex; justify-content: center; align-items: center; padding: 15px; }
-        .book-cover-area img { width: 100%; height: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-radius: 2px; }
-        .book-details { padding: 35px; display: flex; flex-direction: column; justify-content: center; }
-        .tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-color); opacity: 0.5; border: 1px solid rgba(212, 163, 150, 0.2); padding: 3px 10px; border-radius: 50px; margin-right: 8px; }
-        .book-details h3 { font-family: var(--font-heading); font-size: 1.9rem; margin: 15px 0 8px; line-height: 1.1; }
-        .tagline { font-style: italic; color: var(--accent-color); opacity: 0.8; margin-bottom: 15px; font-size: 0.85rem; }
-        .description { color: var(--muted-text); font-size: 0.9rem; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .book-card { background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; display: grid; grid-template-columns: 220px 1fr; margin-bottom: 60px; }
+        .book-cover-area { background-color: #000; display: flex; padding: 0; }
+        .book-cover-area img { width: 100%; height: 100%; object-fit: cover; }
+        .book-details { padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+        .tag { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); opacity: 0.6; border: 1px solid rgba(212, 163, 150, 0.2); padding: 2px 8px; border-radius: 50px; margin-right: 5px; }
+        .book-details h3 { font-family: var(--font-heading); font-size: 1.8rem; margin: 10px 0 5px; line-height: 1.1; }
+        .tagline { font-style: italic; color: var(--accent-color); opacity: 0.8; margin-bottom: 10px; font-size: 0.8rem; }
+        .description { color: var(--muted-text); font-size: 0.85rem; margin-bottom: 20px; line-height: 1.4; }
 
-        footer { padding: 50px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.65rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
 
         @media (max-width: 768px) {
-            .book-card { grid-template-columns: 1fr; }
-            .book-cover-area { padding: 30px 60px; }
+            header { flex-direction: column; gap: 10px; }
             .bio-section { flex-direction: column; text-align: center; }
-            header { flex-direction: column; gap: 15px; }
             .social-links { justify-content: center; }
+            .book-card { grid-template-columns: 1fr; }
+            .book-cover-area { height: 350px; }
+            .book-details { text-align: center; }
+            .btn-cta { width: 100%; }
         }
     </style>
 </head>
@@ -64,7 +61,7 @@
             <nav>
                 <a href="index.html">Início</a>
                 <a href="#books">Livros</a>
-                <a href="contact.html">Contato</a>
+                <a href="contato.html">Contato</a>
                 <a href="../index.html" class="lang-selector">EN</a>
             </nav>
         </header>
@@ -72,10 +69,10 @@
             <img src="../assets/profile.webp" alt="Tay Marais" class="profile-img">
             <div class="bio-text">
                 <h2>O coração tem muitas vozes.</h2>
-                <p>Escritora de ficção contemporânea focada nos sussurros da alma.</p>
+                <p>Escritora de ficção contemporânea focada na resiliência silenciosa da alma humana.</p>
                 <div class="social-links">
-                    <a href="#" class="btn btn-social">Pinterest</a>
-                    <a href="#" class="btn btn-social">Instagram</a>
+                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn btn-social">Pinterest</a>
+                    <a href="https://x.com/theTayMarais" target="_blank" class="btn btn-social">Twitter</a>
                 </div>
             </div>
         </section>
@@ -87,12 +84,11 @@
                 <div><span class="tag">Romance</span><span class="tag">Ficção Literária</span></div>
                 <h3>Onde o Oceano Acaba</h3>
                 <p class="tagline">O oceano termina em dois corações feridos.</p>
-                <p class="description">Adam Walker tem o mundo aos seus pés e um vazio ensurdecedor no peito. Após um divórcio devastador, ele retorna à costa em busca de silêncio.</p>
-                <!-- Link corrigido para encontrar o arquivo no GitHub -->
+                <p class="description">Adam Walker tem o mundo aos seus pés e um vazio ensurdecedor no peito. Após um divórcio devastador, ele retorna à costa em busca de silêncio, apenas para descobrir que alguns segredos se recusam a ser levados pela maré.</p>
                 <a href="books/onde-o-oceano-acaba.html" class="btn btn-cta">Abrir Livro</a>
             </div>
         </article>
-        <footer><p>&copy; 2024 TAY MARAIS. TODOS OS DIREITOS RESERVADOS.</p></footer>
+        <footer>&copy; 2024 TAY MARAIS. TODOS OS DIREITOS RESERVADOS.</footer>
     </div>
 </body>
 </html>
