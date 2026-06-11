@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tay Marais | Official Website</title>
+    <title>Tay Marais | Author</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +25,6 @@
             
             --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
-            --font-reading: 'Lora', serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,6 +33,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: var(--font-ui);
+            font-size: 0.95rem; /* Redução tipográfica editorial */
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
@@ -39,7 +42,7 @@
 
         /* --- HEADER & NAVIGATION --- */
         header {
-            padding: 40px 0;
+            padding: 30px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -48,18 +51,18 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             text-decoration: none;
             color: var(--text-main);
             letter-spacing: 2px;
         }
 
-        nav { display: flex; align-items: center; gap: 20px; }
+        nav { display: flex; align-items: center; gap: 15px; }
 
         nav a {
             text-decoration: none;
             color: var(--text-main);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 600;
@@ -68,9 +71,9 @@
 
         .lang-selector {
             border: 1px solid var(--accent-color);
-            padding: 6px 14px;
-            border-radius: 50px; /* Estilo Cápsula */
-            font-size: 0.7rem !important;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.65rem !important;
             transition: all 0.3s ease;
         }
 
@@ -89,28 +92,28 @@
             transition: all 0.3s ease;
             cursor: pointer;
             text-align: center;
-            border-radius: 50px; /* Estilo Cápsula/Pílula */
+            border-radius: 50px;
         }
 
         .btn-cta {
             background-color: var(--accent-color);
             color: var(--btn-text);
-            padding: 16px 35px;
-            font-size: 0.85rem;
+            padding: 14px 30px;
+            font-size: 0.75rem;
             border: none;
         }
 
         .btn-cta:hover {
             opacity: 0.9;
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         .btn-social {
             background: transparent;
             border: 1px solid rgba(212, 163, 150, 0.2);
             color: var(--muted-text);
-            padding: 8px 20px;
-            font-size: 0.7rem;
+            padding: 6px 18px;
+            font-size: 0.65rem;
         }
 
         .btn-social:hover {
@@ -121,15 +124,15 @@
 
         /* --- BIO SECTION --- */
         .bio-section {
-            padding: 80px 0;
+            padding: 60px 0;
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 35px;
         }
 
         .profile-img {
-            width: 130px;
-            height: 130px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--accent-color);
@@ -138,30 +141,30 @@
 
         .bio-text h2 {
             font-family: var(--font-heading);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
             font-weight: 400;
         }
 
         .bio-text p {
             color: var(--muted-text);
-            font-size: 1rem;
-            max-width: 600px;
+            font-size: 0.95rem;
+            max-width: 550px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
-        /* --- LIBRARY SECTION --- */
+        /* --- BOOKS SECTION (Compact Display) --- */
         .section-title {
             font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             text-align: center;
             letter-spacing: 5px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             opacity: 0.5;
         }
 
@@ -171,8 +174,8 @@
             border-radius: 4px;
             overflow: hidden;
             display: grid;
-            grid-template-columns: 320px 1fr;
-            margin-bottom: 100px;
+            grid-template-columns: 280px 1fr; /* Card mais compacto */
+            margin-bottom: 80px;
         }
 
         .book-cover-area {
@@ -180,17 +183,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 50px;
+            padding: 30px; /* Redução drástica de margens internas */
         }
 
         .book-cover-area img {
             width: 100%;
-            max-width: 200px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 180px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border-radius: 2px;
         }
 
         .book-details {
-            padding: 50px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -198,25 +202,25 @@
 
         .tags {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
         .tag {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: var(--accent-color);
             opacity: 0.5;
-            border: 1px solid rgba(212, 163, 150, 0.3);
-            padding: 4px 12px;
+            border: 1px solid rgba(212, 163, 150, 0.2);
+            padding: 3px 10px;
             border-radius: 50px;
         }
 
         .book-details h3 {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.1rem;
+            margin-bottom: 8px;
             line-height: 1.1;
         }
 
@@ -224,14 +228,14 @@
             font-style: italic;
             color: var(--accent-color);
             opacity: 0.8;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
         }
 
         .description {
             color: var(--muted-text);
-            font-size: 1rem;
-            margin-bottom: 35px;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -239,10 +243,10 @@
         }
 
         footer {
-            padding: 60px 0;
+            padding: 50px 0;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 2px;
             opacity: 0.4;
             text-transform: uppercase;
@@ -251,9 +255,12 @@
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 850px) {
             .book-card { grid-template-columns: 1fr; }
+            .book-cover-area { padding: 40px 20px; }
             .bio-section { flex-direction: column; text-align: center; }
-            header { flex-direction: column; gap: 20px; }
+            header { flex-direction: column; gap: 15px; padding: 25px 0; }
             .social-links { justify-content: center; }
+            .book-details { padding: 30px 24px; text-align: center; }
+            .tags { justify-content: center; }
         }
     </style>
 </head>
@@ -263,7 +270,7 @@
         <header>
             <a href="index.html" class="logo">TAY MARAIS</a>
             <nav>
-                <a href="#books">Library</a>
+                <a href="#books">Books</a>
                 <a href="contact.html">Contact</a>
                 <a href="pt/index.html" class="lang-selector">PT</a>
             </nav>
@@ -273,16 +280,15 @@
             <img src="assets/profile.webp" alt="Tay Marais" class="profile-img">
             <div class="bio-text">
                 <h2>The heart has many voices.</h2>
-                <p>Based in the Pacific Northwest, I am an observer of human complexity and the intricate nuances of modern relationships. Writing with a voice that seeks the raw and magnetic, I explore the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
-                <p>Finding inspiration in the contrast between the stillness of nature and the intensity of music, I believe the most powerful stories are those that force us to face our own vulnerability. My novels bring to life deeply flawed characters, marked by secrets and consuming passions, who find redemption and danger in one another. Fascinated by the vastness and mysteries of the sea, I translate this atmosphere into the perfect psychological backdrop for my plots.</p>
+                <p>Contemporary fiction author focused on the quiet resilience of the human spirit and the secrets we keep buried beneath the surface.</p>
                 <div class="social-links">
-                    <a href="https://www.pinterest.com/Thetaymarais/" class="btn btn-social">Pinterest</a>
-                    <a href="https://x.com/theTayMarais" class="btn btn-social">Instagram</a>
+                    <a href="#" class="btn btn-social">Pinterest</a>
+                    <a href="#" class="btn btn-social">Instagram</a>
                 </div>
             </div>
         </section>
 
-        <h2 class="section-title" id="books">Library</h2>
+        <h2 class="section-title" id="books">BOOKS</h2>
 
         <article class="book-card">
             <div class="book-cover-area">
@@ -296,7 +302,7 @@
                 <h3>Where the Ocean Ends</h3>
                 <p class="tagline">The ocean ends on two wounded hearts.</p>
                 <p class="description">
-                    Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce and the weight of secrets that refuse to stay buried, he returns to the coast seeking silence.
+                    Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce, he returns to the coast seeking silence.
                 </p>
                 <a href="books/where-the-ocean-ends.html" class="btn btn-cta">Open Book</a>
             </div>
