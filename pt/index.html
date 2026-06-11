@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tay Marais | Site Oficial</title>
+    <title>Tay Marais | Escritora</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +25,6 @@
             
             --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
-            --font-reading: 'Lora', serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,6 +33,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: var(--font-ui);
+            font-size: 0.95rem;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
@@ -38,7 +41,7 @@
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
         header {
-            padding: 40px 0;
+            padding: 30px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -47,29 +50,30 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             text-decoration: none;
             color: var(--text-main);
             letter-spacing: 2px;
         }
 
-        nav { display: flex; align-items: center; gap: 20px; }
+        nav { display: flex; align-items: center; gap: 15px; }
 
         nav a {
             text-decoration: none;
             color: var(--text-main);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 600;
+            transition: 0.3s;
         }
 
         .lang-selector {
             border: 1px solid var(--accent-color);
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 50px;
-            font-size: 0.7rem !important;
-            transition: 0.3s;
+            font-size: 0.65rem !important;
+            transition: all 0.3s ease;
         }
 
         .lang-selector:hover {
@@ -84,29 +88,30 @@
             font-weight: 600;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            border-radius: 50px;
+            cursor: pointer;
             text-align: center;
+            border-radius: 50px;
         }
 
         .btn-cta {
             background-color: var(--accent-color);
             color: var(--btn-text);
-            padding: 16px 35px;
-            font-size: 0.85rem;
+            padding: 14px 30px;
+            font-size: 0.75rem;
             border: none;
         }
 
         .btn-cta:hover {
             opacity: 0.9;
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         .btn-social {
             background: transparent;
             border: 1px solid rgba(212, 163, 150, 0.2);
             color: var(--muted-text);
-            padding: 8px 20px;
-            font-size: 0.7rem;
+            padding: 6px 18px;
+            font-size: 0.65rem;
         }
 
         .btn-social:hover {
@@ -116,15 +121,15 @@
         }
 
         .bio-section {
-            padding: 80px 0;
+            padding: 60px 0;
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 35px;
         }
 
         .profile-img {
-            width: 130px;
-            height: 130px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--accent-color);
@@ -133,29 +138,29 @@
 
         .bio-text h2 {
             font-family: var(--font-heading);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
             font-weight: 400;
         }
 
         .bio-text p {
             color: var(--muted-text);
-            font-size: 1rem;
-            max-width: 600px;
+            font-size: 0.95rem;
+            max-width: 550px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .section-title {
             font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             text-align: center;
             letter-spacing: 5px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             opacity: 0.5;
         }
 
@@ -165,8 +170,8 @@
             border-radius: 4px;
             overflow: hidden;
             display: grid;
-            grid-template-columns: 320px 1fr;
-            margin-bottom: 100px;
+            grid-template-columns: 280px 1fr;
+            margin-bottom: 80px;
         }
 
         .book-cover-area {
@@ -174,17 +179,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 50px;
+            padding: 30px;
         }
 
         .book-cover-area img {
             width: 100%;
-            max-width: 200px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 180px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border-radius: 2px;
         }
 
         .book-details {
-            padding: 50px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -192,25 +198,25 @@
 
         .tags {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
         .tag {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: var(--accent-color);
             opacity: 0.5;
-            border: 1px solid rgba(212, 163, 150, 0.3);
-            padding: 4px 12px;
+            border: 1px solid rgba(212, 163, 150, 0.2);
+            padding: 3px 10px;
             border-radius: 50px;
         }
 
         .book-details h3 {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.1rem;
+            margin-bottom: 8px;
             line-height: 1.1;
         }
 
@@ -218,14 +224,14 @@
             font-style: italic;
             color: var(--accent-color);
             opacity: 0.8;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
         }
 
         .description {
             color: var(--muted-text);
-            font-size: 1rem;
-            margin-bottom: 35px;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -233,10 +239,10 @@
         }
 
         footer {
-            padding: 60px 0;
+            padding: 50px 0;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 2px;
             opacity: 0.4;
             text-transform: uppercase;
@@ -244,9 +250,12 @@
 
         @media (max-width: 850px) {
             .book-card { grid-template-columns: 1fr; }
+            .book-cover-area { padding: 40px 20px; }
             .bio-section { flex-direction: column; text-align: center; }
-            header { flex-direction: column; gap: 20px; }
+            header { flex-direction: column; gap: 15px; padding: 25px 0; }
             .social-links { justify-content: center; }
+            .book-details { padding: 30px 24px; text-align: center; }
+            .tags { justify-content: center; }
         }
     </style>
 </head>
@@ -266,7 +275,7 @@
             <img src="../assets/profile.webp" alt="Tay Marais" class="profile-img">
             <div class="bio-text">
                 <h2>O coração tem muitas vozes.</h2>
-                <p>Autora de ficção contemporânea focada na resiliência silenciosa do espírito humano e nos segredos que guardamos.</p>
+                <p>Autora de ficção contemporânea focada na resiliência silenciosa do espírito humano e nos segredos que guardamos sob a superfície.</p>
                 <div class="social-links">
                     <a href="#" class="btn btn-social">Pinterest</a>
                     <a href="#" class="btn btn-social">Instagram</a>
@@ -274,7 +283,7 @@
             </div>
         </section>
 
-        <h2 class="section-title" id="books">BIBLIOTECA</h2>
+        <h2 class="section-title" id="books">LIVROS</h2>
 
         <article class="book-card">
             <div class="book-cover-area">
@@ -288,7 +297,7 @@
                 <h3>Onde o Oceano Acaba</h3>
                 <p class="tagline">O oceano termina em dois corações feridos.</p>
                 <p class="description">
-                    Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador e o peso de segredos que se recusam a permanecer enterrados, ele retorna à costa em busca de silêncio.
+                    Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador, ele retorna à costa em busca de silêncio.
                 </p>
                 <a href="books/onde-o-oceano-acaba.html" class="btn btn-cta">Abrir Livro</a>
             </div>
