@@ -3,197 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onde o Oceano Acaba | Área de Leitura</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Onde o Oceano Acaba | Tay Marais</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
-            --bg-color: #1A1210;
-            --surface-color: #261C19;
-            --text-main: #EAE5DE;
-            --accent-color: #D4A396;
-            --btn-text: #1A1210;
-            --muted-text: #A8A29E;
-            --border-color: rgba(234, 229, 222, 0.1);
-            --font-heading: 'Playfair Display SC', serif;
-            --font-ui: 'Montserrat', sans-serif;
-            --font-reading: 'Lora', serif;
+            --bg-deep: #1A1210; --surface: #261C19; --accent: #D4A396;
+            --text-main: #EAE5DE; --text-muted: #A8A29E; --font-heading: 'Playfair Display SC', serif;
+            --font-ui: 'Montserrat', sans-serif; --font-reading: 'Lora', serif;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
-        .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
-        nav { display: flex; align-items: center; gap: 20px; }
-        nav a { text-decoration: none; color: var(--text-main); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
-
-        .book-hero { padding: 60px 0; display: grid; grid-template-columns: 300px 1fr; gap: 50px; align-items: start; }
-        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); object-fit: cover; }
-        .book-info h1 { font-family: var(--font-heading); font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; }
-        .meta-tags { display: flex; gap: 10px; margin-bottom: 25px; }
-        .tag { font-size: 0.65rem; padding: 5px 12px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent-color); opacity: 0.7; }
-        .synopsis { font-family: var(--font-reading); font-size: 1.05rem; line-height: 1.7; color: var(--muted-text); margin-bottom: 35px; }
-
-        .btn-capsule { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.3s; }
+        header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
+        .logo { font-family: var(--font-heading); font-size: 1.1rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-left: 20px; }
+        .lang-selector { border: 1px solid var(--accent); padding: 4px 10px; border-radius: 50px; font-size: 0.65rem!important; margin-left: 15px!important; text-decoration: none; color: var(--text-main); }
+        .book-hero { padding: 40px 0; display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        .book-info h1 { font-family: var(--font-heading); font-size: 2.2rem; line-height: 1.1; margin-bottom: 10px; }
+        .meta-tags { display: flex; gap: 8px; margin-bottom: 15px; }
+        .tag { font-size: 0.6rem; padding: 4px 10px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent); opacity: 0.8; }
+        .synopsis { font-family: var(--font-reading); font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 25px; }
+        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem; transition: 0.3s; border: none; cursor: pointer; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
-
-        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 700px; margin: 80px auto; position: relative; }
-        .chapter-header { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; letter-spacing: 5px; text-align: center; margin-bottom: 50px; color: var(--accent-color); text-transform: uppercase; }
-        
-        .reading-content { 
-            font-family: var(--font-reading); 
-            font-size: 1.25rem; 
-            line-height: 1.9; 
-            color: var(--text-main);
-            height: 2.5rem; 
-            overflow: hidden;
-            position: relative;
-        }
-
-        .tide-gate { 
-            position: relative; 
-            margin-top: -30px; 
-            padding-top: 60px; 
-            background: linear-gradient(to bottom, transparent, var(--bg-color) 5%, var(--bg-color) 100%); 
-            text-align: center;
-            z-index: 10;
-        }
-
-        .capture-card { background-color: var(--surface-color); padding: 50px 40px; border-radius: 4px; margin-top: 10px; }
-        .capture-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; }
-        .capture-card p { font-size: 0.95rem; color: var(--muted-text); margin-bottom: 30px; line-height: 1.6; font-family: var(--font-ui); }
-        
-        .form-group { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-        input[type="email"] { padding: 18px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; text-align: center; outline: none; }
-
-        #success-modal { 
-            position: fixed; inset: 0; background: rgba(26, 18, 16, 0.8); backdrop-filter: blur(8px); 
-            display: none; justify-content: center; align-items: center; z-index: 9999; padding: 20px;
-        }
-        .success-box { 
-            background: var(--surface-color); 
-            padding: 50px 30px; 
-            border-radius: 4px; 
-            max-width: 420px; 
-            width: 100%; 
-            position: relative; 
-            text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-        .success-box h2 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-color); margin-bottom: 15px; }
-        .success-box p { font-family: var(--font-ui); font-size: 0.95rem; line-height: 1.6; color: var(--text-main); }
-        .close-x { 
-            position: absolute; top: 15px; right: 20px; font-size: 1.5rem; 
-            color: var(--accent-color); cursor: pointer; opacity: 0.6; transition: 0.3s;
-        }
-        .close-x:hover { opacity: 1; }
-
-        @media (max-width: 850px) {
-            .book-hero { grid-template-columns: 1fr; text-align: center; }
-            .book-cover { max-width: 220px; margin: 0 auto; }
-            .meta-tags { justify-content: center; }
-        }
+        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 700px; margin: 60px auto; }
+        .chapter-header { font-family: var(--font-ui); font-weight: 600; font-size: 0.8rem; letter-spacing: 4px; text-align: center; margin-bottom: 40px; color: var(--accent); text-transform: uppercase; }
+        .reading-content { font-family: var(--font-reading); font-size: 1.15rem; line-height: 1.8; color: var(--text-main); height: 2.5rem; overflow: hidden; position: relative; }
+        .tide-gate { position: relative; margin-top: -30px; padding-top: 60px; background: linear-gradient(to bottom, transparent, var(--bg-deep) 5%, var(--bg-deep) 100%); text-align: center; z-index: 10; }
+        .capture-card { background-color: var(--surface); padding: 40px; border-radius: 4px; margin-top: 10px; }
+        .capture-card h3 { font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 10px; }
+        .capture-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; }
+        .form-group { display: flex; flex-direction: column; gap: 12px; max-width: 350px; margin: 0 auto; }
+        input[type="email"] { padding: 15px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; text-align: center; outline: none; }
+        #success-modal { position: fixed; inset: 0; background: rgba(26, 18, 16, 0.8); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
+        .success-box { background: var(--surface); padding: 40px; border-radius: 4px; max-width: 400px; width: 100%; position: relative; text-align: center; }
+        .success-box h2 { font-family: var(--font-heading); font-size: 1.6rem; color: var(--accent); margin-bottom: 10px; }
+        .close-x { position: absolute; top: 10px; right: 15px; font-size: 1.2rem; color: var(--accent); cursor: pointer; opacity: 0.6; }
+        @media (max-width: 850px) { .book-hero { grid-template-columns: 1fr; text-align: center; padding: 30px 0; } .book-cover { max-width: 180px; margin: 0 auto; } .meta-tags { justify-content: center; } .btn-capsule { width: 100%; } }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <header>
-            <a href="../index.html" class="logo">TAY MARAIS</a>
-            <nav>
-                <a href="../index.html">Início</a>
-                <a href="../../books/where-the-ocean-ends.html">EN</a>
-            </nav>
+        <header><a href="../index.html" class="logo">TAY MARAIS</a>
+            <nav class="nav-links"><a href="../index.html">Início</a><a href="../../books/where-the-ocean-ends.html" class="lang-selector">EN</a></nav>
         </header>
-
         <section class="book-hero">
             <img src="../../assets/capa.webp" alt="Onde o Oceano Acaba" class="book-cover">
             <div class="book-info">
-                <div class="meta-tags">
-                    <span class="tag">20 Capítulos</span>
-                    <span class="tag">POV: Adam/Madeleine</span>
-                    <span class="tag">PT-BR</span>
-                </div>
+                <div class="meta-tags"><span class="tag">20 Capítulos</span><span class="tag">POV: Adam/Madeleine</span><span class="tag">PT-BR</span></div>
                 <h1>Onde o Oceano Acaba</h1>
-                <p class="synopsis">
-                    Adam Walker tem o mundo aos seus pés e um vazio ensurdecedor no peito. Após um divórcio devastador e o peso de segredos que se recusam a permanecer enterrados, ele retorna à costa em busca de silêncio.
-                </p>
+                <p class="synopsis">Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador, ele retorna à costa em busca de silêncio, apenas para descobrir que alguns segredos se recusam a ser levados pela maré. Adam logo aprenderá que os fantasmas de seu passado sabem nadar.</p>
                 <button class="btn-capsule" id="btn-open">Abrir Livro</button>
             </div>
         </section>
-
         <section id="reading-section">
             <h2 class="chapter-header">ADAM</h2>
-            <div class="reading-content">
-                <p>O mar tem uma maneira de reivindicar o que não lhe pertence. Começa com as bordas de uma fotografia deixada por muito tempo ao sol, depois avança para as tábuas de madeira de um trapiche que outrora sustentou o peso das promessas de um verão. Quando retornei a Blackwood Cove, percebi que ele também havia reivindicado as memórias que eu julgava ter enterrado a quilômetros de distância.</p>
-            </div>
-            
+            <div class="reading-content"><p>O mar tem uma maneira de reivindicar o que não lhe pertence. Começa com as bordas de uma fotografia deixada por muito tempo ao sol, depois avança para as tábuas de madeira de um trapiche que outrora sustentou o peso das promessas de um verão.</p></div>
             <div class="tide-gate">
-                <div class="capture-card">
-                    <h3>A maré está subindo...</h3>
+                <div class="capture-card"><h3>A maré está subindo...</h3>
                     <p>Não fique para trás na escuridão. Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
-                    <form id="capture-form">
-                        <input type="hidden" name="lang" value="pt">
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Seu melhor endereço de e-mail" required>
-                            <button type="submit" class="btn-capsule">Desbloquear Capítulos</button>
-                        </div>
+                    <form id="capture-form"><input type="hidden" name="lang" value="pt">
+                        <div class="form-group"><input type="email" name="email" placeholder="Seu melhor e-mail" required><button type="submit" class="btn-capsule">Desbloquear Capítulos</button></div>
                     </form>
                 </div>
             </div>
         </section>
     </div>
-
-    <!-- Success Modal -->
     <div id="success-modal">
-        <div class="success-box">
-            <span class="close-x" id="close-modal">×</span>
+        <div class="success-box"><span class="close-x" id="close-modal">×</span>
             <h2>A maré está mudando...</h2>
-            <p>Sua jornada em Blackwood Cove começou oficialmente.<br>Verifique sua caixa de entrada em instantes — o Capítulo Dois está te esperando.</p>
+            <p>Sua jornada em Blackwood Cove começou oficialmente. Verifique sua caixa de entrada em instantes — o Capítulo Dois te espera.</p>
         </div>
     </div>
-
     <script>
         document.getElementById('btn-open').addEventListener('click', function() {
             const section = document.getElementById('reading-section');
             section.style.display = 'block';
-            setTimeout(() => {
-                section.style.opacity = '1';
-                section.scrollIntoView({ behavior: 'smooth' });
-            }, 10);
+            setTimeout(() => { section.style.opacity = '1'; section.scrollIntoView({ behavior: 'smooth' }); }, 10);
         });
-
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
         const form = document.getElementById('capture-form');
         const modal = document.getElementById('success-modal');
-
         form.addEventListener('submit', e => {
             e.preventDefault();
-            const btn = form.querySelector('button');
-            btn.disabled = true;
-            btn.innerText = "ENVIANDO...";
-
+            const btn = form.querySelector('button'); btn.disabled = true; btn.innerText = "ENVIANDO...";
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                modal.style.display = 'flex';
-                form.reset();
-            })
-            .catch(error => {
-                btn.disabled = false;
-                btn.innerText = "DESBLOQUEAR CAPÍTULOS";
-                alert("A maré está muito forte. Tente novamente em instantes.");
-            });
+            .then(response => { modal.style.display = 'flex'; form.reset(); })
+            .catch(error => { btn.disabled = false; btn.innerText = "DESBLOQUEAR CAPÍTULOS"; alert("Erro. Tente novamente."); });
         });
-
-        document.getElementById('close-modal').addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+        document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
     </script>
 </body>
 </html>
