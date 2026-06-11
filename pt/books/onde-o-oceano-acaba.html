@@ -12,68 +12,68 @@
 
     <style>
         :root {
-            --bg-deep: #1A1210;
-            --surface: #261C19;
-            --accent: #D4A396;
+            --bg-color: #1A1210;
+            --surface-color: #261C19;
             --text-main: #EAE5DE;
-            --text-muted: #A8A29E;
+            --accent-color: #D4A396;
+            --btn-text: #1A1210;
+            --muted-text: #A8A29E;
+            --border-color: rgba(234, 229, 222, 0.1);
             --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
             --font-reading: 'Lora', serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-        /* Navigation */
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
+        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
         .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-left: 20px; }
+        nav { display: flex; align-items: center; gap: 20px; }
+        nav a { text-decoration: none; color: var(--text-main); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
 
-        /* Goodreads Style Header */
         .book-hero { padding: 60px 0; display: grid; grid-template-columns: 300px 1fr; gap: 50px; align-items: start; }
-        .book-cover-wrapper { position: relative; }
-        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.6), 5px 5px 15px rgba(0,0,0,0.3); object-fit: cover; }
-        
-        .book-info h1 { font-family: var(--font-heading); font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; color: var(--text-main); }
-        .meta-tags { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
-        .tag { font-size: 0.65rem; padding: 5px 12px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); opacity: 0.8; }
-        .synopsis { font-family: var(--font-reading); font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 35px; }
+        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); object-fit: cover; }
+        .book-info h1 { font-family: var(--font-heading); font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; }
+        .meta-tags { display: flex; gap: 10px; margin-bottom: 25px; }
+        .tag { font-size: 0.65rem; padding: 5px 12px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent-color); opacity: 0.7; }
+        .synopsis { font-family: var(--font-reading); font-size: 1.05rem; line-height: 1.7; color: var(--muted-text); margin-bottom: 35px; }
 
-        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-capsule { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.3s; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
 
-        /* Reading Area */
-        .reading-section { max-width: 700px; margin: 80px auto; padding-top: 60px; border-top: 1px solid rgba(212, 163, 150, 0.1); }
-        .chapter-title { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; letter-spacing: 5px; text-align: center; margin-bottom: 50px; color: var(--accent); }
-        .reading-content { font-family: var(--font-reading); font-size: 1.2rem; line-height: 1.9; color: var(--text-main); text-align: left; }
+        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 700px; margin: 80px auto; }
+        .chapter-header { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; letter-spacing: 5px; text-align: center; margin-bottom: 50px; color: var(--accent-color); text-transform: uppercase; }
+        .reading-content { font-family: var(--font-reading); font-size: 1.25rem; line-height: 1.9; color: var(--text-main); }
         .reading-content p { margin-bottom: 1.8rem; }
 
-        /* Fade Out & Capture */
-        .fade-gate { position: relative; margin-top: -150px; padding-top: 150px; text-align: center; background: linear-gradient(to bottom, transparent, var(--bg-deep) 40%, var(--bg-deep) 100%); }
-        .capture-card { background-color: var(--surface); padding: 50px 40px; border-radius: 4px; margin-top: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .tide-gate { 
+            position: relative; 
+            margin-top: -180px; 
+            padding-top: 180px; 
+            background: linear-gradient(to bottom, transparent, var(--bg-color) 40%, var(--bg-color) 100%); 
+            text-align: center;
+        }
+
+        .capture-card { background-color: var(--surface-color); padding: 50px 40px; border-radius: 4px; margin-top: 20px; }
         .capture-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; }
-        .capture-card p { font-family: var(--font-ui); font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
+        .capture-card p { font-size: 0.95rem; color: var(--muted-text); margin-bottom: 30px; line-height: 1.6; font-family: var(--font-ui); }
         
         .form-group { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-        input[type="email"] { padding: 18px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; font-family: var(--font-ui); text-align: center; outline: none; }
-        input[type="email"]:focus { border-color: var(--accent); }
+        input[type="email"] { padding: 18px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; text-align: center; outline: none; }
 
-        /* Success Overlay */
-        #success-modal { position: fixed; inset: 0; background: rgba(26, 18, 16, 0.95); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 40px; text-align: center; }
-        .success-content { max-width: 500px; animation: fadeInUp 0.6s ease; }
-        .success-content h2 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 20px; color: var(--accent); }
-        .success-content p { font-family: var(--font-ui); font-size: 1.1rem; line-height: 1.6; color: var(--text-main); }
+        #success-modal { 
+            position: fixed; inset: 0; background: rgba(26, 18, 16, 0.9); backdrop-filter: blur(8px); 
+            display: none; justify-content: center; align-items: center; z-index: 9999; padding: 40px; text-align: center;
+        }
+        .success-box h2 { font-family: var(--font-heading); font-size: 2.2rem; color: var(--accent-color); margin-bottom: 20px; }
+        .success-box p { font-family: var(--font-ui); font-size: 1.1rem; line-height: 1.6; }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Responsiveness */
         @media (max-width: 850px) {
-            .book-hero { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .book-hero { grid-template-columns: 1fr; text-align: center; }
             .book-cover { max-width: 220px; margin: 0 auto; }
             .meta-tags { justify-content: center; }
-            .book-info h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -82,71 +82,75 @@
     <div class="container">
         <header>
             <a href="../index.html" class="logo">TAY MARAIS</a>
-            <div class="nav-links">
+            <nav>
                 <a href="../index.html">Início</a>
                 <a href="../../books/where-the-ocean-ends.html">EN</a>
-            </div>
+            </nav>
         </header>
 
         <section class="book-hero">
-            <div class="book-cover-wrapper">
-                <img src="../../assets/capa.webp" alt="Onde o Oceano Acaba" class="book-cover">
-            </div>
+            <img src="../../assets/capa.webp" alt="Onde o Oceano Acaba" class="book-cover">
             <div class="book-info">
                 <div class="meta-tags">
                     <span class="tag">20 Capítulos</span>
-                    <span class="tag">Dual POV</span>
+                    <span class="tag">POV: Adam/Madeleine</span>
                     <span class="tag">PT-BR</span>
                 </div>
                 <h1>Onde o Oceano Acaba</h1>
                 <p class="synopsis">
-                    Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador e o peso de segredos que se recusam a permanecer enterrados, ele retorna à costa em busca de silêncio. Mas o mar tem uma maneira de devolver tudo o que tentamos deixar para trás.
+                    Adam Walker tem o mundo aos seus pés e um vazio ensurdecedor no peito. Após um divórcio devastador e o peso de segredos que se recusam a permanecer enterrados, ele retorna à costa em busca de silêncio. Mas o mar tem uma maneira de devolver tudo o que tentamos deixar para trás.
                 </p>
-                <a href="#reading" class="btn-capsule">Abrir Livro</a>
+                <button class="btn-capsule" id="btn-open">Abrir Livro</button>
             </div>
         </section>
 
-        <main id="reading" class="reading-section">
-            <h2 class="chapter-title">ADAM</h2>
+        <section id="reading-section">
+            <h2 class="chapter-header">ADAM</h2>
             <div class="reading-content">
                 <p>O mar tem uma maneira de reivindicar o que não lhe pertence. Começa com as bordas de uma fotografia deixada por muito tempo ao sol, depois avança para as tábuas de madeira de um trapiche que outrora sustentou o peso das promessas de um verão. Quando retornei a Blackwood Cove, percebi que ele também havia reivindicado as memórias que eu julgava ter enterrado a quilômetros de distância.</p>
                 <p>Julian estava parado ali, exatamente onde os mapas diziam que a cidade terminava. Ele parecia um fantasma esculpido em granito, com o vento do Pacífico fustigando seu casaco. Ele não se virou quando o cascalho rangeu sob minhas botas. Ele não precisava. O oceano já havia contado a ele que eu estava chegando muito antes de eu sequer cruzar a fronteira do estado.</p>
                 <p>Olhei para a chave de prata na minha mão. Estava fria, pesada, e carregava o peso de uma porta que havia sido trancada por um motivo. Mas a curiosidade, que sempre fora minha maior falha, era agora minha única bússola. A casa na colina estava esperando, e o silêncio estava finalmente pronto para falar.</p>
-                
-                <!-- FADE OUT GATE -->
-                <div class="fade-gate">
+
+                <!-- THE TIDE GATE (Captura) -->
+                <div class="tide-gate">
                     <div class="capture-card">
                         <h3>A maré está subindo...</h3>
                         <p>Não fique para trás na escuridão. Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
-                        <form id="lead-form">
+                        <form id="capture-form">
                             <input type="hidden" name="lang" value="pt">
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Insira seu melhor e-mail" required>
+                                <input type="email" name="email" placeholder="Seu melhor endereço de e-mail" required>
                                 <button type="submit" class="btn-capsule">Desbloquear Capítulos</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </main>
-
-        <footer>
-            <p style="text-align: center; padding: 40px 0; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px;">&copy; 2024 TAY MARAIS. TODOS OS DIREITOS RESERVADOS.</p>
-        </footer>
+        </section>
     </div>
 
     <!-- Success Modal -->
     <div id="success-modal">
-        <div class="success-content">
+        <div class="success-box">
             <h2>A maré mudou...</h2>
-            <p>Sua jornada começou oficialmente. Verifique sua caixa de entrada em instantes o restante dos Capítulos estão te esperando.</p>
+            <p>Sua jornada começou...<br>Verifique sua caixa de entrada em instantes os Capítulos Dois estarão te esperando.</p>
         </div>
     </div>
 
     <script>
+        // Lógica de Revelar Leitura
+        document.getElementById('btn-open').addEventListener('click', function() {
+            const section = document.getElementById('reading-section');
+            section.style.display = 'block';
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.scrollIntoView({ behavior: 'smooth' });
+            }, 10);
+        });
+
+        // Lógica do Formulário
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
-        const form = document.getElementById('lead-form');
-        const modal = document.getElementById('success-modal');
+        const form = document.getElementById('capture-form');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
@@ -156,13 +160,13 @@
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                modal.style.display = 'flex';
+                document.getElementById('success-modal').style.display = 'flex';
                 form.reset();
             })
             .catch(error => {
-                alert('A maré está muito forte. Por favor, tente novamente mais tarde.');
                 btn.disabled = false;
                 btn.innerText = "DESBLOQUEAR CAPÍTULOS";
+                alert("A maré está muito forte. Tente novamente em instantes.");
             });
         });
     </script>
