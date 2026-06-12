@@ -5,8 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="p:domain_verify" content="fca1e83ea69aa7672cbd8318a27be208"/>
     <title>Onde o Oceano Acaba | Tay Marais</title>
+    
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Pinterest Tag -->
+    <script>
+    !function(e){if(!window.pintrk){window.pintrk = function () {
+    window.pintrk.queue.push(Array.prototype.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+    pintrk('load', '2613912141256', {em: '<user_email_address>'});
+    pintrk('page');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613912141256&noscript=1" />
+    </noscript>
+
     <style>
         :root {
             --bg-deep: #1A1210; --surface: #261C19; --accent: #D4A396;
@@ -28,7 +49,7 @@
         .synopsis { font-family: var(--font-reading); font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 25px; }
         .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem; transition: 0.3s; border: none; cursor: pointer; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
-        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 700px; margin: 60px auto; }
+        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 700px; margin: 60px auto; position: relative; }
         .chapter-header { font-family: var(--font-ui); font-weight: 600; font-size: 0.8rem; letter-spacing: 4px; text-align: center; margin-bottom: 40px; color: var(--accent); text-transform: uppercase; }
         .reading-content { font-family: var(--font-reading); font-size: 1.15rem; line-height: 1.8; color: var(--text-main); height: 2.5rem; overflow: hidden; position: relative; }
         .tide-gate { position: relative; margin-top: -30px; padding-top: 60px; background: linear-gradient(to bottom, transparent, var(--bg-deep) 5%, var(--bg-deep) 100%); text-align: center; z-index: 10; }
@@ -46,15 +67,19 @@
 </head>
 <body>
     <div class="container">
-        <header><a href="../index.html" class="logo">TAY MARAIS</a>
-            <nav class="nav-links"><a href="../index.html">Início</a><a href="../../books/where-the-ocean-ends.html" class="lang-selector">EN</a></nav>
+        <header>
+            <a href="../index.html" class="logo">TAY MARAIS</a>
+            <nav class="nav-links">
+                <a href="../index.html">Início</a>
+                <a href="../../books/where-the-ocean-ends.html" class="lang-selector">EN</a>
+            </nav>
         </header>
         <section class="book-hero">
             <img src="../../assets/capa.webp" alt="Onde o Oceano Acaba" class="book-cover">
             <div class="book-info">
                 <div class="meta-tags"><span class="tag">20 Capítulos</span><span class="tag">POV: Adam/Madeleine</span><span class="tag">PT-BR</span></div>
                 <h1>Onde o Oceano Acaba</h1>
-                <p class="synopsis">Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador, ele retorna à costa em busca de silêncio, apenas para descobrir que alguns segredos se recusam a ser levados pela maré. Adam logo aprenderá que os fantasmas de seu passado sabem nadar.</p>
+                <p class="synopsis">Adam Walker tem o mundo aos seus pés e um vazio ensurdecedor no peito. Após um divórcio devastador, ele retorna à costa em busca de silêncio.</p>
                 <button class="btn-capsule" id="btn-open">Abrir Livro</button>
             </div>
         </section>
@@ -62,8 +87,9 @@
             <h2 class="chapter-header">ADAM</h2>
             <div class="reading-content"><p>O mar tem uma maneira de reivindicar o que não lhe pertence. Começa com as bordas de uma fotografia deixada por muito tempo ao sol, depois avança para as tábuas de madeira de um trapiche que outrora sustentou o peso das promessas de um verão.</p></div>
             <div class="tide-gate">
-                <div class="capture-card"><h3>A maré está subindo...</h3>
-                    <p>Não fique para trás na escuridão. Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
+                <div class="capture-card">
+                    <h3>A maré está subindo...</h3>
+                    <p>Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
                     <form id="capture-form"><input type="hidden" name="lang" value="pt">
                         <div class="form-group"><input type="email" name="email" placeholder="Seu melhor e-mail" required><button type="submit" class="btn-capsule">Desbloquear Capítulos</button></div>
                     </form>
@@ -90,7 +116,11 @@
             e.preventDefault();
             const btn = form.querySelector('button'); btn.disabled = true; btn.innerText = "ENVIANDO...";
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => { modal.style.display = 'flex'; form.reset(); })
+            .then(response => {
+                pintrk('track', 'lead'); // Pinterest Lead Tracking
+                modal.style.display = 'flex';
+                form.reset();
+            })
             .catch(error => { btn.disabled = false; btn.innerText = "DESBLOQUEAR CAPÍTULOS"; alert("Erro. Tente novamente."); });
         });
         document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
