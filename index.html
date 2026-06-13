@@ -54,11 +54,11 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         /* --- HEADER --- */
         header {
-            padding: 25px 0;
+            padding: 30px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -86,20 +86,20 @@
             text-decoration: none;
         }
 
-        /* --- BIO SECTION REFORMULADA --- */
+        /* --- BIO SECTION (EXPANDIDA) --- */
         .bio-section {
-            padding: 60px 0;
+            padding: 100px 0; /* Aumentado para ocupar mais espaço vertical */
             display: flex;
             align-items: flex-start;
-            gap: 45px;
+            gap: 60px;
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 140px; /* Aumentado levemente */
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid var(--accent-color);
+            border: 2px solid var(--accent-color);
             flex-shrink: 0;
         }
 
@@ -109,25 +109,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
             gap: 15px;
         }
 
         .bio-content h2 {
             font-family: var(--font-heading);
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             letter-spacing: 1px;
         }
 
         .bio-content p {
             color: var(--muted-text);
-            font-size: 0.85rem;
-            text-align: justify; /* TEXTO JUSTIFICADO */
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            text-align: justify;
+            margin-bottom: 20px;
         }
 
-        /* Social Links integrados abaixo do título */
         .social-links { display: flex; gap: 10px; }
         .btn-social {
             background: transparent;
@@ -143,138 +142,102 @@
         }
         .btn-social:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
-        /* Spotify Placeholder */
+        /* Spotify Ativo */
         .spotify-block {
-            margin-top: 20px;
-            background: rgba(212, 163, 150, 0.03);
+            margin-top: 30px;
+            background: rgba(212, 163, 150, 0.05);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 15px;
-            font-size: 0.7rem;
-            color: var(--muted-text);
+            border-radius: 12px;
+            padding: 18px;
+            font-size: 0.75rem;
+            color: var(--accent-color);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
+            transition: 0.3s;
         }
+        .spotify-block:hover { background: rgba(212, 163, 150, 0.1); transform: translateX(5px); }
 
-        /* --- VERTICAL BOOK CARD (Estilo Exemplo 12) --- */
+        /* --- BOOKS SECTION (ALINHADO À ESQUERDA NO DESKTOP) --- */
         .section-label {
             font-family: var(--font-heading);
-            font-size: 0.8rem;
-            letter-spacing: 4px;
-            text-align: center;
-            margin-bottom: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-align: left; /* Alinhado à esquerda */
+            margin-bottom: 40px;
+            padding-left: 200px; /* Alinhamento com o início da bio no desktop */
             opacity: 0.5;
+            text-transform: uppercase;
         }
 
         .books-container {
             display: flex;
-            justify-content: center;
-            padding-bottom: 80px;
+            justify-content: flex-start; /* Alinhado à esquerda */
+            padding-left: 200px; /* Alinhamento com o início da bio no desktop */
+            padding-bottom: 120px;
         }
 
         .book-card-vertical {
             background-color: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 15px; /* Bordas arredondadas como no exemplo */
-            width: 320px; /* Largura vertical fixa no desktop */
+            border-radius: 12px;
+            width: 320px;
             overflow: hidden;
             transition: transform 0.3s ease;
         }
 
-        .book-card-vertical:hover { transform: translateY(-5px); }
+        .book-card-vertical:hover { transform: translateY(-8px); }
 
-        .book-card-header {
-            width: 100%;
-            background-color: #000;
-            line-height: 0;
-        }
+        .book-card-header { width: 100%; background-color: #000; line-height: 0; }
+        .book-card-header img { width: 100%; height: auto; display: block; }
 
-        .book-card-header img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .book-card-body { padding: 30px; text-align: left; }
+        .book-card-body h3 { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
+        .book-card-body .tagline { font-size: 0.75rem; font-style: italic; color: var(--accent-color); margin-bottom: 20px; display: block; }
 
-        .book-card-body {
-            padding: 25px;
-            text-align: center;
-        }
+        .tags { display: flex; gap: 8px; justify-content: flex-start; margin-bottom: 20px; }
+        .tag { font-size: 0.55rem; text-transform: uppercase; border: 1px solid rgba(212, 163, 150, 0.2); padding: 3px 12px; border-radius: 50px; color: var(--muted-text); }
 
-        .book-card-body h3 {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        .book-card-body .tagline {
-            font-size: 0.75rem;
-            font-style: italic;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .tags {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .tag {
-            font-size: 0.55rem;
-            text-transform: uppercase;
-            border: 1px solid rgba(212, 163, 150, 0.2);
-            padding: 2px 10px;
-            border-radius: 50px;
-            color: var(--muted-text);
-        }
-
-        .book-description {
-            font-size: 0.8rem;
-            color: var(--muted-text);
-            text-align: justify; /* JUSTIFICADO */
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
+        .book-description { font-size: 0.85rem; color: var(--muted-text); text-align: justify; margin-bottom: 30px; line-height: 1.5; }
 
         .btn-open {
             display: inline-block;
             background-color: var(--accent-color);
             color: var(--btn-text);
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
             transition: 0.3s;
         }
         .btn-open:hover { opacity: 0.9; transform: scale(1.05); }
 
         footer {
-            padding: 40px 0;
+            padding: 60px 0;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             opacity: 0.4;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* --- MOBILE FIXES --- */
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; text-align: center; }
-            .bio-section { flex-direction: column; align-items: center; text-align: center; gap: 25px; }
+        /* --- MOBILE REFINEMENTS --- */
+        @media (max-width: 900px) {
+            .section-label, .books-container { padding-left: 0; justify-content: center; text-align: center; }
+            .bio-section { padding: 60px 0; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+            .profile-img { width: 120px; height: 120px; }
             .bio-header-area { justify-content: center; }
-            .bio-content p { text-align: justify; }
             .social-links { justify-content: center; width: 100%; }
             .book-card-vertical { width: 100%; max-width: 340px; }
+            .book-card-body { text-align: center; }
+            .tags { justify-content: center; }
         }
     </style>
 </head>
@@ -303,16 +266,16 @@
                 <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
                 <p>Finding inspiration in the contrast between the stillness and the intensity of music, the author believes the most powerful stories are those that force us to face our own vulnerability. Her novels bring to life deeply flawed characters, marked by consuming passions, who find redemption and danger in one another. Fascinated by the vastness and mysteries of the sea, she translates this atmosphere into the perfect psychological backdrop for her gripping plots.</p>
                 
-                <div class="spotify-block">
-                    <span style="color: #1DB954;">●</span> Spotify Playlist Coming Soon
-                </div>
+                <!-- Spotify Ativo -->
+                <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="spotify-block">
+                    <span style="color: #1DB954; font-size: 1.2rem;">●</span> Spotify Playlist
+                </a>
             </div>
         </section>
 
         <div class="section-label" id="books">LATEST RELEASE</div>
 
         <div class="books-container">
-            <!-- Vertical Book Card Style -->
             <article class="book-card-vertical">
                 <div class="book-card-header">
                     <img src="assets/cover.webp" alt="Where the Ocean Ends">
