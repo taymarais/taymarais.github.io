@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="p:domain_verify" content="fca1e83ea69aa7672cbd8318a27be208"/>
     <title>Tay Marais | Author</title>
-    
     <link rel="icon" type="image/png" href="assets/favicon.png">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Pinterest Tag -->
     <script>
     !function(e){if(!window.pintrk){window.pintrk = function () {
     window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
@@ -24,9 +20,7 @@
     pintrk('load', '2613912141256', {em: '<user_email_address>'});
     pintrk('page');
     </script>
-    <noscript>
-    <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613912141256&noscript=1" />
-    </noscript>
+    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613912141256&noscript=1" /></noscript>
 
     <style>
         :root {
@@ -36,62 +30,56 @@
             --font-ui: 'Montserrat', sans-serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); font-size: 0.9rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); font-size: 0.85rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
-        .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
+        header { padding: 25px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+        .logo { font-family: var(--font-heading); font-size: 1.1rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
         nav { display: flex; align-items: center; gap: 15px; }
-        nav a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-        .lang-selector { border: 1px solid var(--accent-color); padding: 5px 12px; border-radius: 50px; font-size: 0.65rem !important; transition: 0.3s; color: var(--text-main); text-decoration: none; }
+        nav a { text-decoration: none; color: var(--text-main); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+        .lang-selector { border: 1px solid var(--accent-color); padding: 4px 10px; border-radius: 50px; font-size: 0.6rem !important; transition: 0.3s; color: var(--text-main); text-decoration: none; }
 
-        /* --- BIO SECTION --- */
-        .bio-section { padding: 80px 0; display: flex; align-items: flex-start; gap: 60px; }
-        .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); flex-shrink: 0; }
+        .bio-section { padding: 60px 0; display: flex; align-items: flex-start; gap: 40px; }
+        .profile-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent-color); flex-shrink: 0; }
         .bio-content { flex: 1; }
-        .bio-content h2 { font-family: var(--font-heading); font-size: 1.6rem; letter-spacing: 1px; margin-bottom: 15px; }
-        .bio-content p { color: var(--muted-text); font-size: 0.9rem; text-align: justify; margin-bottom: 20px; }
+        .bio-content h2 { font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 12px; }
+        .bio-content p { color: var(--muted-text); font-size: 0.85rem; text-align: justify; margin-bottom: 15px; }
 
-        .social-links { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
-        .btn-social { background: transparent; border: 1px solid rgba(212, 163, 150, 0.3); color: var(--text-main); padding: 6px 15px; font-size: 0.6rem; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .social-links { display: flex; gap: 8px; margin-bottom: 20px; }
+        .btn-social { background: transparent; border: 1px solid rgba(212, 163, 150, 0.3); color: var(--text-main); padding: 5px 12px; font-size: 0.55rem; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-social:hover { border-color: var(--accent-color); color: var(--accent-color); background: rgba(212, 163, 150, 0.05); }
 
-        /* --- BOOKS SECTION (WIDER & NO WRAP TITLE) --- */
-        .section-label { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 5px; text-align: left; margin-bottom: 40px; padding-left: 200px; opacity: 0.5; text-transform: uppercase; }
-        .books-container { display: flex; justify-content: flex-start; padding-left: 200px; padding-bottom: 120px; }
+        /* --- MINI VERTICAL CARD (350px) --- */
+        .section-label { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 4px; text-align: left; margin-bottom: 30px; padding-left: 150px; opacity: 0.5; text-transform: uppercase; }
+        .books-container { display: flex; justify-content: flex-start; padding-left: 150px; padding-bottom: 100px; }
         
         .book-card-vertical { 
-            background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; 
-            width: 480px; /* Aumentado de 320px para evitar quebra de título */
+            background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; 
+            width: 350px; /* Tamanho confortável para desktop */
             overflow: hidden; transition: transform 0.3s ease; 
         }
-        .book-card-vertical:hover { transform: translateY(-8px); }
+        .book-card-vertical:hover { transform: translateY(-5px); }
         .book-card-header { width: 100%; background-color: #000; line-height: 0; }
         .book-card-header img { width: 100%; height: auto; display: block; }
         
-        .book-card-body { padding: 40px; text-align: left; }
-        .book-card-body h3 { 
-            font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 10px; color: var(--text-main);
-            white-space: nowrap; /* Título em uma única linha no desktop */
-            overflow: hidden; text-overflow: ellipsis;
-        }
-        .book-card-body .tagline { font-size: 0.75rem; font-style: italic; color: var(--accent-color); margin-bottom: 20px; display: block; }
-        .tags { display: flex; gap: 8px; justify-content: flex-start; margin-bottom: 20px; }
-        .tag { font-size: 0.55rem; text-transform: uppercase; border: 1px solid rgba(212, 163, 150, 0.2); padding: 2px 10px; border-radius: 50px; color: var(--muted-text); }
-        .book-description { font-size: 0.85rem; color: var(--muted-text); text-align: justify; margin-bottom: 30px; line-height: 1.5; }
+        .book-card-body { padding: 30px; text-align: left; }
+        .book-card-body h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px; color: var(--text-main); }
+        .book-card-body .tagline { font-size: 0.7rem; font-style: italic; color: var(--accent-color); margin-bottom: 15px; display: block; }
+        .tags { display: flex; gap: 6px; margin-bottom: 15px; }
+        .tag { font-size: 0.5rem; text-transform: uppercase; border: 1px solid rgba(212, 163, 150, 0.2); padding: 2px 8px; border-radius: 50px; color: var(--muted-text); }
+        .book-description { font-size: 0.8rem; color: var(--muted-text); text-align: justify; margin-bottom: 25px; line-height: 1.4; }
         
-        .btn-open { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; border: none; }
-        .btn-open:hover { opacity: 0.9; transform: scale(1.05); }
+        .btn-open { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; transition: 0.3s; border: none; }
+        .btn-open:hover { opacity: 0.9; transform: scale(1.03); }
 
-        footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.65rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
 
         @media (max-width: 900px) {
             .section-label, .books-container { padding-left: 0; justify-content: center; text-align: center; }
-            .bio-section { padding: 60px 0; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+            .bio-section { padding: 40px 0; flex-direction: column; align-items: center; text-align: center; }
             .social-links { justify-content: center; width: 100%; }
-            .book-card-vertical { width: 100%; max-width: 360px; }
-            .book-card-body { text-align: center; padding: 30px 20px; }
-            .book-card-body h3 { white-space: normal; font-size: 1.4rem; } /* Permite quebra no mobile para não vazar a tela */
+            .book-card-vertical { width: 100%; max-width: 330px; }
+            .book-card-body { text-align: center; padding: 25px 20px; }
             .tags { justify-content: center; }
         }
     </style>
@@ -118,7 +106,7 @@
                     <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
                 </div>
                 <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
-                <p>Finding inspiration in the contrast between the stillness and the intensity of music, the author believes the most powerful stories are those that force us to face our own vulnerability. Her novels bring to life deeply flawed characters, marked by consuming passions, who find redemption and danger in one another. Fascinated by the vastness and mysteries of the sea, she translates this atmosphere into the perfect psychological backdrop for her gripping plots.</p>
+                <p>Finding inspiration in the contrast between the stillness and the intensity of music, the author believes the most powerful stories are those that force us to face our own vulnerability. Her novels bring to life deeply flawed characters, marked by consuming passions, who find redemption and danger in one another.</p>
             </div>
         </section>
 
@@ -131,7 +119,7 @@
                     <div class="tags"><span class="tag">Romance</span><span class="tag">Literary Fiction</span></div>
                     <h3>Where the Ocean Ends</h3>
                     <span class="tagline">The ocean ends on two wounded hearts.</span>
-                    <p class="book-description">Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.</p>
+                    <p class="book-description">Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He just didn't expect to find her.</p>
                     <a href="books/where-the-ocean-ends.html" class="btn-open">Open Book</a>
                 </div>
             </article>
