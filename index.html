@@ -6,7 +6,6 @@
     <meta name="p:domain_verify" content="fca1e83ea69aa7672cbd8318a27be208"/>
     <title>Tay Marais | Author</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
     <!-- Google Fonts -->
@@ -31,209 +30,53 @@
 
     <style>
         :root {
-            --bg-color: #1A1210;
-            --surface-color: #261C19;
-            --text-main: #EAE5DE;
-            --accent-color: #D4A396;
-            --btn-text: #1A1210;
-            --muted-text: #A8A29E;
-            --border-color: rgba(234, 229, 222, 0.1);
-            --font-heading: 'Playfair Display SC', serif;
+            --bg-color: #1A1210; --surface-color: #261C19; --text-main: #EAE5DE;
+            --accent-color: #D4A396; --btn-text: #1A1210; --muted-text: #A8A29E;
+            --border-color: rgba(234, 229, 222, 0.1); --font-heading: 'Playfair Display SC', serif;
             --font-ui: 'Montserrat', sans-serif;
-            --font-reading: 'Lora', serif;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-ui);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); font-size: 0.9rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* --- HEADER --- */
-        header {
-            padding: 30px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: var(--text-main);
-            letter-spacing: 2px;
-        }
-
+        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+        .logo { font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
         nav { display: flex; align-items: center; gap: 15px; }
         nav a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+        .lang-selector { border: 1px solid var(--accent-color); padding: 5px 12px; border-radius: 50px; font-size: 0.65rem !important; transition: 0.3s; color: var(--text-main); text-decoration: none; }
 
-        .lang-selector {
-            border: 1px solid var(--accent-color);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.65rem !important;
-            transition: all 0.3s ease;
-            color: var(--text-main);
-            text-decoration: none;
-        }
-
-        /* --- BIO SECTION (EXPANDIDA) --- */
-        .bio-section {
-            padding: 100px 0; /* Aumentado para ocupar mais espaço vertical */
-            display: flex;
-            align-items: flex-start;
-            gap: 60px;
-        }
-
-        .profile-img {
-            width: 140px; /* Aumentado levemente */
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-color);
-            flex-shrink: 0;
-        }
-
+        /* --- BIO SECTION --- */
+        .bio-section { padding: 80px 0; display: flex; align-items: flex-start; gap: 60px; }
+        .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); flex-shrink: 0; }
         .bio-content { flex: 1; }
+        .bio-content h2 { font-family: var(--font-heading); font-size: 1.6rem; letter-spacing: 1px; margin-bottom: 15px; }
+        .bio-content p { color: var(--muted-text); font-size: 0.9rem; text-align: justify; margin-bottom: 20px; }
 
-        .bio-header-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+        .social-links { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .btn-social { background: transparent; border: 1px solid rgba(212, 163, 150, 0.3); color: var(--text-main); padding: 6px 15px; font-size: 0.6rem; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn-social:hover { border-color: var(--accent-color); color: var(--accent-color); background: rgba(212, 163, 150, 0.05); }
 
-        .bio-content h2 {
-            font-family: var(--font-heading);
-            font-size: 1.6rem;
-            letter-spacing: 1px;
-        }
-
-        .bio-content p {
-            color: var(--muted-text);
-            font-size: 0.9rem;
-            text-align: justify;
-            margin-bottom: 20px;
-        }
-
-        .social-links { display: flex; gap: 10px; }
-        .btn-social {
-            background: transparent;
-            border: 1px solid rgba(212, 163, 150, 0.3);
-            color: var(--text-main);
-            padding: 5px 15px;
-            font-size: 0.6rem;
-            text-decoration: none;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-        .btn-social:hover { border-color: var(--accent-color); color: var(--accent-color); }
-
-        /* Spotify Ativo */
-        .spotify-block {
-            margin-top: 30px;
-            background: rgba(212, 163, 150, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 18px;
-            font-size: 0.75rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .spotify-block:hover { background: rgba(212, 163, 150, 0.1); transform: translateX(5px); }
-
-        /* --- BOOKS SECTION (ALINHADO À ESQUERDA NO DESKTOP) --- */
-        .section-label {
-            font-family: var(--font-heading);
-            font-size: 0.85rem;
-            letter-spacing: 5px;
-            text-align: left; /* Alinhado à esquerda */
-            margin-bottom: 40px;
-            padding-left: 200px; /* Alinhamento com o início da bio no desktop */
-            opacity: 0.5;
-            text-transform: uppercase;
-        }
-
-        .books-container {
-            display: flex;
-            justify-content: flex-start; /* Alinhado à esquerda */
-            padding-left: 200px; /* Alinhamento com o início da bio no desktop */
-            padding-bottom: 120px;
-        }
-
-        .book-card-vertical {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            width: 320px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
+        /* --- BOOKS SECTION --- */
+        .section-label { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 5px; text-align: left; margin-bottom: 40px; padding-left: 200px; opacity: 0.5; text-transform: uppercase; }
+        .books-container { display: flex; justify-content: flex-start; padding-left: 200px; padding-bottom: 120px; }
+        .book-card-vertical { background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; width: 320px; overflow: hidden; transition: transform 0.3s ease; }
         .book-card-vertical:hover { transform: translateY(-8px); }
-
         .book-card-header { width: 100%; background-color: #000; line-height: 0; }
         .book-card-header img { width: 100%; height: auto; display: block; }
-
         .book-card-body { padding: 30px; text-align: left; }
         .book-card-body h3 { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
         .book-card-body .tagline { font-size: 0.75rem; font-style: italic; color: var(--accent-color); margin-bottom: 20px; display: block; }
-
         .tags { display: flex; gap: 8px; justify-content: flex-start; margin-bottom: 20px; }
-        .tag { font-size: 0.55rem; text-transform: uppercase; border: 1px solid rgba(212, 163, 150, 0.2); padding: 3px 12px; border-radius: 50px; color: var(--muted-text); }
-
+        .tag { font-size: 0.55rem; text-transform: uppercase; border: 1px solid rgba(212, 163, 150, 0.2); padding: 2px 10px; border-radius: 50px; color: var(--muted-text); }
         .book-description { font-size: 0.85rem; color: var(--muted-text); text-align: justify; margin-bottom: 30px; line-height: 1.5; }
-
-        .btn-open {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--btn-text);
-            padding: 14px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
+        .btn-open { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; }
         .btn-open:hover { opacity: 0.9; transform: scale(1.05); }
 
-        footer {
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.65rem;
-            opacity: 0.4;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.65rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- MOBILE REFINEMENTS --- */
         @media (max-width: 900px) {
             .section-label, .books-container { padding-left: 0; justify-content: center; text-align: center; }
             .bio-section { padding: 60px 0; flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-            .profile-img { width: 120px; height: 120px; }
-            .bio-header-area { justify-content: center; }
             .social-links { justify-content: center; width: 100%; }
             .book-card-vertical { width: 100%; max-width: 340px; }
             .book-card-body { text-align: center; }
@@ -256,20 +99,14 @@
         <section class="bio-section">
             <img src="assets/profile.webp" alt="Tay Marais" class="profile-img">
             <div class="bio-content">
-                <div class="bio-header-area">
-                    <h2>THE HEART HAS MANY VOICES.</h2>
-                    <div class="social-links">
-                        <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
-                        <a href="https://x.com/theTayMarais" target="_blank" class="btn-social">Twitter</a>
-                    </div>
+                <h2>THE HEART HAS MANY VOICES.</h2>
+                <div class="social-links">
+                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
+                    <a href="https://x.com/theTayMarais" target="_blank" class="btn-social">Twitter</a>
+                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
                 </div>
                 <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
                 <p>Finding inspiration in the contrast between the stillness and the intensity of music, the author believes the most powerful stories are those that force us to face our own vulnerability. Her novels bring to life deeply flawed characters, marked by consuming passions, who find redemption and danger in one another. Fascinated by the vastness and mysteries of the sea, she translates this atmosphere into the perfect psychological backdrop for her gripping plots.</p>
-                
-                <!-- Spotify Ativo -->
-                <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="spotify-block">
-                    <span style="color: #1DB954; font-size: 1.2rem;">●</span> Spotify Playlist
-                </a>
             </div>
         </section>
 
@@ -277,24 +114,16 @@
 
         <div class="books-container">
             <article class="book-card-vertical">
-                <div class="book-card-header">
-                    <img src="assets/cover.webp" alt="Where the Ocean Ends">
-                </div>
+                <div class="book-card-header"><img src="assets/cover.webp" alt="Where the Ocean Ends"></div>
                 <div class="book-card-body">
-                    <div class="tags">
-                        <span class="tag">Romance</span>
-                        <span class="tag">Literary Fiction</span>
-                    </div>
+                    <div class="tags"><span class="tag">Romance</span><span class="tag">Literary Fiction</span></div>
                     <h3>Where the Ocean Ends</h3>
                     <span class="tagline">The ocean ends on two wounded hearts.</span>
-                    <p class="book-description">
-                        Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.
-                    </p>
+                    <p class="book-description">Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.</p>
                     <a href="books/where-the-ocean-ends.html" class="btn-open">Open Book</a>
                 </div>
             </article>
         </div>
-
         <footer>&copy; 2024 TAY MARAIS. ALL RIGHTS RESERVED.</footer>
     </div>
 </body>
