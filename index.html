@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="p:domain_verify" content="fca1e83ea69aa7672cbd8318a27be208"/>
-    <title>Where the Ocean Ends | Tay Marais</title>
-    
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
-
-    <!-- Google Fonts -->
+    <title>Tay Marais | Author</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Pinterest Tag -->
     <script>
     !function(e){if(!window.pintrk){window.pintrk = function () {
     window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
@@ -28,182 +24,107 @@
 
     <style>
         :root {
-            --bg-deep: #1A1210; --surface: #261C19; --accent: #D4A396;
-            --text-main: #EAE5DE; --text-muted: #A8A29E; --font-heading: 'Playfair Display SC', serif;
-            --font-ui: 'Montserrat', sans-serif; --font-reading: 'Lora', serif;
+            --bg-color: #1A1210; --surface-color: #261C19; --text-main: #EAE5DE;
+            --accent-color: #D4A396; --btn-text: #1A1210; --muted-text: #A8A29E;
+            --border-color: rgba(234, 229, 222, 0.1); --font-heading: 'Playfair Display SC', serif;
+            --font-ui: 'Montserrat', sans-serif;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); font-size: 0.85rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-        header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
+        header { padding: 25px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
         .logo { font-family: var(--font-heading); font-size: 1.1rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-left: 20px; }
-        .lang-selector { border: 1px solid var(--accent); padding: 4px 10px; border-radius: 50px; font-size: 0.6rem!important; margin-left: 15px!important; text-decoration: none; color: var(--text-main); transition: 0.3s; }
-        .lang-selector:hover { background: var(--accent); color: var(--bg-deep); }
+        nav { display: flex; align-items: center; gap: 15px; }
+        nav a { text-decoration: none; color: var(--text-main); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+        .lang-selector { border: 1px solid var(--accent-color); padding: 4px 10px; border-radius: 50px; font-size: 0.6rem !important; transition: 0.3s; color: var(--text-main); text-decoration: none; }
 
-        /* --- COMPACT BOOK HERO --- */
-        .book-hero { padding: 40px 0; display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
-        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        .bio-section { padding: 60px 0; display: flex; align-items: flex-start; gap: 40px; }
+        .profile-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent-color); flex-shrink: 0; }
+        .bio-content { flex: 1; }
+        .bio-content h2 { font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 12px; }
+        .bio-content p { color: var(--muted-text); font-size: 0.85rem; text-align: justify; margin-bottom: 15px; }
+
+        .social-links { display: flex; gap: 8px; margin-bottom: 20px; }
+        .btn-social { background: transparent; border: 1px solid rgba(212, 163, 150, 0.3); color: var(--text-main); padding: 5px 12px; font-size: 0.55rem; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn-social:hover { border-color: var(--accent-color); color: var(--accent-color); background: rgba(212, 163, 150, 0.05); }
+
+        /* --- MINI VERTICAL CARD (350px) --- */
+        .section-label { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 4px; text-align: left; margin-bottom: 30px; padding-left: 150px; opacity: 0.5; text-transform: uppercase; }
+        .books-container { display: flex; justify-content: flex-start; padding-left: 150px; padding-bottom: 100px; }
         
-        .book-info h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem); line-height: 1.1; margin-bottom: 10px; }
-        .meta-tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
-        .tag { font-size: 0.55rem; padding: 4px 10px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent); opacity: 0.8; letter-spacing: 1px; text-decoration: none; transition: 0.3s; }
+        .book-card-vertical { 
+            background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; 
+            width: 350px; /* Tamanho confortável para desktop */
+            overflow: hidden; transition: transform 0.3s ease; 
+        }
+        .book-card-vertical:hover { transform: translateY(-5px); }
+        .book-card-header { width: 100%; background-color: #000; line-height: 0; }
+        .book-card-header img { width: 100%; height: auto; display: block; }
         
-        /* Spotify Tag Highlighted in Rosé */
-        .tag-playlist { border-color: var(--accent); color: var(--accent); opacity: 1; font-weight: 600; }
-        .tag-playlist:hover { background: var(--accent); color: var(--bg-deep); }
-
-        .synopsis { font-family: var(--font-reading); font-size: 0.85rem; line-height: 1.5; color: var(--text-muted); margin-bottom: 20px; text-align: justify; }
-        .features-list { list-style: none; margin-bottom: 20px; color: var(--text-main); font-size: 0.8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+        .book-card-body { padding: 30px; text-align: left; }
+        .book-card-body h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px; color: var(--text-main); }
+        .book-card-body .tagline { font-size: 0.7rem; font-style: italic; color: var(--accent-color); margin-bottom: 15px; display: block; }
+        .tags { display: flex; gap: 6px; margin-bottom: 15px; }
+        .tag { font-size: 0.5rem; text-transform: uppercase; border: 1px solid rgba(212, 163, 150, 0.2); padding: 2px 8px; border-radius: 50px; color: var(--muted-text); }
+        .book-description { font-size: 0.8rem; color: var(--muted-text); text-align: justify; margin-bottom: 25px; line-height: 1.4; }
         
-        .author-note { font-size: 0.75rem; font-style: italic; color: var(--text-muted); margin-top: 15px; border-left: 2px solid var(--accent); padding-left: 15px; line-height: 1.4; text-align: justify; }
+        .btn-open { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; transition: 0.3s; border: none; }
+        .btn-open:hover { opacity: 0.9; transform: scale(1.03); }
 
-        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.7rem; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- READING AREA --- */
-        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 750px; margin: 60px auto; }
-        .chapter-header { font-family: var(--font-ui); font-weight: 600; font-size: 1.5rem; letter-spacing: 6px; text-align: center; margin-bottom: 40px; color: var(--accent); text-transform: uppercase; }
-        .reading-content { font-family: var(--font-reading); font-size: 1.15rem; line-height: 1.8; color: var(--text-main); text-align: justify; }
-        .date-line { font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 30px; text-align: left; opacity: 0.8; }
-        .reading-content p { margin-bottom: 1.8rem; }
-
-        /* Aggressive Block (Tide Gate) */
-        .tide-gate { position: relative; margin-top: -100px; padding-top: 100px; background: linear-gradient(to bottom, transparent, var(--bg-deep) 35%, var(--bg-deep) 100%); text-align: center; z-index: 10; }
-        .capture-card { background-color: var(--surface); padding: 40px; border-radius: 4px; margin-top: 10px; border: 1px solid var(--border-color); }
-        .capture-card h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 10px; }
-        .capture-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; }
-        
-        .form-group { display: flex; flex-direction: column; gap: 12px; max-width: 350px; margin: 0 auto; }
-        input[type="email"] { padding: 14px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; text-align: center; outline: none; font-family: var(--font-ui); font-size: 0.8rem; }
-
-        #success-modal { position: fixed; inset: 0; background: rgba(26, 18, 16, 0.8); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
-        .success-box { background: var(--surface); padding: 40px; border-radius: 4px; max-width: 400px; width: 100%; position: relative; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .success-box h2 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--accent); margin-bottom: 10px; }
-        .close-x { position: absolute; top: 10px; right: 15px; font-size: 1.2rem; color: var(--accent); cursor: pointer; opacity: 0.6; }
-
-        @media (max-width: 850px) {
-            .book-hero { grid-template-columns: 1fr; text-align: center; padding: 20px 0; gap: 30px; }
-            .book-cover { max-width: 180px; margin: 0 auto; }
-            .meta-tags, .tags { justify-content: center; }
-            .features-list { grid-template-columns: 1fr; }
-            .btn-capsule { width: 100%; }
+        @media (max-width: 900px) {
+            .section-label, .books-container { padding-left: 0; justify-content: center; text-align: center; }
+            .bio-section { padding: 40px 0; flex-direction: column; align-items: center; text-align: center; }
+            .social-links { justify-content: center; width: 100%; }
+            .book-card-vertical { width: 100%; max-width: 330px; }
+            .book-card-body { text-align: center; padding: 25px 20px; }
+            .tags { justify-content: center; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <a href="../index.html" class="logo">TAY MARAIS</a>
-            <nav class="nav-links">
-                <a href="../index.html">Home</a>
-                <a href="../pt/books/onde-o-oceano-acaba.html" class="lang-selector">PT</a>
+            <a href="index.html" class="logo">TAY MARAIS</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#books">Books</a>
+                <a href="contact.html">Contact</a>
+                <a href="pt/index.html" class="lang-selector">PT</a>
             </nav>
         </header>
 
-        <section class="book-hero" id="book-hero">
-            <img src="../assets/cover.webp" alt="Where the Ocean Ends" class="book-cover">
-            <div class="book-info">
-                <h1>WHERE THE OCEAN ENDS</h1>
-                <div class="meta-tags">
-                    <span class="tag">20 Chapters</span>
-                    <span class="tag">Dual POV</span>
-                    <span class="tag">EN-US</span>
-                    <a href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="tag tag-playlist">Playlist ✦</a>
+        <section class="bio-section">
+            <img src="assets/profile.webp" alt="Tay Marais" class="profile-img">
+            <div class="bio-content">
+                <h2>THE HEART HAS MANY VOICES.</h2>
+                <div class="social-links">
+                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
+                    <a href="https://x.com/theTayMarais" target="_blank" class="btn-social">Twitter</a>
+                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
                 </div>
-                <div class="synopsis">
-                    <p>Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.</p>
-                    <p>She is France's 'L'Ange Blond’. Madeleine Bennett, a prodigy heiress living under the constant, suffocating surveillance of a world that idolizes her but never protects her. With a history of abuse and control, Madeleine hides behind a shield of sharp sarcasm and her weed.</p>
-                    <p>What begins as an undeniable physical attraction on her birthday night turns into a dangerous agreement: an escape with no tomorrows. But as the flashing lights of Hollywood pale before the raw honesty of their desire, Adam and Madeleine realize they can no longer pretend.</p>
-                    <p>When the world demands they step back into the spotlight, they must decide if love is just an impossible script... or their only way out.</p>
-                    <p>In <em>Where the Ocean Ends</em>, Tay Marais delivers a sweeping, deeply emotional romance about vulnerability, the cost of fame, and the courage required to trust again.</p>
-                </div>
-                
-                <ul class="features-list">
-                    <li>✦ Celebrity Romance</li>
-                    <li>✦ Slow Burn & Healing</li>
-                    <li>✦ Dual POV Dynamic</li>
-                    <li>✦ He Falls First</li>
-                    <li>✦ Series Starter (HFN)</li>
-                </ul>
-
-                <button class="btn-capsule" id="btn-open">Open Book</button>
-
-                <p class="author-note">
-                    Please note: This is an intense, adult contemporary romance that contains detailed intimacy, swearing, and themes of trauma recovery, past abuse, and substance use. Recommended for mature readers.
-                </p>
+                <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
+                <p>Finding inspiration in the contrast between the stillness and the intensity of music, the author believes the most powerful stories are those that force us to face our own vulnerability. Her novels bring to life deeply flawed characters, marked by consuming passions, who find redemption and danger in one another.</p>
             </div>
         </section>
 
-        <section id="reading-section">
-            <h2 class="chapter-header">ADAM</h2>
-            <div class="reading-content">
-                <span class="date-line">Saturday, November 9, 2024, Los Angeles, CA.</span>
-                
-                <p>The heavy wooden door slammed shut. A beam of light pierces the darkness, silencing Dreems do Fleetwood Mac’s music. An echo of the latch resonates within the deserted bar.</p>
-                <p>She doesn’t enter. She parades in. Stiletto heels strike the worn floorboards. As the dirty mirror reflects her bare legs, the image moves upward to the black satin dress that hugs her form.</p>
-                <p>My posture stiff’s. My shoulders shift, the stool groans beneath my weight, though my neck remains still. The scene is visible in the stained mirror above the bottles. An inch of my cap descends, masking the ice-blue of my irises but not my vision.</p>
-                <p>She practices each motion. Waves of champagne hair cascaded on her shoulders, a classical painting set against the gritty backdrop of Los Angeles. She’s trained to ignore the room’s gazes, not out of arrogance. Focus.</p>
-                <p>Once at the bar, she stops a few seats away. The atmospheric pressure shifts. A vanilla aroma, distinct from stale beer, makes the air heavy. My glance lowers. Invisible. Stay invisible. But she turns her face toward the counter light, invisibility becomes irrelevant. Recognition strikes with a harsh, unfeeling blow.</p>
-                <p>Madeleine. The ghost from Dylan’s stories, Thomas’s best friend. I always thought “Mad” was a stupid tabloid nickname until seeing her in person. What the hell is she doing in my sanctuary?</p>
-                <p>“Madi, what are you doing here?” Magnus’s voice breaks her silence.</p>
-                <p>My jaw clenches; shifting my gaze, I studied the amber liquid. I’m an actor. And she is performing her life. The bartender, who looks indifferent or hostile, smiles, and it’s an unfamiliar sight for me. As he moved around the counter, he wipes hands on the apron. Arms spread wide, embracing the inaccessible satin woman, as if she were his own flesh and blood.</p>
-                <p>“Magnus, it’s been so long…” Her answer is raspy against his shoulder. A slight crack which causes me to tilt my head. Interesting.</p>
-                <p>I shouldn’t pay attention. But observing human behavior is a vice, and I’m ‌absorbed in the scene unfolding by my side.</p>
-                <p>“Happy birthday!” Magnus pulls back to hold her hands with a familiarity that puts me on edge. “And I’m so sorry, my dear. Your grandfather was someone very dear to me.”</p>
-                <p>The contrast is violent. Madeleine pulls her hands aside to fiddle with her pinky. Her ring spins. I run my thumb over the pale band of skin where my wedding ring sat.</p>
-                <p>“Merci…” The tone drops to absolute zero. Cold, mechanical. Quick defense to not crumble at the mention of Henri Bennett. And it works.</p>
-                <p>“You’ve been too busy to stop by, haven't you?” The playful tone tries to soften the heavy atmosphere. He gets a quick laugh from her. “The usual?” As Magnus walks back, he reaches for the glass behind the counter.</p>
-                <p>“Yes, please. With lots of ice.”</p>
-                <p>She slides onto the high stool with a posture that is natural yet sculpted. She places her designer bag on the dirty counter without a care. Within sight, and yet control preserved.</p>
-                <p>Calculating every motion. The upturned nose is pure aristocratic disdain, the elegance screaming that no one should approach. But she's hiding a mine in the way she presses her lower lip between her teeth.</p>
-                <p>Madeleine Bennett.</p>
-                <p>The heiress. A French blonde angel that Hollywood devoured and spat out. She grew up in the spotlight and turned into a prodigy singer. We are both here, pretending we aren't what the world decided we are.</p>
-                <p>I force my eyes to the television in the corner and regain my focus, though my peripheral vision is still distracted.</p>
+        <div class="section-label" id="books">LATEST RELEASE</div>
 
-                <div class="tide-gate">
-                    <div class="capture-card">
-                        <h3>The tide is rising...</h3>
-                        <p>Don't get left behind in the dark. Enter your email to unlock the rest of Chapter 1 and receive Chapter 2 directly in your inbox.</p>
-                        <form id="lead-form">
-                            <input type="hidden" name="lang" value="en">
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="Enter your email" required>
-                                <button type="submit" class="btn-capsule">Unlock Chapters</button>
-                            </div>
-                        </form>
-                    </div>
+        <div class="books-container">
+            <article class="book-card-vertical">
+                <div class="book-card-header"><img src="assets/cover.webp" alt="Where the Ocean Ends"></div>
+                <div class="book-card-body">
+                    <div class="tags"><span class="tag">Romance</span><span class="tag">Literary Fiction</span></div>
+                    <h3>Where the Ocean Ends</h3>
+                    <span class="tagline">The ocean ends on two wounded hearts.</span>
+                    <p class="book-description">Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He just didn't expect to find her.</p>
+                    <a href="books/where-the-ocean-ends.html" class="btn-open">Open Book</a>
                 </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="success-modal">
-        <div class="success-box"><span class="close-x" id="close-modal">×</span>
-            <h2>The tide is turning...</h2>
-            <p>Your journey into Blackwood Cove has officially begun. Check your inbox shortly—Chapter Two is waiting.</p>
+            </article>
         </div>
+        <footer>&copy; 2024 TAY MARAIS. ALL RIGHTS RESERVED.</footer>
     </div>
-
-    <script>
-        document.getElementById('btn-open').addEventListener('click', function() {
-            const section = document.getElementById('reading-section');
-            const hero = document.getElementById('book-hero');
-            section.style.display = 'block';
-            setTimeout(() => { section.style.opacity = '1'; section.scrollIntoView({ behavior: 'smooth' }); hero.style.opacity = '0.3'; hero.style.transition = '0.8s'; }, 10);
-        });
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
-        const form = document.getElementById('lead-form');
-        const modal = document.getElementById('success-modal');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            const btn = form.querySelector('button'); btn.disabled = true; btn.innerText = "SENDING...";
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => { pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Unlock Chapters"; })
-            .catch(error => { btn.disabled = false; btn.innerText = "Unlock Chapters"; alert("The tide is too strong. Try again later."); });
-        });
-        document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
-    </script>
 </body>
 </html>
