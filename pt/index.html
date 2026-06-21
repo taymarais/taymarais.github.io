@@ -11,7 +11,7 @@
 
     <script>
     !function(e){if(!window.pintrk){window.pintrk = function () {
-    window.pintrk.queue.push(Array.prototype.call(arguments))};var
+    window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
       n=window.pintrk;n.queue=[],n.version="3.0";var
       t=document.createElement("script");t.async=!0,t.src=e;var
       r=document.getElementsByTagName("script")[0];
@@ -32,42 +32,138 @@
         body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-ui); font-size: 0.85rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-        header { padding: 25px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
-        .logo { font-family: var(--font-heading); font-size: 1.1rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
+        /* ── HEADER ──────────────────────────────────────────────────────── */
+        header {
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            gap: 16px;
+            position: relative;
+        }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
         nav { display: flex; align-items: center; gap: 15px; }
-        nav a { text-decoration: none; color: var(--text-main); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-        .lang-selector { border: 1px solid var(--accent-color); padding: 4px 10px; border-radius: 50px; font-size: 0.6rem !important; transition: 0.3s; color: var(--text-main); text-decoration: none; }
+        nav a {
+            text-decoration: none; color: var(--text-main);
+            font-size: 0.65rem; text-transform: uppercase;
+            letter-spacing: 1.5px; font-weight: 600;
+            white-space: nowrap;
+        }
+        .lang-selector {
+            border: 1px solid var(--accent-color); padding: 4px 10px;
+            border-radius: 50px; font-size: 0.6rem !important;
+            transition: 0.3s; color: var(--text-main); text-decoration: none;
+        }
 
+        /* FIX: botão hambúrguer — escondido no desktop */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--text-main);
+            transition: 0.3s;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ── BIO ─────────────────────────────────────────────────────────── */
         .bio-section { padding: 60px 0; display: flex; align-items: flex-start; gap: 40px; }
         .profile-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); flex-shrink: 0; }
         .bio-content { flex: 1; }
-        .bio-content h2 { font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 12px; }
+
+        /* FIX 2: tagline em uma linha só no mobile */
+        .bio-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(0.75rem, 3.8vw, 1.4rem); /* encolhe até caber em uma linha */
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            line-height: 1.2;
+            white-space: nowrap; /* força linha única */
+        }
         .bio-content p { color: var(--muted-text); font-size: 0.85rem; text-align: justify; margin-bottom: 15px; }
 
-        .social-links { display: flex; gap: 8px; margin-bottom: 20px; }
-        .btn-social { background: transparent; border: 1px solid rgba(212, 163, 150, 0.3); color: var(--text-main); padding: 6px 12px; font-size: 0.55rem; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        /* FIX 3: social links com wrap para não estourar */
+        .social-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .btn-social {
+            background: transparent; border: 1px solid rgba(212, 163, 150, 0.3);
+            color: var(--text-main); padding: 6px 12px; font-size: 0.55rem;
+            text-decoration: none; border-radius: 50px; text-transform: uppercase;
+            letter-spacing: 1px; transition: 0.3s;
+        }
         .btn-social:hover { border-color: var(--accent-color); color: var(--accent-color); background: rgba(212, 163, 150, 0.05); }
 
-        .section-label { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 4px; text-align: left; margin-bottom: 30px; padding-left: 150px; opacity: 0.5; text-transform: uppercase; }
+        /* ── BOOK CARD ───────────────────────────────────────────────────── */
+        .section-label {
+            font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 4px;
+            text-align: left; margin-bottom: 30px; padding-left: 150px;
+            opacity: 0.5; text-transform: uppercase;
+        }
         .books-container { display: flex; justify-content: flex-start; padding-left: 150px; padding-bottom: 100px; }
         
-        .book-card-vertical { background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; width: 350px; overflow: hidden; transition: transform 0.3s ease; }
+        .book-card-vertical {
+            background-color: var(--surface-color); border: 1px solid var(--border-color);
+            border-radius: 8px; width: 350px; overflow: hidden; transition: transform 0.3s ease;
+        }
         .book-card-vertical:hover { transform: translateY(-5px); }
         .book-card-header { width: 100%; background-color: #000; line-height: 0; }
         .book-card-header img { width: 100%; height: auto; display: block; }
         
         .book-card-body { padding: 30px; text-align: left; }
-        .book-card-body h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px; color: var(--text-main); }
-        .book-card-body .tagline { font-size: 0.7rem; font-style: italic; color: var(--accent-color); margin-bottom: 15px; display: block; }
-        .tags { display: flex; gap: 6px; margin-bottom: 15px; }
-        .tag { font-size: 0.5rem; text-transform: uppercase; border: 1px solid rgba(212, 163, 150, 0.2); padding: 2px 8px; border-radius: 50px; color: var(--muted-text); }
+
+        /* FIX 3: tags com padding interno decente, sem colapsar */
+        .tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.6rem;           /* era 0.5rem — maior */
+            text-transform: uppercase;
+            border: 1px solid rgba(212, 163, 150, 0.35);
+            padding: 6px 14px;           /* era 4px 10px — mais respiro */
+            border-radius: 50px;
+            color: var(--accent-color);  /* era muted-text — mais presença */
+            letter-spacing: 0.8px;
+        }
         .book-description { font-size: 0.8rem; color: var(--muted-text); text-align: justify; margin-bottom: 25px; line-height: 1.4; }
         
-        .btn-open { display: inline-block; background-color: var(--accent-color); color: var(--btn-text); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; transition: 0.3s; border: none; }
+        .book-card-body h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 4vw, 1.6rem); /* era 1.3rem fixo */
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+        .book-card-body .tagline { font-size: 0.75rem; font-style: italic; color: var(--accent-color); margin-bottom: 18px; display: block; }
+        
+        .btn-open {
+            display: inline-block; background-color: var(--accent-color); color: var(--btn-text);
+            padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700;
+            text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; transition: 0.3s; border: none;
+        }
         .btn-open:hover { opacity: 0.9; transform: scale(1.03); }
 
         footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
 
+        /* ── MOBILE ──────────────────────────────────────────────────────── */
         @media (max-width: 900px) {
             .section-label, .books-container { padding-left: 0; justify-content: center; text-align: center; }
             .bio-section { padding: 40px 0; flex-direction: column; align-items: center; text-align: center; }
@@ -76,18 +172,59 @@
             .book-card-body { text-align: center; padding: 25px 20px; }
             .tags { justify-content: center; }
         }
+
+        /* FIX: header mobile — logo grande + menu hambúrguer */
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 1.5rem;     /* nome bem maior, como pedido */
+                letter-spacing: 1.5px;
+            }
+            .menu-toggle { display: flex; }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                background-color: var(--bg-color);
+                border-bottom: 1px solid var(--border-color);
+                padding: 10px 24px 20px;
+                box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+                z-index: 50;
+            }
+            nav.open { display: flex; }
+            nav a {
+                width: 100%;
+                padding: 14px 0;
+                font-size: 0.75rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+            nav a:last-child { border-bottom: none; }
+            .lang-selector {
+                display: inline-block;
+                margin-top: 10px;
+                width: auto;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <a href="index.html" class="logo">TAY MARAIS</a>
-            <nav>
+            <nav id="main-nav">
                 <a href="index.html">Início</a>
                 <a href="#books">Livros</a>
                 <a href="contact.html">Contato</a>
                 <a href="../index.html" class="lang-selector">EN</a>
             </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <section class="bio-section">
@@ -120,5 +257,20 @@
         </div>
         <footer>&copy; 2024 TAY MARAIS. TODOS OS DIREITOS RESERVADOS.</footer>
     </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('open');
+        });
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>
