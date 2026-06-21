@@ -35,55 +35,132 @@
         body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-        header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
-        .logo { font-family: var(--font-heading); font-size: 1.1rem; text-decoration: none; color: var(--text-main); letter-spacing: 2px; }
-        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-left: 20px; }
+        /* ── HEADER ──────────────────────────────────────────────────────── */
+        header {
+            padding: 20px 0; display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 1px solid rgba(212, 163, 150, 0.1);
+            gap: 16px; position: relative;
+        }
+        .logo {
+            font-family: var(--font-heading); font-size: 1.1rem; text-decoration: none;
+            color: var(--text-main); letter-spacing: 2px; white-space: nowrap; flex-shrink: 0;
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-left: 20px; white-space: nowrap; }
         .lang-selector { border: 1px solid var(--accent); padding: 4px 10px; border-radius: 50px; font-size: 0.6rem!important; margin-left: 15px!important; text-decoration: none; color: var(--text-main); transition: 0.3s; }
         .lang-selector:hover { background: var(--accent); color: var(--bg-deep); }
 
+        .menu-toggle {
+            display: none; flex-direction: column; justify-content: center; gap: 5px;
+            width: 28px; height: 28px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0;
+        }
+        .menu-toggle span { display: block; width: 100%; height: 2px; background: var(--text-main); transition: 0.3s; }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* --- COMPACT BOOK HERO --- */
         .book-hero { padding: 40px 0; display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
         .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
         
+        /* FIX: título mais próximo da capa, com menos eco visual — margem reduzida acima */
         .book-info h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem); line-height: 1.1; margin-bottom: 10px; }
+
+        /* FIX: tags alinhadas com mais respiro e ordem visual clara */
         .meta-tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
-        .tag { font-size: 0.55rem; padding: 4px 10px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent); opacity: 0.8; letter-spacing: 1px; text-decoration: none; transition: 0.3s; }
+        .tag { font-size: 0.6rem; padding: 6px 14px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent); opacity: 0.9; letter-spacing: 1px; text-decoration: none; transition: 0.3s; }
         
         .tag-playlist { border-color: var(--accent); color: var(--accent); opacity: 1; font-weight: 600; }
         .tag-playlist:hover { background: var(--accent); color: var(--bg-deep); }
 
-        .synopsis { font-family: var(--font-reading); font-size: 0.85rem; line-height: 1.5; color: var(--text-muted); margin-bottom: 20px; text-align: justify; }
-        .features-list { list-style: none; margin-bottom: 20px; color: var(--text-main); font-size: 0.8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-        
-        .author-note { font-size: 0.75rem; font-style: italic; color: var(--text-muted); margin-top: 15px; border-left: 2px solid var(--accent); padding-left: 15px; line-height: 1.4; text-align: justify; }
+        /* FIX: sinopse no tamanho próximo ao texto de leitura — não mais "miudinha" */
+        .synopsis { font-family: var(--font-reading); font-size: 1rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 24px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 
-        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.7rem; transition: 0.3s; border: none; cursor: pointer; }
+        /* FIX: features no mesmo peso visual do resto — ✦ mantido mas como acento, não destoante */
+        .features-list { list-style: none; margin-bottom: 24px; color: var(--text-main); font-size: 0.95rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; font-family: var(--font-reading); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+        
+        .author-note { font-size: 0.8rem; font-style: italic; color: var(--text-muted); margin-top: 15px; border-left: 2px solid var(--accent); padding-left: 15px; line-height: 1.5; text-align: justify; }
+
+        /* FIX: botão "Abrir Livro" com presença equilibrada ao tamanho da página, sem virar gigante */
+        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 42px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
 
+        /* --- READING AREA --- */
         #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 750px; margin: 60px auto; }
-        .chapter-header { font-family: var(--font-ui); font-weight: 600; font-size: 1.5rem; letter-spacing: 6px; text-align: center; margin-bottom: 40px; color: var(--accent); text-transform: uppercase; }
-        .reading-content { font-family: var(--font-reading); font-size: 1.15rem; line-height: 1.8; color: var(--text-main); text-align: justify; }
-        .date-line { font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 30px; text-align: left; opacity: 0.8; }
+
+        /* FIX: cabeçalho "ADAM" claramente maior que o corpo de leitura (1.15rem) */
+        .chapter-header { font-family: var(--font-heading); font-weight: 700; font-size: clamp(2.2rem, 9vw, 3.2rem); letter-spacing: clamp(3px, 1.5vw, 6px); text-align: center; margin-bottom: 8px; color: var(--accent); text-transform: uppercase; }
+
+        /* FIX: playlist centralizada logo abaixo do título */
+        .playlist-wrap { text-align: center; margin-bottom: 24px; }
+        .playlist-link {
+            display: inline-block;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--accent); text-decoration: none; border: 1px solid rgba(212, 163, 150, 0.35);
+            padding: 7px 18px; border-radius: 50px; transition: 0.3s;
+        }
+        .playlist-link:hover { background: var(--accent); color: var(--bg-deep); }
+
+        /* FIX: data ocupa a mesma largura do texto de leitura, alinhada à esquerda, acima do parágrafo */
+        .date-line { display: block; font-size: 0.9rem; color: var(--text-muted); opacity: 0.85; margin-bottom: 30px; text-align: left; }
+
+        .reading-content { font-family: var(--font-reading); font-size: 1.15rem; line-height: 1.8; color: var(--text-main); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
         .reading-content p { margin-bottom: 1.8rem; }
 
-        .tide-gate { position: relative; margin-top: -100px; padding-top: 100px; background: linear-gradient(to bottom, transparent, var(--bg-deep) 30%, var(--bg-deep) 100%); text-align: center; z-index: 10; }
+        /* Aggressive Block (Tide Gate) */
+        /* FIX: gradiente mais longo e suave — transparência maior até o texto do capture-card aparecer */
+        .tide-gate { position: relative; margin-top: -160px; padding-top: 160px; background: linear-gradient(to bottom, transparent, var(--bg-deep) 55%, var(--bg-deep) 100%); text-align: center; z-index: 10; }
         .capture-card { background-color: var(--surface); padding: 40px; border-radius: 4px; margin-top: 10px; border: 1px solid var(--border-color); }
-        .capture-card h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 10px; }
-        .capture-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; }
+
+        /* FIX: título "A maré está subindo..." bem maior, em linha única no mobile */
+        .capture-card h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 7vw, 2.4rem);
+            margin-bottom: 14px;
+            white-space: nowrap;
+            color: var(--text-main);
+        }
+        /* FIX: texto do capture-card justificado, com hifenização para evitar buracos */
+        .capture-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
         
         .form-group { display: flex; flex-direction: column; gap: 12px; max-width: 350px; margin: 0 auto; }
         input[type="email"] { padding: 14px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; text-align: center; outline: none; font-family: var(--font-ui); font-size: 0.8rem; }
 
         #success-modal { position: fixed; inset: 0; background: rgba(26, 18, 16, 0.8); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
         .success-box { background: var(--surface); padding: 40px; border-radius: 4px; max-width: 400px; width: 100%; position: relative; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .success-box h2 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--accent); margin-bottom: 10px; }
+
+        /* FIX: "A maré está mudando" no mesmo peso visual do título do capture-card */
+        .success-box h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 6.5vw, 1.9rem);
+            color: var(--accent);
+            margin-bottom: 18px;
+            white-space: nowrap;
+        }
+        .success-box p { line-height: 1.5; }
         .close-x { position: absolute; top: 10px; right: 15px; font-size: 1.2rem; color: var(--accent); cursor: pointer; opacity: 0.6; }
 
         @media (max-width: 850px) {
-            .book-hero { grid-template-columns: 1fr; text-align: center; padding: 20px 0; gap: 30px; }
+            .book-hero { grid-template-columns: 1fr; text-align: center; padding: 20px 0; gap: 24px; }
             .book-cover { max-width: 180px; margin: 0 auto; }
             .meta-tags, .tags { justify-content: center; }
-            .features-list { grid-template-columns: 1fr; }
             .btn-capsule { width: 100%; }
+        }
+
+        /* Header mobile — logo grande + menu hambúrguer (consistente com a home) */
+        @media (max-width: 600px) {
+            .logo { font-size: 1.5rem; letter-spacing: 1.5px; }
+            .menu-toggle { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; align-items: flex-start; gap: 0;
+                background-color: var(--bg-deep); border-bottom: 1px solid rgba(212, 163, 150, 0.15);
+                padding: 10px 24px 20px; box-shadow: 0 12px 24px rgba(0,0,0,0.4); z-index: 50;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { width: 100%; margin-left: 0; padding: 14px 0; font-size: 0.75rem; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
+            .nav-links a:last-child { border-bottom: none; }
+            .lang-selector { display: inline-block; margin-left: 0 !important; margin-top: 10px; width: auto; }
         }
     </style>
 </head>
@@ -91,10 +168,13 @@
     <div class="container">
         <header>
             <a href="../index.html" class="logo">TAY MARAIS</a>
-            <nav class="nav-links">
+            <nav class="nav-links" id="main-nav">
                 <a href="../index.html">Início</a>
                 <a href="../../books/where-the-ocean-ends.html" class="lang-selector">EN</a>
             </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <section class="book-hero" id="book-hero">
@@ -105,7 +185,6 @@
                     <span class="tag">20 Capítulos</span>
                     <span class="tag">POV Duplo</span>
                     <span class="tag">PT-BR</span>
-                    <a href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="tag tag-playlist">Playlist ✦</a>
                 </div>
                 <div class="synopsis">
                     <p>Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador que expôs sua vida pessoal na capa de todos os tabloides, a estrela de Hollywood foge para as sombras de Los Angeles em busca de anonimato. Ele queria desaparecer. Só não esperava encontrá-la.</p>
@@ -124,20 +203,23 @@
                 <button class="btn-capsule" id="btn-open">Abrir Livro</button>
 
                 <p class="author-note">
-                    Nota do Autor: Romance contemporâneo adulto e intenso que contém cenas de intimidade detalhadas, linguagem explícita e temas como superação de traumas, abusos passados e uso de substâncias. Recomendado para leitores maduros.
+                    Nota do Autor: Contém cenas de intimidade detalhadas, linguagem explícita e temas como superação de traumas, abusos passados e uso de substâncias. Recomendado para leitores maduros.
                 </p>
             </div>
         </section>
 
         <section id="reading-section">
             <h2 class="chapter-header">ADAM</h2>
+            <div class="playlist-wrap">
+                <a href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="playlist-link">Playlist ✦</a>
+            </div>
             <div class="reading-content">
                 <span class="date-line">Sábado, 9 de novembro de 2024, Los Angeles, CA.</span>
                 
                 <p>A porta de madeira pesada bate com força. Um rastro de luz corta a penumbra, abafando os acordes de Dreams do Fleetwood Mac. O som do trinco ecoa pelo bar vazio.</p>
                 <p>Ela não entra, ela desfila. Saltos agulha estalam contra o chão de madeira desgastado. Suas pernas nuas guiam o reflexo até a barra do vestido de cetim preto, colado ao corpo como uma segunda pele.</p>
-                <p>A postura trava. Sem girar o pescoço, o banco range sob o peso e os ombros se ajustam. O espelho manchado atrás das garrafas exibe a cena. O boné desce um centímetro, o suficiente para obscurecer o azul-gelo das íris, mas não a visão.</p>
-                <p>Cada movimento é coreografado. O cabelo champanhe cai em ondas pelos ombros, uma pintura renascentista na sujeira de Los Angeles. A confiança é uma armadura. Ignorando os poucos olhares no recinto não por soberba, é treinamento. Foco no objetivo.</p>
+                <p>Minha postura trava. Sem girar o pescoço, o banco range sob o peso e os ombros se ajustam. O espelho manchado atrás das garrafas exibe a cena. O boné desce um centímetro, o suficiente para obscurecer o azul-gelo das íris, mas não a visão.</p>
+                <p>Cada movimento é coreografado. O cabelo champanhe cai em ondas pelos ombros, uma pintura renascentista na sujeira de Los Angeles. A confiança é uma armadura. Ignorando os poucos olhares no recinto não por soberba, mas por treinamento. Foco no objetivo.</p>
                 <p>Caminha até o bar e para a duas cadeiras de distância. A pressão atmosférica muda. O ar fica pesado, carregado com um perfume de baunilha que não pertence à madeira velha e cerveja choca. A aba do boné desce. Invisível. Permaneça invisível.</p>
                 <p>Mas virando o rosto para a luz do balcão, a invisibilidade se torna irrelevante. O reconhecimento vem como um soco seco.</p>
                 <p>Madeleine. O fantasma das histórias de Dylan, a melhor amiga de Thomas. "Mad" sempre achei um apelido idiota de tabloide, até vê-la pessoalmente. O que diabos está fazendo no meu refúgio?</p>
@@ -148,20 +230,20 @@
                 <p>— Magnus, quanto tempo… — A resposta dela vem arranhada contra o ombro dele. Uma falha na vocal que me faz inclinar de leve a cabeça. Interessante.</p>
                 <p>Eu não deveria ouvir. Mas observar o comportamento humano é um vício pessoal, e agora, estou viciado na cena que se desenrola ao meu lado.</p>
                 <p>— Feliz aniversário! — Magnus diz, afastando-se para segurar as suas mãos com uma familiaridade que me deixa tenso. — E sinto muito, minha querida. Seu avô era alguém muito querido por mim.</p>
-                <p>O contraste é violentíssimo. Parabéns e pêsames na mesma respiração. Madeleine solta das mãos dele, para mexer no próprio dedo, o anel gira. Eu levo os meus à marca da aliança, que agora é apenas um ponto mais claro na minha pele.</p>
+                <p>O contraste é violento. Parabéns e pêsames na mesma respiração. Madeleine solta das mãos dele, para mexer no próprio dedo, o anel gira. Eu levo os meus à marca da aliança, que agora é apenas um ponto mais claro na minha pele.</p>
                 <p>— Merci… — O tom caindo para o zero absoluto. Frio, mecânico. Uma defesa rápida para não desmoronar diante da menção a Henri Bennett. E funciona.</p>
                 <p>— Você anda ocupada demais para passar por aqui, não é mesmo? — O tom brincalhão tenta suavizar o clima pesado. Ele consegue uma risada rápida dela. — O mesmo de sempre?</p>
                 <p>Magnus já começa a caminhar de volta para trás do balcão, buscando o copo.</p>
                 <p>— Sim, por favor. Com muito gelo.</p>
                 <p>Ela desliza para a cadeira alta com uma postura natural, mas esculpida. Coloca a bolsa de grife sobre o balcão sujo sem se importar. Perto o suficiente para ser notada, e longe para manter o controle.</p>
                 <p>Cada movimento é coreografado: o nariz empinado, o desdém aristocrático, a elegância que grita para ninguém se aproximar. Mas está escondendo um tsunami na forma como morde o lábio inferior. Suprimindo uma verdade que poderia estilhaçar o espelho à nossa frente.</p>
-                <p>Madeleine Bennett. A herdeira, a "L'Ange Blond", o anjo loiro que Hollywood devorou e cuspiu. Ex-atriz mirim que cresceu rápido demais sob os holofotes e se transformou em uma cantora prodígio. Estamos ambos aqui, fingindo que não somos o que o mundo decidiu que somos.</p>
+                <p>Madeleine. Bennett. "L'Ange Blond", o anjo loiro que Hollywood devorou e cuspiu de volta na mesma moeda. Atriz mirim, e cantora prodígio. Uma infância inteira roubada por holofotes. Estamos aqui, os dois. Fingindo não ser o que o mundo decidiu que somos.</p>
                 <p>Forço meus olhos de volta para a televisão velha no canto, tentando recuperar o foco, mas minha visão periférica me trai.</p>
 
                 <div class="tide-gate">
                     <div class="capture-card">
                         <h3>A maré está subindo...</h3>
-                        <p>Não fique para trás Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
+                        <p>Não fique para trás. Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
                         <form id="lead-form">
                             <input type="hidden" name="lang" value="pt">
                             <div class="form-group">
@@ -178,7 +260,7 @@
     <div id="success-modal">
         <div class="success-box"><span class="close-x" id="close-modal">×</span>
             <h2>A maré está mudando...</h2>
-            <p>Sua jornada começou! Verifique sua caixa de entrada.</p>
+            <p>Sua jornada começou!<br>Verifique sua caixa de entrada.</p>
         </div>
     </div>
 
@@ -200,6 +282,19 @@
             .catch(error => { btn.disabled = false; btn.innerText = "Desbloquear Capítulos"; alert("A maré está muito forte. Tente novamente em instantes."); });
         });
         document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('open');
+        });
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('open');
+            });
+        });
     </script>
 </body>
 </html>
