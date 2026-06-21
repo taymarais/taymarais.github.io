@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onde o Oceano Acaba | Tay Marais</title>
+    <meta name="p:domain_verify" content="fca1e83ea69aa7672cbd8318a27be208"/>
+    <title>Where the Ocean Ends | Tay Marais</title>
     
-    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,35 +64,28 @@
         .book-hero { padding: 40px 0; display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
         .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
         
-        /* FIX: título mais próximo da capa, com menos eco visual — margem reduzida acima */
         .book-info h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem); line-height: 1.1; margin-bottom: 10px; }
 
-        /* FIX: tags alinhadas com mais respiro e ordem visual clara */
         .meta-tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
         .tag { font-size: 0.6rem; padding: 6px 14px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent); opacity: 0.9; letter-spacing: 1px; text-decoration: none; transition: 0.3s; }
         
         .tag-playlist { border-color: var(--accent); color: var(--accent); opacity: 1; font-weight: 600; }
         .tag-playlist:hover { background: var(--accent); color: var(--bg-deep); }
 
-        /* FIX: sinopse no tamanho próximo ao texto de leitura — não mais "miudinha" */
         .synopsis { font-family: var(--font-reading); font-size: 1rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 24px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 
-        /* FIX: features no mesmo peso visual do resto — ✦ mantido mas como acento, não destoante */
         .features-list { list-style: none; margin-bottom: 24px; color: var(--text-main); font-size: 0.95rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; font-family: var(--font-reading); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
         
         .author-note { font-size: 0.8rem; font-style: italic; color: var(--text-muted); margin-top: 15px; border-left: 2px solid var(--accent); padding-left: 15px; line-height: 1.5; text-align: justify; }
 
-        /* FIX: botão "Abrir Livro" com presença equilibrada ao tamanho da página, sem virar gigante */
         .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 42px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
 
         /* --- READING AREA --- */
         #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 750px; margin: 60px auto; }
 
-        /* FIX: cabeçalho "ADAM" claramente maior que o corpo de leitura (1.15rem) */
         .chapter-header { font-family: var(--font-heading); font-weight: 700; font-size: clamp(2.2rem, 9vw, 3.2rem); letter-spacing: clamp(3px, 1.5vw, 6px); text-align: center; margin-bottom: 8px; color: var(--accent); text-transform: uppercase; }
 
-        /* FIX: playlist centralizada logo abaixo do título */
         .playlist-wrap { text-align: center; margin-bottom: 24px; }
         .playlist-link {
             display: inline-block;
@@ -101,18 +95,15 @@
         }
         .playlist-link:hover { background: var(--accent); color: var(--bg-deep); }
 
-        /* FIX: data ocupa a mesma largura do texto de leitura, alinhada à esquerda, acima do parágrafo */
         .date-line { display: block; font-size: 0.9rem; color: var(--text-muted); opacity: 0.85; margin-bottom: 30px; text-align: left; }
 
         .reading-content { font-family: var(--font-reading); font-size: 1.15rem; line-height: 1.8; color: var(--text-main); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
         .reading-content p { margin-bottom: 1.8rem; }
 
         /* Aggressive Block (Tide Gate) */
-        /* FIX: gradiente mais longo e suave — transparência maior até o texto do capture-card aparecer */
         .tide-gate { position: relative; margin-top: -160px; padding-top: 160px; background: linear-gradient(to bottom, transparent, var(--bg-deep) 55%, var(--bg-deep) 100%); text-align: center; z-index: 10; }
         .capture-card { background-color: var(--surface); padding: 40px; border-radius: 4px; margin-top: 10px; border: 1px solid var(--border-color); }
 
-        /* FIX: título "A maré está subindo..." bem maior, em linha única no mobile */
         .capture-card h3 {
             font-family: var(--font-heading);
             font-size: clamp(1.6rem, 7vw, 2.4rem);
@@ -120,7 +111,6 @@
             white-space: nowrap;
             color: var(--text-main);
         }
-        /* FIX: texto do capture-card justificado, com hifenização para evitar buracos */
         .capture-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
         
         .form-group { display: flex; flex-direction: column; gap: 12px; max-width: 350px; margin: 0 auto; }
@@ -129,7 +119,6 @@
         #success-modal { position: fixed; inset: 0; background: rgba(26, 18, 16, 0.8); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
         .success-box { background: var(--surface); padding: 40px; border-radius: 4px; max-width: 400px; width: 100%; position: relative; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
 
-        /* FIX: "A maré está mudando" no mesmo peso visual do título do capture-card */
         .success-box h2 {
             font-family: var(--font-heading);
             font-size: clamp(1.4rem, 6.5vw, 1.9rem);
@@ -147,7 +136,7 @@
             .btn-capsule { width: 100%; }
         }
 
-        /* Header mobile — logo grande + menu hambúrguer (consistente com a home) */
+        /* Header mobile — menu hambúrguer (consistente com a home) */
         @media (max-width: 600px) {
             .logo { font-size: 1.5rem; letter-spacing: 1.5px; }
             .menu-toggle { display: flex; }
@@ -169,41 +158,41 @@
         <header>
             <a href="../index.html" class="logo">TAY MARAIS</a>
             <nav class="nav-links" id="main-nav">
-                <a href="../index.html">Início</a>
-                <a href="../../books/where-the-ocean-ends.html" class="lang-selector">EN</a>
+                <a href="../index.html">Home</a>
+                <a href="../pt/books/onde-o-oceano-acaba.html" class="lang-selector">PT</a>
             </nav>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
                 <span></span><span></span><span></span>
             </button>
         </header>
 
         <section class="book-hero" id="book-hero">
-            <img src="../../assets/capa.webp" alt="Onde o Oceano Acaba" class="book-cover">
+            <img src="../assets/cover.webp" alt="Where the Ocean Ends" class="book-cover">
             <div class="book-info">
-                <h1>ONDE O OCEANO ACABA</h1>
+                <h1>WHERE THE OCEAN ENDS</h1>
                 <div class="meta-tags">
-                    <span class="tag">20 Capítulos</span>
-                    <span class="tag">POV Duplo</span>
-                    <span class="tag">PT-BR</span>
+                    <span class="tag">20 Chapters</span>
+                    <span class="tag">Dual POV</span>
+                    <span class="tag">EN-US</span>
                 </div>
                 <div class="synopsis">
-                    <p>Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador que expôs sua vida pessoal na capa de todos os tabloides, a estrela de Hollywood foge para as sombras de Los Angeles em busca de anonimato. Ele queria desaparecer. Só não esperava encontrá-la.</p>
-                    <p>Ela é a 'L'Ange Blond' da França. Madeleine Bennett, uma herdeira prodígio que vive sob a vigilância constante e sufocante de um mundo que a idolatra, mas nunca a protegeu. Com um histórico de abusos e controle, Madeleine se esconde atrás de um escudo de sarcasmo ácido e de sua maconha.</p>
-                    <p>O que começa como uma atração física inegável na noite de seu aniversário se transforma em um acordo perigoso: uma fuga sem amanhãs. Mas, à medida que as luzes de Hollywood empalidecem diante da honestidade nua e crua de seu desejo, Adam e Madeleine percebem que não podem mais fingir.</p>
+                    <p>Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.</p>
+                    <p>She is France's 'L'Ange Blond'. Madeleine Bennett, a prodigy heiress living under the constant, suffocating surveillance of a world that idolizes her but never protected her. With a history of abuse and control, Madeleine hides behind a shield of sharp sarcasm and her weed.</p>
+                    <p>What begins as an undeniable physical attraction on her birthday night turns into a dangerous agreement: an escape with no tomorrows. But as the flashing lights of Hollywood pale before the raw honesty of their desire, Adam and Madeleine realize they can no longer pretend.</p>
                 </div>
                 
                 <ul class="features-list">
-                    <li>✦ Romance de Celebridades</li>
-                    <li>✦ Slow Burn & Cura</li>
-                    <li>✦ Duplo Ponto de Vista</li>
-                    <li>✦ Ele se apaixona primeiro</li>
-                    <li>✦ Início de Série (HFN)</li>
+                    <li>✦ Celebrity Romance</li>
+                    <li>✦ Slow Burn & Healing</li>
+                    <li>✦ Dual POV Dynamic</li>
+                    <li>✦ He Falls First</li>
+                    <li>✦ Series Starter (HFN)</li>
                 </ul>
 
-                <button class="btn-capsule" id="btn-open">Abrir Livro</button>
+                <button class="btn-capsule" id="btn-open">Open Book</button>
 
                 <p class="author-note">
-                    Nota do Autor: Contém cenas de intimidade detalhadas, linguagem explícita e temas como superação de traumas, abusos passados e uso de substâncias. Recomendado para leitores maduros.
+                    Please note: Contains detailed intimacy, swearing, and themes of trauma recovery, past abuse, and substance use. Recommended for mature readers.
                 </p>
             </div>
         </section>
@@ -214,41 +203,40 @@
                 <a href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="playlist-link">Playlist ✦</a>
             </div>
             <div class="reading-content">
-                <span class="date-line">Sábado, 9 de novembro de 2024, Los Angeles, CA.</span>
+                <span class="date-line">Saturday, November 9, 2024, Los Angeles, CA.</span>
                 
-                <p>A porta de madeira pesada bate com força. Um rastro de luz corta a penumbra, abafando os acordes de Dreams do Fleetwood Mac. O som do trinco ecoa pelo bar vazio.</p>
-                <p>Ela não entra, ela desfila. Saltos agulha estalam contra o chão de madeira desgastado. Suas pernas nuas guiam o reflexo até a barra do vestido de cetim preto, colado ao corpo como uma segunda pele.</p>
-                <p>Minha postura trava. Sem girar o pescoço, o banco range sob o peso e os ombros se ajustam. O espelho manchado atrás das garrafas exibe a cena. O boné desce um centímetro, o suficiente para obscurecer o azul-gelo das íris, mas não a visão.</p>
-                <p>Cada movimento é coreografado. O cabelo champanhe cai em ondas pelos ombros, uma pintura renascentista na sujeira de Los Angeles. A confiança é uma armadura. Ignorando os poucos olhares no recinto não por soberba, mas por treinamento. Foco no objetivo.</p>
-                <p>Caminha até o bar e para a duas cadeiras de distância. A pressão atmosférica muda. O ar fica pesado, carregado com um perfume de baunilha que não pertence à madeira velha e cerveja choca. A aba do boné desce. Invisível. Permaneça invisível.</p>
-                <p>Mas virando o rosto para a luz do balcão, a invisibilidade se torna irrelevante. O reconhecimento vem como um soco seco.</p>
-                <p>Madeleine. O fantasma das histórias de Dylan, a melhor amiga de Thomas. "Mad" sempre achei um apelido idiota de tabloide, até vê-la pessoalmente. O que diabos está fazendo no meu refúgio?</p>
-                <p>— Madi, o que está fazendo aqui? — A voz de Magnus quebra o silêncio dela.</p>
-                <p>Meu maxilar trava. Desvio o olhar para o copo, estudando o líquido âmbar. Sou um ator. Reconheço quando alguém está atuando. E está entregando a performance da sua vida.</p>
-                <p>O velho barman, cuja expressão padrão varia entre indiferença e hostilidade, abre um sorriso que nunca havia visto.</p>
-                <p>Contornando o balcão limpa as mãos no avental. Os braços abertos, abraçando o cetim caro e a mulher intocável como se fosse seu próprio sangue.</p>
-                <p>— Magnus, quanto tempo… — A resposta dela vem arranhada contra o ombro dele. Uma falha na vocal que me faz inclinar de leve a cabeça. Interessante.</p>
-                <p>Eu não deveria ouvir. Mas observar o comportamento humano é um vício pessoal, e agora, estou viciado na cena que se desenrola ao meu lado.</p>
-                <p>— Feliz aniversário! — Magnus diz, afastando-se para segurar as suas mãos com uma familiaridade que me deixa tenso. — E sinto muito, minha querida. Seu avô era alguém muito querido por mim.</p>
-                <p>O contraste é violento. Parabéns e pêsames na mesma respiração. Madeleine solta das mãos dele, para mexer no próprio dedo, o anel gira. Eu levo os meus à marca da aliança, que agora é apenas um ponto mais claro na minha pele.</p>
-                <p>— Merci… — O tom caindo para o zero absoluto. Frio, mecânico. Uma defesa rápida para não desmoronar diante da menção a Henri Bennett. E funciona.</p>
-                <p>— Você anda ocupada demais para passar por aqui, não é mesmo? — O tom brincalhão tenta suavizar o clima pesado. Ele consegue uma risada rápida dela. — O mesmo de sempre?</p>
-                <p>Magnus já começa a caminhar de volta para trás do balcão, buscando o copo.</p>
-                <p>— Sim, por favor. Com muito gelo.</p>
-                <p>Ela desliza para a cadeira alta com uma postura natural, mas esculpida. Coloca a bolsa de grife sobre o balcão sujo sem se importar. Perto o suficiente para ser notada, e longe para manter o controle.</p>
-                <p>Cada movimento é coreografado: o nariz empinado, o desdém aristocrático, a elegância que grita para ninguém se aproximar. Mas está escondendo um tsunami na forma como morde o lábio inferior. Suprimindo uma verdade que poderia estilhaçar o espelho à nossa frente.</p>
-                <p>Madeleine. Bennett. "L'Ange Blond", o anjo loiro que Hollywood devorou e cuspiu de volta na mesma moeda. Atriz mirim, e cantora prodígio. Uma infância inteira roubada por holofotes. Estamos aqui, os dois. Fingindo não ser o que o mundo decidiu que somos.</p>
-                <p>Forço meus olhos de volta para a televisão velha no canto, tentando recuperar o foco, mas minha visão periférica me trai.</p>
+                <p>The heavy wooden door slams shut. A beam of light cuts through the dark, muffling the chords of Fleetwood Mac's Dreams. The sound of the latch echoes through the empty bar.</p>
+                <p>She doesn't enter. She struts in. Stiletto heels click against the worn floorboards. Her bare legs draw the eye up to the hem of her black satin dress, clinging to her body like a second skin.</p>
+                <p>My posture stiffens. Without turning my neck, the stool creaks under my weight and my shoulders adjust. The stained mirror behind the bottles shows the whole scene. The brim of my cap dips an inch, enough to mask the ice-blue of my irises, but not my vision.</p>
+                <p>Champagne hair falls in waves over her shoulders, a Renaissance painting set against the grit of Los Angeles. She ignores the few stares in the room, not out of arrogance. Training. Focus on the target.</p>
+                <p>She walks to the bar and stops two seats away. The atmospheric pressure shifts. The air turns heavy, thick with a vanilla scent that doesn't belong to old wood and stale beer. The brim of my cap dips. Invisible. Stay invisible.</p>
+                <p>But she turns her face toward the counter light. Invisibility becomes irrelevant. Recognition lands like a punch.</p>
+                <p>Madeleine. The ghost from Dylan's stories, Thomas's best friend. I always thought "Mad" was a stupid tabloid nickname, until I saw her in person. What the hell is she doing in my sanctuary?</p>
+                <p>"Madi, what are you doing here?" Magnus's voice breaks her silence.</p>
+                <p>My jaw clenches. I shift my gaze, studying the amber liquid. I'm an actor. I recognize when someone is acting. And she's delivering the performance of her life.</p>
+                <p>The old bartender, whose default expression swings between indifference and hostility, breaks into a smile I've never seen on him. He comes around the counter, wiping his hands on his apron. Arms thrown open, embracing the expensive satin and the untouchable woman like she's his own flesh and blood.</p>
+                <p>"Magnus, it's been too long..." Her answer comes out raspy against his shoulder. A slight crack in her voice that makes me tilt my head. Interesting.</p>
+                <p>I shouldn't be listening. But observing human behavior is a vice, and right now, I'm addicted to the scene unfolding beside me.</p>
+                <p>"Happy birthday!" Magnus pulls back to hold her hands with a familiarity that puts me on edge. "And I'm so sorry, my dear. Your grandfather meant a great deal to me."</p>
+                <p>The contrast is violent. Congratulations and condolences in the same breath. Madeleine pulls her hands free to fidget with her own finger. Her ring spins. I bring mine to the mark my wedding band left, now just a lighter patch on my skin.</p>
+                <p>"Merci..." Her tone drops to absolute zero. Cold. Mechanical. A quick defense against crumbling at the mention of Henri Bennett. And it works.</p>
+                <p>"You've been too busy to stop by, haven't you?" His playful tone tries to soften the heavy air. He gets a quick laugh out of her. "The usual?"</p>
+                <p>Magnus is already heading back behind the counter, reaching for the glass.</p>
+                <p>"Yes, please. With lots of ice."</p>
+                <p>She slides onto the high stool, her posture natural yet sculpted. She sets her designer bag on the dirty counter without a second thought. Close enough to be noticed. Far enough to stay in control.</p>
+                <p>Every move is choreographed: the upturned nose, the aristocratic disdain, the elegance that screams for no one to get close. But she's hiding a mine in the way she bites her lower lip. Suppressing a truth that could shatter the mirror between us.</p>
+                <p>Madeleine. Bennett. "L'Ange Blond", Hollywood's blond angel, devoured and spat back out. Child star, then prodigy singer. A whole childhood stolen by spotlights. We're both here. Pretending not to be what the world decided we are.</p>
+                <p>I force my eyes back to the old TV in the corner, trying to find my focus again, but my peripheral vision betrays me.</p>
 
                 <div class="tide-gate">
                     <div class="capture-card">
-                        <h3>A maré está subindo...</h3>
-                        <p>Não fique para trás. Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
+                        <h3>The tide is rising...</h3>
+                        <p>Don't get left behind. Enter your email to unlock the rest of Chapter 1 and receive Chapter 2 directly in your inbox.</p>
                         <form id="lead-form">
-                            <input type="hidden" name="lang" value="pt">
+                            <input type="hidden" name="lang" value="en">
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Seu melhor e-mail" required>
-                                <button type="submit" class="btn-capsule">Desbloquear Capítulos</button>
+                                <input type="email" name="email" placeholder="Enter your email" required>
+                                <button type="submit" class="btn-capsule">Unlock Chapters</button>
                             </div>
                         </form>
                     </div>
@@ -259,8 +247,8 @@
 
     <div id="success-modal">
         <div class="success-box"><span class="close-x" id="close-modal">×</span>
-            <h2>A maré está mudando...</h2>
-            <p>Sua jornada começou!<br>Verifique sua caixa de entrada.</p>
+            <h2>The tide is turning...</h2>
+            <p>Your journey has begun!<br>Check your inbox.</p>
         </div>
     </div>
 
@@ -276,10 +264,10 @@
         const modal = document.getElementById('success-modal');
         form.addEventListener('submit', e => {
             e.preventDefault();
-            const btn = form.querySelector('button'); btn.disabled = true; btn.innerText = "ENVIANDO...";
+            const btn = form.querySelector('button'); btn.disabled = true; btn.innerText = "SENDING...";
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => { pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Desbloquear Capítulos"; })
-            .catch(error => { btn.disabled = false; btn.innerText = "Desbloquear Capítulos"; alert("A maré está muito forte. Tente novamente em instantes."); });
+            .then(response => { pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Unlock Chapters"; })
+            .catch(error => { btn.disabled = false; btn.innerText = "Unlock Chapters"; alert("The tide is too strong. Try again later."); });
         });
         document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
 
