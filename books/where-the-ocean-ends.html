@@ -78,7 +78,7 @@
         
         .author-note { font-size: 0.8rem; font-style: italic; color: var(--text-muted); margin-top: 15px; border-left: 2px solid var(--accent); padding-left: 15px; line-height: 1.5; text-align: justify; }
 
-        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 42px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 42px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; hyphens: none; -webkit-hyphens: none; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
 
         /* --- READING AREA --- */
@@ -106,9 +106,8 @@
 
         .capture-card h3 {
             font-family: var(--font-heading);
-            font-size: clamp(1.6rem, 7vw, 2.4rem);
+            font-size: clamp(1rem, 5vw, 1.7rem);
             margin-bottom: 14px;
-            white-space: nowrap;
             color: var(--text-main);
         }
         .capture-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
@@ -149,7 +148,7 @@
             .nav-links.open { display: flex; }
             .nav-links a { width: 100%; margin-left: 0; padding: 14px 0; font-size: 0.75rem; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
             .nav-links a:last-child { border-bottom: none; }
-            .lang-selector { display: inline-block; margin-left: 0 !important; margin-top: 10px; width: auto; }
+            .lang-selector { display: block; margin-left: 0 !important; margin-top: 0; width: 100%; border: none; border-radius: 0; padding: 14px 0; font-size: 0.75rem !important; }
         }
     </style>
 </head>
