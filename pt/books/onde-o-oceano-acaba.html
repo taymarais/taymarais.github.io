@@ -85,11 +85,11 @@
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
 
         /* --- CAPTURE BLOCK NO HERO (primeira tela, sem clique) --- */
-        .capture-hero { background-color: var(--surface); border: 1px solid rgba(212, 163, 150, 0.25); border-radius: 4px; padding: 24px; margin-bottom: 24px; text-align: left; }
-        .capture-hero h2 { font-family: var(--font-heading); font-size: clamp(1.05rem, 3.5vw, 1.45rem); color: var(--text-main); margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.2; }
-        .capture-hero .offer { font-family: var(--font-reading); font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 18px; }
-        .capture-hero .form-group { max-width: none; margin: 0; }
-        .capture-hero .fineprint { font-size: 0.72rem; font-style: italic; color: var(--text-muted); opacity: 0.8; margin: 12px 0 0; line-height: 1.4; }
+        .capture-hero { background-color: var(--surface); border: 1px solid rgba(212, 163, 150, 0.25); border-radius: 4px; padding: 24px; margin-bottom: 24px; text-align: center; }
+        .capture-hero h2 { font-family: var(--font-heading); font-size: clamp(1.05rem, 3.5vw, 1.45rem); color: var(--text-main); margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.2; text-wrap: balance; }
+        .capture-hero .offer { font-family: var(--font-reading); font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; margin: 0 auto 18px; max-width: 40ch; text-wrap: balance; }
+        .capture-hero .form-group { max-width: 350px; margin: 0 auto; }
+        .capture-hero .fineprint { font-size: 0.72rem; font-style: italic; color: var(--text-muted); opacity: 0.8; margin: 12px auto 0; max-width: 32ch; line-height: 1.4; text-wrap: balance; }
 
         /* --- READING AREA --- */
         #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 750px; margin: 60px auto; }
@@ -149,9 +149,7 @@
             .book-cover { max-width: 180px; margin: 0 auto; }
             .meta-tags, .tags { justify-content: center; }
             .btn-capsule { width: 100%; }
-            .capture-hero { text-align: center; padding: 20px; }
-            .capture-hero .offer { text-align: left; }
-            .capture-hero .form-group { max-width: 350px; margin: 0 auto; }
+            .capture-hero { padding: 20px; }
         }
 
         /* Header mobile — logo grande + menu hambúrguer (consistente com a home) */
@@ -196,7 +194,7 @@
 
                 <div class="capture-hero">
                     <h2>Dois capítulos. Agora.</h2>
-                    <p class="offer">Os dois primeiros capítulos de <em>Onde o Oceano Acaba</em>, em ebook de verdade &mdash; com capa, com sumário, com tudo. EPUB pro seu Kindle, PDF se preferir ler em qualquer outro lugar.</p>
+                    <p class="offer">Os dois primeiros capítulos de <em>Onde o Oceano Acaba</em>, em ebook de verdade. EPUB pro seu Kindle, PDF pra ler em qualquer outro lugar.</p>
                     <form id="lead-form">
                         <input type="hidden" name="lang" value="pt">
                         <div class="form-group">
@@ -204,7 +202,7 @@
                             <button type="submit" class="btn-capsule">Quero o ebook</button>
                         </div>
                     </form>
-                    <p class="fineprint">Sem spam. Só o livro, e um aviso quando o próximo estiver saindo.</p>
+                    <p class="fineprint">Sem spam. Só o livro, e um aviso quando o próximo sair.</p>
                 </div>
 
                 <div class="synopsis">
@@ -265,7 +263,7 @@
                 <div class="tide-gate">
                     <div class="capture-card">
                         <h3>A maré está subindo...</h3>
-                        <p>É aqui que a amostra para. Os dois primeiros capítulos estão esperando em ebook &mdash; EPUB ou PDF, em troca de um e-mail.</p>
+                        <p>É aqui que a amostra para. Os dois primeiros capítulos estão esperando em ebook. EPUB ou PDF, em troca de um e-mail.</p>
                         <button type="button" class="btn-capsule" id="btn-to-form">Quero o ebook</button>
                     </div>
                 </div>
