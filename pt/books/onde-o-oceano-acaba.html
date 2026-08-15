@@ -84,6 +84,13 @@
         .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 42px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; hyphens: none; -webkit-hyphens: none; }
         .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
 
+        /* --- CAPTURE BLOCK NO HERO (primeira tela, sem clique) --- */
+        .capture-hero { background-color: var(--surface); border: 1px solid rgba(212, 163, 150, 0.25); border-radius: 4px; padding: 24px; margin-bottom: 24px; text-align: center; }
+        .capture-hero h2 { font-family: var(--font-heading); font-size: clamp(1.05rem, 3.5vw, 1.45rem); color: var(--text-main); margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.2; text-wrap: balance; }
+        .capture-hero .offer { font-family: var(--font-reading); font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; margin: 0 auto 18px; max-width: 40ch; text-wrap: balance; }
+        .capture-hero .form-group { max-width: 350px; margin: 0 auto; }
+        .capture-hero .fineprint { font-size: 0.72rem; font-style: italic; color: var(--text-muted); opacity: 0.8; margin: 12px auto 0; max-width: 32ch; line-height: 1.4; text-wrap: balance; }
+
         /* --- READING AREA --- */
         #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 750px; margin: 60px auto; }
 
@@ -142,6 +149,7 @@
             .book-cover { max-width: 180px; margin: 0 auto; }
             .meta-tags, .tags { justify-content: center; }
             .btn-capsule { width: 100%; }
+            .capture-hero { padding: 20px; }
         }
 
         /* Header mobile — logo grande + menu hambúrguer (consistente com a home) */
@@ -179,13 +187,27 @@
             <div class="book-info">
                 <h1>ONDE O OCEANO ACABA</h1>
                 <div class="meta-tags">
-                    <span class="tag">20 Capítulos</span>
+                    <span class="tag">27 Capítulos</span>
                     <span class="tag">POV Duplo</span>
                     <span class="tag">PT-BR</span>
                 </div>
+
+                <div class="capture-hero">
+                    <h2>Dois capítulos. Agora.</h2>
+                    <p class="offer">Os dois primeiros capítulos de <em>Onde o Oceano Acaba</em>, em ebook de verdade. EPUB pro seu Kindle, PDF pra ler em qualquer outro lugar.</p>
+                    <form id="lead-form">
+                        <input type="hidden" name="lang" value="pt">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Seu e-mail" required>
+                            <button type="submit" class="btn-capsule">Quero o ebook</button>
+                        </div>
+                    </form>
+                    <p class="fineprint">Sem spam. Só o livro, e um aviso quando o próximo sair.</p>
+                </div>
+
                 <div class="synopsis">
                     <p>Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador que expôs sua vida pessoal na capa de todos os tabloides, a estrela de Hollywood foge para as sombras de Los Angeles em busca de anonimato. Ele queria desaparecer. Só não esperava encontrá-la.</p>
-                    <p>Ela é a 'L'Ange Blond' da França. Madeleine Bennett, uma herdeira prodígio que vive sob a vigilância constante e sufocante de um mundo que a idolatra, mas nunca a protegeu. Com um histórico de abusos e controle, Madeleine se esconde atrás de um escudo de sarcasmo ácido.</p>
+                    <p>Ela é a "L'Ange Blond" da França. Madeleine Bennett, uma herdeira prodígio que vive sob a vigilância constante e sufocante de um mundo que a idolatra, mas nunca a protegeu. Com um histórico de abusos e controle, Madeleine se esconde atrás de um escudo de sarcasmo ácido.</p>
                     <p>O que começa como uma atração física inegável na noite de seu aniversário se transforma em um acordo perigoso: uma fuga sem amanhãs. Mas, à medida que as luzes de Hollywood empalidecem diante da honestidade nua e crua de seu desejo, Adam e Madeleine percebem que não podem mais fingir.</p>
                 </div>
                 
@@ -241,14 +263,8 @@
                 <div class="tide-gate">
                     <div class="capture-card">
                         <h3>A maré está subindo...</h3>
-                        <p>Não fique para trás. Insira seu e-mail para desbloquear o restante do Capítulo 1 e receber o Capítulo 2 direto na sua caixa de entrada.</p>
-                        <form id="lead-form">
-                            <input type="hidden" name="lang" value="pt">
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="Seu melhor e-mail" required>
-                                <button type="submit" class="btn-capsule">Desbloquear Capítulos</button>
-                            </div>
-                        </form>
+                        <p>É aqui que a amostra para. Os dois primeiros capítulos estão esperando em ebook. EPUB ou PDF, em troca de um e-mail.</p>
+                        <button type="button" class="btn-capsule" id="btn-to-form">Quero o ebook</button>
                     </div>
                 </div>
             </div>
@@ -269,15 +285,24 @@
             section.style.display = 'block';
             setTimeout(() => { section.style.opacity = '1'; section.scrollIntoView({ behavior: 'smooth' }); hero.style.opacity = '0.3'; hero.style.transition = '0.8s'; }, 10);
         });
+        // O corte do trecho manda de volta pro formulario do topo, que e o unico da pagina:
+        // dois <form id="lead-form"> quebrariam o getElementById e um dos dois pararia de enviar.
+        document.getElementById('btn-to-form').addEventListener('click', function() {
+            const hero = document.getElementById('book-hero');
+            hero.style.opacity = '1';
+            document.querySelector('.capture-hero').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => { document.querySelector('.capture-hero input[type="email"]').focus({ preventScroll: true }); }, 600);
+        });
+
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
         const form = document.getElementById('lead-form');
         const modal = document.getElementById('success-modal');
         form.addEventListener('submit', e => {
             e.preventDefault();
-            const btn = form.querySelector('button'); btn.disabled = true; btn.innerText = "ENVIANDO...";
+            const btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.innerText = "ENVIANDO...";
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => { pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Desbloquear Capítulos"; })
-            .catch(error => { btn.disabled = false; btn.innerText = "Desbloquear Capítulos"; alert("A maré está muito forte. Tente novamente em instantes."); });
+            .then(response => { pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Quero o ebook"; })
+            .catch(error => { btn.disabled = false; btn.innerText = "Quero o ebook"; alert("A maré está muito forte. Tente novamente em instantes."); });
         });
         document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
 
