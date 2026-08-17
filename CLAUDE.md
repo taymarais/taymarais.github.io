@@ -47,6 +47,12 @@ informação. O board do casal é o **`pins-couple.xml`**, batizado assim depois
 ⚠️ **Nome de feed novo tem que ser inconfundível na tela do celular**, não só correto. Nunca criar um
 que compartilhe prefixo com outro já conectado.
 
+🔴 **A grade não tem fileira, tem contagem.** A aba Criados é fluxo contínuo de três colunas, mais
+novo primeiro: cada pin novo empurra todos os outros uma casa, e **fileira só existe enquanto o total
+de pins criados for múltiplo de 3.** Publicar 1 ou 2 peças soltas desalinha tudo que está embaixo, e
+pin publicado não se reordena. Por isso o robô **passa o dia inteiro** quando perde o primeiro horário
+(09h) — meia fileira é pior que nenhuma. `--forcar` fura essa regra, e só se usa de propósito.
+
 **Para segurar a publicação** (fileira anterior ainda no ar, copy em dúvida, lote sendo remontado):
 primeira linha viva de `pinterest/fila.txt` igual a `PAUSA` — o robô passa a vez, quieto e sem erro.
 Apagar a linha volta a publicar. **O motivo vai em comentário, nunca na mesma linha continuada**, ou a

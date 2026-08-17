@@ -19,6 +19,10 @@ on:
         description: 'So mostrar a proxima peca, sem escrever nem publicar'
         type: boolean
         default: false
+      forcar:
+        description: 'Comecar fileira fora de hora (normalmente o dia inteiro passa)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -35,7 +39,10 @@ jobs:
 
       - name: Escrever o item no feed
         id: pub
-        run: python3 pinterest/publicar.py ${{ inputs.simular && '--simular' || '' }}
+        run: |
+          python3 pinterest/publicar.py \
+            ${{ inputs.simular && '--simular' || '' }} \
+            ${{ inputs.forcar && '--forcar' || '' }}
 
       - name: Comitar
         if: ${{ !inputs.simular }}

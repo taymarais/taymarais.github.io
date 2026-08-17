@@ -28,18 +28,10 @@
 # 🔴 REENVIO: `nome.jpg#r2` = peca que JA publicou uma vez e foi apagada na mao.
 #    O sufixo entra no guid e a imagem continua a mesma. Sem ele, o Pinterest
 #    pode achar que ja publicou e ignorar a peca EM SILENCIO.
-PAUSA — ela vai apagar 4 pins na mao; nada sai antes disso
-
-# ============================================================================
-# 🔴 ESPERANDO ELA APAGAR, NO PINTEREST, ESTES QUATRO PINS (decisao dela, 17/08):
-#       quote-she-bites  |  quote-silence-not-empty  |  adam-pillar-nightfall
-#       mads-black-walk
-#    Depois disso o pin mais novo do perfil volta a ser `adam-photoshoot-fitting`
-#    (Adam no provador), o lote 1 fica inteiro numa fileira e a contagem fecha
-#    em 3. Os quatro itens JA FORAM TIRADOS dos feeds, em 17/08, pra o Pinterest
-#    nao republicar sozinho o que ela apagar.
-#    Quando ela confirmar: apagar a linha PAUSA. Nada mais.
-# ============================================================================
+# ✅ 17/08 — ela apagou os quatro pins errados no Pinterest, os itens ja tinham
+#    saido dos feeds, e a PAUSA foi retirada. O pin mais novo do perfil voltou a
+#    ser `adam-photoshoot-fitting` (Adam no provador) e o lote 1 esta inteiro numa
+#    fileira. A primeira fileira daqui e o lote 2.
 
 # --- Lote 2 (copy aprovada 13/08). Fileira quote, foto, quote.
 #     Na grade sai: `imminent disaster` | escada de incendio | `She bites`

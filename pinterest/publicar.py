@@ -152,12 +152,34 @@ def escreve_no_feed(caminho, board, item):
     return cabeca.rstrip() + "\n" + item + "\n  </channel>" + cauda
 
 
+def publicados_hoje(hoje):
+    if not os.path.exists(PUBLICADOS):
+        return 0
+    return sum(1 for l in open(PUBLICADOS, encoding="utf-8")
+               if l.startswith(f"{hoje:%Y-%m-%d} "))
+
+
 def main():
     simular = "--simular" in sys.argv
+    forcar = "--forcar" in sys.argv
 
     linhas, indice, linha = proxima_linha()
     if indice is None:
         print("Fila vazia. Nada a publicar, nada a comitar.")
+        return
+
+    # 🔴 FILEIRA NAO COMECA NO MEIO DO DIA.
+    # A grade da aba Criados e fluxo continuo de tres colunas, entao fileira so
+    # existe enquanto o total de pins criados for multiplo de 3: publicar 2 pecas
+    # num dia desalinha TUDO que esta embaixo ate a terceira sair, e pin
+    # publicado nao se reordena. Se o primeiro horario do dia foi perdido (pausa,
+    # falha de rede, cron atrasado), o dia inteiro passa em vez de sair pela
+    # metade. Perder um dia custa nada; deixar a grade torta custa o desenho dela.
+    agora = datetime.now(ZoneInfo(FUSO))
+    if not forcar and publicados_hoje(agora.date()) == 0 and agora.hour >= 11:
+        print(f"Sao {agora:%H:%M} e nada saiu hoje: o primeiro horario do dia "
+              f"(09h) foi perdido. Passando o dia inteiro em vez de publicar uma "
+              f"fileira pela metade. Pra comecar fileira fora de hora, --forcar.")
         return
 
     if linha.strip().upper().startswith(PAUSA):
