@@ -152,8 +152,10 @@ def escreve_no_feed(caminho, board, item):
     return cabeca.rstrip() + "\n" + item + "\n  </channel>" + cauda
 
 
-GAP_MINIMO_MIN = 90       # minutos entre duas pecas da MESMA fileira
-INTERVALO_FILEIRA_H = 36  # horas entre uma fileira e a proxima
+GAP_MINIMO_MIN = 90        # minutos entre duas pecas da MESMA fileira
+INTERVALO_FILEIRA_H = 36   # horas minimas entre uma fileira e a proxima
+FILEIRAS_POR_SEMANA = 3    # teto movel: fileiras nos ultimos 7 dias
+JANELA_DIAS = 7
 
 
 def datas_publicadas():
@@ -207,13 +209,28 @@ def main():
                   f"fileira — amanha as 09h ela sai completa.")
             return
 
-        # 2. Uma fileira por dia, com folga. Se um dia foi perdido (pausa, rede,
-        #    cron atrasado), o proximo dia assume: a fila anda sozinha em vez de
-        #    esperar o proximo dia "oficial" da semana.
+        # 2. Folga minima entre fileiras.
         if ultima and (agora - ultima).total_seconds() / 3600 < INTERVALO_FILEIRA_H:
             horas = (agora - ultima).total_seconds() / 3600
-            print(f"A fileira anterior saiu ha {horas:.0f}h. Proxima em "
-                  f"{INTERVALO_FILEIRA_H}h — uma fileira por dia, com folga.")
+            print(f"A fileira anterior saiu ha {horas:.0f}h. Minimo de "
+                  f"{INTERVALO_FILEIRA_H}h entre fileiras.")
+            return
+
+        # 🔴 3. TETO MOVEL: no maximo 3 fileiras a cada 7 dias.
+        # A cadencia e dela, decidida em 15/08 e reafirmada em 17/08: *"uma por
+        # dia e demais, vai gastar antes de eu ter banco de mais"*. O gargalo do
+        # sistema nao e publicar, e PRODUZIR ARTE — o estoque de foto sobra, o de
+        # arte nao existe. Publicar rapido nao acelera nada, so esvazia a fila
+        # antes de ela ter o proximo lote pronto.
+        # Janela movel, e nao dia fixo da semana, porque dia fixo transforma
+        # qualquer tropeco em espera de dois dias: perdeu a segunda, so na quarta.
+        # Assim um dia perdido e recuperado sozinho, sem passar do teto.
+        recentes = {d.date() for d in datas_publicadas()
+                    if (agora - d).days < JANELA_DIAS}
+        if len(recentes) >= FILEIRAS_POR_SEMANA:
+            print(f"Ja sairam {len(recentes)} fileiras nos ultimos {JANELA_DIAS} "
+                  f"dias, que e o teto ({FILEIRAS_POR_SEMANA}/semana). A proxima "
+                  f"sai quando a mais antiga da janela vencer.")
             return
 
     # 🔴 DUAS PECAS COLADAS = ORDEM NO SORTEIO.
