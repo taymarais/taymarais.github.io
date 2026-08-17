@@ -16,15 +16,19 @@
 # Apagar a linha e o suficiente pra voltar.
 
 # ⚠️ A pausa e de UMA LINHA. Motivo vai em comentario, senao a linha de baixo
-#    vira item de fila quando a pausa sair, e quebra o parse.
+#    vira item de fila quando a pausa sair, e quebra o parse. Exemplo:
+#        PAUSA — motivo curto aqui
 #
-#    Motivo (17/08): as tres pecas do lote 3 entraram nos feeds as ~10h UTC e
-#    dois dos feeds foram conectados na mesma hora, entao ainda nao se sabe se o
-#    Pinterest ja publicou as tres. Se a primeira peca do lote 2 sair antes
-#    disso, ela corta a fila e a fileira do lote 3 nasce quebrada na grade — e
-#    fileira publicada NAO se reordena. Custo de esperar: tres pins, dois dias.
-#    Custo de nao esperar: uma fileira torta pra sempre.
-PAUSA — ate as tres pecas do lote 3 estarem NA GRADE
+# ✅ Pausa de 17/08 retirada no mesmo dia: o lote 3 apareceu na grade (com a
+#    ordem trocada, e o diagnostico esta no `maquina-de-pin.md`). Estas duas
+#    pecas do lote 2 sao urgentes por aritmetica: com 7 pins criados a grade
+#    esta desalinhada, e elas fecham em 9.
+#
+# 🔴 A GRADE NAO TEM FILEIRA, TEM CONTAGEM. Tres colunas, mais novo primeiro,
+#    fluxo continuo: cada pin novo empurra todos os outros uma casa. Fileira so
+#    existe enquanto o total de pins criados for MULTIPLO DE 3. Publicar 1 ou 2
+#    pecas soltas desalinha TUDO que esta embaixo, pra sempre.
+#    Foi o que a peca avulsa `quote-she-bites` fez com o lote 1 em 17/08.
 
 # --- Lote 2 (copy aprovada 13/08). A primeira peca da fileira, a
 #     `quote-she-bites`, ja foi escrita no feed a mao: e ela que valida a conexao
