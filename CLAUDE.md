@@ -41,7 +41,11 @@ pinterest/publicados.txt   # o que já saiu, com data. Cruza com utm_content no 
 🔴 **O nome do arquivo do feed não diz o board.** `pins-adam-madeleine.xml` está conectado ao board
 **`Where The Ocean Ends`** — é herança do lote 1 e **renomear quebra a conexão dela**. O mapa de
 verdade é o dicionário `FEEDS` em `pinterest/publicar.py`, e é o único lugar de onde tirar essa
-informação.
+informação. O board do casal é o **`pins-couple.xml`**, batizado assim depois que o nome anterior
+(`pins-adam-e-madeleine.xml`, um `-e-` de diferença) fez a autora conectar o feed errado.
+
+⚠️ **Nome de feed novo tem que ser inconfundível na tela do celular**, não só correto. Nunca criar um
+que compartilhe prefixo com outro já conectado.
 
 🔴 **O feed é fila, não catálogo.** O `pubDate` não segura nada: o Pinterest publica tudo que estiver
 no arquivo, na hora que lê. Nunca escrever um lote inteiro de uma vez — é o que o robô existe para

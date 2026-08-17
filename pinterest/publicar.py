@@ -50,7 +50,11 @@ FEEDS = {
     "Where The Ocean Ends": "pins-adam-madeleine.xml",
     "Adam Walker": "pins-adam-walker.xml",
     "Madeleine Bennett": "pins-madeleine-bennett.xml",
-    "Adam & Madeleine": "pins-adam-e-madeleine.xml",
+    # 🔴 `pins-couple.xml`, e NAO `pins-adam-e-madeleine.xml`, que era o nome
+    #    original: um `-e-` de diferenca do feed do livro fez a autora conectar o
+    #    arquivo errado no minuto um (17/08). Nome de feed tem que ser
+    #    inconfundivel NA TELA DO CELULAR, nao so correto.
+    "Adam & Madeleine": "pins-couple.xml",
 }
 
 # Feed que existe no repo mas que ela ainda nao ligou em Configuracoes ->
@@ -58,8 +62,10 @@ FEEDS = {
 # conexao acontece o Pinterest despeja tudo de uma vez e desmonta a grade.
 NAO_CONECTADOS = {
     # Criado em 17/08 com um item so, a `quote-she-bites`, pra ela ter o que
-    # conectar. Tirar daqui no minuto em que ela confirmar a conexao.
-    "pins-adam-e-madeleine.xml",
+    # conectar. Tirar daqui no minuto em que ela confirmar a conexao **desta
+    # URL** -- na primeira tentativa ela conectou o feed do livro por engano, e
+    # soltar a trava ali teria escrito pin de casal em feed nenhum.
+    "pins-couple.xml",
 }
 
 TIPO = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
