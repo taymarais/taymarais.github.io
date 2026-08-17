@@ -47,12 +47,20 @@ jobs:
             fi
             rm -f "$alvo"
           done
-          test -f "$alvo" || { echo "nenhuma URL serviu" >&2; exit 1; }
+          # ⚠️ Nao falhar aqui, de proposito. Falha de workflow manda e-mail pra
+          # autora, e nenhuma tentativa dessas e problema dela: os tres espelhos
+          # ja devolveram 429 e 502 seguidos, o que e a saida do runner recusando.
+          # Tentar de novo tem que custar zero, inclusive zero notificacao.
+          if [ ! -f "$alvo" ]; then
+            echo "::warning::nenhum espelho serviu desta vez. Rodar de novo depois."
+            exit 0
+          fi
           # a licenca tem que viajar com a fonte (OFL)
           curl -fsSL -o pinterest/fontes/OFL.txt \
             "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/OFL.txt" || true
 
       - name: Conferir que o Pillow abre
+        if: hashFiles('pinterest/fontes/Montserrat-SemiBold.ttf') != ''
         run: |
           python3 -m pip install --quiet Pillow
           python3 - <<'EOF'
@@ -66,6 +74,7 @@ jobs:
           EOF
 
       - name: Comitar
+        if: hashFiles('pinterest/fontes/Montserrat-SemiBold.ttf') != ''
         run: |
           git config user.name "Tay Marais"
           git config user.email "tay.marais.writer@proton.me"

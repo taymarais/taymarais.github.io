@@ -1,18 +1,21 @@
 name: Publicar pin
 
-# Uma peca por execucao, tres execucoes no dia de publicacao (09h, 12h e 15h de
-# Brasilia), segunda / quarta / sexta. Fileira de 3 = um dia. 9 pins por semana.
+# Uma peca por execucao, tres execucoes por dia (09h, 12h e 15h de Brasilia).
+# Fileira de 3 = um dia, e o proprio script segura a proxima fileira por 36h.
+#
+# 🔴 O CRON RODA TODO DIA DE PROPOSITO, e quem decide se publica e o script.
+# Dia fixo da semana (era seg/qua/sex) transforma qualquer tropeco em espera de
+# dois dias: perdeu a segunda, so na quarta. Rodando todo dia, o dia seguinte
+# assume sozinho e a fila anda. A cadencia continua a mesma — uma fileira a cada
+# 36h e ~4 por semana — mas ela deixa de depender do calendario.
 #
 # O atraso entre as execucoes e o mecanismo, nao um detalhe: e o unico jeito de
 # a ordem da fileira sobreviver a uma grade que mistura tres boards. Ver o
 # cabecalho de pinterest/publicar.py.
-#
-# O cron do GitHub nao e pontual (pode atrasar minutos sob carga). Com 3 horas
-# de folga entre as pecas, tanto faz.
 
 on:
   schedule:
-    - cron: '0 12,15,18 * * 1,3,5'   # UTC. Brasilia e UTC-3 o ano inteiro.
+    - cron: '0 12,15,18 * * *'   # UTC. Brasilia e UTC-3 o ano inteiro.
   workflow_dispatch:
     inputs:
       simular:

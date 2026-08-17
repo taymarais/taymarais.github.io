@@ -152,7 +152,8 @@ def escreve_no_feed(caminho, board, item):
     return cabeca.rstrip() + "\n" + item + "\n  </channel>" + cauda
 
 
-GAP_MINIMO_MIN = 90     # minutos entre duas pecas. Ver `main`.
+GAP_MINIMO_MIN = 90       # minutos entre duas pecas da MESMA fileira
+INTERVALO_FILEIRA_H = 36  # horas entre uma fileira e a proxima
 
 
 def datas_publicadas():
@@ -189,6 +190,31 @@ def main():
     # falha de rede, cron atrasado), o dia inteiro passa em vez de sair pela
     # metade. Perder um dia custa nada; deixar a grade torta custa o desenho dela.
     agora = datetime.now(ZoneInfo(FUSO))
+    ultima = max(datas_publicadas(), default=None)
+    comecando = publicados_hoje(agora.date()) == 0
+
+    if not forcar and comecando:
+        # --- Este run COMECARIA uma fileira nova. Duas condicoes. ---
+
+        # 🔴 1. Fileira nao comeca no meio do dia.
+        # A grade da aba Criados e fluxo continuo de tres colunas, entao fileira
+        # so existe enquanto o total de pins criados for multiplo de 3. Comecar
+        # as 12h deixaria a fileira pela metade ate amanha, e pin publicado nao
+        # se reordena. Perder um dia custa nada; meia fileira custa o desenho.
+        if agora.hour >= 11:
+            print(f"Sao {agora:%H:%M} e nada saiu hoje: o primeiro horario "
+                  f"(09h) ja passou. O dia inteiro passa em vez de sair meia "
+                  f"fileira — amanha as 09h ela sai completa.")
+            return
+
+        # 2. Uma fileira por dia, com folga. Se um dia foi perdido (pausa, rede,
+        #    cron atrasado), o proximo dia assume: a fila anda sozinha em vez de
+        #    esperar o proximo dia "oficial" da semana.
+        if ultima and (agora - ultima).total_seconds() / 3600 < INTERVALO_FILEIRA_H:
+            horas = (agora - ultima).total_seconds() / 3600
+            print(f"A fileira anterior saiu ha {horas:.0f}h. Proxima em "
+                  f"{INTERVALO_FILEIRA_H}h — uma fileira por dia, com folga.")
+            return
 
     # 🔴 DUAS PECAS COLADAS = ORDEM NO SORTEIO.
     # O cron do GitHub nao e pontual: pode atrasar meia hora e mais, e duas
@@ -196,20 +222,13 @@ def main():
     # ler os feeds ENTRE uma peca e a outra, entao peca solta minutos depois da
     # anterior perde a unica garantia que o sistema tem. Medido em 17/08: ~1h de
     # vantagem foi suficiente pra determinar a ordem; 90 min e a margem.
-    ultima = max(datas_publicadas(), default=None)
-    if not forcar and ultima:
+    if not forcar and ultima and not comecando:
         faltam = GAP_MINIMO_MIN - (agora - ultima).total_seconds() / 60
         if faltam > 0:
             print(f"A peca anterior saiu {int(GAP_MINIMO_MIN - faltam)} min atras. "
                   f"Esperando {int(faltam)} min pra nao publicar duas colada, que "
                   f"joga a ordem da fileira no sorteio.")
             return
-
-    if not forcar and publicados_hoje(agora.date()) == 0 and agora.hour >= 11:
-        print(f"Sao {agora:%H:%M} e nada saiu hoje: o primeiro horario do dia "
-              f"(09h) foi perdido. Passando o dia inteiro em vez de publicar uma "
-              f"fileira pela metade. Pra comecar fileira fora de hora, --forcar.")
-        return
 
     if linha.strip().upper().startswith(PAUSA):
         print(f"Fila em PAUSA: {linha.strip()}\n"
