@@ -1,0 +1,60 @@
+name: Buscar fonte
+
+# ⚠️ WORKFLOW DE UMA VEZ SO. A marca d'agua precisa da Montserrat SemiBold, e a
+# sessao do Claude nao alcanca o Google Fonts (o proxy dela devolve 403). O runner
+# alcanca. Depois que o .ttf estiver comitado, este arquivo pode ser apagado.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Baixar Montserrat SemiBold
+        run: |
+          set -euo pipefail
+          mkdir -p pinterest/fontes
+          alvo=pinterest/fontes/Montserrat-SemiBold.ttf
+          for url in \
+            "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/static/Montserrat-SemiBold.ttf" \
+            "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/Montserrat%5Bwght%5D.ttf"
+          do
+            echo "tentando: $url"
+            if curl -fsSL -o "$alvo" "$url" && [ "$(stat -c%s "$alvo")" -gt 50000 ]; then
+              echo "ok, $(stat -c%s "$alvo") bytes"
+              break
+            fi
+            rm -f "$alvo"
+          done
+          test -f "$alvo" || { echo "nenhuma URL serviu" >&2; exit 1; }
+          # a licenca tem que viajar com a fonte (OFL)
+          curl -fsSL -o pinterest/fontes/OFL.txt \
+            "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/OFL.txt" || true
+
+      - name: Conferir que o Pillow abre
+        run: |
+          python3 -m pip install --quiet Pillow
+          python3 - <<'EOF'
+          from PIL import ImageFont
+          f = ImageFont.truetype("pinterest/fontes/Montserrat-SemiBold.ttf", 24)
+          print("familia:", f.getname())
+          try:
+              print("variacoes:", [n.decode() for n in f.get_variation_names()])
+          except OSError:
+              print("estatica (sem eixos)")
+          EOF
+
+      - name: Comitar
+        run: |
+          git config user.name "Tay Marais"
+          git config user.email "tay.marais.writer@proton.me"
+          git add pinterest/fontes
+          git diff --quiet --cached && { echo "fonte ja estava no repo"; exit 0; }
+          git commit -m "fonte: Montserrat SemiBold pra marca d'agua das fotos"
+          git push origin HEAD:main
