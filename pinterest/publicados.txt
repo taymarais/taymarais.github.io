@@ -9,7 +9,20 @@
 2026-08-13 18:00 | mads-studio-portrait.jpg | He gets one night with her. She has one rule. First two chapters free. | Dual POV slow burn celebrity romance. | Where The Ocean Ends
 2026-08-13 18:00 | quote-destruction-mutuelle.jpg | She calls love mutual destruction. He falls anyway. Read chapters 1 and 2 free. | Dual POV slow burn celebrity romance. | Where The Ocean Ends
 2026-08-13 18:00 | adam-photoshoot-fitting.jpg | Newly divorced movie star. Dirty LA bar. The worst possible woman. Start reading free. | Dual POV slow burn celebrity romance. | Where The Ocean Ends
-2026-08-17 10:13 | adam-pillar-nightfall.jpg | A divorce on every cover, and a cap pulled low. Chapters 1 and 2, here. | Hollywood celebrity romance. Dual POV, slow burn. | Adam Walker
-2026-08-17 10:13 | quote-silence-not-empty.jpg | Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Slow burn. | Where The Ocean Ends
-2026-08-17 10:13 | mads-black-walk.jpg | L'Ange Blond. Chapters 1 and 2, here. | Dual POV slow burn romance. Book one of a saga. | Madeleine Bennett
-2026-08-17 07:30 | quote-she-bites.jpg | Madeleine Bennett. Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Dual POV. | Adam & Madeleine
+
+# ============================================================================
+# 🔴 APAGADOS NO PINTEREST PELA AUTORA em 17/08/2026, e de volta na fila com
+#    guid novo (`#r2`). Sairam na ordem errada: a quote furou a fila porque o
+#    feed dela ja estava conectado, e a peca avulsa `quote-she-bites` deixou o
+#    perfil com 7 pins criados, o que partiu o lote 1 em duas fileiras.
+#    Os quatro itens tambem foram tirados dos feeds no mesmo dia, pra o Pinterest
+#    nao republicar sozinho o que ela apagou.
+#
+#    ⚠️ NAO APAGAR ESTAS LINHAS. Elas sao a unica prova de que estas quatro pecas
+#    ja publicaram uma vez, e e por isso que o reenvio precisa de guid novo.
+#
+# 2026-08-17 07:30 | quote-she-bites.jpg | Madeleine Bennett. Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Dual POV. | Adam & Madeleine
+# 2026-08-17 10:13 | adam-pillar-nightfall.jpg | A divorce on every cover, and a cap pulled low. Chapters 1 and 2, here. | Hollywood celebrity romance. Dual POV, slow burn. | Adam Walker
+# 2026-08-17 10:13 | quote-silence-not-empty.jpg | Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Slow burn. | Where The Ocean Ends
+# 2026-08-17 10:13 | mads-black-walk.jpg | L'Ange Blond. Chapters 1 and 2, here. | Dual POV slow burn romance. Book one of a saga. | Madeleine Bennett
+# ============================================================================

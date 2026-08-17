@@ -110,10 +110,18 @@ def parse(linha):
 def item_xml(nome, titulo, descricao, quando):
     """<item> no formato exato dos feeds que ja publicaram. O guid e a URL da
     imagem: o Pinterest deduplica por ele, e foi por isso que o feed do lote 1
-    ficou 4 dias no ar com 3 itens publicados sem repetir nenhum."""
+    ficou 4 dias no ar com 3 itens publicados sem repetir nenhum.
+
+    ⚠️ Por isso mesmo, REENVIAR uma peca que ja publicou uma vez exige guid novo.
+    Nao se sabe se o Pinterest esquece o guid quando o pin e apagado na mao, e
+    apostar que esquece custaria a peca nao voltar -- em silencio. A fila marca
+    reenvio com `nome.jpg#sufixo`: o sufixo entra no guid e a imagem continua a
+    mesma."""
+    nome, _, sufixo = nome.partition("#")
     ext = os.path.splitext(nome)[1].lower()
     tipo = TIPO.get(ext) or morre(f"extensao nao aceita: {nome}")
     img = f"{BASE_IMG}/{nome}"
+    guid = f"{img}#{sufixo}" if sufixo else img
     juncao = "&" if "?" in DESTINO else "?"
     link = f"{DESTINO}{juncao}{UTM}&utm_content={os.path.splitext(nome)[0]}"
     return "\n".join([
@@ -121,7 +129,7 @@ def item_xml(nome, titulo, descricao, quando):
         f"      <title>{escape(titulo)}</title>",
         f"      <description>{escape(descricao)}</description>",
         f"      <link>{escape(link)}</link>",
-        f'      <guid isPermaLink="false">{escape(img)}</guid>',
+        f'      <guid isPermaLink="false">{escape(guid)}</guid>',
         f"      <pubDate>{format_datetime(quando)}</pubDate>",
         f'      <enclosure url="{escape(img)}" type="{tipo}" length="0"/>',
         f'      <media:content url="{escape(img)}" medium="image" type="{tipo}"/>',
@@ -171,9 +179,9 @@ def main():
               f"Pinterest despeja tudo de uma vez e desmonta a grade. "
               f"Conectar {SITE}/{arquivo} no board '{board}' e rodar de novo.")
 
-    imagem = os.path.join(RAIZ, "pins", nome)
-    if not os.path.exists(imagem):
-        morre(f"pins/{nome} nao existe no repo. Pin com imagem 404 e pin morto.")
+    arquivo_img = nome.split("#")[0]      # `nome.jpg#r2` e reenvio, ver item_xml
+    if not os.path.exists(os.path.join(RAIZ, "pins", arquivo_img)):
+        morre(f"pins/{arquivo_img} nao existe no repo. Pin com imagem 404 e pin morto.")
 
     agora = datetime.now(ZoneInfo(FUSO))
     caminho = os.path.join(RAIZ, arquivo)

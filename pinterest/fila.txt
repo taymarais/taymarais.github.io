@@ -19,25 +19,45 @@
 #    vira item de fila quando a pausa sair, e quebra o parse. Exemplo:
 #        PAUSA — motivo curto aqui
 #
-# ✅ Pausa de 17/08 retirada no mesmo dia: o lote 3 apareceu na grade (com a
-#    ordem trocada, e o diagnostico esta no `maquina-de-pin.md`). Estas duas
-#    pecas do lote 2 sao urgentes por aritmetica: com 7 pins criados a grade
-#    esta desalinhada, e elas fecham em 9.
-#
 # 🔴 A GRADE NAO TEM FILEIRA, TEM CONTAGEM. Tres colunas, mais novo primeiro,
 #    fluxo continuo: cada pin novo empurra todos os outros uma casa. Fileira so
 #    existe enquanto o total de pins criados for MULTIPLO DE 3. Publicar 1 ou 2
 #    pecas soltas desalinha TUDO que esta embaixo, pra sempre.
 #    Foi o que a peca avulsa `quote-she-bites` fez com o lote 1 em 17/08.
+#
+# 🔴 REENVIO: `nome.jpg#r2` = peca que JA publicou uma vez e foi apagada na mao.
+#    O sufixo entra no guid e a imagem continua a mesma. Sem ele, o Pinterest
+#    pode achar que ja publicou e ignorar a peca EM SILENCIO.
+PAUSA — ela vai apagar 4 pins na mao; nada sai antes disso
 
-# --- Lote 2 (copy aprovada 13/08). A primeira peca da fileira, a
-#     `quote-she-bites`, ja foi escrita no feed a mao: e ela que valida a conexao
-#     nova do board `Adam & Madeleine`. Estas duas fecham a fileira.
+# ============================================================================
+# 🔴 ESPERANDO ELA APAGAR, NO PINTEREST, ESTES QUATRO PINS (decisao dela, 17/08):
+#       quote-she-bites  |  quote-silence-not-empty  |  adam-pillar-nightfall
+#       mads-black-walk
+#    Depois disso o pin mais novo do perfil volta a ser `adam-photoshoot-fitting`
+#    (Adam no provador), o lote 1 fica inteiro numa fileira e a contagem fecha
+#    em 3. Os quatro itens JA FORAM TIRADOS dos feeds, em 17/08, pra o Pinterest
+#    nao republicar sozinho o que ela apagar.
+#    Quando ela confirmar: apagar a linha PAUSA. Nada mais.
+# ============================================================================
+
+# --- Lote 2 (copy aprovada 13/08). Fileira quote, foto, quote.
+#     Na grade sai: `imminent disaster` | escada de incendio | `She bites`
 #     ⚠️ `adam-mads-fire-escape.jpg` tem 767px de largura, abaixo dos ~1000px que
 #     o Pinterest recomenda. Vai assim mesmo: ampliar nao cria detalhe e o
 #     original nao existe mais (ela, 15/08).
+quote-she-bites.jpg#r2 | Madeleine Bennett. Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Dual POV. | Adam & Madeleine
 adam-mads-fire-escape.jpg | He wanted to disappear. She was the worst possible place to hide. Chapters 1 and 2, here. | Dual POV slow burn celebrity romance. | Adam & Madeleine
 quote-imminent-disaster.jpg | The toast that starts everything. Chapters 1 and 2, here. | Slow burn Hollywood romance, dual POV. | Adam & Madeleine
+
+# --- Lote 3, REENVIO. Saiu em 17/08 na ordem errada (a quote furou a fila porque
+#     o feed dela ja estava conectado) e ela apagou os tres.
+#     Na grade sai: Madeleine de preto | `The silence isn't empty` | Adam do pilar
+#     Agora os tres feeds estao conectados desde antes, entao a ordem depende so
+#     do atraso de 3h entre as execucoes — que e o que o robo faz.
+adam-pillar-nightfall.jpg#r2 | A divorce on every cover, and a cap pulled low. Chapters 1 and 2, here. | Hollywood celebrity romance. Dual POV, slow burn. | Adam Walker
+quote-silence-not-empty.jpg#r2 | Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Slow burn. | Where The Ocean Ends
+mads-black-walk.jpg#r2 | L'Ange Blond. Chapters 1 and 2, here. | Dual POV slow burn romance. Book one of a saga. | Madeleine Bennett
 
 # --- Lote 4 "praia e pintura" (copy aprovada 17/08). Tres fileiras:
 #       pier   | Madeleine is the ocean | CASAL restaurante | The trouble with the ocean
