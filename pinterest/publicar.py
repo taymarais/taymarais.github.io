@@ -10,8 +10,12 @@ independentes, e a ordem esquerda/meio/direita na grade do perfil passa a ser
 sorteio. A unica alavanca que existe e o ATRASO: soltar uma peca por vez, com
 horas entre elas, na ordem certa. Ai a certeza vem de fila, nao de sorte.
 
-Por isso o cron roda 3x no dia de publicacao (09h, 12h, 15h) e cada execucao
-consome uma linha. Fileira de 3 = um dia. 3 dias por semana = 9 pins/semana.
+Por isso o cron roda 3x por dia (09h, 12h, 15h) e cada execucao consome uma linha.
+Fileira de 3 = um dia, com teto movel de 3 fileiras a cada 7 dias.
+
+O cron roda TODO DIA e quem decide e este script. Dia fixo da semana transformava
+qualquer tropeco em espera de dois dias; com janela movel, o dia seguinte assume
+sozinho sem nunca passar do teto.
 
 A ordem da fila e a ordem de PUBLICACAO, que e o inverso da grade: o perfil
 mostra o mais novo primeiro, entao quem sai primeiro aparece por ultimo.
@@ -31,6 +35,9 @@ from zoneinfo import ZoneInfo
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
+
+sys.path.insert(0, AQUI)
+import marca                                   # noqa: E402  (precisa do AQUI)
 
 FUSO = "America/Sao_Paulo"
 SITE = "https://taymarais.github.io"
@@ -123,7 +130,11 @@ def item_xml(nome, titulo, descricao, quando):
     img = f"{BASE_IMG}/{nome}"
     guid = f"{img}#{sufixo}" if sufixo else img
     juncao = "&" if "?" in DESTINO else "?"
-    link = f"{DESTINO}{juncao}{UTM}&utm_content={os.path.splitext(nome)[0]}"
+    # `utm_content` sai do nome do arquivo, SEM a pasta: a foto marcada mora em
+    # `marcadas/`, e `utm_content=marcadas/adam-...` sujaria o relatorio e
+    # quebraria a comparacao com as pecas publicadas antes da marca existir.
+    link = (f"{DESTINO}{juncao}{UTM}"
+            f"&utm_content={os.path.splitext(os.path.basename(nome))[0]}")
     return "\n".join([
         "    <item>",
         f"      <title>{escape(titulo)}</title>",
@@ -267,8 +278,25 @@ def main():
               f"Conectar {SITE}/{arquivo} no board '{board}' e rodar de novo.")
 
     arquivo_img = nome.split("#")[0]      # `nome.jpg#r2` e reenvio, ver item_xml
-    if not os.path.exists(os.path.join(RAIZ, "pins", arquivo_img)):
+    origem = os.path.join(RAIZ, "pins", arquivo_img)
+    if not os.path.exists(origem):
         morre(f"pins/{arquivo_img} nao existe no repo. Pin com imagem 404 e pin morto.")
+
+    # 🔴 A marca d'agua entra AQUI, na hora de publicar, e nunca no arquivo
+    # guardado. Marca gravada no original e irreversivel: mudar de ideia sobre
+    # fonte, texto ou lugar obrigaria a refazer as 182 fotos na mao. A foto limpa
+    # e a fonte, a marcada e a saida — mesma relacao do manuscrito com o EPUB.
+    # Arte de quote nao recebe: ja traz o nome do livro dentro da arte.
+    if not arquivo_img.startswith("quote-") and not simular:
+        try:
+            marca.marca(origem)
+            nome = f"marcadas/{arquivo_img}" + (f"#{nome.split('#')[1]}"
+                                                if "#" in nome else "")
+        except Exception as e:
+            # Foto sem marca e melhor que fileira parada: a marca e assinatura,
+            # nao requisito. Mas o aviso tem que aparecer no log da execucao.
+            print(f"AVISO: nao consegui carimbar {arquivo_img} ({e}). "
+                  f"Publicando a foto limpa.")
 
     agora = datetime.now(ZoneInfo(FUSO))
     caminho = os.path.join(RAIZ, arquivo)

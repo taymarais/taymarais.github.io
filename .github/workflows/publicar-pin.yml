@@ -40,6 +40,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Pillow (a marca d'agua das fotos)
+        run: python3 -m pip install --quiet Pillow
+
       - name: Escrever o item no feed
         id: pub
         run: |

@@ -43,7 +43,9 @@ FONTE = os.path.join(AQUI, "fontes", "Montserrat-SemiBold.ttf")
 CORPO = 0.015          # altura da letra, fracao da altura da foto
 RESPIRO = 0.045        # distancia da borda, fracao da altura
 ESPACO = 0.28          # letter-spacing, fracao do corpo
-HALO = 0.0016          # raio do halo, fracao da altura
+HALO = 0.0020          # raio do halo, fracao da altura
+ALFA_HALO = 235        # opacidade do halo
+AMBIGUA = 45           # ver `nota`: distancia do cinza medio que ja e "decidida"
 CLARO = (234, 229, 222)    # creme da marca, pra fundo escuro
 ESCURO = (26, 18, 16)      # quase-preto da marca, pra fundo claro
 PASSOS = 24            # janelas testadas por borda ao deslizar
@@ -85,15 +87,29 @@ def ruido(img, caixa):
     n = corte.width * corte.height
     if not n:
         return float("inf")
-    px = list(corte.getdata())
+    px = corte.tobytes()          # modo "L": um byte por pixel
     media = sum(px) / n
     return (sum((p - media) ** 2 for p in px) / n) ** 0.5
 
 
 def luminancia(img, caixa):
     corte = img.crop(caixa).convert("L")
-    px = list(corte.getdata())
+    px = corte.tobytes()          # modo "L": um byte por pixel
     return sum(px) / len(px) if px else 128
+
+
+def nota(img, caixa):
+    """Quanto a janela e RUIM pro carimbo. Menor e melhor.
+
+    Ruido e o peso principal — area irregular e o que transforma a marca em
+    sujeira. Mas so ruido nao basta: na foto da escada de incendio a janela mais
+    lisa deu media 127, tijolo branco misturado com as diagonais escuras da
+    escada, e a cor escolhida pela media saiu clara sobre claro. **Media perto do
+    cinza medio nao decide cor nenhuma**, entao entra como penalidade.
+    """
+    lum = luminancia(img, caixa)
+    ambiguidade = max(0, AMBIGUA - abs(lum - 128)) / AMBIGUA
+    return ruido(img, caixa) * (1 + 2 * ambiguidade)
 
 
 def melhor_lugar(img, larg, alt):
@@ -109,14 +125,14 @@ def melhor_lugar(img, larg, alt):
     if livre <= 0:                      # foto estreita: centraliza e aceita
         return (max(0, (W - larg) // 2), ys[-1])
 
-    melhor, nota = None, float("inf")
+    melhor, pior = None, float("inf")
     for y in ys:
         for i in range(PASSOS):
             x = respiro + round(livre * i / (PASSOS - 1))
             caixa = (x, y, x + larg, y + alt)
-            r = ruido(img, caixa)
-            if r < nota:
-                melhor, nota = (x, y), r
+            n = nota(img, caixa)
+            if n < pior:
+                melhor, pior = (x, y), n
     return melhor
 
 
@@ -141,7 +157,7 @@ def marca(caminho, saida=None):
     # Sombra dura marcaria a foto; o borrado so levanta o contraste local.
     camada = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(camada)
-    desenha_espacado(d, (x, y - cima), TEXTO, fonte, espaco, cor_halo + (190,))
+    desenha_espacado(d, (x, y - cima), TEXTO, fonte, espaco, cor_halo + (ALFA_HALO,))
     camada = camada.filter(ImageFilter.GaussianBlur(max(1.0, HALO * H)))
     img = Image.alpha_composite(img.convert("RGBA"), camada)
 
