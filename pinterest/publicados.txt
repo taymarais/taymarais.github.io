@@ -1,0 +1,15 @@
+# Registro do que ja foi escrito nos feeds. O robo acrescenta uma linha por
+# execucao, no formato:  AAAA-MM-DD HH:MM | a linha da fila, inteira
+#
+# Serve pra duas coisas: nao repetir peca, e cruzar a data com o `utm_content` no
+# Analytics do site quando chegar a hora de medir clique por pin.
+#
+# As primeiras linhas foram escritas a mao, antes do robo existir.
+
+2026-08-13 18:00 | mads-studio-portrait.jpg | He gets one night with her. She has one rule. First two chapters free. | Dual POV slow burn celebrity romance. | Where The Ocean Ends
+2026-08-13 18:00 | quote-destruction-mutuelle.jpg | She calls love mutual destruction. He falls anyway. Read chapters 1 and 2 free. | Dual POV slow burn celebrity romance. | Where The Ocean Ends
+2026-08-13 18:00 | adam-photoshoot-fitting.jpg | Newly divorced movie star. Dirty LA bar. The worst possible woman. Start reading free. | Dual POV slow burn celebrity romance. | Where The Ocean Ends
+2026-08-17 10:13 | adam-pillar-nightfall.jpg | A divorce on every cover, and a cap pulled low. Chapters 1 and 2, here. | Hollywood celebrity romance. Dual POV, slow burn. | Adam Walker
+2026-08-17 10:13 | quote-silence-not-empty.jpg | Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Slow burn. | Where The Ocean Ends
+2026-08-17 10:13 | mads-black-walk.jpg | L'Ange Blond. Chapters 1 and 2, here. | Dual POV slow burn romance. Book one of a saga. | Madeleine Bennett
+2026-08-17 07:30 | quote-she-bites.jpg | Madeleine Bennett. Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Dual POV. | Adam & Madeleine

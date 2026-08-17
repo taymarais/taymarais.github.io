@@ -23,6 +23,34 @@ assets/                 # Images (WebP) and favicon (PNG)
 
 Every English page has a Portuguese counterpart and vice versa. Cross-language links use the `.lang-selector` pill-style anchor.
 
+## Pinterest — a máquina de pin mora aqui
+
+O site não é só as páginas: ele é também o **servidor de feed** que o Pinterest lê para publicar pin
+sozinho, sem PC, sem celular e sem API. O manual completo (boards, cadência, copy, medição) fica no
+repo do estúdio, em `projetos/tay-marais/marketing/maquina-de-pin.md` — aqui ficam as peças.
+
+```
+pins/                      # as artes e fotos, 1200x1800. Nome de arquivo é PÚBLICO
+pins-<algo>.xml            # os feeds RSS, um por board. Conectados em Configurações -> Publicar automaticamente
+pinterest/publicar.py      # o robô: uma peça por execução, da fila para o feed
+pinterest/fila.txt         # o que ainda vai sair, em ordem de PUBLICAÇÃO (o inverso da grade)
+pinterest/publicados.txt   # o que já saiu, com data. Cruza com utm_content no Analytics
+.github/workflows/publicar-pin.yml   # cron seg/qua/sex às 09h, 12h e 15h (BRT)
+```
+
+🔴 **O nome do arquivo do feed não diz o board.** `pins-adam-madeleine.xml` está conectado ao board
+**`Where The Ocean Ends`** — é herança do lote 1 e **renomear quebra a conexão dela**. O mapa de
+verdade é o dicionário `FEEDS` em `pinterest/publicar.py`, e é o único lugar de onde tirar essa
+informação.
+
+🔴 **O feed é fila, não catálogo.** O `pubDate` não segura nada: o Pinterest publica tudo que estiver
+no arquivo, na hora que lê. Nunca escrever um lote inteiro de uma vez — é o que o robô existe para
+evitar. O `<guid>` é a URL da imagem e o Pinterest deduplica por ele, então os feeds podem acumular
+histórico sem republicar nada.
+
+⚠️ **Nunca reescrever o `<item>` de um pin que já publicou** (link ou texto). Acrescentar no fim é
+seguro; editar o que já virou pin não é território conhecido.
+
 ## Design system
 
 All CSS is **inline per page** (inside `<style>` tags) — there is no shared stylesheet. When editing or creating pages, replicate the same CSS custom properties:

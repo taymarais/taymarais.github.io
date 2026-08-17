@@ -1,0 +1,58 @@
+name: Publicar pin
+
+# Uma peca por execucao, tres execucoes no dia de publicacao (09h, 12h e 15h de
+# Brasilia), segunda / quarta / sexta. Fileira de 3 = um dia. 9 pins por semana.
+#
+# O atraso entre as execucoes e o mecanismo, nao um detalhe: e o unico jeito de
+# a ordem da fileira sobreviver a uma grade que mistura tres boards. Ver o
+# cabecalho de pinterest/publicar.py.
+#
+# O cron do GitHub nao e pontual (pode atrasar minutos sob carga). Com 3 horas
+# de folga entre as pecas, tanto faz.
+
+on:
+  schedule:
+    - cron: '0 12,15,18 * * 1,3,5'   # UTC. Brasilia e UTC-3 o ano inteiro.
+  workflow_dispatch:
+    inputs:
+      simular:
+        description: 'So mostrar a proxima peca, sem escrever nem publicar'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar-pin
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Escrever o item no feed
+        id: pub
+        run: python3 pinterest/publicar.py ${{ inputs.simular && '--simular' || '' }}
+
+      - name: Comitar
+        if: ${{ !inputs.simular }}
+        env:
+          RESUMO: ${{ steps.pub.outputs.resumo }}
+        run: |
+          if git diff --quiet; then
+            echo "Nada mudou (fila vazia). Sem commit."
+            exit 0
+          fi
+          git config user.name "Tay Marais"
+          git config user.email "tay.marais.writer@proton.me"
+          git add -A
+          git commit -m "pin: $RESUMO"
+          for espera in 0 4 16; do
+            sleep "$espera"
+            git pull --rebase --autostash origin main && git push origin HEAD:main && exit 0
+          done
+          echo "Push falhou tres vezes." >&2
+          exit 1
