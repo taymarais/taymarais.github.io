@@ -21,10 +21,21 @@ jobs:
           set -euo pipefail
           mkdir -p pinterest/fontes
           alvo=pinterest/fontes/Montserrat-SemiBold.ttf
+
+          # A API de CSS do Google Fonts devolve TTF quando o User-Agent e velho
+          # (navegador moderno leva woff2, que o Pillow nao le). E a fonte
+          # primaria porque o raw.githubusercontent responde 429 sob carga.
+          css=$(curl -fsSL -H "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0)" \
+                "https://fonts.googleapis.com/css?family=Montserrat:600" || true)
+          echo "$css"
+          da_api=$(printf '%s' "$css" | grep -o "https://[^)]*\.ttf" | head -1 || true)
+
           for url in \
-            "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/static/Montserrat-SemiBold.ttf" \
-            "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/Montserrat%5Bwght%5D.ttf"
+            "$da_api" \
+            "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/montserrat/static/Montserrat-SemiBold.ttf" \
+            "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/static/Montserrat-SemiBold.ttf"
           do
+            [ -n "$url" ] || continue
             echo "tentando: $url"
             if curl -fsSL -o "$alvo" "$url" && [ "$(stat -c%s "$alvo")" -gt 50000 ]; then
               echo "ok, $(stat -c%s "$alvo") bytes"
