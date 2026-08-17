@@ -60,13 +60,14 @@ FEEDS = {
 # Feed que existe no repo mas que ela ainda nao ligou em Configuracoes ->
 # Publicar automaticamente. Item escrito aqui nao vira pin: espera, e quando a
 # conexao acontece o Pinterest despeja tudo de uma vez e desmonta a grade.
-NAO_CONECTADOS = {
-    # Criado em 17/08 com um item so, a `quote-she-bites`, pra ela ter o que
-    # conectar. Tirar daqui no minuto em que ela confirmar a conexao **desta
-    # URL** -- na primeira tentativa ela conectou o feed do livro por engano, e
-    # soltar a trava ali teria escrito pin de casal em feed nenhum.
-    "pins-couple.xml",
-}
+NAO_CONECTADOS = set()   # os quatro estao conectados desde 17/08/2026
+
+# Primeira linha viva da fila igual a isto = o robo passa a vez, sem erro e sem
+# commit. Serve pra segurar a publicacao sem desligar o cron nem mexer em codigo:
+# apagar a linha e o suficiente pra voltar. Existe porque fileira publicada nao
+# se reordena -- quando ha duvida se a fileira anterior fechou, a resposta certa
+# e esperar, e esperar tem que custar uma linha, nao uma sessao.
+PAUSA = "PAUSA"
 
 TIPO = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
 
@@ -149,6 +150,12 @@ def main():
     linhas, indice, linha = proxima_linha()
     if indice is None:
         print("Fila vazia. Nada a publicar, nada a comitar.")
+        return
+
+    if linha.strip().upper().startswith(PAUSA):
+        print(f"Fila em PAUSA: {linha.strip()}\n"
+              f"Nada publicado, nada comitado. Apagar a linha '{PAUSA}' de "
+              f"{FILA} pra voltar a publicar.")
         return
 
     nome, titulo, descricao, board = parse(linha)

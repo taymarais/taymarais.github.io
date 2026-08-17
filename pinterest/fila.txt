@@ -11,6 +11,20 @@
 #    Nome errado para a fila com erro em vez de publicar no lugar errado.
 #
 # Linha comecando com # e ignorada. Copy so entra aqui depois de aprovada no chat.
+#
+# Primeira linha viva igual a PAUSA = o robo passa a vez, quieto e sem erro.
+# Apagar a linha e o suficiente pra voltar.
+
+# ⚠️ A pausa e de UMA LINHA. Motivo vai em comentario, senao a linha de baixo
+#    vira item de fila quando a pausa sair, e quebra o parse.
+#
+#    Motivo (17/08): as tres pecas do lote 3 entraram nos feeds as ~10h UTC e
+#    dois dos feeds foram conectados na mesma hora, entao ainda nao se sabe se o
+#    Pinterest ja publicou as tres. Se a primeira peca do lote 2 sair antes
+#    disso, ela corta a fila e a fileira do lote 3 nasce quebrada na grade — e
+#    fileira publicada NAO se reordena. Custo de esperar: tres pins, dois dias.
+#    Custo de nao esperar: uma fileira torta pra sempre.
+PAUSA — ate as tres pecas do lote 3 estarem NA GRADE
 
 # --- Lote 2 (copy aprovada 13/08). A primeira peca da fileira, a
 #     `quote-she-bites`, ja foi escrita no feed a mao: e ela que valida a conexao

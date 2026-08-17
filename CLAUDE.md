@@ -47,6 +47,11 @@ informação. O board do casal é o **`pins-couple.xml`**, batizado assim depois
 ⚠️ **Nome de feed novo tem que ser inconfundível na tela do celular**, não só correto. Nunca criar um
 que compartilhe prefixo com outro já conectado.
 
+**Para segurar a publicação** (fileira anterior ainda no ar, copy em dúvida, lote sendo remontado):
+primeira linha viva de `pinterest/fila.txt` igual a `PAUSA` — o robô passa a vez, quieto e sem erro.
+Apagar a linha volta a publicar. **O motivo vai em comentário, nunca na mesma linha continuada**, ou a
+continuação vira item de fila quando a pausa sair.
+
 🔴 **O feed é fila, não catálogo.** O `pubDate` não segura nada: o Pinterest publica tudo que estiver
 no arquivo, na hora que lê. Nunca escrever um lote inteiro de uma vez — é o que o robô existe para
 evitar. O `<guid>` é a URL da imagem e o Pinterest deduplica por ele, então os feeds podem acumular
