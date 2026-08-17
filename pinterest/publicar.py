@@ -152,11 +152,24 @@ def escreve_no_feed(caminho, board, item):
     return cabeca.rstrip() + "\n" + item + "\n  </channel>" + cauda
 
 
-def publicados_hoje(hoje):
+GAP_MINIMO_MIN = 90     # minutos entre duas pecas. Ver `main`.
+
+
+def datas_publicadas():
     if not os.path.exists(PUBLICADOS):
-        return 0
-    return sum(1 for l in open(PUBLICADOS, encoding="utf-8")
-               if l.startswith(f"{hoje:%Y-%m-%d} "))
+        return []
+    fora = []
+    for l in open(PUBLICADOS, encoding="utf-8"):
+        try:
+            fora.append(datetime.strptime(l[:16], "%Y-%m-%d %H:%M")
+                        .replace(tzinfo=ZoneInfo(FUSO)))
+        except ValueError:
+            continue        # comentario, linha vazia, cabecalho
+    return fora
+
+
+def publicados_hoje(hoje):
+    return sum(1 for d in datas_publicadas() if d.date() == hoje)
 
 
 def main():
@@ -176,6 +189,22 @@ def main():
     # falha de rede, cron atrasado), o dia inteiro passa em vez de sair pela
     # metade. Perder um dia custa nada; deixar a grade torta custa o desenho dela.
     agora = datetime.now(ZoneInfo(FUSO))
+
+    # 🔴 DUAS PECAS COLADAS = ORDEM NO SORTEIO.
+    # O cron do GitHub nao e pontual: pode atrasar meia hora e mais, e duas
+    # execucoes atrasadas se juntam. A ordem da fileira depende de o Pinterest
+    # ler os feeds ENTRE uma peca e a outra, entao peca solta minutos depois da
+    # anterior perde a unica garantia que o sistema tem. Medido em 17/08: ~1h de
+    # vantagem foi suficiente pra determinar a ordem; 90 min e a margem.
+    ultima = max(datas_publicadas(), default=None)
+    if not forcar and ultima:
+        faltam = GAP_MINIMO_MIN - (agora - ultima).total_seconds() / 60
+        if faltam > 0:
+            print(f"A peca anterior saiu {int(GAP_MINIMO_MIN - faltam)} min atras. "
+                  f"Esperando {int(faltam)} min pra nao publicar duas colada, que "
+                  f"joga a ordem da fileira no sorteio.")
+            return
+
     if not forcar and publicados_hoje(agora.date()) == 0 and agora.hour >= 11:
         print(f"Sao {agora:%H:%M} e nada saiu hoje: o primeiro horario do dia "
               f"(09h) foi perdido. Passando o dia inteiro em vez de publicar uma "
