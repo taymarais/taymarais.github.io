@@ -37,7 +37,11 @@ jobs:
           do
             [ -n "$url" ] || continue
             echo "tentando: $url"
-            if curl -fsSL -o "$alvo" "$url" && [ "$(stat -c%s "$alvo")" -gt 50000 ]; then
+            # 429 e 502 aqui sao transitorios, nao bloqueio: tentar de novo com
+            # espera resolve. Sem isso o workflow inteiro morre por azar de rede.
+            if curl -fsSL --retry 4 --retry-delay 5 --retry-all-errors \
+                 --connect-timeout 15 -o "$alvo" "$url" \
+               && [ "$(stat -c%s "$alvo")" -gt 50000 ]; then
               echo "ok, $(stat -c%s "$alvo") bytes"
               break
             fi
