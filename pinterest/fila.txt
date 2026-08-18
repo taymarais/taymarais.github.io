@@ -38,7 +38,6 @@
 #     ⚠️ `adam-mads-fire-escape.jpg` tem 767px de largura, abaixo dos ~1000px que
 #     o Pinterest recomenda. Vai assim mesmo: ampliar nao cria detalhe e o
 #     original nao existe mais (ela, 15/08).
-adam-mads-fire-escape.jpg | He wanted to disappear. She was the worst possible place to hide. Chapters 1 and 2, here. | Dual POV slow burn celebrity romance. | Adam & Madeleine
 quote-imminent-disaster.jpg | The toast that starts everything. Chapters 1 and 2, here. | Slow burn Hollywood romance, dual POV. | Adam & Madeleine
 
 # --- Lote 3, REENVIO. Saiu em 17/08 na ordem errada (a quote furou a fila porque
