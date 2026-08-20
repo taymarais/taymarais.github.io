@@ -44,7 +44,6 @@
 #     Na grade sai: Madeleine de preto | `The silence isn't empty` | Adam do pilar
 #     Agora os tres feeds estao conectados desde antes, entao a ordem depende so
 #     do atraso de 3h entre as execucoes — que e o que o robo faz.
-mads-black-walk.jpg#r2 | L'Ange Blond. Chapters 1 and 2, here. | Dual POV slow burn romance. Book one of a saga. | Madeleine Bennett
 
 # --- Lote 4 "praia e pintura" (copy aprovada 17/08). Tres fileiras:
 #       pier   | Madeleine is the ocean | CASAL restaurante | The trouble with the ocean
