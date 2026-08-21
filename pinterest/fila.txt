@@ -45,6 +45,14 @@
 #     Agora os tres feeds estao conectados desde antes, entao a ordem depende so
 #     do atraso de 3h entre as execucoes — que e o que o robo faz.
 
+# 🔴 PAUSA de 21/08 — o lote 3 foi escrito nos feeds em 20/08 (09h49, 12h33,
+#    15h38) e 26h depois nao tinha aparecido nenhuma das tres. Nosso lado esta
+#    intacto: XML valido, imagens no lugar, site republicado nos tres commits.
+#    Enquanto essa fileira nao nascer, o lote 4 NAO pode sair: fileira nova em
+#    cima de fileira que faltou desalinha a grade inteira, e pin publicado nao
+#    se reordena.
+PAUSA — lote 3 escrito em 20/08 e ainda nao publicado; nao empilhar o lote 4
+
 # --- Lote 4 "praia e pintura" (copy aprovada 17/08). Tres fileiras:
 #       pier   | Madeleine is the ocean | CASAL restaurante | The trouble with the ocean
 #       corpo  | Mads Paris             | same man twice    | Adam closet
