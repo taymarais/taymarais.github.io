@@ -32,3 +32,31 @@
 2026-08-20 09:49 | adam-pillar-nightfall.jpg#r2 | A divorce on every cover, and a cap pulled low. Chapters 1 and 2, here. | Hollywood celebrity romance. Dual POV, slow burn. | Adam Walker
 2026-08-20 12:33 | quote-silence-not-empty.jpg#r2 | Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Slow burn. | Where The Ocean Ends
 2026-08-20 15:38 | mads-black-walk.jpg#r2 | L'Ange Blond. Chapters 1 and 2, here. | Dual POV slow burn romance. Book one of a saga. | Madeleine Bennett
+
+# ============================================================================
+# 🔴 22/08 — AS TRES DO LOTE 3 FORAM MUDADAS DE FEED, sem republicar nada.
+#    Escritas em 20/08 nos tres feeds "certos" (Adam Walker, Where The Ocean
+#    Ends, Madeleine Bennett), passaram DOIS DIAS sem virar pin. O nosso lado foi
+#    conferido elo por elo nos dois dias: XML valido, imagens no lugar, site
+#    republicado com sucesso nos tres commits.
+#
+#    O padrao que aparece olhando tudo que ja aconteceu:
+#      lote 1 (13/08) -> um feed so  -> ✅ publicou
+#      lote 2 (18/08) -> um feed so  -> ✅ publicou
+#      lote 3 (17/08) -> tres feeds  -> ❌ ordem trocada
+#      lote 3 (20/08) -> tres feeds  -> ❌ nao publicou
+#
+#    Entao os tres itens sairam dos feeds parados e entraram no `pins-couple.xml`,
+#    que e o unico que publicou nos ultimos dias. Guid mantido (`#r2`): se a
+#    deduplicacao do Pinterest for por conta, guid igual impede pin duplicado
+#    caso um dos feeds antigos acorde e leia antes desta mudanca.
+#
+#    ⚠️ EFEITO COLATERAL ACEITO: as duas fotos solo vao cair no board
+#    `Adam & Madeleine` em vez do board de cada personagem. E o board que rende
+#    ~11x mais por pin, entao o custo e de organizacao, nao de alcance.
+#
+#    Isto e teste alem de conserto: se publicar, o problema e dos outros tres
+#    feeds e a rota passa a ser um feed por fileira. Se nao publicar, o problema
+#    e da conta inteira e o unico caminho e reconectar os feeds na mao.
+# ============================================================================
+
