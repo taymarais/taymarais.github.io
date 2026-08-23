@@ -69,6 +69,11 @@ FEEDS = {
 # conexao acontece o Pinterest despeja tudo de uma vez e desmonta a grade.
 NAO_CONECTADOS = set()   # os quatro estao conectados desde 17/08/2026
 
+# 🔴 A rota ativa. Toda peca da fila sai por aqui, e a trava em `main` recusa
+# qualquer linha que aponte pra outro board. Os outros tres feeds continuam
+# conectados e parados, prontos caso um dia o Pinterest volte a le-los.
+BOARD_ATIVO = "Adam & Madeleine"
+
 # Primeira linha viva da fila igual a isto = o robo passa a vez, sem erro e sem
 # commit. Serve pra segurar a publicacao sem desligar o cron nem mexer em codigo:
 # apagar a linha e o suficiente pra voltar. Existe porque fileira publicada nao
@@ -269,6 +274,21 @@ def main():
     if board not in FEEDS:
         morre(f"board {board!r} nao esta no mapa. Boards validos: "
               f"{', '.join(sorted(FEEDS))}. Corrigir a linha na fila.")
+
+    # 🔴 TRAVA DE ROTA. Uma fileira que se espalha por varios feeds nao publica:
+    # medido duas vezes em 17 e 20/08, uma com a ordem trocada e outra sem
+    # publicar em dois dias, enquanto as duas fileiras que sairam por um feed so
+    # publicaram certas. Uma sessao futura, sem esse contexto, vai olhar uma foto
+    # do Adam e "consertar" o board pra `Adam Walker` achando que ajuda — e a
+    # fila para de sair, EM SILENCIO. Por isso a rota falha alto em vez de
+    # confiar em documentacao. Mudar a rota e mudar esta constante, de proposito.
+    if board != BOARD_ATIVO:
+        morre(f"a linha manda pro board {board!r}, mas a rota ativa e "
+              f"{BOARD_ATIVO!r} e TODA a fila tem que sair por ela.\n"
+              f"Fileira espalhada em varios feeds nao publica — testado duas "
+              f"vezes em 17 e 20/08. Se a intencao e mesmo voltar a usar varios "
+              f"boards, trocar BOARD_ATIVO em pinterest/publicar.py e ler o "
+              f"porque no maquina-de-pin.md antes.")
     arquivo = FEEDS[board]
     if arquivo in NAO_CONECTADOS:
         morre(f"o feed {arquivo} ({board}) ainda nao esta conectado no "
