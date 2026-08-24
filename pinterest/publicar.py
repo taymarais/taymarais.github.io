@@ -307,7 +307,13 @@ def main():
     # fonte, texto ou lugar obrigaria a refazer as 182 fotos na mao. A foto limpa
     # e a fonte, a marcada e a saida — mesma relacao do manuscrito com o EPUB.
     # Arte de quote nao recebe: ja traz o nome do livro dentro da arte.
-    if not arquivo_img.startswith("quote-") and not simular:
+    # 🔴 `dialogue-` entrou em 24/08 pelo mesmo motivo: as pecas do especial de
+    # dialogos tambem trazem o titulo dentro. O prefixo e SEPARADO de proposito, e
+    # nao um `quote-` disfarcado: o lote existe pra medir se dialogo converte mais
+    # que frase solta, e essa medida vive no `utm_content`, que e o nome do arquivo.
+    # Juntar os dois prefixos apagaria a unica variavel que o teste quer isolar.
+    SEM_MARCA = ("quote-", "dialogue-")
+    if not arquivo_img.startswith(SEM_MARCA) and not simular:
         try:
             marca.marca(origem)
             nome = f"marcadas/{arquivo_img}" + (f"#{nome.split('#')[1]}"
