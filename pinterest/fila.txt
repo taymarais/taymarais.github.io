@@ -99,23 +99,23 @@ quote-ruined-me-for-anyone-else.jpg | One night was the rule. This is what it co
 adam-mads-cap-cigarette.jpg | Close enough to be seen. Far enough to deny it. Chapters 1 and 2, here. | Hollywood celebrity romance. Slow burn, dual POV. | Adam & Madeleine
 quote-all-the-way-in.jpg | She does not do halfway. Chapters 1 and 2, here. | Dual POV celebrity romance. Book one of four. | Adam & Madeleine
 
-# ── LOTE 6 · especial de dialogos — COPY AGUARDANDO APROVACAO DELA ────────────
-#    🔴 As nove linhas abaixo estao COMENTADAS de proposito. A arte esta aprovada
-#    (24/08), a COPY nao — e a regra do topo deste arquivo diz que copy so entra
-#    aqui depois de aprovada no chat. Eu pulei esse passo e ela pegou.
-#    Pra liberar: apagar o prefixo `#PENDENTE# ` das nove linhas. Nada mais.
+# ── LOTE 6 · especial de dialogos — ARTE E COPY APROVADAS por ela em 24/08 ────
+#    Cinco artes de dialogo sobre pintura a oleo + quatro fotos. Nove pins, tres
+#    fileiras. Ordem = inverso da grade nas DUAS direcoes: a fileira de baixo sai
+#    primeiro, e dentro dela da direita pra esquerda. Assim a grade fica em ordem
+#    de capitulo lida de cima pra baixo: bar (01), manha (04), casa (07).
 #    Cinco artes de dialogo sobre pintura a oleo + quatro fotos. Nove pins, tres
 #    fileiras. Ordem = inverso da grade nas DUAS direcoes: a fileira de baixo sai
 #    primeiro, e dentro dela sai da direita pra esquerda. Assim a grade fica em
 #    ordem de capitulo, lida de cima pra baixo: bar (cap. 01), manha (cap. 04),
 #    casa (cap. 07).
 #    As zonas de texto de cada arte foram desenhadas pela autora em cima do fundo.
-#PENDENTE# dialogue-toujours.jpg | The only language they use when they mean it. Chapters 1 and 2, here. | Slow burn celebrity romance with a French heroine. Dual POV. | Adam & Madeleine
-#PENDENTE# adam-mads-wall-close.jpg | The street where they stop pretending, for about four minutes. Chapters 1 and 2, here. | Secret relationship romance. Dual POV, slow burn, Hollywood. | Adam & Madeleine
-#PENDENTE# dialogue-anything-but.jpg | The compliment she has spent a career refusing. Chapters 1 and 2, here. | Guarded heroine, dual POV slow burn. Book one of four. | Adam & Madeleine
-#PENDENTE# adam-venice-boat.jpg | Newly divorced, and the whole world is watching him be fine. Chapters 1 and 2, here. | Celebrity romance about a man who wants out of the photograph. Slow burn. | Adam & Madeleine
-#PENDENTE# dialogue-good-guy.jpg | The morning after, and neither of them says the word. Chapters 1 and 2, here. | One night trope, dual POV. Hollywood romance, slow burn. | Adam & Madeleine
-#PENDENTE# mads-pinstripe-boots.jpg | The tabloids named her L'Ange Blond. She has never answered to it. Chapters 1 and 2, here. | Rockstar heroine, movie star hero. Dual POV slow burn. | Adam & Madeleine
-#PENDENTE# dialogue-did-you-find-me.jpg | The first time in his life he loses the conversation. Chapters 1 and 2, here. | Enemies to lovers banter, celebrity romance. Dual POV. | Adam & Madeleine
-#PENDENTE# adam-mads-street-standoff.jpg | He came to apologize. She has decided to make him work for it. Chapters 1 and 2, here. | Bickering, slow burn, and a heroine who does not fold. Dual POV. | Adam & Madeleine
-#PENDENTE# dialogue-not-even-close.jpg | The first six words they ever say to each other. Chapters 1 and 2, here. | Enemies to lovers, one night trope. Celebrity romance, dual POV. | Adam & Madeleine
+dialogue-toujours.jpg | The only language they use when they mean it. Chapters 1 and 2, here. | Slow burn celebrity romance with a French heroine. Dual POV. | Adam & Madeleine
+adam-mads-wall-close.jpg | The street where they stop pretending, for about four minutes. Chapters 1 and 2, here. | Secret relationship romance. Dual POV, slow burn, Hollywood. | Adam & Madeleine
+dialogue-anything-but.jpg | The compliment she has spent a career refusing. Chapters 1 and 2, here. | Guarded heroine, dual POV slow burn. Book one of four. | Adam & Madeleine
+adam-venice-boat.jpg | Newly divorced, and the whole world is watching him be fine. Chapters 1 and 2, here. | Celebrity romance about a man who wants out of the photograph. Slow burn. | Adam & Madeleine
+dialogue-good-guy.jpg | The morning after, and neither of them says the word. Chapters 1 and 2, here. | One night trope, dual POV. Hollywood romance, slow burn. | Adam & Madeleine
+mads-pinstripe-boots.jpg | The tabloids named her L'Ange Blond. She has never answered to it. Chapters 1 and 2, here. | Rockstar heroine, movie star hero. Dual POV slow burn. | Adam & Madeleine
+dialogue-did-you-find-me.jpg | The first time in his life he loses the conversation. Chapters 1 and 2, here. | Enemies to lovers banter, celebrity romance. Dual POV. | Adam & Madeleine
+adam-mads-street-standoff.jpg | He came to apologize. She has decided to make him work for it. Chapters 1 and 2, here. | Bickering, slow burn, and a heroine who does not fold. Dual POV. | Adam & Madeleine
+dialogue-not-even-close.jpg | The first six words they ever say to each other. Chapters 1 and 2, here. | Enemies to lovers, one night trope. Celebrity romance, dual POV. | Adam & Madeleine
