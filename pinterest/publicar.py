@@ -81,7 +81,20 @@ BOARD_ATIVO = "Adam & Madeleine"
 # e esperar, e esperar tem que custar uma linha, nao uma sessao.
 PAUSA = "PAUSA"
 
-TIPO = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
+TIPO = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png",
+        # 🔴 VIDEO E TESTE, ligado em 29/08 a pedido dela. NAO se sabe se a
+        # publicacao automatica por RSS do Pinterest aceita video: a tela dele
+        # fala de "pins", nao de formato, e a documentacao nao esta acessivel
+        # daqui. Se ele ignorar o item, ignora EM SILENCIO -- por isso o teste
+        # sai com o video no MEIO de uma fileira e uma PAUSA logo depois, pra
+        # ela conferir antes da terceira peca fechar a fileira. Fileira que
+        # fecha com 3 pins esta alinhada mesmo se o video nao for um deles.
+        ".mp4": "video/mp4"}
+
+# `medium` do Media RSS: o Pinterest usa isso pra saber o que esta recebendo, e
+# `medium="image"` num .mp4 seria mentira. Derivado do tipo, nunca hardcoded.
+def medium(tipo):
+    return "video" if tipo.startswith("video/") else "image"
 
 CANAL = """<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
@@ -148,7 +161,8 @@ def item_xml(nome, titulo, descricao, quando):
         f'      <guid isPermaLink="false">{escape(guid)}</guid>',
         f"      <pubDate>{format_datetime(quando)}</pubDate>",
         f'      <enclosure url="{escape(img)}" type="{tipo}" length="0"/>',
-        f'      <media:content url="{escape(img)}" medium="image" type="{tipo}"/>',
+        f'      <media:content url="{escape(img)}" medium="{medium(tipo)}" '
+        f'type="{tipo}"/>',
         "    </item>",
     ])
 
@@ -307,7 +321,12 @@ def main():
     # fonte, texto ou lugar obrigaria a refazer as 182 fotos na mao. A foto limpa
     # e a fonte, a marcada e a saida — mesma relacao do manuscrito com o EPUB.
     # Arte de quote nao recebe: ja traz o nome do livro dentro da arte.
-    if not arquivo_img.startswith("quote-") and not simular:
+    # Video tambem nao recebe: o `marca.marca` e PIL, abre imagem. Antes desta
+    # linha ele estourava numa excecao e caia no aviso abaixo — funcionava, mas
+    # por acidente. Video sai SEM marca, e isso e uma escolha registrada, nao um
+    # efeito colateral: carimbar video exigiria reencodar a cada publicacao.
+    e_video = TIPO.get(os.path.splitext(arquivo_img)[1].lower(), "").startswith("video/")
+    if not arquivo_img.startswith("quote-") and not e_video and not simular:
         try:
             marca.marca(origem)
             nome = f"marcadas/{arquivo_img}" + (f"#{nome.split('#')[1]}"

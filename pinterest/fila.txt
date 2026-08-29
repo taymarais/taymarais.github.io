@@ -67,6 +67,34 @@
 #       pier   | Madeleine is the ocean | CASAL restaurante | The trouble with the ocean
 #       corpo  | Mads Paris             | same man twice    | Adam closet
 #       praia  | You're waiting         | CASAL gala        | The problem with running
+# ============================================================================
+# 🔴 TESTE DE VIDEO — 29/08, a pedido dela. A fileira 2 do lote 6 foi PROMOVIDA
+#    pra frente da fila e a foto do meio deu lugar ao video. Ela sai antes do
+#    resto do lote 6, que segue na ordem.
+#
+#    NAO SE SABE se a publicacao automatica por RSS do Pinterest aceita video, e
+#    se nao aceitar ela ignora EM SILENCIO. Por isso a sequencia:
+#      1. `quote-an-excellent-problem` sai as 09h e vira a DIREITA da fileira
+#      2. o VIDEO sai as 12h e vira o MEIO
+#      3. a PAUSA segura a terceira peca. ELA CONFERE O PERFIL.
+#         - virou pin  -> apagar a linha PAUSA, a terceira fecha a fileira
+#         - nao virou  -> apagar a PAUSA E somar mais uma peca depois da
+#                         terceira, pra fileira fechar com 3 pins do mesmo jeito
+#
+#    ⚠️ Fileira que fecha com 3 pins esta alinhada mesmo se o video nao for um
+#    deles. E por isso que este teste nao pode torcer a grade: o unico jeito de
+#    torcer seria parar em 1 ou 2, e a PAUSA existe pra impedir exatamente isso.
+#
+#    `adam-mads-press-portrait.jpg` volta pro acervo, sem publicar.
+#    O robo ganhou `.mp4` no mapa TIPO no mesmo commit; antes disso ele morria
+#    com "extensao nao aceita" e parava a fila inteira.
+quote-an-excellent-problem.jpg | He knows exactly what she is to him. He says yes anyway. Chapters 1 and 2, here. | Slow burn romance between two famous people. Dual POV. | Adam & Madeleine
+adam-mads-collage.mp4 | Every time the cameras caught them. Chapters 1 and 2, here. | Hollywood couple romance in motion. Dual POV, slow burn. | Adam & Madeleine
+PAUSA
+# ⬆️ Motivo: conferir se o video virou pin antes de fechar a fileira. Ver o
+#    bloco acima. Apagar SO a linha PAUSA quando ela responder.
+quote-known-her-for-lifetimes.jpg | The thought he had before he knew her name. Chapters 1 and 2, here. | Instalove meets slow burn. Celebrity romance, dual POV. | Adam & Madeleine
+# ============================================================================
 quote-ocean-never-lets-anyone-in.jpg | He keeps swimming out anyway. Chapters 1 and 2, here. | Enemies to lovers slow burn. Celebrity romance. | Adam & Madeleine
 adam-mads-restaurant.jpg | A table for two, and neither of them says the real thing. Chapters 1 and 2, here. | Hollywood romance, dual POV. Book one of a saga. | Adam & Madeleine
 quote-madeleine-is-the-ocean.jpg | He knew before he fell. Chapters 1 and 2, here. | Slow burn celebrity romance. Dual POV. | Adam & Madeleine
@@ -135,9 +163,6 @@ quote-it-isnt-rough.jpg | What she notices about his hands, the first time. Chap
 mads-blazer-gold-cuff.jpg | Everything about this photograph was somebody else's idea. Chapters 1 and 2, here. | Celebrity romance. Dual POV, slow burn, book one of four. | Adam & Madeleine
 quote-the-kind-that-ruins.jpg | How she warns him. He hears it as a dare. Chapters 1 and 2, here. | Damaged heroine romance. Dual POV, enemies to lovers. | Adam & Madeleine
 mads-mirror-selfie.jpg | L'Ange Blond, alone in a room nobody photographs. Chapters 1 and 2, here. | Celebrity romance with a guarded heroine. Slow burn. | Adam & Madeleine
-quote-an-excellent-problem.jpg | He knows exactly what she is to him. He says yes anyway. Chapters 1 and 2, here. | Slow burn romance between two famous people. Dual POV. | Adam & Madeleine
-adam-mads-press-portrait.jpg | Two names the press keeps printing in the same sentence. Chapters 1 and 2, here. | Hollywood couple romance. Enemies to lovers, dual POV. | Adam & Madeleine
-quote-known-her-for-lifetimes.jpg | The thought he had before he knew her name. Chapters 1 and 2, here. | Instalove meets slow burn. Celebrity romance, dual POV. | Adam & Madeleine
 adam-paris-balcony.jpg | Two weeks abroad to stop being a headline. Chapters 1 and 2, here. | Hollywood romance set between LA and Europe. Dual POV. | Adam & Madeleine
 quote-a-single-weight.jpg | What he felt the first time she leaned on him. Chapters 1 and 2, here. | Dual POV celebrity romance. Slow burn, book one of four. | Adam & Madeleine
 adam-cliff-black-tee.jpg | The first morning he woke up in a house with nobody in it. Chapters 1 and 2, here. | Newly divorced movie star romance. Dual POV, slow burn. | Adam & Madeleine
