@@ -183,6 +183,8 @@ def escreve_no_feed(caminho, board, item):
 
 
 GAP_MINIMO_MIN = 90        # minutos entre duas pecas da MESMA fileira
+PECAS_POR_FILEIRA = 3      # teto do DIA: a fileira tem tres pecas, nunca quatro
+SEM_MARCA = ("quote-", "dialogue-")   # artes que ja trazem o titulo dentro
 INTERVALO_FILEIRA_H = 36   # horas minimas entre uma fileira e a proxima
 FILEIRAS_POR_SEMANA = 3    # teto movel: fileiras nos ultimos 7 dias
 JANELA_DIAS = 7
@@ -223,7 +225,19 @@ def main():
     # metade. Perder um dia custa nada; deixar a grade torta custa o desenho dela.
     agora = datetime.now(ZoneInfo(FUSO))
     ultima = max(datas_publicadas(), default=None)
-    comecando = publicados_hoje(agora.date()) == 0
+    saidas_hoje = publicados_hoje(agora.date())
+    comecando = saidas_hoje == 0
+
+    # 🔴 TETO DO DIA: a fileira tem TRES pecas, nunca quatro.
+    # Ate 30/08 quem garantia isso era o cron ter exatamente tres horarios --
+    # uma execucao, uma peca. Era garantia de YAML, nao de script: bastou o cron
+    # ganhar tentativas extras pra nao perder a manha e a quarta execucao do dia
+    # passaria no gap de 90 min e publicaria uma QUARTA peca, que e exatamente o
+    # que torce a grade. O teto agora e regra daqui.
+    if not forcar and saidas_hoje >= PECAS_POR_FILEIRA:
+        print(f"A fileira de hoje ja saiu completa ({saidas_hoje} pecas). "
+              f"A proxima comeca amanha de manha.")
+        return
 
     if not forcar and comecando:
         # --- Este run COMECARIA uma fileira nova. Duas condicoes. ---
@@ -320,13 +334,17 @@ def main():
     # guardado. Marca gravada no original e irreversivel: mudar de ideia sobre
     # fonte, texto ou lugar obrigaria a refazer as 182 fotos na mao. A foto limpa
     # e a fonte, a marcada e a saida — mesma relacao do manuscrito com o EPUB.
-    # Arte de quote nao recebe: ja traz o nome do livro dentro da arte.
+    # Arte de quote nao recebe: ja traz o nome do livro dentro da arte. Arte de
+    # dialogo tambem traz, e por isso entra na mesma isencao -- mas com prefixo
+    # PROPRIO, e nao renomeada pra `quote-`: o nome do arquivo e o `utm_content`,
+    # e e nele que vive a unica medida que o especial existe pra fazer -- se
+    # dialogo converte mais que frase solta. Renomear apagaria a variavel.
     # Video tambem nao recebe: o `marca.marca` e PIL, abre imagem. Antes desta
     # linha ele estourava numa excecao e caia no aviso abaixo — funcionava, mas
     # por acidente. Video sai SEM marca, e isso e uma escolha registrada, nao um
     # efeito colateral: carimbar video exigiria reencodar a cada publicacao.
     e_video = TIPO.get(os.path.splitext(arquivo_img)[1].lower(), "").startswith("video/")
-    if not arquivo_img.startswith("quote-") and not e_video and not simular:
+    if not arquivo_img.startswith(SEM_MARCA) and not e_video and not simular:
         try:
             marca.marca(origem)
             nome = f"marcadas/{arquivo_img}" + (f"#{nome.split('#')[1]}"

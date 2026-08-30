@@ -13,9 +13,22 @@ name: Publicar pin
 # a ordem da fileira sobreviver a uma grade que mistura tres boards. Ver o
 # cabecalho de pinterest/publicar.py.
 
+# 🔴 TRES HORARIOS DE MANHA, PORQUE SO O PRIMEIRO ABRE A FILEIRA.
+# A fileira so comeca antes das 11h BRT (ver publicar.py). O horario das 09h era
+# a UNICA chance do dia, com 2h de folga -- e o cron do GitHub nao entrega isso:
+# ele atrasa em carga alta e chega a descartar execucao. De 27 a 30/08 nenhuma
+# execucao caiu antes das 11h e a fila ficou QUATRO DIAS parada, com todas as
+# rodadas marcadas como sucesso e nenhum e-mail de falha. Tres tentativas de
+# manha, em minuto quebrado (o comeco da hora e o pico de fila do GitHub), e uma
+# delas passa. As extras nao publicam a mais: o gap de 90 min segura a segunda
+# peca e o teto de PECAS_POR_FILEIRA segura a quarta.
 on:
   schedule:
-    - cron: '0 12,15,18 * * *'   # UTC. Brasilia e UTC-3 o ano inteiro.
+    - cron: '7 11 * * *'    # 08h07 BRT — primeira tentativa de abrir a fileira
+    - cron: '23 12 * * *'   # 09h23 BRT — o horario de origem
+    - cron: '47 13 * * *'   # 10h47 BRT — ultima chance antes do corte das 11h
+    - cron: '17 15 * * *'   # 12h17 BRT — segunda peca
+    - cron: '17 18 * * *'   # 15h17 BRT — terceira peca
   workflow_dispatch:
     inputs:
       simular:
