@@ -28,7 +28,7 @@ import os
 import re
 import sys
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timedelta
 from email.utils import format_datetime
 from xml.sax.saxutils import escape
 from zoneinfo import ZoneInfo
@@ -113,15 +113,41 @@ def morre(msg):
     sys.exit(1)
 
 
-def proxima_linha():
-    """Primeira linha que nao e comentario nem vazia, com o indice dela."""
+def proxima_fileira():
+    """As PECAS_POR_FILEIRA primeiras linhas vivas da fila, em ordem.
+
+    🔴 SO DEVOLVE FILEIRA COMPLETA. Meia fileira e o unico jeito de torcer a
+    grade (a aba Criados e fluxo continuo de tres colunas, entao publicar 2 num
+    dia empurra tudo que esta embaixo uma casa, pra sempre). Qualquer coisa que
+    impeca as tres -- PAUSA no meio, fila curta -- devolve `alvos` VAZIA e o
+    motivo em `parada`. Nada sai pela metade.
+    """
     if not os.path.exists(FILA):
         morre(f"{FILA} nao existe.")
     linhas = open(FILA, encoding="utf-8").read().splitlines()
-    for i, linha in enumerate(linhas):
-        if linha.strip() and not linha.lstrip().startswith("#"):
-            return linhas, i, linha
-    return linhas, None, None
+    vivas = [(i, l) for i, l in enumerate(linhas)
+             if l.strip() and not l.lstrip().startswith("#")]
+    if not vivas:
+        return linhas, [], "Fila vazia. Nada a publicar, nada a comitar."
+    if vivas[0][1].strip().upper().startswith(PAUSA):
+        return linhas, [], (f"Fila em PAUSA: {vivas[0][1].strip()}\n"
+                            f"Nada publicado, nada comitado. Apagar a linha "
+                            f"{PAUSA!r} de {FILA} pra voltar a publicar.")
+    alvos = []
+    for i, l in vivas[:PECAS_POR_FILEIRA]:
+        if l.strip().upper().startswith(PAUSA):
+            return linhas, [], (
+                f"A PAUSA esta na posicao {len(alvos) + 1} da fileira: sairiam "
+                f"{len(alvos)} pecas de {PECAS_POR_FILEIRA}, e meia fileira "
+                f"desalinha tudo que esta embaixo. Nada publicado. Apagar a "
+                f"linha {PAUSA!r} de {FILA} pra fileira sair inteira.")
+        alvos.append((i, l))
+    if len(alvos) < PECAS_POR_FILEIRA:
+        return linhas, [], (
+            f"So restam {len(alvos)} linha(s) viva(s) e a fileira precisa de "
+            f"{PECAS_POR_FILEIRA}. Meia fileira desalinha a grade, entao nada "
+            f"sai ate a fila voltar ao multiplo de 3.")
+    return linhas, alvos, None
 
 
 def parse(linha):
@@ -182,8 +208,15 @@ def escreve_no_feed(caminho, board, item):
     return cabeca.rstrip() + "\n" + item + "\n  </channel>" + cauda
 
 
-GAP_MINIMO_MIN = 90        # minutos entre duas pecas da MESMA fileira
-PECAS_POR_FILEIRA = 3      # teto do DIA: a fileira tem tres pecas, nunca quatro
+# 🔴 O GAP DE 90 MIN FOI APOSENTADO EM 31/08, junto com o corte das 11h.
+# Ele existia pra garantir a ORDEM quando a fileira se espalhava por tres feeds
+# lidos em horarios independentes: sem folga entre as pecas, a ordem virava
+# sorteio. Desde 22/08 toda a fila sai por UM feed so, e dentro de um feed a
+# ordem e garantida por CONSTRUCAO -- o Pinterest le os <item> do mais antigo
+# pro mais novo, entao ordem no arquivo e ordem no ar. Espacar deixou de comprar
+# garantia e passou a custar a fileira inteira: as tres pecas dependiam de tres
+# execucoes de cron, e o cron do GitHub nao entrega tres.
+PECAS_POR_FILEIRA = 3      # a fileira tem tres pecas, nunca quatro
 SEM_MARCA = ("quote-", "dialogue-")   # artes que ja trazem o titulo dentro
 INTERVALO_FILEIRA_H = 36   # horas minimas entre uma fileira e a proxima
 FILEIRAS_POR_SEMANA = 3    # teto movel: fileiras nos ultimos 7 dias
@@ -211,162 +244,127 @@ def main():
     simular = "--simular" in sys.argv
     forcar = "--forcar" in sys.argv
 
-    linhas, indice, linha = proxima_linha()
-    if indice is None:
-        print("Fila vazia. Nada a publicar, nada a comitar.")
+    linhas, alvos, parada = proxima_fileira()
+    if parada:
+        print(parada)
         return
 
-    # 🔴 FILEIRA NAO COMECA NO MEIO DO DIA.
-    # A grade da aba Criados e fluxo continuo de tres colunas, entao fileira so
-    # existe enquanto o total de pins criados for multiplo de 3: publicar 2 pecas
-    # num dia desalinha TUDO que esta embaixo ate a terceira sair, e pin
-    # publicado nao se reordena. Se o primeiro horario do dia foi perdido (pausa,
-    # falha de rede, cron atrasado), o dia inteiro passa em vez de sair pela
-    # metade. Perder um dia custa nada; deixar a grade torta custa o desenho dela.
     agora = datetime.now(ZoneInfo(FUSO))
     ultima = max(datas_publicadas(), default=None)
     saidas_hoje = publicados_hoje(agora.date())
-    comecando = saidas_hoje == 0
 
-    # 🔴 TETO DO DIA: a fileira tem TRES pecas, nunca quatro.
-    # Ate 30/08 quem garantia isso era o cron ter exatamente tres horarios --
-    # uma execucao, uma peca. Era garantia de YAML, nao de script: bastou o cron
-    # ganhar tentativas extras pra nao perder a manha e a quarta execucao do dia
-    # passaria no gap de 90 min e publicaria uma QUARTA peca, que e exatamente o
-    # que torce a grade. O teto agora e regra daqui.
-    if not forcar and saidas_hoje >= PECAS_POR_FILEIRA:
-        print(f"A fileira de hoje ja saiu completa ({saidas_hoje} pecas). "
-              f"A proxima comeca amanha de manha.")
+    # 🔴 UMA FILEIRA POR DIA. Antes o teto era "tres pecas por dia" porque cada
+    # execucao soltava uma; agora a fileira sai inteira numa execucao so, entao
+    # qualquer peca publicada hoje ja significa fileira feita.
+    if not forcar and saidas_hoje:
+        print(f"A fileira de hoje ja saiu ({saidas_hoje} pecas). "
+              f"A proxima e amanha.")
         return
 
-    if not forcar and comecando:
-        # --- Este run COMECARIA uma fileira nova. Duas condicoes. ---
+    # 🔴 O CORTE DAS 11h MORREU EM 31/08, e a razao importa.
+    # Ele existia pra fileira nao comecar tarde e ficar pela metade: as tres
+    # pecas dependiam de TRES execucoes espacadas, entao comecar as 12h deixava
+    # a grade torta ate o dia seguinte. Como agora a fileira sai inteira numa
+    # execucao, comecar tarde nao deixa nada pela metade -- e o corte tinha
+    # virado a causa do problema, nao a protecao contra ele.
+    #
+    # MEDIDO EM 31/08, nas Actions: de 26 a 30/08 o cron do GitHub entregou 1 ou
+    # 2 execucoes por dia em vez de 5, atrasadas de 4 a 9 HORAS. Nenhuma caiu
+    # antes das 11h. Resultado: cinco dias de rodadas VERDES, com o script
+    # imprimindo "o dia inteiro passa", e zero pins. Somar tentativas de manha
+    # (o conserto de 30/08) nao resolve: o GitHub nao roda de manha.
 
-        # 🔴 1. Fileira nao comeca no meio do dia.
-        # A grade da aba Criados e fluxo continuo de tres colunas, entao fileira
-        # so existe enquanto o total de pins criados for multiplo de 3. Comecar
-        # as 12h deixaria a fileira pela metade ate amanha, e pin publicado nao
-        # se reordena. Perder um dia custa nada; meia fileira custa o desenho.
-        if agora.hour >= 11:
-            print(f"Sao {agora:%H:%M} e nada saiu hoje: o primeiro horario "
-                  f"(09h) ja passou. O dia inteiro passa em vez de sair meia "
-                  f"fileira — amanha as 09h ela sai completa.")
-            return
-
-        # 2. Folga minima entre fileiras.
-        if ultima and (agora - ultima).total_seconds() / 3600 < INTERVALO_FILEIRA_H:
-            horas = (agora - ultima).total_seconds() / 3600
+    if not forcar and ultima:
+        horas = (agora - ultima).total_seconds() / 3600
+        if horas < INTERVALO_FILEIRA_H:
             print(f"A fileira anterior saiu ha {horas:.0f}h. Minimo de "
                   f"{INTERVALO_FILEIRA_H}h entre fileiras.")
             return
 
-        # 🔴 3. TETO MOVEL: no maximo 3 fileiras a cada 7 dias.
-        # A cadencia e dela, decidida em 15/08 e reafirmada em 17/08: *"uma por
-        # dia e demais, vai gastar antes de eu ter banco de mais"*. O gargalo do
-        # sistema nao e publicar, e PRODUZIR ARTE — o estoque de foto sobra, o de
-        # arte nao existe. Publicar rapido nao acelera nada, so esvazia a fila
-        # antes de ela ter o proximo lote pronto.
-        # Janela movel, e nao dia fixo da semana, porque dia fixo transforma
-        # qualquer tropeco em espera de dois dias: perdeu a segunda, so na quarta.
-        # Assim um dia perdido e recuperado sozinho, sem passar do teto.
-        recentes = {d.date() for d in datas_publicadas()
-                    if (agora - d).days < JANELA_DIAS}
-        if len(recentes) >= FILEIRAS_POR_SEMANA:
-            print(f"Ja sairam {len(recentes)} fileiras nos ultimos {JANELA_DIAS} "
-                  f"dias, que e o teto ({FILEIRAS_POR_SEMANA}/semana). A proxima "
-                  f"sai quando a mais antiga da janela vencer.")
-            return
-
-    # 🔴 DUAS PECAS COLADAS = ORDEM NO SORTEIO.
-    # O cron do GitHub nao e pontual: pode atrasar meia hora e mais, e duas
-    # execucoes atrasadas se juntam. A ordem da fileira depende de o Pinterest
-    # ler os feeds ENTRE uma peca e a outra, entao peca solta minutos depois da
-    # anterior perde a unica garantia que o sistema tem. Medido em 17/08: ~1h de
-    # vantagem foi suficiente pra determinar a ordem; 90 min e a margem.
-    if not forcar and ultima and not comecando:
-        faltam = GAP_MINIMO_MIN - (agora - ultima).total_seconds() / 60
-        if faltam > 0:
-            print(f"A peca anterior saiu {int(GAP_MINIMO_MIN - faltam)} min atras. "
-                  f"Esperando {int(faltam)} min pra nao publicar duas colada, que "
-                  f"joga a ordem da fileira no sorteio.")
-            return
-
-    if linha.strip().upper().startswith(PAUSA):
-        print(f"Fila em PAUSA: {linha.strip()}\n"
-              f"Nada publicado, nada comitado. Apagar a linha '{PAUSA}' de "
-              f"{FILA} pra voltar a publicar.")
+    # 🔴 TETO MOVEL: no maximo 3 fileiras a cada 7 dias.
+    # A cadencia e dela, decidida em 15/08 e reafirmada em 17/08: *"uma por dia
+    # e demais, vai gastar antes de eu ter banco de mais"*. O gargalo do sistema
+    # nao e publicar, e PRODUZIR ARTE. Janela movel, e nao dia fixo da semana,
+    # porque dia fixo transforma qualquer tropeco em espera de dois dias.
+    recentes = {d.date() for d in datas_publicadas()
+                if (agora - d).days < JANELA_DIAS}
+    if not forcar and len(recentes) >= FILEIRAS_POR_SEMANA:
+        print(f"Ja sairam {len(recentes)} fileiras nos ultimos {JANELA_DIAS} "
+              f"dias, que e o teto ({FILEIRAS_POR_SEMANA}/semana). A proxima "
+              f"sai quando a mais antiga da janela vencer.")
         return
 
-    nome, titulo, descricao, board = parse(linha)
+    # 🔴 VALIDA AS TRES ANTES DE ESCREVER QUALQUER UMA. Tudo ou nada: uma peca
+    # escrita e duas recusadas seria exatamente a meia fileira que o resto deste
+    # arquivo existe pra impedir.
+    pecas, arquivo = [], None
+    for indice, linha in alvos:
+        nome, titulo, descricao, board = parse(linha)
+        if board not in FEEDS:
+            morre(f"board {board!r} nao esta no mapa. Boards validos: "
+                  f"{', '.join(sorted(FEEDS))}. Corrigir a linha na fila.")
+        # 🔴 TRAVA DE ROTA. Fileira espalhada por varios feeds nao publica --
+        # medido duas vezes, em 17 e 20/08. Uma sessao futura vai olhar uma foto
+        # do Adam e "consertar" o board pra `Adam Walker` achando que ajuda, e a
+        # fila para EM SILENCIO. Por isso a rota falha alto.
+        if board != BOARD_ATIVO:
+            morre(f"a linha manda pro board {board!r}, mas a rota ativa e "
+                  f"{BOARD_ATIVO!r} e TODA a fila tem que sair por ela.\n"
+                  f"Mudar a rota e mudar BOARD_ATIVO, de proposito, depois de "
+                  f"ler o porque no maquina-de-pin.md.")
+        if arquivo is None:
+            arquivo = FEEDS[board]
+        if FEEDS[board] in NAO_CONECTADOS:
+            morre(f"o feed {FEEDS[board]} ({board}) ainda nao esta conectado no "
+                  f"Pinterest. Fila PARADA de proposito: item escrito num feed "
+                  f"desconectado nao vira pin, e quando a conexao acontecer o "
+                  f"Pinterest despeja tudo de uma vez e desmonta a grade.")
+        arquivo_img = nome.split("#")[0]      # `nome.jpg#r2` e reenvio
+        if not os.path.exists(os.path.join(RAIZ, "pins", arquivo_img)):
+            morre(f"pins/{arquivo_img} nao existe no repo. "
+                  f"Pin com imagem 404 e pin morto, e a fileira inteira para.")
+        pecas.append(dict(indice=indice, linha=linha, nome=nome, titulo=titulo,
+                          descricao=descricao, board=board, img=arquivo_img))
 
-    if board not in FEEDS:
-        morre(f"board {board!r} nao esta no mapa. Boards validos: "
-              f"{', '.join(sorted(FEEDS))}. Corrigir a linha na fila.")
+    # ---- carimbo e montagem dos tres <item>, ja validados ----
+    itens = []
+    for k, pc in enumerate(pecas):
+        origem = os.path.join(RAIZ, "pins", pc["img"])
+        # A marca d'agua entra AQUI, na publicacao, nunca no arquivo guardado:
+        # marca gravada no original e irreversivel. Arte de quote e de dialogo
+        # nao recebem (ja trazem o nome do livro dentro), e video tambem nao --
+        # carimbar exigiria reencodar a cada publicacao.
+        e_video = TIPO.get(os.path.splitext(pc["img"])[1].lower(), "").startswith("video/")
+        if not pc["img"].startswith(SEM_MARCA) and not e_video and not simular:
+            try:
+                marca.marca(origem)
+                pc["nome"] = f"marcadas/{pc['img']}" + (
+                    f"#{pc['nome'].split('#')[1]}" if "#" in pc["nome"] else "")
+            except Exception as e:
+                # Foto sem marca e melhor que fileira parada: a marca e
+                # assinatura, nao requisito. Mas o aviso tem que aparecer no log.
+                print(f"AVISO: nao consegui carimbar {pc['img']} ({e}). "
+                      f"Publicando a foto limpa.")
+        # Um minuto entre os pubDate: a ordem ja vem da posicao no arquivo, mas
+        # data igual nos tres seria informacao a menos por nada.
+        pc["quando"] = agora + timedelta(minutes=k)
+        itens.append(item_xml(pc["nome"], pc["titulo"], pc["descricao"], pc["quando"]))
 
-    # 🔴 TRAVA DE ROTA. Uma fileira que se espalha por varios feeds nao publica:
-    # medido duas vezes em 17 e 20/08, uma com a ordem trocada e outra sem
-    # publicar em dois dias, enquanto as duas fileiras que sairam por um feed so
-    # publicaram certas. Uma sessao futura, sem esse contexto, vai olhar uma foto
-    # do Adam e "consertar" o board pra `Adam Walker` achando que ajuda — e a
-    # fila para de sair, EM SILENCIO. Por isso a rota falha alto em vez de
-    # confiar em documentacao. Mudar a rota e mudar esta constante, de proposito.
-    if board != BOARD_ATIVO:
-        morre(f"a linha manda pro board {board!r}, mas a rota ativa e "
-              f"{BOARD_ATIVO!r} e TODA a fila tem que sair por ela.\n"
-              f"Fileira espalhada em varios feeds nao publica — testado duas "
-              f"vezes em 17 e 20/08. Se a intencao e mesmo voltar a usar varios "
-              f"boards, trocar BOARD_ATIVO em pinterest/publicar.py e ler o "
-              f"porque no maquina-de-pin.md antes.")
-    arquivo = FEEDS[board]
-    if arquivo in NAO_CONECTADOS:
-        morre(f"o feed {arquivo} ({board}) ainda nao esta conectado no "
-              f"Pinterest. Fila PARADA de proposito: item escrito num feed "
-              f"desconectado nao vira pin, e quando a conexao acontecer o "
-              f"Pinterest despeja tudo de uma vez e desmonta a grade. "
-              f"Conectar {SITE}/{arquivo} no board '{board}' e rodar de novo.")
-
-    arquivo_img = nome.split("#")[0]      # `nome.jpg#r2` e reenvio, ver item_xml
-    origem = os.path.join(RAIZ, "pins", arquivo_img)
-    if not os.path.exists(origem):
-        morre(f"pins/{arquivo_img} nao existe no repo. Pin com imagem 404 e pin morto.")
-
-    # 🔴 A marca d'agua entra AQUI, na hora de publicar, e nunca no arquivo
-    # guardado. Marca gravada no original e irreversivel: mudar de ideia sobre
-    # fonte, texto ou lugar obrigaria a refazer as 182 fotos na mao. A foto limpa
-    # e a fonte, a marcada e a saida — mesma relacao do manuscrito com o EPUB.
-    # Arte de quote nao recebe: ja traz o nome do livro dentro da arte. Arte de
-    # dialogo tambem traz, e por isso entra na mesma isencao -- mas com prefixo
-    # PROPRIO, e nao renomeada pra `quote-`: o nome do arquivo e o `utm_content`,
-    # e e nele que vive a unica medida que o especial existe pra fazer -- se
-    # dialogo converte mais que frase solta. Renomear apagaria a variavel.
-    # Video tambem nao recebe: o `marca.marca` e PIL, abre imagem. Antes desta
-    # linha ele estourava numa excecao e caia no aviso abaixo — funcionava, mas
-    # por acidente. Video sai SEM marca, e isso e uma escolha registrada, nao um
-    # efeito colateral: carimbar video exigiria reencodar a cada publicacao.
-    e_video = TIPO.get(os.path.splitext(arquivo_img)[1].lower(), "").startswith("video/")
-    if not arquivo_img.startswith(SEM_MARCA) and not e_video and not simular:
-        try:
-            marca.marca(origem)
-            nome = f"marcadas/{arquivo_img}" + (f"#{nome.split('#')[1]}"
-                                                if "#" in nome else "")
-        except Exception as e:
-            # Foto sem marca e melhor que fileira parada: a marca e assinatura,
-            # nao requisito. Mas o aviso tem que aparecer no log da execucao.
-            print(f"AVISO: nao consegui carimbar {arquivo_img} ({e}). "
-                  f"Publicando a foto limpa.")
-
-    agora = datetime.now(ZoneInfo(FUSO))
     caminho = os.path.join(RAIZ, arquivo)
-    novo = escreve_no_feed(caminho, board, item_xml(nome, titulo, descricao, agora))
+    novo = escreve_no_feed(caminho, pecas[0]["board"], "\n".join(itens))
 
     try:
         ET.fromstring(novo)
     except ET.ParseError as e:
         morre(f"o feed sairia com XML quebrado ({e}). Nada foi escrito.")
 
-    print(f"{nome}  ->  {board}  ({arquivo})")
-    print(f"  titulo: {titulo}")
-    print(f"  restam na fila: {sum(1 for l in linhas[indice + 1:] if l.strip() and not l.lstrip().startswith('#'))}")
+    print(f"Fileira de {len(pecas)} pecas  ->  {pecas[0]['board']}  ({arquivo})")
+    for pc in pecas:
+        print(f"  {pc['nome']}")
+        print(f"    {pc['titulo']}")
+    restam = sum(1 for l in linhas[pecas[-1]["indice"] + 1:]
+                 if l.strip() and not l.lstrip().startswith("#"))
+    print(f"  restam na fila: {restam}  ({restam // PECAS_POR_FILEIRA} fileiras)")
 
     if simular:
         print("\n--simular: nada foi escrito.")
@@ -375,16 +373,20 @@ def main():
     with open(caminho, "w", encoding="utf-8") as f:
         f.write(novo)
 
-    del linhas[indice]
+    # De tras pra frente: apagar do inicio remexeria os indices seguintes.
+    for pc in sorted(pecas, key=lambda x: x["indice"], reverse=True):
+        del linhas[pc["indice"]]
     with open(FILA, "w", encoding="utf-8") as f:
         f.write("\n".join(linhas).rstrip("\n") + "\n")
 
     with open(PUBLICADOS, "a", encoding="utf-8") as f:
-        f.write(f"{agora:%Y-%m-%d %H:%M} | {linha.strip()}\n")
+        for pc in pecas:
+            f.write(f"{pc['quando']:%Y-%m-%d %H:%M} | {pc['linha'].strip()}\n")
 
     # Mensagem de commit sai por aqui, sem apostrofo nem barra: texto da fila
     # interpolado direto num `run:` do workflow e injecao de shell.
-    resumo = re.sub(r"[^A-Za-z0-9 ._&-]", "", f"{nome} -> {board}")
+    resumo = re.sub(r"[^A-Za-z0-9 ._&-]", "",
+                    f"fileira de {len(pecas)} -> {pecas[0]['board']}")
     saida = os.environ.get("GITHUB_OUTPUT")
     if saida:
         with open(saida, "a", encoding="utf-8") as f:

@@ -1,34 +1,37 @@
 name: Publicar pin
 
-# Uma peca por execucao, tres execucoes por dia (09h, 12h e 15h de Brasilia).
-# Fileira de 3 = um dia, e o proprio script segura a proxima fileira por 36h.
+# A FILEIRA INTEIRA numa execucao so. Cinco tentativas por dia, e a PRIMEIRA que
+# o GitHub entregar publica as tres pecas; as outras quatro encontram a fileira
+# do dia ja feita e passam a vez, quietas.
+#
+# 🔴 POR QUE MUDOU, em 31/08. Ate aqui era uma peca por execucao, e a fileira
+# dependia de TRES execucoes no mesmo dia, comecando antes das 11h BRT. Medido
+# nas Actions: de 26 a 30/08 o GitHub entregou 1 ou 2 execucoes por dia em vez
+# de cinco, atrasadas de 4 a 9 HORAS, e NENHUMA caiu antes das 11h. Cinco dias
+# de rodadas verdes, zero pins, nenhum e-mail de falha. Somar tentativas de
+# manha (o conserto de 30/08) nao resolveu, porque o GitHub nao roda de manha.
+#
+# O espacamento entre as pecas existia pra garantir a ORDEM quando a fileira se
+# espalhava por tres feeds lidos em horarios independentes. Desde 22/08 tudo sai
+# por UM feed, e dentro de um feed a ordem e garantida por construcao: o
+# Pinterest le os <item> do mais antigo pro mais novo. Espacar deixou de comprar
+# garantia e passou a custar a fileira.
 #
 # 🔴 O CRON RODA TODO DIA DE PROPOSITO, e quem decide se publica e o script.
-# Dia fixo da semana (era seg/qua/sex) transforma qualquer tropeco em espera de
-# dois dias: perdeu a segunda, so na quarta. Rodando todo dia, o dia seguinte
-# assume sozinho e a fila anda. A cadencia continua a mesma — uma fileira a cada
-# 36h e ~4 por semana — mas ela deixa de depender do calendario.
+# Dia fixo da semana (era seg/qua/sex) transformava qualquer tropeco em espera
+# de dois dias. A cadencia continua a dela: uma fileira por dia no maximo, 36h
+# entre fileiras, teto de 3 fileiras a cada 7 dias. Ver pinterest/publicar.py.
 #
-# O atraso entre as execucoes e o mecanismo, nao um detalhe: e o unico jeito de
-# a ordem da fileira sobreviver a uma grade que mistura tres boards. Ver o
-# cabecalho de pinterest/publicar.py.
-
-# 🔴 TRES HORARIOS DE MANHA, PORQUE SO O PRIMEIRO ABRE A FILEIRA.
-# A fileira so comeca antes das 11h BRT (ver publicar.py). O horario das 09h era
-# a UNICA chance do dia, com 2h de folga -- e o cron do GitHub nao entrega isso:
-# ele atrasa em carga alta e chega a descartar execucao. De 27 a 30/08 nenhuma
-# execucao caiu antes das 11h e a fila ficou QUATRO DIAS parada, com todas as
-# rodadas marcadas como sucesso e nenhum e-mail de falha. Tres tentativas de
-# manha, em minuto quebrado (o comeco da hora e o pico de fila do GitHub), e uma
-# delas passa. As extras nao publicam a mais: o gap de 90 min segura a segunda
-# peca e o teto de PECAS_POR_FILEIRA segura a quarta.
+# Os cinco horarios agora sao REDUNDANCIA, nao etapas: espalhados pelo dia
+# justamente porque o cron do GitHub atrasa e descarta execucao. Minuto quebrado
+# de proposito -- o comeco da hora e o pico de fila do GitHub.
 on:
   schedule:
-    - cron: '7 11 * * *'    # 08h07 BRT — primeira tentativa de abrir a fileira
+    - cron: '7 11 * * *'    # 08h07 BRT
     - cron: '23 12 * * *'   # 09h23 BRT — o horario de origem
-    - cron: '47 13 * * *'   # 10h47 BRT — ultima chance antes do corte das 11h
-    - cron: '17 15 * * *'   # 12h17 BRT — segunda peca
-    - cron: '17 18 * * *'   # 15h17 BRT — terceira peca
+    - cron: '47 13 * * *'   # 10h47 BRT
+    - cron: '17 15 * * *'   # 12h17 BRT
+    - cron: '17 18 * * *'   # 15h17 BRT — a rede, pro dia em que as quatro atrasam
   workflow_dispatch:
     inputs:
       simular:
@@ -36,7 +39,7 @@ on:
         type: boolean
         default: false
       forcar:
-        description: 'Comecar fileira fora de hora (normalmente o dia inteiro passa)'
+        description: 'Ignorar as travas de cadencia (36h entre fileiras, teto semanal)'
         type: boolean
         default: false
 
