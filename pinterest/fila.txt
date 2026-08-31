@@ -88,8 +88,6 @@
 #    `adam-mads-press-portrait.jpg` volta pro acervo, sem publicar.
 #    O robo ganhou `.mp4` no mapa TIPO no mesmo commit; antes disso ele morria
 #    com "extensao nao aceita" e parava a fila inteira.
-quote-an-excellent-problem.jpg | He knows exactly what she is to him. He says yes anyway. Chapters 1 and 2, here. | Slow burn romance between two famous people. Dual POV. | Adam & Madeleine
-adam-mads-collage.mp4 | Every time the cameras caught them. Chapters 1 and 2, here. | Hollywood couple romance in motion. Dual POV, slow burn. | Adam & Madeleine
 # ✅ 31/08 — A PAUSA SAIU, POR DECISAO DELA: *"vamos ter que publicar para ver
 #    funcionar."* A trava existia pra conferir o video ANTES de fechar a fileira,
 #    mas o robo nao publicou nada desde 26/08 — entao nao havia o que conferir, e
@@ -101,7 +99,6 @@ adam-mads-collage.mp4 | Every time the cameras caught them. Chapters 1 and 2, he
 #    video NAO virar pin, a fileira fecha com 2 e tudo que esta embaixo anda uma
 #    casa. Conserta publicando UMA peca a mais — a grade e fluxo continuo, entao
 #    uma peca extra realinha tudo de novo. Nao e dano permanente, e correcao de 1.
-quote-known-her-for-lifetimes.jpg | The thought he had before he knew her name. Chapters 1 and 2, here. | Instalove meets slow burn. Celebrity romance, dual POV. | Adam & Madeleine
 # ============================================================================
 quote-ocean-never-lets-anyone-in.jpg | He keeps swimming out anyway. Chapters 1 and 2, here. | Enemies to lovers slow burn. Celebrity romance. | Adam & Madeleine
 adam-mads-restaurant.jpg | A table for two, and neither of them says the real thing. Chapters 1 and 2, here. | Hollywood romance, dual POV. Book one of a saga. | Adam & Madeleine
