@@ -166,3 +166,39 @@ mads-mirror-selfie.jpg | L'Ange Blond, alone in a room nobody photographs. Chapt
 adam-paris-balcony.jpg | Two weeks abroad to stop being a headline. Chapters 1 and 2, here. | Hollywood romance set between LA and Europe. Dual POV. | Adam & Madeleine
 quote-a-single-weight.jpg | What he felt the first time she leaned on him. Chapters 1 and 2, here. | Dual POV celebrity romance. Slow burn, book one of four. | Adam & Madeleine
 adam-cliff-black-tee.jpg | The first morning he woke up in a house with nobody in it. Chapters 1 and 2, here. | Newly divorced movie star romance. Dual POV, slow burn. | Adam & Madeleine
+
+# ============================================================================
+# COPY DO LOTE 7 RESGATADA DO PR #11 — COMENTADA DE PROPOSITO, NAO E FILA.
+#
+# O PR #11 ficou 7 dias em conflito e a main seguiu por outro caminho. As 16
+# linhas abaixo sao a unica coisa que so existia la depois das artes voltarem
+# pro acervo. Elas NAO entram na fila sozinhas: a regra da linha 12 deste
+# arquivo e que copy so entra depois de aprovada no chat, e a ORDEM aqui e o
+# desenho da grade — tres por fileira, lida da direita pra esquerda, o inverso
+# do que ela ve. Escolher essa ordem nao e decisao de robo.
+#
+# 🔴 Tres linhas do PR #11 NAO estao aqui, e e o motivo pra nunca ter mergeado
+#    aquela fila inteira: adam-closet-white-shirt, quote-same-man-twice e
+#    mads-paris-street JA FORAM PUBLICADAS (22 a 26/08). Voltariam pra fila
+#    como item novo, o robo gastaria a vaga, o Pinterest deduplicaria pelo
+#    <guid> e nenhum pin apareceria — fileira pela metade, grade torta.
+#
+# Pra ativar: aprovar a copy, decidir a ordem das fileiras e tirar o # da
+# frente das linhas escolhidas, em blocos de 3.
+# ============================================================================
+# dialogue-toujours.jpg | The only language they use when they mean it. Chapters 1 and 2, here. | Slow burn celebrity romance with a French heroine. Dual POV. | Adam & Madeleine
+# adam-mads-wall-close.jpg | The street where they stop pretending, for about four minutes. Chapters 1 and 2, here. | Secret relationship romance. Dual POV, slow burn, Hollywood. | Adam & Madeleine
+# dialogue-anything-but.jpg | The compliment she has spent a career refusing. Chapters 1 and 2, here. | Guarded heroine, dual POV slow burn. Book one of four. | Adam & Madeleine
+# adam-venice-boat.jpg | Newly divorced, and the whole world is watching him be fine. Chapters 1 and 2, here. | Celebrity romance about a man who wants out of the photograph. Slow burn. | Adam & Madeleine
+# dialogue-good-guy.jpg | The morning after, and neither of them says the word. Chapters 1 and 2, here. | One night trope, dual POV. Hollywood romance, slow burn. | Adam & Madeleine
+# dialogue-did-you-find-me.jpg | The first time in his life he loses the conversation. Chapters 1 and 2, here. | Enemies to lovers banter, celebrity romance. Dual POV. | Adam & Madeleine
+# dialogue-not-even-close.jpg | The first six words they ever say to each other. Chapters 1 and 2, here. | Enemies to lovers, one night trope. Celebrity romance, dual POV. | Adam & Madeleine
+# adam-hoodie-cobbles.jpg | Off duty, off camera, and still the most watched man on the street. Chapters 1 and 2, here. | Celebrity romance about a man with nowhere private left. Dual POV slow burn. | Adam & Madeleine
+# dialogue-does-it-matter.jpg | The question she has been dodging for eleven years. Chapters 1 and 2, here. | Damaged heroine, dual POV slow burn. Celebrity romance, book one of four. | Adam & Madeleine
+# mads-neon-hair.jpg | Between the club and the car, the only ten seconds that are hers. Chapters 1 and 2, here. | Rockstar heroine romance. Slow burn, dual POV, Hollywood. | Adam & Madeleine
+# quote-letting-me-breathe.jpg | What he figures out on the pier, before anything has happened. Chapters 1 and 2, here. | One night trope, slow burn. Dual POV celebrity romance. | Adam & Madeleine
+# adam-mads-opera-box.jpg | Two people the whole room is pretending not to look at. Chapters 1 and 2, here. | Secret relationship, forced proximity. Dual POV Hollywood romance. | Adam & Madeleine
+# quote-flammable.jpg | He knew exactly how this ends. He walked in anyway. Chapters 1 and 2, here. | Enemies to lovers slow burn, dual POV. Book one of four. | Adam & Madeleine
+# adam-polo-daylight.jpg | Newly divorced, and the city has opinions about all of it. Chapters 1 and 2, here. | Movie star romance. Slow burn, dual POV, Los Angeles. | Adam & Madeleine
+# dialogue-not-exactly.jpg | Their first three minutes, and he is already losing. Chapters 1 and 2, here. | Bickering, one night trope, slow burn. Dual POV celebrity romance. | Adam & Madeleine
+# mads-closet-shoulder.jpg | Getting dressed for a night she has no intention of enjoying. Chapters 1 and 2, here. | Guarded heroine, Hollywood romance. Dual POV, book one of four. | Adam & Madeleine
