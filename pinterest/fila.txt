@@ -99,6 +99,35 @@
 #    video NAO virar pin, a fileira fecha com 2 e tudo que esta embaixo anda uma
 #    casa. Conserta publicando UMA peca a mais — a grade e fluxo continuo, entao
 #    uma peca extra realinha tudo de novo. Nao e dano permanente, e correcao de 1.
+#
+# ✅ 01/09 — RESULTADO DO TESTE: VIDEO VIRA PIN. Confirmado por ela no perfil.
+#    A publicacao automatica por RSS aceita .mp4, com enclosure e media:content
+#    em video/mp4 e medium="video". A duvida de 29/08 esta respondida: pode usar.
+#
+# 🔴 MAS A ORDEM NAO OBEDECE A FILA QUANDO TEM VIDEO. Medido na fileira de 31/08:
+#
+#      escrito no feed     12:58 excellent · 12:59 VIDEO · 13:00 known
+#      virou pin (grade)   excellent (direita) · known (meio) · VIDEO (ESQUERDA)
+#
+#    O video foi escrito em SEGUNDO, que na grade seria o meio, e apareceu na
+#    esquerda: ele foi o ULTIMO a virar pin. O Pinterest demora mais pra
+#    processar video do que imagem, e desde que a fileira passou a sair inteira
+#    numa execucao so, as tres pecas chegam com segundos de diferenca — entao
+#    quem decide a ordem e o TEMPO DE PROCESSAMENTO, nao a ordem da fila.
+#
+#    Ela quer o video no MEIO. A fileira de 31/08 fica como esta (era teste),
+#    mas da proxima em diante isso precisa ser tratado.
+#
+#    ⚠️ SO EXISTE UMA MEDICAO. Nao se sabe o tamanho do atraso, entao nao da pra
+#    calcular a vantagem no chute. O proximo video e o experimento: escrever ele
+#    ANTES das outras duas pecas da fileira, com folga, em vez de junto. Isso
+#    exige devolver o espacamento SO para fileiras com video — e o espacamento
+#    foi removido de todas de proposito, porque foi ele que deixou a fila
+#    confiavel. Nao mexer nisso sem decisao dela: o custo de errar e a fila
+#    voltar a depender de tres execucoes caindo no horario.
+#
+#    Alternativa honesta, se ela nao quiser mexer: aceitar o video na esquerda
+#    e montar a fileira sabendo disso.
 # ============================================================================
 quote-ocean-never-lets-anyone-in.jpg | He keeps swimming out anyway. Chapters 1 and 2, here. | Enemies to lovers slow burn. Celebrity romance. | Adam & Madeleine
 adam-mads-restaurant.jpg | A table for two, and neither of them says the real thing. Chapters 1 and 2, here. | Hollywood romance, dual POV. Book one of a saga. | Adam & Madeleine
@@ -192,6 +221,9 @@ adam-cliff-black-tee.jpg | The first morning he woke up in a house with nobody i
 # frente das linhas escolhidas, em blocos de 3.
 # ============================================================================
 # dialogue-toujours.jpg | The only language they use when they mean it. Chapters 1 and 2, here. | Slow burn celebrity romance with a French heroine. Dual POV. | Adam & Madeleine
+# 🔴 RECUSADA em 01/09 por ela: e a MESMA foto da adam-mads-white-wall, que ja
+#    esta na fila em P&B (fileira 14). Distancia perceptual 0.0 entre as duas.
+#    NAO reativar esta linha. No lugar dela entrou adam-mads-sunny-sidewalk.
 # adam-mads-wall-close.jpg | The street where they stop pretending, for about four minutes. Chapters 1 and 2, here. | Secret relationship romance. Dual POV, slow burn, Hollywood. | Adam & Madeleine
 # dialogue-anything-but.jpg | The compliment she has spent a career refusing. Chapters 1 and 2, here. | Guarded heroine, dual POV slow burn. Book one of four. | Adam & Madeleine
 # adam-venice-boat.jpg | Newly divorced, and the whole world is watching him be fine. Chapters 1 and 2, here. | Celebrity romance about a man who wants out of the photograph. Slow burn. | Adam & Madeleine
