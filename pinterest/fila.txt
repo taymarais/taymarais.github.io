@@ -13,6 +13,26 @@
 # Linha comecando com # e ignorada. Copy so entra aqui depois de aprovada no chat.
 #
 # Primeira linha viva igual a PAUSA = o robo passa a vez, quieto e sem erro.
+#
+# ============================================================================
+# 🔴 DECISOES DELA EM 02/09 — as duas mudam como o robo e conduzido.
+#
+# 1. DIA DE POSTAGEM NAO SE PERDE ESPERANDO APROVACAO.
+#    *"se voce fosse mais autonomo tinha resolvido o negocio da postagem e
+#    feito, nao deve deixar passar quando deve postar."*
+#    Se a janela esta aberta (36h vencidas, teto semanal ok, fila com fileira
+#    completa) e o cron do GitHub nao entregou ate o fim da manha, DISPARAR o
+#    workflow na mao. Nao perguntar. O que ela aprova e o DESENHO da grade --
+#    quais pecas, em que ordem. A cadencia e encanamento, e encanamento e meu.
+#
+# 2. ESPACAR PARECE RENDER MAIS, E ISSO E OBSERVACAO DELA, NAO TEORIA.
+#    *"quando temos mais tempo de um post ao outro vem mais views, parece que
+#    da tempo de os criativos crescerem."*
+#    Isso e argumento CONTRA acelerar a fila. O teto de 3 fileiras/7 dias e o
+#    minimo de 36h entre fileiras deixam de ser so protecao da grade e passam a
+#    ter razao de alcance tambem. Quem for mexer nesses numeros pra "publicar
+#    mais" tem que bater de frente com isto primeiro.
+# ============================================================================
 # Apagar a linha e o suficiente pra voltar.
 
 # ⚠️ A pausa e de UMA LINHA. Motivo vai em comentario, senao a linha de baixo
