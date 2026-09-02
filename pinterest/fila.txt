@@ -129,9 +129,6 @@
 #    Alternativa honesta, se ela nao quiser mexer: aceitar o video na esquerda
 #    e montar a fileira sabendo disso.
 # ============================================================================
-quote-ocean-never-lets-anyone-in.jpg | He keeps swimming out anyway. Chapters 1 and 2, here. | Enemies to lovers slow burn. Celebrity romance. | Adam & Madeleine
-adam-mads-restaurant.jpg | A table for two, and neither of them says the real thing. Chapters 1 and 2, here. | Hollywood romance, dual POV. Book one of a saga. | Adam & Madeleine
-quote-madeleine-is-the-ocean.jpg | He knew before he fell. Chapters 1 and 2, here. | Slow burn celebrity romance. Dual POV. | Adam & Madeleine
 
 # --- Lote 5 "preto e branco" (montado no outro chat, copy escrita 17/08).
 #     Cinco fileiras alternando P&B e cor, impar em P&B:
