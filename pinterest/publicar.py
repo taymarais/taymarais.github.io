@@ -217,7 +217,11 @@ def escreve_no_feed(caminho, board, item):
 # garantia e passou a custar a fileira inteira: as tres pecas dependiam de tres
 # execucoes de cron, e o cron do GitHub nao entrega tres.
 PECAS_POR_FILEIRA = 3      # a fileira tem tres pecas, nunca quatro
-SEM_MARCA = ("quote-", "dialogue-")   # artes que ja trazem o titulo dentro
+SEM_MARCA = ("quote-", "dialogue-", "still-")  # artes que ja trazem o titulo dentro
+# 🔴 `still-` entrou em 02/09: o carimbo desliza pela borda de baixo, que e exatamente
+#    onde mora a legenda do segundo frame do still. Aprovado por ela no briefing de 30/08.
+#    O prefixo proprio tambem E a medida: o utm_content e o nome do arquivo, e em 30 dias
+#    ele compara `still-` contra `quote-` e `dialogue-`.
 INTERVALO_FILEIRA_H = 36   # horas minimas entre uma fileira e a proxima
 FILEIRAS_POR_SEMANA = 3    # teto movel: fileiras nos ultimos 7 dias
 JANELA_DIAS = 7

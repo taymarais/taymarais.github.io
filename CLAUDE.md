@@ -35,8 +35,20 @@ pins-<algo>.xml            # os feeds RSS, um por board. Conectados em Configura
 pinterest/publicar.py      # o robô: uma peça por execução, da fila para o feed
 pinterest/fila.txt         # o que ainda vai sair, em ordem de PUBLICAÇÃO (o inverso da grade)
 pinterest/publicados.txt   # o que já saiu, com data. Cruza com utm_content no Analytics
+pinterest/painel.py        # desenha a grade do painel a partir das duas listas acima
 .github/workflows/publicar-pin.yml   # cron seg/qua/sex às 09h, 12h e 15h (BRT)
 ```
+
+🔴 **O painel dela não se edita à mão.** A tela Feed do painel é a GRADE — as fileiras do jeito
+que a aba Criados desenha — e ela é **derivada** de `publicados.txt` + `fila.txt`, nunca escrita.
+Em 02/09 uma troca de bloco feita à mão engoliu 24 fileiras inteiras de um artifact de 7 MB, sem
+erro nenhum: a autora só descobriu porque olhou. Quem gera é `pinterest/painel.py --grade`, e
+`--conferir painel.html` confere peça por peça se o que está na tela bate com as fontes. **Rodar
+o `--conferir` antes de publicar o painel**, sempre.
+
+⚠️ **A grade é o inverso da fila nos DOIS sentidos** — entre fileiras e dentro da fileira. A
+primeira peça da fila é a da **direita** da última fileira. Inverter só as fileiras, e não as
+peças, desenha uma grade que não existe.
 
 🔴 **O nome do arquivo do feed não diz o board.** `pins-adam-madeleine.xml` está conectado ao board
 **`Where The Ocean Ends`** — é herança do lote 1 e **renomear quebra a conexão dela**. O mapa de
