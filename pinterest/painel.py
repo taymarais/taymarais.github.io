@@ -34,6 +34,7 @@ import html
 import io
 import os
 import re
+import signal
 import sys
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -46,6 +47,14 @@ FUSO = "America/Sao_Paulo"
 INTERVALO_FILEIRA_H = 36        # tem que bater com o publicar.py
 LARGURA, ALTURA = 190, 285      # miniatura: 2:3, o formato do pin
 QUALIDADE = 72
+
+
+# `painel.py --grade | head` fecha o cano no meio da escrita, e o Python responde
+# com traceback. Aqui isso e ruido: quem pipa pro `head` sabe que cortou.
+try:
+    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+except (AttributeError, ValueError):      # Windows, ou thread que nao e a main
+    pass
 
 
 def morre(msg):
