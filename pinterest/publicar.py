@@ -40,8 +40,22 @@ sys.path.insert(0, AQUI)
 import marca                                   # noqa: E402  (precisa do AQUI)
 
 FUSO = "America/Sao_Paulo"
-SITE = "https://taymarais.github.io"
-BASE_IMG = f"{SITE}/pins"
+
+# 🔴 DOIS ENDERECOS, e eles NAO se juntam. O site vive em `taymarais.com`; o
+#    `taymarais.github.io` virou o deposito das imagens dos pins.
+#
+#    O LINK do pin tem que ir direto pro dominio. Ate 06/09/2026 ele ia pro
+#    github.io, que so entao desviava por JavaScript: um salto a mais, que
+#    depende de JS estar ligado, no unico clique que essa maquina toda existe
+#    pra ganhar. Corrigido pros pins NOVOS. Os ja publicados nao se reescrevem.
+#
+#    ⚠️ A IMAGEM continua no github.io de proposito, e isto NAO e esquecimento:
+#    o `guid` de cada item E a URL da imagem, e o Pinterest deduplica por ele.
+#    Trocar a base das imagens daria guid novo pra peca ja publicada, e o
+#    caminho de volta disso nao existe. Nao unificar.
+SITE = "https://taymarais.com"
+SITE_IMG = "https://taymarais.github.io"
+BASE_IMG = f"{SITE_IMG}/pins"
 DESTINO = f"{SITE}/books/where-the-ocean-ends.html"
 UTM = "utm_source=Pinterest&utm_medium=organic"
 
