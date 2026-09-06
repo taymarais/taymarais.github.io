@@ -161,13 +161,13 @@
     
 /* ═══ paleta da CAPA (medida do arquivo cover.webp) ═══ */
 :root{
-  --bg-deep:#06070A; --surface:#0F1218; --accent:#BFC8CF;
+  --bg-deep:#010204; --surface:#0F1218; --accent:#BFC8CF;
   --text-main:#EDEFF2; --text-muted:#96A0AC; --fio:191,200,207;
 }
 /* os rgba() rosa cravados fora do :root, que nao seguem o token */
 header,.nav-links,.nav-links a{border-color:rgba(var(--fio),.12)!important}
 .tag,.playlist-link,.capture-hero,input[type="email"]{border-color:rgba(var(--fio),.28)!important}
-#success-modal{background:rgba(6,7,10,.86)!important}
+#success-modal{background:rgba(1,2,4,.88)!important}
 
 /* o header era relative e sumia no scroll; fixo, ele emoldura a capa */
 header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
@@ -199,24 +199,36 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 #pedido{padding:8vh 0 2vh}
 #pedido .capture-hero{transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
 #pedido.longe .capture-hero{opacity:0;transform:translateY(26px)}
-/* a nota de conteudo desce pra dentro da caixa: ela le antes de decidir */
-#pedido .author-note{margin:18px 0 0;font-size:.72rem;text-align:left}
+/* a nota fica FORA do quadro, logo abaixo dele */
+#pedido .author-note{max-width:520px;margin:20px auto 0;font-size:.72rem;text-align:left}
 
-/* mais ar pro titulo */
-.book-hero h1{margin-top:2.2rem!important;margin-bottom:1.1rem!important;line-height:1.15}
+/* mais ar pro titulo, e as tropes viram pilulas logo abaixo dele */
+.book-hero h1{margin-top:2.2rem!important;margin-bottom:1.3rem!important;line-height:1.15}
+.tropes{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:0 0 28px}
+.tropes .tag{font-size:.62rem;padding:7px 16px;opacity:1}
 
-/* ═══ quem escreveu ═══ */
-#sobre-a-autora{max-width:750px;margin:12vh auto 6vh;text-align:center}
-#sobre-a-autora h2{font-family:var(--font-heading);font-size:clamp(1.3rem,5vw,1.8rem);
-  letter-spacing:2px;color:var(--accent);margin-bottom:20px}
-#sobre-a-autora p{font-family:var(--font-reading);color:var(--text-muted);
-  margin-bottom:14px;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
-#sobre-a-autora .social-links{display:flex;gap:10px;justify-content:center;
-  flex-wrap:wrap;margin:22px 0 0}
-#sobre-a-autora .btn-social{font-size:.65rem;letter-spacing:1px;text-transform:uppercase;
-  padding:8px 18px;border-radius:50px;text-decoration:none;color:var(--text-main);
+/* as redes ficam abaixo da descricao */
+.book-hero .social-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 0}
+.btn-social{font-size:.65rem;letter-spacing:1.2px;text-transform:uppercase;padding:10px 22px;
+  border-radius:50px;text-decoration:none;color:var(--text-main);
   border:1px solid rgba(var(--fio),.28);transition:.3s}
-#sobre-a-autora .btn-social:hover{background:var(--accent);color:var(--bg-deep)}
+.btn-social:hover{background:var(--accent);color:var(--bg-deep)}
+
+/* ═══ quem escreveu: foto ao lado do titulo e do texto ═══ */
+#sobre-a-autora{max-width:750px;margin:14vh auto 8vh;display:flex;
+  align-items:flex-start;gap:30px;text-align:left}
+#sobre-a-autora .profile-img{width:120px;height:120px;border-radius:50%;object-fit:cover;
+  border:1px solid rgba(var(--fio),.35);flex-shrink:0}
+#sobre-a-autora .bio-content{flex:1;min-width:0}
+#sobre-a-autora h2{font-family:var(--font-heading);font-size:clamp(1.2rem,4.6vw,1.7rem);
+  letter-spacing:2px;color:var(--accent);margin:0 0 20px;text-align:left;line-height:1.3}
+#sobre-a-autora p{font-family:var(--font-reading);color:var(--text-muted);
+  margin:0 0 20px;line-height:1.8;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+#sobre-a-autora p:last-child{margin-bottom:0}
+@media (max-width:560px){
+  #sobre-a-autora{gap:20px}
+  #sobre-a-autora .profile-img{width:88px;height:88px}
+}
 
 @media (prefers-reduced-motion:reduce){
   .capa-real{opacity:1!important;transform:none!important}
@@ -231,7 +243,6 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
         <header>
             <a href="../index.html" class="logo">TAY MARAIS</a>
             <nav class="nav-links" id="main-nav">
-                <a href="../index.html">Home</a>
                 <a href="../pt/books/onde-o-oceano-acaba.html" class="lang-selector">PT</a>
             </nav>
             <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
@@ -284,49 +295,39 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
                         </div>
                     </form>
                     <p class="fineprint">No spam. Just the book, and a note when the next one lands.</p>
-                <p class="author-note">
+                </div><p class="author-note">
                     Please note: Contains detailed intimacy, swearing, and themes of trauma recovery, past abuse, and substance use. Recommended for mature readers.
-                </p></div></section>
+                </p></section>
 
         <section class="book-hero" id="book-hero">
             
             <div class="book-info">
-                <h1>WHERE THE OCEAN ENDS</h1>
-                <div class="meta-tags">
-                    <span class="tag">27 Chapters</span>
-                    <span class="tag">Dual POV</span>
-                    <span class="tag">EN-US</span>
-                </div>
+                <h1>WHERE THE OCEAN ENDS</h1><div class="meta-tags tropes"><span class="tag">Celebrity Romance</span><span class="tag">Slow Burn & Healing</span><span class="tag">Dual POV Dynamic</span><span class="tag">He Falls First</span><span class="tag">Series Starter (HFN)</span></div>
+                
 
                 
 
-                <ul class="features-list">
-                    <li>✦ Celebrity Romance</li>
-                    <li>✦ Slow Burn & Healing</li>
-                    <li>✦ Dual POV Dynamic</li>
-                    <li>✦ He Falls First</li>
-                    <li>✦ Series Starter (HFN)</li>
-                </ul>
-                
                 <div class="synopsis">
                     <p>Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.</p>
                     <p>She is France's "L'Ange Blond". Madeleine Bennett, a prodigy heiress living under the constant, suffocating surveillance of a world that idolizes her but never protected her. With a history of abuse and control, Madeleine hides behind a shield of sharp sarcasm.</p>
                     <p>What begins as an undeniable physical attraction on her birthday night turns into a dangerous agreement: an escape with no tomorrows. But as the flashing lights of Hollywood pale before the raw honesty of their desire, Adam and Madeleine realize they can no longer pretend.</p>
+                </div><div class="social-links">
+                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
+                    <a href="https://x.com/theTayMarais" target="_blank" class="btn-social">Twitter</a>
+                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
                 </div>
+                
+                
 
                 
 
                 
             </div>
         </section><section id="sobre-a-autora">
-            
+            <img src="../assets/profile.webp" alt="Tay Marais" class="profile-img">
             <div class="bio-content">
                 <h2>THE HEART HAS MANY VOICES.</h2>
-                <div class="social-links">
-                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
-                    <a href="https://x.com/theTayMarais" target="_blank" class="btn-social">Twitter</a>
-                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
-                </div>
+                
                 <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
                 <p>Finding inspiration in the contrast between the stillness and the intensity of music, the author believes the most powerful stories are those that force us to face our own vulnerability. Her novels bring to life deeply flawed characters, marked by consuming passions, who find redemption and danger in one another.</p>
             </div>
