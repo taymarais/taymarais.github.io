@@ -25,6 +25,12 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
     color:var(--text);text-decoration:none;padding:13px 30px;border-radius:50px;
     border:1px solid rgba(var(--fio),.28);transition:.3s}
   a:hover{background:var(--accent);color:var(--bg)}
+
+/* ═══ TEMA CLARO ═══ esta pagina nao tem tarja: clareia inteira. */
+@media (prefers-color-scheme: light) {
+  :root { --bg: #F5F6F8; --text: #0B0E13; --muted: #4E5661;
+          --accent: #0B0E13; --fio: 11, 14, 19; }
+}
 </style>
 </head>
 <body>

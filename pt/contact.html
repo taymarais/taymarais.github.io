@@ -35,7 +35,27 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
 
         #success-msg { display: none; margin-top: 40px; font-style: italic; opacity: 0.8; animation: fadeIn 1s; line-height: 1.6; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    </style>
+    
+/* ═══ TEMA CLARO ═══ entra sozinho pra quem tem o aparelho no claro.
+   O rosa #E7AEB8 da 1,74:1 sobre o fundo claro e some; a versao escurecida
+   (#C2798A) da 3,04:1, que e o alvo de elemento de interface. */
+@media (prefers-color-scheme: light) {
+  html, body { overflow-x: clip; }
+  :root { --bg: #F5F6F8; --surface: #E9ECF0; --accent: #0B0E13; --text: #0B0E13; }
+  /* a tarja do topo continua preta, como na pagina do livro */
+  header { --text: #EDEFF2; --accent: #EDEFF2; color: #EDEFF2; position: relative; }
+  header::before { content: ''; position: absolute; inset: 0 -100vmax;
+    background: #010204; z-index: -1; }
+  header a { color: #EDEFF2; }
+  header .lang-selector { border-color: #EDEFF2; }
+  label { color: #4E5661; opacity: 1; }
+  input, textarea { background: #FFFFFF; color: #0B0E13;
+    border-color: rgba(194, 121, 138, .55) !important; }
+  input:focus, textarea:focus { border-color: #C2798A !important;
+    background: rgba(194, 121, 138, .07); }
+  ::placeholder { color: #6B7480; }
+}
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TM5SB21FBH"></script>
 <script>

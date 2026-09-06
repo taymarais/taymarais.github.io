@@ -34,7 +34,23 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
         ul { padding-left: 20px; }
         a { color: var(--accent-color); }
         footer { border-top: 1px solid var(--border-color); padding: 24px 0 48px; color: var(--muted-text); font-size: 0.78rem; }
-    </style>
+    
+/* ═══ TEMA CLARO ═══ mesma logica da pagina do livro e da de contato. */
+@media (prefers-color-scheme: light) {
+  html, body { overflow-x: clip; }
+  :root {
+    --bg-color: #F5F6F8; --surface-color: #E9ECF0; --text-main: #0B0E13;
+    --accent-color: #0B0E13; --muted-text: #4E5661;
+    --border-color: rgba(194, 121, 138, .45);
+  }
+  /* a tarja do topo continua preta, como na pagina do livro */
+  header { --text-main: #EDEFF2; --accent-color: #EDEFF2; color: #EDEFF2; position: relative; }
+  header::before { content: ''; position: absolute; inset: 0 -100vmax;
+    background: #010204; z-index: -1; }
+  header a { color: #EDEFF2; }
+  header { border-bottom-color: rgba(237, 239, 241, .20); }
+}
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TM5SB21FBH"></script>
 <script>
