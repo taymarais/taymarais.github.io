@@ -1,6 +1,11 @@
-# O Cloudflare Pages corta o ".html" sozinho e devolve 308. As URLs com .html
-# sao as que saem nos pins e nos links ja publicados: elas tem que responder
-# 200 no proprio endereco, sem trocar de URL no meio do caminho.
+# Por enquanto o site E a pagina do livro: a raiz serve ela, sem trocar a URL.
+# Reescrita (200), nao redirecionamento — quem digita taymarais.com continua
+# vendo taymarais.com. A home antiga segue viva em /index.html se precisar.
+/                                     /books/where-the-ocean-ends      200
+
+# O Cloudflare Pages corta o ".html" sozinho e devolve 308. Essas URLs sao as
+# que saem nos pins e nos links ja publicados: tem que responder no proprio
+# endereco, sem trocar de URL no meio do caminho.
 /books/where-the-ocean-ends.html      /books/where-the-ocean-ends      200
 /pt/books/onde-o-oceano-acaba.html    /pt/books/onde-o-oceano-acaba    200
 /contact.html                         /contact                         200

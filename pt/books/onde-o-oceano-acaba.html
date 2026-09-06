@@ -226,7 +226,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 .synopsis p:last-child{margin-bottom:0}
 
 /* as redes ficam abaixo da descricao */
-.book-hero .social-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 0}
+.book-hero .social-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:7vh 0}
 .btn-social{font-size:.65rem;letter-spacing:1.2px;text-transform:uppercase;padding:10px 22px;
   border-radius:50px;text-decoration:none;color:var(--text-main);
   border:1px solid rgba(var(--fio),.28);transition:.3s}
@@ -236,7 +236,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
    Um bloco na cor do quadro de e-mail, discreto: quem desce encontra, mas a
    pagina nao para pra anunciar a autora. A foto fica ao lado do TITULO e o
    texto corre na largura inteira — justificado em coluna estreita vira rio. */
-#sobre-a-autora{max-width:750px;margin:12vh auto 7vh;background:var(--surface);
+#sobre-a-autora{max-width:750px;margin:0 auto 7vh;background:var(--surface);
   border:1px solid rgba(var(--fio),.12);border-radius:6px;padding:34px 26px}
 #sobre-a-autora .bio-topo{display:flex;align-items:center;gap:24px;margin-bottom:30px}
 #sobre-a-autora .profile-img{width:118px;height:118px;border-radius:50%;object-fit:cover;
@@ -275,6 +275,14 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 }
 
     </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TM5SB21FBH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TM5SB21FBH');
+</script>
 </head>
 <body>
     <div class="container">
@@ -467,10 +475,16 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
       es.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.remove("ainda-nao"); ob.unobserve(e.target); }
       });
-    }, {rootMargin:"0px 0px -12% 0px"});
+    }, {rootMargin:"0px 0px -28% 0px"});
     blocos.forEach(function(el){ ob.observe(el); });
-    /* rede de seguranca: se o observador falhar, tudo aparece assim mesmo */
-    setTimeout(function(){ blocos.forEach(function(el){ el.classList.remove("ainda-nao"); }); }, 8000);
+    /* rede de seguranca: se o observador falhar, revela o que ja esta na tela —
+       nunca o que ainda esta la embaixo, senao quem desce devagar chega e ja achou. */
+    setTimeout(function(){
+      blocos.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.top < innerHeight && r.bottom > 0) el.classList.remove("ainda-nao");
+      });
+    }, 8000);
   }
 
   /* o capitulo desfoca quando a caixa de e-mail entra */
