@@ -1,0 +1,8 @@
+# O Cloudflare Pages corta o ".html" sozinho e devolve 308. As URLs com .html
+# sao as que saem nos pins e nos links ja publicados: elas tem que responder
+# 200 no proprio endereco, sem trocar de URL no meio do caminho.
+/books/where-the-ocean-ends.html      /books/where-the-ocean-ends      200
+/pt/books/onde-o-oceano-acaba.html    /pt/books/onde-o-oceano-acaba    200
+/contact.html                         /contact                         200
+/pt/contact.html                      /pt/contact                      200
+/privacy.html                         /privacy                         200
