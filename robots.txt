@@ -1,4 +1,8 @@
+# Content-Signal: a search engine may index and link to this site, and an AI
+# assistant may read a page to answer someone and cite it. Training a model on
+# this text is not allowed. These are separate permissions.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 Sitemap: https://taymarais.com/sitemap.xml
