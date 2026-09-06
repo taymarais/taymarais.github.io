@@ -4,7 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this site is
 
-Personal author website for Tay Marais, a fiction author. It is a **static site with no build system** — plain HTML, inline CSS, and vanilla JS. No npm, no bundler, no linter, no test runner. Deployment is via GitHub Pages (pushing to `main` is sufficient).
+Personal author website for Tay Marais, a fiction author. Plain HTML, inline CSS,
+vanilla JS. No npm, no bundler, no linter, no test runner.
+
+🔴 **Deployment is NOT git-based, and pushing to `main` publishes nothing.** The site is served by
+**Cloudflare Pages** at **https://taymarais.com**, from a project with no git connection. What goes
+live is also **not identical to what is in git**: fonts are embedded at build time. Publishing is
+two commands, both in the studio repo:
+
+```
+bash scripts/monta-site-autora.sh <path-to-this-clone> -o dist/site-autora
+bash scripts/publica-site.sh taymarais dist/site-autora
+```
+
+`taymarais.github.io` is now the pin image store. Its pages redirect to the domain by a
+hostname-guarded script; `/pins/` is left alone, because 24 published pins depend on those files.
+
+**The root is the book page:** `/` serves `books/where-the-ocean-ends.html` by a 200 rewrite in
+`_redirects`, without changing the URL. Both old homes (`index.html`, `pt/index.html`) carry
+`noindex` and are linked from nowhere until the new home is built.
 
 ## Site structure
 
@@ -80,21 +98,29 @@ seguro; editar o que já virou pin não é território conhecido.
 
 ## Design system
 
-All CSS is **inline per page** (inside `<style>` tags) — there is no shared stylesheet. When editing or creating pages, replicate the same CSS custom properties:
+All CSS is **inline per page** (inside `<style>` tags) — there is no shared stylesheet.
+The palette was replaced on 2026-09-05/06: **the wall of the story is black and white.** No rose,
+which is the author's own colour and not the book's.
 
 ```css
 :root {
-    --bg-color / --bg-deep: #1A1210;      /* near-black background */
-    --surface / --surface-color: #261C19; /* card/surface background */
-    --accent / --accent-color: #D4A396;   /* dusty rose — CTAs, borders, highlights */
-    --text-main: #EAE5DE;                 /* cream body text */
-    --muted-text / --text-muted: #A8A29E; /* secondary text */
-    --border-color: rgba(234, 229, 222, 0.1);
+    --bg-deep: #010204;    /* the black measured on the EDGE of cover.webp */
+    --surface: #0F1218;    /* cards, modals, raised areas */
+    --accent:  #EDEFF2;    /* ice white: CTAs, highlights, active borders */
+    --text-main: #EDEFF2;
+    --text-muted: #98A0A9;
+    --fio: 237, 239, 241;  /* used as rgba(var(--fio), .20) on borders */
     --font-heading: 'Playfair Display SC', serif;
     --font-ui: 'Montserrat', sans-serif;
-    --font-reading: 'Lora', serif; /* book pages only */
+    --font-reading: 'Lora', serif; /* book pages only, and it IS the chapter text */
 }
 ```
+
+⚠️ **The old palette (`#1A1210`, `#261C19`, `#D4A396`, `#EAE5DE`, `#A8A29E`) is still in the files**,
+in a first `:root` that the new one overrides by the cascade. A grep for the old colours gives false
+positives: check which `:root` comes last before concluding a page was left behind.
+
+The rose `#E7AEB8` survives as a border thread on the author's own pages only: contact and privacy.
 
 Responsive breakpoints: `900px` (layout reflows) and `600px` (hamburger menu appears, nav hides).
 
@@ -102,7 +128,10 @@ Responsive breakpoints: `900px` (layout reflows) and `600px` (hamburger menu app
 
 - **Google Apps Script** — single endpoint used for both the contact form and the email capture (tide gate) on book pages. The same URL is used across EN and PT pages. A hidden `name="lang"` field (`"en"` or `"pt"`) distinguishes submissions.
 - **Pinterest Tag** — conversion tracking pixel present on home and book pages. The `pintrk('track', 'lead')` call fires on email capture form submission.
-- **Google Fonts** — Playfair Display SC, Montserrat, Lora (Lora only on book pages).
+- **Fonts** — Playfair Display SC, Montserrat, Lora (Lora only on book pages, and it is
+  the chapter text itself). The `<link>` in the source still points at Google Fonts, but **the build
+  replaces it with a single self-hosted `/fontes.css`**: nothing goes live calling Google. The build
+  fails if any page still does.
 
 ## Key interaction patterns
 
