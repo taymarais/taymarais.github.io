@@ -255,6 +255,35 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   #sobre-a-autora .profile-img{width:92px;height:92px}
 }
 
+/* ═══ DESKTOP ═══
+   Ate 06/09/2026 nao existia NADA aqui, e a tela larga herdava um layout
+   pensado pro celular. Dois defeitos reais, nao gosto:
+   1. A `.book-hero` continuava com a grade de duas colunas de quando a capa
+      morava nela (`280px 1fr`). A capa subiu pro topo em 05/09 e sobrou UMA
+      coluna de 280px com titulo, tropes e sinopse dentro, e a metade direita
+      da tela vazia. Sinopse justificada em 280px vira rio e hifeniza tudo.
+   2. O quadro do pedido ia de ponta a ponta (1000px) com o miolo em 350px:
+      uma moldura enorme em volta de uma coluna fina.
+   O eixo agora e UM so, 750px, que ja e o do capitulo e o do card de quem
+   escreveu — o bloco que ela aprovou. */
+@media (min-width: 851px) {
+  .book-hero{display:block;max-width:750px;margin:0 auto;padding:56px 0 40px}
+  /* alinhadas a esquerda como o titulo, e nao centradas no meio da coluna */
+  .tropes{margin-left:0;margin-right:0}
+  .book-hero .social-links{justify-content:flex-start}
+  #pedido .capture-hero{max-width:750px;margin:0 auto;padding:40px 44px;
+    border-color:rgba(var(--fio),.20);border-radius:6px}
+  /* o miolo tambem cresce, senao a moldura de 750px fica em volta de uma
+     coluna de 350: era o vazio que ela viu no print de 06/09 */
+  #pedido .capture-hero .offer{max-width:52ch}
+  #pedido .capture-hero .form-group{max-width:440px}
+  #pedido .capture-hero .fineprint{max-width:46ch}
+  #pedido .author-note{max-width:750px;margin-left:auto;margin-right:auto}
+  /* cinco tropes em tres colunas ocupam a largura; em duas sobrava um vao */
+  .tropes{grid-template-columns:repeat(3,1fr);max-width:100%}
+  .tropes .tag:nth-child(odd):last-child{grid-column:auto}
+}
+
 /* ═══ aparecer conforme desce — do fim da sinopse pra baixo ═══
    Nada disso na historia: ela viu revelacao paragrafo a paragrafo no
    capitulo e nao gostou. Aqui e o bloco inteiro, de uma vez.
