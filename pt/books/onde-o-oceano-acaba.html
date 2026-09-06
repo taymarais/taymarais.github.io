@@ -167,6 +167,72 @@
             .nav-links a:last-child { border-bottom: none; }
             .lang-selector { display: block; margin-left: 0 !important; margin-top: 0; width: 100%; border: none; border-radius: 0; padding: 14px 0; font-size: 0.75rem !important; }
         }
+    
+/* ═══ paleta da CAPA (medida do arquivo cover.webp) ═══ */
+:root{
+  --bg-deep:#06070A; --surface:#0F1218; --accent:#BFC8CF;
+  --text-main:#EDEFF2; --text-muted:#96A0AC; --fio:191,200,207;
+}
+/* os rgba() rosa cravados fora do :root, que nao seguem o token */
+header,.nav-links,.nav-links a{border-color:rgba(var(--fio),.12)!important}
+.tag,.playlist-link,.capture-hero,input[type="email"]{border-color:rgba(var(--fio),.28)!important}
+#success-modal{background:rgba(6,7,10,.86)!important}
+
+/* o header era relative e sumia no scroll; fixo, ele emoldura a capa */
+header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
+  padding-top:16px!important;padding-bottom:14px!important}
+
+/* o capitulo abria so no clique do "Open Book". Agora ele e a entrada. */
+#reading-section{display:block!important;opacity:1!important;
+  transition:filter .9s ease,opacity .9s ease}
+
+/* ═══ a capa: sem borda nem sombra — o preto dela vaza no preto da pagina ═══
+   Sem padding proprio (a secao ja herda o do .container) e limitada pela
+   LARGURA, senao estoura a faixa e encosta num lado so em tela estreita. */
+#capa-topo{height:88svh;min-height:420px;display:grid;place-items:center;padding:0}
+.capa-mv{max-width:100%;will-change:transform}
+.capa-real{display:block;margin:0 auto;width:auto;height:auto;
+  max-width:100%;max-height:min(76svh,560px);will-change:transform,opacity}
+
+/* o espaco vai pra CIMA da data; ela cola no texto */
+.playlist-wrap{margin-bottom:0!important}
+.date-line{margin-top:46px!important;margin-bottom:8px!important}
+
+/* a playlist toca na pagina; a pilula fica igual e no mesmo lugar */
+.playlist-box{max-width:520px;margin:18px auto 0}
+.playlist-box iframe{display:block;width:100%;border:0;border-radius:12px}
+.playlist-link[aria-expanded="true"]{background:var(--accent);color:var(--bg-deep)}
+
+/* o corte: o capitulo sai em blur quando o pedido chega */
+#reading-section.desfoca{filter:blur(7px);opacity:.28!important}
+#pedido{padding:8vh 0 2vh}
+#pedido .capture-hero{transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+#pedido.longe .capture-hero{opacity:0;transform:translateY(26px)}
+/* a nota de conteudo desce pra dentro da caixa: ela le antes de decidir */
+#pedido .author-note{margin:18px 0 0;font-size:.72rem;text-align:left}
+
+/* mais ar pro titulo */
+.book-hero h1{margin-top:2.2rem!important;margin-bottom:1.1rem!important;line-height:1.15}
+
+/* ═══ quem escreveu ═══ */
+#sobre-a-autora{max-width:750px;margin:12vh auto 6vh;text-align:center}
+#sobre-a-autora h2{font-family:var(--font-heading);font-size:clamp(1.3rem,5vw,1.8rem);
+  letter-spacing:2px;color:var(--accent);margin-bottom:20px}
+#sobre-a-autora p{font-family:var(--font-reading);color:var(--text-muted);
+  margin-bottom:14px;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+#sobre-a-autora .social-links{display:flex;gap:10px;justify-content:center;
+  flex-wrap:wrap;margin:22px 0 0}
+#sobre-a-autora .btn-social{font-size:.65rem;letter-spacing:1px;text-transform:uppercase;
+  padding:8px 18px;border-radius:50px;text-decoration:none;color:var(--text-main);
+  border:1px solid rgba(var(--fio),.28);transition:.3s}
+#sobre-a-autora .btn-social:hover{background:var(--accent);color:var(--bg-deep)}
+
+@media (prefers-reduced-motion:reduce){
+  .capa-real{opacity:1!important;transform:none!important}
+  #reading-section.desfoca{filter:none;opacity:1!important}
+  #pedido.longe .capture-hero{opacity:1;transform:none}
+}
+
     </style>
 </head>
 <body>
@@ -182,56 +248,11 @@
             </button>
         </header>
 
-        <section class="book-hero" id="book-hero">
-            <img src="../../assets/capa.webp" alt="Onde o Oceano Acaba" class="book-cover">
-            <div class="book-info">
-                <h1>ONDE O OCEANO ACABA</h1>
-                <div class="meta-tags">
-                    <span class="tag">27 Capítulos</span>
-                    <span class="tag">POV Duplo</span>
-                    <span class="tag">PT-BR</span>
-                </div>
-
-                <div class="capture-hero">
-                    <h2>Dois capítulos. Agora.</h2>
-                    <p class="offer">Os dois primeiros capítulos de <em>Onde o Oceano Acaba</em>, em ebook de verdade. EPUB pro seu Kindle, PDF pra ler em qualquer outro lugar.</p>
-                    <form id="lead-form">
-                        <input type="hidden" name="lang" value="pt">
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Seu e-mail" required>
-                            <button type="submit" class="btn-capsule">Quero o ebook</button>
-                        </div>
-                    </form>
-                    <p class="fineprint">Sem spam. Só o livro, e um aviso quando o próximo sair.</p>
-                </div>
-
-                <div class="synopsis">
-                    <p>Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador que expôs sua vida pessoal na capa de todos os tabloides, a estrela de Hollywood foge para as sombras de Los Angeles em busca de anonimato. Ele queria desaparecer. Só não esperava encontrá-la.</p>
-                    <p>Ela é a "L'Ange Blond" da França. Madeleine Bennett, uma herdeira prodígio que vive sob a vigilância constante e sufocante de um mundo que a idolatra, mas nunca a protegeu. Com um histórico de abusos e controle, Madeleine se esconde atrás de um escudo de sarcasmo ácido.</p>
-                    <p>O que começa como uma atração física inegável na noite de seu aniversário se transforma em um acordo perigoso: uma fuga sem amanhãs. Mas, à medida que as luzes de Hollywood empalidecem diante da honestidade nua e crua de seu desejo, Adam e Madeleine percebem que não podem mais fingir.</p>
-                </div>
-                
-                <ul class="features-list">
-                    <li>✦ Romance de Celebridades</li>
-                    <li>✦ Slow Burn & Cura</li>
-                    <li>✦ Duplo Ponto de Vista</li>
-                    <li>✦ Ele se apaixona primeiro</li>
-                    <li>✦ Início de Série (HFN)</li>
-                </ul>
-
-                <button class="btn-capsule" id="btn-open">Abrir Livro</button>
-
-                <p class="author-note">
-                    Nota do Autor: Contém cenas de intimidade detalhadas, linguagem explícita e temas como superação de traumas, abusos passados e uso de substâncias. Recomendado para leitores maduros.
-                </p>
-            </div>
-        </section>
-
-        <section id="reading-section">
+        <section id="capa-topo" aria-label="Onde o Oceano Acaba"><div class="capa-mv"><img class="capa-real" src="../assets/cover.webp" alt="Onde o Oceano Acaba"></div></section><section id="reading-section">
             <h2 class="chapter-header">ADAM</h2>
             <div class="playlist-wrap">
-                <a href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="playlist-link">Playlist ✦</a>
-            </div>
+                <a id="playlist-toggle" aria-expanded="false" aria-controls="playlist-box" href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="playlist-link">Playlist ✦</a>
+            <div class="playlist-box" id="playlist-box" hidden><iframe title="Playlist de Onde o Oceano Acaba" data-src="https://open.spotify.com/embed/playlist/1GTIxI5nCClAr93Z4fLXOP?theme=0" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div></div>
             <div class="reading-content">
                 <span class="date-line">Sábado, 9 de novembro de 2024. Los Angeles, CA.</span>
 
@@ -260,13 +281,64 @@
                 <p>Madeleine Bennett. "L'Ange Blond", o anjo loiro que Hollywood devorou e cuspiu de volta. Atriz mirim, cantora prodígio, uma infância inteira roubada por holofotes. Estamos aqui, os dois, fingindo não ser o que o mundo decidiu que somos.</p>
                 <p>Forço meus olhos de volta para a televisão velha no canto, tentando recuperar o foco, mas minha visão periférica me trai.</p>
 
-                <div class="tide-gate">
-                    <div class="capture-card">
-                        <h3>A maré está subindo...</h3>
-                        <p>É aqui que a amostra para. Os dois primeiros capítulos estão esperando em ebook. EPUB ou PDF, em troca de um e-mail.</p>
-                        <button type="button" class="btn-capsule" id="btn-to-form">Quero o ebook</button>
-                    </div>
+                
+            </div>
+        </section><section id="pedido"><div class="capture-hero">
+                    <h2>Dois capítulos. Agora.</h2>
+                    <p class="offer">Os dois primeiros capítulos de <em>Onde o Oceano Acaba</em>, em ebook de verdade. EPUB pro seu Kindle, PDF pra ler em qualquer outro lugar.</p>
+                    <form id="lead-form">
+                        <input type="hidden" name="lang" value="pt">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Seu e-mail" required>
+                            <button type="submit" class="btn-capsule">Quero o ebook</button>
+                        </div>
+                    </form>
+                    <p class="fineprint">Sem spam. Só o livro, e um aviso quando o próximo sair.</p>
+                <p class="author-note">
+                    Nota do Autor: Contém cenas de intimidade detalhadas, linguagem explícita e temas como superação de traumas, abusos passados e uso de substâncias. Recomendado para leitores maduros.
+                </p></div></section>
+
+        <section class="book-hero" id="book-hero">
+            
+            <div class="book-info">
+                <h1>ONDE O OCEANO ACABA</h1>
+                <div class="meta-tags">
+                    <span class="tag">27 Capítulos</span>
+                    <span class="tag">POV Duplo</span>
+                    <span class="tag">PT-BR</span>
                 </div>
+
+                
+
+                <ul class="features-list">
+                    <li>✦ Romance de Celebridades</li>
+                    <li>✦ Slow Burn & Cura</li>
+                    <li>✦ Duplo Ponto de Vista</li>
+                    <li>✦ Ele se apaixona primeiro</li>
+                    <li>✦ Início de Série (HFN)</li>
+                </ul>
+                
+                <div class="synopsis">
+                    <p>Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Após um divórcio devastador que expôs sua vida pessoal na capa de todos os tabloides, a estrela de Hollywood foge para as sombras de Los Angeles em busca de anonimato. Ele queria desaparecer. Só não esperava encontrá-la.</p>
+                    <p>Ela é a "L'Ange Blond" da França. Madeleine Bennett, uma herdeira prodígio que vive sob a vigilância constante e sufocante de um mundo que a idolatra, mas nunca a protegeu. Com um histórico de abusos e controle, Madeleine se esconde atrás de um escudo de sarcasmo ácido.</p>
+                    <p>O que começa como uma atração física inegável na noite de seu aniversário se transforma em um acordo perigoso: uma fuga sem amanhãs. Mas, à medida que as luzes de Hollywood empalidecem diante da honestidade nua e crua de seu desejo, Adam e Madeleine percebem que não podem mais fingir.</p>
+                </div>
+
+                
+
+                
+            </div>
+        </section><section id="sobre-a-autora">
+            
+            <div class="bio-content">
+                <h2>O CORAÇÃO TEM MUITAS VOZES.</h2>
+                <div class="social-links">
+                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
+                    <a href="https://x.com/theTayMarais" target="_blank" class="btn-social">Twitter</a>
+                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
+                </div>
+                <p>Uma observadora da complexidade humana e das nuances intrincadas dos relacionamentos modernos. Escrevendo com uma voz profunda, instigante e magnética, Tay explora a jornada agridoce da cura, os limites da identidade e a busca crua por autenticidade em um mundo de aparências.</p>
+                <p>Encontrando inspiração no contraste entre o silêncio e a intensidade da música, a autora acredita que as histórias mais poderosas são aquelas que nos forçam a encarar nossa própria vulnerabilidade. Seus romances dão vida a personagens profundamente imperfeitos, marcados por paixões avassaladoras.</p>
             </div>
         </section>
     </div>
@@ -279,20 +351,6 @@
     </div>
 
     <script>
-        document.getElementById('btn-open').addEventListener('click', function() {
-            const section = document.getElementById('reading-section');
-            const hero = document.getElementById('book-hero');
-            section.style.display = 'block';
-            setTimeout(() => { section.style.opacity = '1'; section.scrollIntoView({ behavior: 'smooth' }); hero.style.opacity = '0.3'; hero.style.transition = '0.8s'; }, 10);
-        });
-        // O corte do trecho manda de volta pro formulario do topo, que e o unico da pagina:
-        // dois <form id="lead-form"> quebrariam o getElementById e um dos dois pararia de enviar.
-        document.getElementById('btn-to-form').addEventListener('click', function() {
-            const hero = document.getElementById('book-hero');
-            hero.style.opacity = '1';
-            document.querySelector('.capture-hero').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => { document.querySelector('.capture-hero input[type="email"]').focus({ preventScroll: true }); }, 600);
-        });
 
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
         const form = document.getElementById('lead-form');
@@ -319,5 +377,72 @@
             });
         });
     </script>
+
+<script>
+(function(){
+  var calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var leitura = document.getElementById("reading-section"),
+      capa    = document.querySelector(".capa-real"),
+      topo    = document.getElementById("capa-topo");
+
+  /* um segundo de capa, e a pagina sobe sozinha ate o capitulo.
+     A capa fica acima no documento: da pra voltar e olhar. */
+  if(!calmo && leitura && scrollY < 8 && !location.hash){
+    var cabeca = document.querySelector("header");
+    var t = setTimeout(function(){
+      var y = leitura.getBoundingClientRect().top + scrollY - (cabeca ? cabeca.offsetHeight : 0) - 52;
+      try { scrollTo({top:y, behavior:"smooth"}); } catch(e) { scrollTo(0, y); }
+    }, 1100);
+    ["touchstart","wheel","scroll","keydown","pointerdown"].forEach(function(ev){
+      addEventListener(ev, function(){ clearTimeout(t); }, {passive:true, once:true});
+    });
+  }
+
+  /* a capa clareia e sobe conforme se desce — quem move e o dedo */
+  if(!calmo && capa && topo){
+    var pendente = false;
+    function pinta(){
+      pendente = false;
+      var faixa = Math.max(topo.offsetHeight * 0.78, 1);
+      var p = Math.min(Math.max(scrollY / faixa, 0), 1);
+      capa.style.opacity = (1 - p).toFixed(3);
+      capa.style.transform = "translateY(" + (-p*70).toFixed(1) + "px) scale(" + (1 - p*0.07).toFixed(4) + ")";
+    }
+    addEventListener("scroll", function(){
+      if(!pendente){ pendente = true; requestAnimationFrame(pinta); }
+    }, {passive:true});
+    pinta();
+  }
+
+  /* a playlist toca aqui dentro. O <a> continua valendo se o JS nao rodar. */
+  var pil = document.getElementById("playlist-toggle"),
+      cx  = document.getElementById("playlist-box");
+  if(pil && cx){
+    pil.addEventListener("click", function(e){
+      e.preventDefault();
+      var abrindo = cx.hidden;
+      cx.hidden = !abrindo;
+      pil.setAttribute("aria-expanded", abrindo ? "true" : "false");
+      var f = cx.querySelector("iframe");
+      if(abrindo && f && !f.src) f.src = f.getAttribute("data-src");
+    });
+  }
+
+  /* o capitulo desfoca quando a caixa de e-mail entra */
+  if(!calmo && "IntersectionObserver" in window){
+    var pedido = document.getElementById("pedido");
+    if(pedido && leitura){
+      pedido.classList.add("longe");
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ pedido.classList.remove("longe"); leitura.classList.add("desfoca"); }
+          else { leitura.classList.remove("desfoca"); }
+        });
+      }, {threshold:0.35}).observe(pedido);
+    }
+  }
+})();
+</script>
+
 </body>
 </html>
