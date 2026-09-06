@@ -202,10 +202,19 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 /* a nota fica FORA do quadro, logo abaixo dele */
 #pedido .author-note{max-width:520px;margin:20px auto 0;font-size:.72rem;text-align:left}
 
-/* mais ar pro titulo, e as tropes viram pilulas logo abaixo dele */
-.book-hero h1{margin-top:2.2rem!important;margin-bottom:1.3rem!important;line-height:1.15}
-.tropes{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:0 0 28px}
-.tropes .tag{font-size:.62rem;padding:7px 16px;opacity:1}
+/* mais ar pro titulo, e as tropes viram pilulas logo abaixo dele.
+   Grade de duas colunas: em flex elas quebravam 1-2-1-1 e ficavam baguncadas. */
+.book-hero h1{margin-top:2.2rem!important;margin-bottom:1.4rem!important;line-height:1.15}
+.tropes{display:grid!important;grid-template-columns:1fr 1fr;gap:10px;
+  max-width:560px;margin:0 auto 34px}
+.tropes .tag{font-size:.6rem;padding:9px 8px;text-align:center;opacity:1;
+  display:flex;align-items:center;justify-content:center;line-height:1.3}
+.tropes .tag:nth-child(odd):last-child{grid-column:1/-1}
+
+/* a descricao: letra maior e paragrafo separado do outro */
+.synopsis{font-size:1.06rem!important;line-height:1.72!important}
+.synopsis p{margin-bottom:1.15em}
+.synopsis p:last-child{margin-bottom:0}
 
 /* as redes ficam abaixo da descricao */
 .book-hero .social-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 0}
@@ -215,9 +224,11 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 .btn-social:hover{background:var(--accent);color:var(--bg-deep)}
 
 /* ═══ quem escreveu ═══
-   A foto fica ao lado do TITULO, e o texto corre na largura inteira embaixo.
-   Texto justificado numa coluna estreita ao lado da foto vira rio de espaco. */
-#sobre-a-autora{max-width:750px;margin:14vh auto 8vh}
+   Um bloco na cor do quadro de e-mail, discreto: quem desce encontra, mas a
+   pagina nao para pra anunciar a autora. A foto fica ao lado do TITULO e o
+   texto corre na largura inteira — justificado em coluna estreita vira rio. */
+#sobre-a-autora{max-width:750px;margin:12vh auto 7vh;background:var(--surface);
+  border:1px solid rgba(var(--fio),.12);border-radius:6px;padding:34px 26px}
 #sobre-a-autora .bio-topo{display:flex;align-items:center;gap:24px;margin-bottom:30px}
 #sobre-a-autora .profile-img{width:118px;height:118px;border-radius:50%;object-fit:cover;
   border:1px solid rgba(var(--fio),.35);flex-shrink:0}
@@ -230,6 +241,15 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   #sobre-a-autora .bio-topo{gap:18px;margin-bottom:26px}
   #sobre-a-autora .profile-img{width:92px;height:92px}
 }
+
+/* ═══ o fim da pagina ═══ */
+.rodape{border-top:1px solid rgba(var(--fio),.12);margin-top:6vh;padding:30px 0 40px;
+  display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;justify-content:space-between}
+.rodape p{font-size:.7rem;color:var(--text-muted);letter-spacing:.5px;margin:0}
+.rodape nav{display:flex;flex-wrap:wrap;gap:22px}
+.rodape a{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--text-muted);text-decoration:none;transition:.3s}
+.rodape a:hover{color:var(--accent)}
 
 @media (prefers-reduced-motion:reduce){
   .capa-real{opacity:1!important;transform:none!important}
@@ -330,9 +350,9 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
                 <div class="bio-topo"><img src="../assets/profile.webp" alt="Tay Marais" class="profile-img"><h2>THE HEART HAS MANY VOICES.</h2></div>
                 
                 <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
-                <p>Finding inspiration in the contrast between the stillness and the intensity of music, the author believes the most powerful stories are those that force us to face our own vulnerability. Her novels bring to life deeply flawed characters, marked by consuming passions, who find redemption and danger in one another.</p>
+                
             </div>
-        </section>
+        </section><footer class="rodape"><p>© 2026 Tay Marais</p><nav><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav></footer>
     </div>
 
     <div id="success-modal">
