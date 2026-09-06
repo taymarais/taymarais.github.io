@@ -161,12 +161,12 @@
     
 /* ═══ paleta da CAPA (medida do arquivo cover.webp) ═══ */
 :root{
-  --bg-deep:#010204; --surface:#0F1218; --accent:#BFC8CF;
-  --text-main:#EDEFF2; --text-muted:#96A0AC; --fio:191,200,207;
+  --bg-deep:#010204; --surface:#0F1218; --accent:#C6CDD3;
+  --text-main:#EDEFF2; --text-muted:#98A0A9; --fio:231,174,184;
 }
 /* os rgba() rosa cravados fora do :root, que nao seguem o token */
-header,.nav-links,.nav-links a{border-color:rgba(var(--fio),.12)!important}
-.tag,.playlist-link,.capture-hero,input[type="email"]{border-color:rgba(var(--fio),.28)!important}
+header,.nav-links,.nav-links a{border-color:rgba(var(--fio),.20)!important}
+.tag,.playlist-link,.capture-hero,input[type="email"]{border-color:rgba(var(--fio),.26)!important}
 #success-modal{background:rgba(1,2,4,.88)!important}
 
 /* o header era relative e sumia no scroll; fixo, ele emoldura a capa */
@@ -228,7 +228,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
    pagina nao para pra anunciar a autora. A foto fica ao lado do TITULO e o
    texto corre na largura inteira — justificado em coluna estreita vira rio. */
 #sobre-a-autora{max-width:750px;margin:0 auto 7vh;background:var(--surface);
-  border:1px solid rgba(var(--fio),.12);border-radius:6px;padding:34px 26px}
+  border:1px solid rgba(var(--fio),.20);border-radius:6px;padding:34px 26px}
 #sobre-a-autora .bio-topo{display:flex;align-items:center;gap:24px;margin-bottom:30px}
 #sobre-a-autora .profile-img{width:118px;height:118px;border-radius:50%;object-fit:cover;
   border:1px solid rgba(var(--fio),.35);flex-shrink:0}
@@ -250,7 +250,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 .revela.ainda-nao{opacity:0;transform:translateY(22px)}
 
 /* ═══ o fim da pagina ═══ */
-.rodape{border-top:1px solid rgba(var(--fio),.12);margin-top:6vh;padding:30px 0 40px;
+.rodape{border-top:1px solid rgba(var(--fio),.20);margin-top:6vh;padding:30px 0 40px;
   display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;justify-content:space-between}
 .rodape p{font-size:.7rem;color:var(--text-muted);letter-spacing:.5px;margin:0}
 .rodape nav{display:flex;flex-wrap:wrap;gap:22px}
@@ -461,12 +461,23 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
     var blocos = [].slice.call(document.querySelectorAll(
       ".book-hero .social-links, #sobre-a-autora, .rodape"));
     blocos.forEach(function(el){ el.classList.add("revela","ainda-nao"); });
-    var ob = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.remove("ainda-nao"); ob.unobserve(e.target); }
-      });
-    }, {rootMargin:"0px 0px -28% 0px"});
-    blocos.forEach(function(el){ ob.observe(el); });
+    function olho(margem, alvos){
+      if(!alvos.length) return;
+      var ob = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.remove("ainda-nao"); ob.unobserve(e.target); }
+        });
+      }, {rootMargin:margem});
+      alvos.forEach(function(el){ ob.observe(el); });
+    }
+    function eRodape(el){ return el.classList.contains("rodape"); }
+    /* no meio da pagina o bloco so entra quando entra de verdade... */
+    olho("0px 0px -28% 0px", blocos.filter(function(el){ return !eRodape(el); }));
+    /* ...mas o ULTIMO elemento da pagina nunca sairia desses 28% cortados la
+       embaixo: no fim do scroll ele encosta no rodape da tela e jamais entraria.
+       Por isso o rodape tem observador proprio, sem margem. */
+    olho("0px", blocos.filter(eRodape));
+
     /* rede de seguranca: se o observador falhar, revela o que ja esta na tela —
        nunca o que ainda esta la embaixo, senao quem desce devagar chega e ja achou. */
     setTimeout(function(){
