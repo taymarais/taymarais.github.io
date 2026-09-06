@@ -223,20 +223,21 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   border:1px solid rgba(var(--fio),.28);transition:.3s}
 .btn-social:hover{background:var(--accent);color:var(--bg-deep)}
 
-/* ═══ quem escreveu: foto ao lado do titulo e do texto ═══ */
-#sobre-a-autora{max-width:750px;margin:14vh auto 8vh;display:flex;
-  align-items:flex-start;gap:30px;text-align:left}
-#sobre-a-autora .profile-img{width:120px;height:120px;border-radius:50%;object-fit:cover;
+/* ═══ quem escreveu ═══
+   A foto fica ao lado do TITULO, e o texto corre na largura inteira embaixo.
+   Texto justificado numa coluna estreita ao lado da foto vira rio de espaco. */
+#sobre-a-autora{max-width:750px;margin:14vh auto 8vh}
+#sobre-a-autora .bio-topo{display:flex;align-items:center;gap:24px;margin-bottom:30px}
+#sobre-a-autora .profile-img{width:118px;height:118px;border-radius:50%;object-fit:cover;
   border:1px solid rgba(var(--fio),.35);flex-shrink:0}
-#sobre-a-autora .bio-content{flex:1;min-width:0}
-#sobre-a-autora h2{font-family:var(--font-heading);font-size:clamp(1.2rem,4.6vw,1.7rem);
-  letter-spacing:2px;color:var(--accent);margin:0 0 20px;text-align:left;line-height:1.3}
+#sobre-a-autora h2{font-family:var(--font-heading);font-size:clamp(1.15rem,4.4vw,1.7rem);
+  letter-spacing:2px;color:var(--accent);margin:0;text-align:left;line-height:1.35}
 #sobre-a-autora p{font-family:var(--font-reading);color:var(--text-muted);
   margin:0 0 20px;line-height:1.8;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
 #sobre-a-autora p:last-child{margin-bottom:0}
 @media (max-width:560px){
-  #sobre-a-autora{gap:20px}
-  #sobre-a-autora .profile-img{width:88px;height:88px}
+  #sobre-a-autora .bio-topo{gap:18px;margin-bottom:26px}
+  #sobre-a-autora .profile-img{width:92px;height:92px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -334,9 +335,9 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
                 
             </div>
         </section><section id="sobre-a-autora">
-            <img src="../../assets/profile.webp" alt="Tay Marais" class="profile-img">
+            
             <div class="bio-content">
-                <h2>O CORAÇÃO TEM MUITAS VOZES.</h2>
+                <div class="bio-topo"><img src="../../assets/profile.webp" alt="Tay Marais" class="profile-img"><h2>O CORAÇÃO TEM MUITAS VOZES.</h2></div>
                 
                 <p>Uma observadora da complexidade humana e das nuances intrincadas dos relacionamentos modernos. Escrevendo com uma voz profunda, instigante e magnética, Tay explora a jornada agridoce da cura, os limites da identidade e a busca crua por autenticidade em um mundo de aparências.</p>
                 <p>Encontrando inspiração no contraste entre o silêncio e a intensidade da música, a autora acredita que as histórias mais poderosas são aquelas que nos forçam a encarar nossa própria vulnerabilidade. Seus romances dão vida a personagens profundamente imperfeitos, marcados por paixões avassaladoras.</p>
