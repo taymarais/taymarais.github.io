@@ -291,6 +291,68 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   color:var(--text-muted);text-decoration:none;transition:.3s}
 .rodape a:hover{color:var(--accent)}
 
+/* ═══ TEMA CLARO ═══
+   Nao ha botao: entra sozinho pra quem tem o aparelho no claro, e quem esta
+   no escuro continua vendo exatamente o que ve hoje.
+
+   🔴 A DECISAO DE ARTE E DELA (06/09/2026): "a parte da capa continuar no
+   preto, desce pro Adam, dai que ta no bloco branco". E o unico jeito que
+   funciona: a capa tem fundo preto e foi montada pra vazar no preto da
+   pagina, sem borda e sem sombra. Num fundo branco ela viraria um retangulo
+   preto com corte duro, e o efeito de abertura acabaria.
+
+   Entao a barra e a capa ficam escuras nos DOIS temas, sangrando ate as
+   bordas da tela, e o claro comeca no capitulo.
+
+   ⚠️ O sangramento e feito com um ::before de `inset:0 -100vmax`, e nao com
+   `clip-path`: o cabecalho e `sticky`, e o par overflow+clip-path e onde
+   sticky costuma morrer. Por isso tambem o corte lateral e `overflow-x:clip`
+   e nunca `hidden` -- `hidden` cria contexto de rolagem e mata o sticky. */
+@media (prefers-color-scheme: light) {
+
+  html, body { overflow-x: clip; }
+
+  :root {
+    --bg-deep: #F5F6F8;    /* branco frio, nao branco de folha */
+    --surface: #E9ECF0;    /* cards e caixas */
+    --accent: #0B0E13;     /* o preto vira a cor de acao */
+    --text-main: #0B0E13;  /* 17,88:1 sobre o fundo */
+    --text-muted: #4E5661; /* 6,87:1 sobre o fundo, 6,27:1 sobre o card */
+    --fio: 11, 14, 19;
+  }
+
+  /* ─── o bloco escuro do topo: barra + capa ─── */
+  header, #capa-topo {
+    --bg-deep: #010204; --surface: #0F1218; --accent: #EDEFF2;
+    --text-main: #EDEFF2; --text-muted: #98A0A9; --fio: 237, 239, 241;
+    background: transparent;
+    color: #EDEFF2;
+    position: relative;
+  }
+  header { position: sticky; }
+  header::before, #capa-topo::before {
+    content: ''; position: absolute; inset: 0 -100vmax;
+    background: #010204; z-index: -1;
+  }
+  header .logo, header .nav-links a { color: #EDEFF2; }
+  header .menu-toggle span { background: #EDEFF2; }
+
+  /* ─── sombras pesadas nao existem no claro ─── */
+  .success-box { box-shadow: 0 18px 40px rgba(11, 14, 19, 0.18); }
+  #success-modal { background: rgba(245, 246, 248, .92) !important; }
+
+  /* a borda de 26% de preto some no claro; 34% devolve o desenho da pilula */
+  .tag, .playlist-link, .capture-hero, input[type="email"] {
+    border-color: rgba(var(--fio), .34) !important;
+  }
+
+  /* o campo de e-mail tinha `background:rgba(0,0,0,.2)` e `color:white`
+     cravados: no claro virava uma pilula cinza-chumbo com texto branco em
+     cima, ilegivel. Achado no print de verificacao, antes de publicar. */
+  input[type="email"] { background: #FFFFFF; color: var(--text-main); }
+  input[type="email"]::placeholder { color: var(--text-muted); }
+}
+
 @media (prefers-reduced-motion:reduce){
   .capa-real{opacity:1!important;transform:none!important}
   #reading-section.desfoca{filter:none;opacity:1!important}
