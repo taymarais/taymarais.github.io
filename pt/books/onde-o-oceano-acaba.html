@@ -251,6 +251,13 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   #sobre-a-autora .profile-img{width:92px;height:92px}
 }
 
+/* ═══ aparecer conforme desce — do fim da sinopse pra baixo ═══
+   Nada disso na historia: ela viu revelacao paragrafo a paragrafo no
+   capitulo e nao gostou. Aqui e o bloco inteiro, de uma vez.
+   O JS e que esconde: sem script, tudo continua visivel. */
+.revela{transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.revela.ainda-nao{opacity:0;transform:translateY(22px)}
+
 /* ═══ o fim da pagina ═══ */
 .rodape{border-top:1px solid rgba(var(--fio),.12);margin-top:6vh;padding:30px 0 40px;
   display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;justify-content:space-between}
@@ -264,6 +271,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   .capa-real{opacity:1!important;transform:none!important}
   #reading-section.desfoca{filter:none;opacity:1!important}
   #pedido.longe .capture-hero{opacity:1;transform:none}
+  .revela.ainda-nao{opacity:1;transform:none}
 }
 
     </style>
@@ -448,6 +456,21 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
       var f = cx.querySelector("iframe");
       if(abrindo && f && !f.src) f.src = f.getAttribute("data-src");
     });
+  }
+
+  /* do fim da sinopse pra baixo, cada bloco entra conforme se desce */
+  if(!calmo && "IntersectionObserver" in window){
+    var blocos = [].slice.call(document.querySelectorAll(
+      ".book-hero .social-links, #sobre-a-autora, .rodape"));
+    blocos.forEach(function(el){ el.classList.add("revela","ainda-nao"); });
+    var ob = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.remove("ainda-nao"); ob.unobserve(e.target); }
+      });
+    }, {rootMargin:"0px 0px -12% 0px"});
+    blocos.forEach(function(el){ ob.observe(el); });
+    /* rede de seguranca: se o observador falhar, tudo aparece assim mesmo */
+    setTimeout(function(){ blocos.forEach(function(el){ el.classList.remove("ainda-nao"); }); }, 8000);
   }
 
   /* o capitulo desfoca quando a caixa de e-mail entra */
