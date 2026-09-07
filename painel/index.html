@@ -58,6 +58,9 @@ nav[data-aberto="1"] .abre .seta{transform:rotate(180deg)}
 section{padding-top:26px}
 h2{font:400 21px/1.25 Lora,Georgia,serif;margin:0 0 5px}
 .leg{color:var(--cinza);margin:0 0 20px;max-width:70ch;font-size:13.5px;font-weight:300}
+.leg.peq{margin:-4px 0 12px;font-size:12.5px}
+.subrot{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fumaca);
+        margin:14px 0 7px}
 
 .bloco{margin:0 0 34px}
 .bloco>h3{font:400 12px/1 Jost,sans-serif;letter-spacing:.13em;text-transform:uppercase;
@@ -124,6 +127,18 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
    biblioteca le igual ao feed — e com o viewport certo cada celula fica MAIOR
    que as cinco de antes, nao menor. */
 @media (max-width:640px){
+  /* 🔴 CABECALHO ENXUTO. Ela, 07/09: *"ainda esta com uma fileira muito grande,
+     com um espaco em branco ali... acho que e por causa das informacoes la no
+     topo. Deve adaptar tudo pra mobile, porque e onde eu mais vejo."*
+     Seis caixas de placar comiam meia tela antes da primeira peca aparecer. */
+  header{padding:18px 0 4px}
+  h1{font-size:26px}
+  .placar div{padding:8px 9px}
+  .placar b{font-size:19px;margin-bottom:2px}
+  .placar span{font-size:8px;letter-spacing:.07em}
+  nav{padding:12px 0 10px;margin:10px 0 0}
+  section{padding-top:18px}
+  .leg{font-size:13px;margin:0 0 14px}
   .trio{max-width:none;gap:5px}
   .env{padding:0 10px 90px}
   .grade{grid-template-columns:repeat(3,1fr);gap:5px}
@@ -134,24 +149,25 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 </style></head><body>
 <div class="env">
 <header><h1>Biblioteca visual</h1>
-<p class="sub">Pinterest · 07/09/2026 às 17:11</p>
+<p class="sub">Pinterest · 07/09/2026 às 17:49</p>
 <div class="placar">
 <div><b>267</b><span>peças</span></div>
 <div><b>30</b><span>no ar</span></div>
 <div><b>51</b><span>na fila</span></div>
 <div><b>6</b><span>promo · sábado</span></div>
-<div><b>148</b><span>em obra</span></div>
+<div><b>121</b><span>em obra</span></div>
 <div><b>7</b><span>vídeos</span></div>
 </div></header>
 <nav id="nav" data-aberto="0">
-<button class="abre" id="abre" aria-haspopup="true" aria-expanded="false"><span class="qual" id="qual">Em obra</span><span class="cont" id="cont">148</span><span class="seta">▼</span></button>
+<button class="abre" id="abre" aria-haspopup="true" aria-expanded="false"><span class="qual" id="qual">Em obra</span><span class="cont" id="cont">121</span><span class="seta">▼</span></button>
 <div class="menu" id="menu" role="tablist" hidden>
-<button role="tab" aria-selected="true" data-t="obra">Em obra<i>148</i></button>
+<button role="tab" aria-selected="true" data-t="obra">Em obra<i>121</i></button>
 <button role="tab" aria-selected="false" data-t="fila">A fila<i>19</i></button>
 <button role="tab" aria-selected="false" data-t="acervo">O acervo<i>267</i></button>
 </div></nav>
-<section id="obra"><h2>O que estamos construindo</h2><p class="leg">Isto <b>não é uma lista escrita à mão</b> — é calculado. Peça que existe no estúdio e ainda não subiu para <code>pins/</code> do site está, por definição, em obra. Não tem como desatualizar.</p>
-<div class="bloco"><h3>promo <em>17</em></h3><div class="grade">
+<section id="obra"><h2>O que estamos construindo</h2><p class="leg">Isto <b>não é uma lista escrita à mão</b> — é calculado. Peça que existe no estúdio e ainda não subiu para <code>pins/</code> do site está, por definição, em obra.</p>
+<div class="bloco"><h3>peças prontas, esperando fila <em>121</em></h3><p class="leg peq">Estas <b>vão para o Pinterest</b>. Só falta escolher a fileira e a copy.</p>
+<div class="subrot">promo · 17</div><div class="grade">
 <div class="cel f-promo " tabindex="0" role="button" data-m="A-oferta-cafe.jpg" data-n="A-oferta-cafe" data-c="A-oferta-cafe"><img src="mini/A-oferta-cafe.jpg" alt="A-oferta-cafe" loading="lazy"><span class="fmt">promo</span><span class="nm">A-oferta-cafe</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="A-oferta-madeira.jpg" data-n="A-oferta-madeira" data-c="A-oferta-madeira"><img src="mini/A-oferta-madeira.jpg" alt="A-oferta-madeira" loading="lazy"><span class="fmt">promo</span><span class="nm">A-oferta-madeira</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="B-frase-cafe.jpg" data-n="B-frase-cafe" data-c="B-frase-cafe"><img src="mini/B-frase-cafe.jpg" alt="B-frase-cafe" loading="lazy"><span class="fmt">promo</span><span class="nm">B-frase-cafe</span></div>
@@ -169,35 +185,21 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-promo " tabindex="0" role="button" data-m="livro-madeira-base.jpg" data-n="livro-madeira-base" data-c="livro-madeira-base"><img src="mini/livro-madeira-base.jpg" alt="livro-madeira-base" loading="lazy"><span class="fmt">promo</span><span class="nm">livro-madeira-base</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="livro-madeira-topo.jpg" data-n="livro-madeira-topo" data-c="livro-madeira-topo"><img src="mini/livro-madeira-topo.jpg" alt="livro-madeira-topo" loading="lazy"><span class="fmt">promo</span><span class="nm">livro-madeira-topo</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="livro-mesa-cafe.jpg" data-n="livro-mesa-cafe" data-c="livro-mesa-cafe"><img src="mini/livro-mesa-cafe.jpg" alt="livro-mesa-cafe" loading="lazy"><span class="fmt">promo</span><span class="nm">livro-mesa-cafe</span></div>
-</div></div>
-<div class="bloco"><h3>video <em>6</em></h3><div class="grade">
+</div>
+<div class="subrot">video · 6</div><div class="grade">
 <div class="cel f-video " tabindex="0" role="button" data-m="montagem-01.jpg" data-n="montagem-01" data-c="montagem-01"><img src="mini/montagem-01.jpg" alt="montagem-01" loading="lazy"><span class="fmt">video</span><span class="play">▶ 24s</span><span class="nm">montagem-01</span></div>
 <div class="cel f-video " tabindex="0" role="button" data-m="montagem-02.jpg" data-n="montagem-02" data-c="montagem-02"><img src="mini/montagem-02.jpg" alt="montagem-02" loading="lazy"><span class="fmt">video</span><span class="play">▶ 37s</span><span class="nm">montagem-02</span></div>
 <div class="cel f-video " tabindex="0" role="button" data-m="montagem-03.jpg" data-n="montagem-03" data-c="montagem-03"><img src="mini/montagem-03.jpg" alt="montagem-03" loading="lazy"><span class="fmt">video</span><span class="play">▶ 20s</span><span class="nm">montagem-03</span></div>
 <div class="cel f-video " tabindex="0" role="button" data-m="montagem-04.jpg" data-n="montagem-04" data-c="montagem-04"><img src="mini/montagem-04.jpg" alt="montagem-04" loading="lazy"><span class="fmt">video</span><span class="play">▶ 26s</span><span class="nm">montagem-04</span></div>
 <div class="cel f-video " tabindex="0" role="button" data-m="montagem-05.jpg" data-n="montagem-05" data-c="montagem-05"><img src="mini/montagem-05.jpg" alt="montagem-05" loading="lazy"><span class="fmt">video</span><span class="play">▶ 16s</span><span class="nm">montagem-05</span></div>
 <div class="cel f-video " tabindex="0" role="button" data-m="montagem-06.jpg" data-n="montagem-06" data-c="montagem-06"><img src="mini/montagem-06.jpg" alt="montagem-06" loading="lazy"><span class="fmt">video</span><span class="play">▶ 13s</span><span class="nm">montagem-06</span></div>
-</div></div>
-<div class="bloco"><h3>mockup <em>12</em></h3><div class="grade">
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-areia-praia.jpg" data-n="mockup-areia-praia" data-c="mockup-areia-praia"><img src="mini/mockup-areia-praia.jpg" alt="mockup-areia-praia" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-areia-praia</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-cama-janela.jpg" data-n="mockup-cama-janela" data-c="mockup-cama-janela"><img src="mini/mockup-cama-janela.jpg" alt="mockup-cama-janela" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-cama-janela</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-lencol-alto.jpg" data-n="mockup-lencol-alto" data-c="mockup-lencol-alto"><img src="mini/mockup-lencol-alto.jpg" alt="mockup-lencol-alto" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-lencol-alto</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-base.jpg" data-n="mockup-madeira-base" data-c="mockup-madeira-base"><img src="mini/mockup-madeira-base.jpg" alt="mockup-madeira-base" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-base</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-preta-a.jpg" data-n="mockup-madeira-preta-a" data-c="mockup-madeira-preta-a"><img src="mini/mockup-madeira-preta-a.jpg" alt="mockup-madeira-preta-a" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-preta-a</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-preta-b.jpg" data-n="mockup-madeira-preta-b" data-c="mockup-madeira-preta-b"><img src="mini/mockup-madeira-preta-b.jpg" alt="mockup-madeira-preta-b" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-preta-b</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-preta-c.jpg" data-n="mockup-madeira-preta-c" data-c="mockup-madeira-preta-c"><img src="mini/mockup-madeira-preta-c.jpg" alt="mockup-madeira-preta-c" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-preta-c</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-topo.jpg" data-n="mockup-madeira-topo" data-c="mockup-madeira-topo"><img src="mini/mockup-madeira-topo.jpg" alt="mockup-madeira-topo" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-topo</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-marmore-reflexo.jpg" data-n="mockup-marmore-reflexo" data-c="mockup-marmore-reflexo"><img src="mini/mockup-marmore-reflexo.jpg" alt="mockup-marmore-reflexo" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-marmore-reflexo</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-mesa-cafe.jpg" data-n="mockup-mesa-cafe" data-c="mockup-mesa-cafe"><img src="mini/mockup-mesa-cafe.jpg" alt="mockup-mesa-cafe" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-mesa-cafe</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-molhado-reflexo.jpg" data-n="mockup-molhado-reflexo" data-c="mockup-molhado-reflexo"><img src="mini/mockup-molhado-reflexo.jpg" alt="mockup-molhado-reflexo" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-molhado-reflexo</span></div>
-<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-peitoril-cidade.jpg" data-n="mockup-peitoril-cidade" data-c="mockup-peitoril-cidade"><img src="mini/mockup-peitoril-cidade.jpg" alt="mockup-peitoril-cidade" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-peitoril-cidade</span></div>
-</div></div>
-<div class="bloco"><h3>artefato <em>3</em></h3><div class="grade">
+</div>
+<div class="subrot">artefato · 3</div><div class="grade">
 <div class="cel f-artefato " tabindex="0" role="button" data-m="tabloide-01-TESTE.jpg" data-n="tabloide-01-TESTE" data-c="tabloide-01-TESTE"><img src="mini/tabloide-01-TESTE.jpg" alt="tabloide-01-TESTE" loading="lazy"><span class="fmt">artefato</span><span class="nm">tabloide-01-TESTE</span></div>
 <div class="cel f-artefato " tabindex="0" role="button" data-m="tabloide-02-caixa-alta.jpg" data-n="tabloide-02-caixa-alta" data-c="tabloide-02-caixa-alta"><img src="mini/tabloide-02-caixa-alta.jpg" alt="tabloide-02-caixa-alta" loading="lazy"><span class="fmt">artefato</span><span class="nm">tabloide-02-caixa-alta</span></div>
 <div class="cel f-artefato " tabindex="0" role="button" data-m="tabloide-03-caixa-baixa.jpg" data-n="tabloide-03-caixa-baixa" data-c="tabloide-03-caixa-baixa"><img src="mini/tabloide-03-caixa-baixa.jpg" alt="tabloide-03-caixa-baixa" loading="lazy"><span class="fmt">artefato</span><span class="nm">tabloide-03-caixa-baixa</span></div>
-</div></div>
-<div class="bloco"><h3>still <em>8</em></h3><div class="grade">
+</div>
+<div class="subrot">still · 8</div><div class="grade">
 <div class="cel f-still " tabindex="0" role="button" data-m="cap01-adam.jpg" data-n="cap01-adam" data-c="cap01-adam"><img src="mini/cap01-adam.jpg" alt="cap01-adam" loading="lazy"><span class="fmt">still</span><span class="nm">cap01-adam</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="cap01-mads.jpg" data-n="cap01-mads" data-c="cap01-mads"><img src="mini/cap01-mads.jpg" alt="cap01-mads" loading="lazy"><span class="fmt">still</span><span class="nm">cap01-mads</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="cap04-adam.jpg" data-n="cap04-adam" data-c="cap04-adam"><img src="mini/cap04-adam.jpg" alt="cap04-adam" loading="lazy"><span class="fmt">still</span><span class="nm">cap04-adam</span></div>
@@ -206,8 +208,8 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-still " tabindex="0" role="button" data-m="cap07-mads.jpg" data-n="cap07-mads" data-c="cap07-mads"><img src="mini/cap07-mads.jpg" alt="cap07-mads" loading="lazy"><span class="fmt">still</span><span class="nm">cap07-mads</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="cap07b-adam.jpg" data-n="cap07b-adam" data-c="cap07b-adam"><img src="mini/cap07b-adam.jpg" alt="cap07b-adam" loading="lazy"><span class="fmt">still</span><span class="nm">cap07b-adam</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="cap07b-mads.jpg" data-n="cap07b-mads" data-c="cap07b-mads"><img src="mini/cap07b-mads.jpg" alt="cap07b-mads" loading="lazy"><span class="fmt">still</span><span class="nm">cap07b-mads</span></div>
-</div></div>
-<div class="bloco"><h3>arte <em>60</em></h3><div class="grade">
+</div>
+<div class="subrot">arte · 52</div><div class="grade">
 <div class="cel f-arte " tabindex="0" role="button" data-m="A-editorial.jpg" data-n="A-editorial" data-c="A-editorial"><img src="mini/A-editorial.jpg" alt="A-editorial" loading="lazy"><span class="fmt">arte</span><span class="nm">A-editorial</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="AA-casa-bancada.jpg" data-n="AA-casa-bancada" data-c="AA-casa-bancada"><img src="mini/AA-casa-bancada.jpg" alt="AA-casa-bancada" loading="lazy"><span class="fmt">arte</span><span class="nm">AA-casa-bancada</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="AB-estrada-para-brisa-b.jpg" data-n="AB-estrada-para-brisa-b" data-c="AB-estrada-para-brisa-b"><img src="mini/AB-estrada-para-brisa-b.jpg" alt="AB-estrada-para-brisa-b" loading="lazy"><span class="fmt">arte</span><span class="nm">AB-estrada-para-brisa-b</span></div>
@@ -259,23 +261,9 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-arte " tabindex="0" role="button" data-m="Y-rua-esquina-a.jpg" data-n="Y-rua-esquina-a" data-c="Y-rua-esquina-a"><img src="mini/Y-rua-esquina-a.jpg" alt="Y-rua-esquina-a" loading="lazy"><span class="fmt">arte</span><span class="nm">Y-rua-esquina-a</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="Z-dialogo-zylah.jpg" data-n="Z-dialogo-zylah" data-c="Z-dialogo-zylah"><img src="mini/Z-dialogo-zylah.jpg" alt="Z-dialogo-zylah" loading="lazy"><span class="fmt">arte</span><span class="nm">Z-dialogo-zylah</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="Z-rua-esquina-b.jpg" data-n="Z-rua-esquina-b" data-c="Z-rua-esquina-b"><img src="mini/Z-rua-esquina-b.jpg" alt="Z-rua-esquina-b" loading="lazy"><span class="fmt">arte</span><span class="nm">Z-rua-esquina-b</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="form-arc-en.jpg" data-n="form-arc-en" data-c="form-arc-en"><img src="mini/form-arc-en.jpg" alt="form-arc-en" loading="lazy"><span class="fmt">arte</span><span class="nm">form-arc-en</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="form-arc-pt.jpg" data-n="form-arc-pt" data-c="form-arc-pt"><img src="mini/form-arc-pt.jpg" alt="form-arc-pt" loading="lazy"><span class="fmt">arte</span><span class="nm">form-arc-pt</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="foto-perfil-2026.jpg" data-n="foto-perfil-2026" data-c="foto-perfil-2026"><img src="mini/foto-perfil-2026.jpg" alt="foto-perfil-2026" loading="lazy"><span class="fmt">arte</span><span class="nm">foto-perfil-2026</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="foto-perfil-2026-escuro.jpg" data-n="foto-perfil-2026-escuro" data-c="foto-perfil-2026-escuro"><img src="mini/foto-perfil-2026-escuro.jpg" alt="foto-perfil-2026-escuro" loading="lazy"><span class="fmt">arte</span><span class="nm">foto-perfil-2026-escuro</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="lp-direcao.jpg" data-n="lp-direcao" data-c="lp-direcao"><img src="mini/lp-direcao.jpg" alt="lp-direcao" loading="lazy"><span class="fmt">arte</span><span class="nm">lp-direcao</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="mockup-livro-01.jpg" data-n="mockup-livro-01" data-c="mockup-livro-01"><img src="mini/mockup-livro-01.jpg" alt="mockup-livro-01" loading="lazy"><span class="fmt">arte</span><span class="nm">mockup-livro-01</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site.jpg" data-n="paleta-site" data-c="paleta-site"><img src="mini/paleta-site.jpg" alt="paleta-site" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site-clara.jpg" data-n="paleta-site-clara" data-c="paleta-site-clara"><img src="mini/paleta-site-clara.jpg" alt="paleta-site-clara" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site-clara</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site-foto.jpg" data-n="paleta-site-foto" data-c="paleta-site-foto"><img src="mini/paleta-site-foto.jpg" alt="paleta-site-foto" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site-foto</span></div>
-</div></div>
-<div class="bloco"><h3>zona <em>4</em></h3><div class="grade">
-<div class="cel f-zona " tabindex="0" role="button" data-m="calcada-noite-LIMPA.jpg" data-n="calcada-noite-LIMPA" data-c="calcada-noite-LIMPA"><img src="mini/calcada-noite-LIMPA.jpg" alt="calcada-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">calcada-noite-LIMPA</span></div>
-<div class="cel f-zona " tabindex="0" role="button" data-m="praia-noite-LIMPA.jpg" data-n="praia-noite-LIMPA" data-c="praia-noite-LIMPA"><img src="mini/praia-noite-LIMPA.jpg" alt="praia-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">praia-noite-LIMPA</span></div>
-<div class="cel f-zona " tabindex="0" role="button" data-m="vague-madeleine-LIMPA.jpg" data-n="vague-madeleine-LIMPA" data-c="vague-madeleine-LIMPA"><img src="mini/vague-madeleine-LIMPA.jpg" alt="vague-madeleine-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">vague-madeleine-LIMPA</span></div>
-<div class="cel f-zona " tabindex="0" role="button" data-m="xadrez-pb-LIMPA.jpg" data-n="xadrez-pb-LIMPA" data-c="xadrez-pb-LIMPA"><img src="mini/xadrez-pb-LIMPA.jpg" alt="xadrez-pb-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">xadrez-pb-LIMPA</span></div>
-</div></div>
-<div class="bloco"><h3>foto <em>35</em></h3><div class="grade">
+</div>
+<div class="subrot">foto · 35</div><div class="grade">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-aeroporto.jpg" data-n="adam-aeroporto" data-c="adam-aeroporto"><img src="mini/adam-aeroporto.jpg" alt="adam-aeroporto" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-aeroporto</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-armchair-phone.jpg" data-n="adam-armchair-phone" data-c="adam-armchair-phone"><img src="mini/adam-armchair-phone.jpg" alt="adam-armchair-phone" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-armchair-phone</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-atelie.jpg" data-n="adam-atelie" data-c="adam-atelie"><img src="mini/adam-atelie.jpg" alt="adam-atelie" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-atelie</span></div>
@@ -311,13 +299,10 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-retrato-escuro.jpg" data-n="mads-retrato-escuro" data-c="mads-retrato-escuro"><img src="mini/mads-retrato-escuro.jpg" alt="mads-retrato-escuro" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-retrato-escuro</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-slit-skirt-street.jpg" data-n="mads-slit-skirt-street" data-c="mads-slit-skirt-street"><img src="mini/mads-slit-skirt-street.jpg" alt="mads-slit-skirt-street" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-slit-skirt-street</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-tapete-vestido-rosa.jpg" data-n="mads-tapete-vestido-rosa" data-c="mads-tapete-vestido-rosa"><img src="mini/mads-tapete-vestido-rosa.jpg" alt="mads-tapete-vestido-rosa" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-tapete-vestido-rosa</span></div>
-</div></div>
-<div class="bloco"><h3>capa <em>3</em></h3><div class="grade">
-<div class="cel f-capa " tabindex="0" role="button" data-m="capa-01-serif.jpg" data-n="capa-01-serif" data-c="capa-01-serif"><img src="mini/capa-01-serif.jpg" alt="capa-01-serif" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-01-serif</span></div>
-<div class="cel f-capa " tabindex="0" role="button" data-m="capa-02-script-preto.jpg" data-n="capa-02-script-preto" data-c="capa-02-script-preto"><img src="mini/capa-02-script-preto.jpg" alt="capa-02-script-preto" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-02-script-preto</span></div>
-<div class="cel f-capa " tabindex="0" role="button" data-m="capa-03-script-azul.jpg" data-n="capa-03-script-azul" data-c="capa-03-script-azul"><img src="mini/capa-03-script-azul.jpg" alt="capa-03-script-azul" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-03-script-azul</span></div>
-</div></div>
-<div class="bloco"><h3>prontas no site, sem destino <em>32 — já estão em pins/, faltam entrar numa fila</em></h3><div class="grade">
+</div>
+</div>
+<div class="bloco"><h3>já estão no site, mas sem fila <em>32</em></h3><p class="leg peq">Estas já subiram para <code>pins/</code> — o robô consegue publicar hoje, e ninguém escreveu a linha da fila. É o estoque mais rápido que existe.</p>
+<div class="grade">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-ballgame-cap.jpg" data-n="adam-ballgame-cap" data-c="adam-ballgame-cap"><img src="mini/adam-ballgame-cap.jpg" alt="adam-ballgame-cap" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-ballgame-cap</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-guitar-kitchen.jpg" data-n="adam-guitar-kitchen" data-c="adam-guitar-kitchen"><img src="mini/adam-guitar-kitchen.jpg" alt="adam-guitar-kitchen" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-guitar-kitchen</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-hoodie-cobbles.jpg" data-n="adam-hoodie-cobbles" data-c="adam-hoodie-cobbles"><img src="mini/adam-hoodie-cobbles.jpg" alt="adam-hoodie-cobbles" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-hoodie-cobbles</span></div>
@@ -350,7 +335,43 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-night-slit.jpg" data-n="mads-night-slit" data-c="mads-night-slit"><img src="mini/mads-night-slit.jpg" alt="mads-night-slit" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-night-slit</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="still-anything-but.jpg" data-n="still-anything-but" data-c="still-anything-but"><img src="mini/still-anything-but.jpg" alt="still-anything-but" loading="lazy"><span class="fmt">still</span><span class="nm">still-anything-but</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="still-toujours.jpg" data-n="still-toujours" data-c="still-toujours"><img src="mini/still-toujours.jpg" alt="still-toujours" loading="lazy"><span class="fmt">still</span><span class="nm">still-toujours</span></div>
-</div></div>
+</div>
+</div>
+<div class="bloco"><h3>matéria-prima <em>19</em></h3><p class="leg peq"><b>Não são peças.</b> Mockup cru, zona de texto e capa existem para virar outra coisa — o mockup só vai ao ar com o texto por cima, então ele não é trabalho pendente, é insumo.</p>
+<div class="grade">
+<div class="cel f-zona " tabindex="0" role="button" data-m="calcada-noite-LIMPA.jpg" data-n="calcada-noite-LIMPA" data-c="calcada-noite-LIMPA"><img src="mini/calcada-noite-LIMPA.jpg" alt="calcada-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">calcada-noite-LIMPA</span></div>
+<div class="cel f-capa " tabindex="0" role="button" data-m="capa-01-serif.jpg" data-n="capa-01-serif" data-c="capa-01-serif"><img src="mini/capa-01-serif.jpg" alt="capa-01-serif" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-01-serif</span></div>
+<div class="cel f-capa " tabindex="0" role="button" data-m="capa-02-script-preto.jpg" data-n="capa-02-script-preto" data-c="capa-02-script-preto"><img src="mini/capa-02-script-preto.jpg" alt="capa-02-script-preto" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-02-script-preto</span></div>
+<div class="cel f-capa " tabindex="0" role="button" data-m="capa-03-script-azul.jpg" data-n="capa-03-script-azul" data-c="capa-03-script-azul"><img src="mini/capa-03-script-azul.jpg" alt="capa-03-script-azul" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-03-script-azul</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-areia-praia.jpg" data-n="mockup-areia-praia" data-c="mockup-areia-praia"><img src="mini/mockup-areia-praia.jpg" alt="mockup-areia-praia" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-areia-praia</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-cama-janela.jpg" data-n="mockup-cama-janela" data-c="mockup-cama-janela"><img src="mini/mockup-cama-janela.jpg" alt="mockup-cama-janela" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-cama-janela</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-lencol-alto.jpg" data-n="mockup-lencol-alto" data-c="mockup-lencol-alto"><img src="mini/mockup-lencol-alto.jpg" alt="mockup-lencol-alto" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-lencol-alto</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-base.jpg" data-n="mockup-madeira-base" data-c="mockup-madeira-base"><img src="mini/mockup-madeira-base.jpg" alt="mockup-madeira-base" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-base</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-preta-a.jpg" data-n="mockup-madeira-preta-a" data-c="mockup-madeira-preta-a"><img src="mini/mockup-madeira-preta-a.jpg" alt="mockup-madeira-preta-a" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-preta-a</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-preta-b.jpg" data-n="mockup-madeira-preta-b" data-c="mockup-madeira-preta-b"><img src="mini/mockup-madeira-preta-b.jpg" alt="mockup-madeira-preta-b" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-preta-b</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-preta-c.jpg" data-n="mockup-madeira-preta-c" data-c="mockup-madeira-preta-c"><img src="mini/mockup-madeira-preta-c.jpg" alt="mockup-madeira-preta-c" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-preta-c</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-madeira-topo.jpg" data-n="mockup-madeira-topo" data-c="mockup-madeira-topo"><img src="mini/mockup-madeira-topo.jpg" alt="mockup-madeira-topo" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-madeira-topo</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-marmore-reflexo.jpg" data-n="mockup-marmore-reflexo" data-c="mockup-marmore-reflexo"><img src="mini/mockup-marmore-reflexo.jpg" alt="mockup-marmore-reflexo" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-marmore-reflexo</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-mesa-cafe.jpg" data-n="mockup-mesa-cafe" data-c="mockup-mesa-cafe"><img src="mini/mockup-mesa-cafe.jpg" alt="mockup-mesa-cafe" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-mesa-cafe</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-molhado-reflexo.jpg" data-n="mockup-molhado-reflexo" data-c="mockup-molhado-reflexo"><img src="mini/mockup-molhado-reflexo.jpg" alt="mockup-molhado-reflexo" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-molhado-reflexo</span></div>
+<div class="cel f-mockup " tabindex="0" role="button" data-m="mockup-peitoril-cidade.jpg" data-n="mockup-peitoril-cidade" data-c="mockup-peitoril-cidade"><img src="mini/mockup-peitoril-cidade.jpg" alt="mockup-peitoril-cidade" loading="lazy"><span class="fmt">mockup</span><span class="nm">mockup-peitoril-cidade</span></div>
+<div class="cel f-zona " tabindex="0" role="button" data-m="praia-noite-LIMPA.jpg" data-n="praia-noite-LIMPA" data-c="praia-noite-LIMPA"><img src="mini/praia-noite-LIMPA.jpg" alt="praia-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">praia-noite-LIMPA</span></div>
+<div class="cel f-zona " tabindex="0" role="button" data-m="vague-madeleine-LIMPA.jpg" data-n="vague-madeleine-LIMPA" data-c="vague-madeleine-LIMPA"><img src="mini/vague-madeleine-LIMPA.jpg" alt="vague-madeleine-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">vague-madeleine-LIMPA</span></div>
+<div class="cel f-zona " tabindex="0" role="button" data-m="xadrez-pb-LIMPA.jpg" data-n="xadrez-pb-LIMPA" data-c="xadrez-pb-LIMPA"><img src="mini/xadrez-pb-LIMPA.jpg" alt="xadrez-pb-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">xadrez-pb-LIMPA</span></div>
+</div>
+</div>
+<div class="bloco"><h3>não é Pinterest <em>8</em></h3><p class="leg peq">Coisa do <b>site e da marca</b>: paleta, formulário, foto de perfil. Está aqui para você achar quando precisar, e para ninguém mandar por engano para uma fila de pin.</p>
+<div class="grade">
+<div class="cel f-arte " tabindex="0" role="button" data-m="form-arc-en.jpg" data-n="form-arc-en" data-c="form-arc-en"><img src="mini/form-arc-en.jpg" alt="form-arc-en" loading="lazy"><span class="fmt">arte</span><span class="nm">form-arc-en</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="form-arc-pt.jpg" data-n="form-arc-pt" data-c="form-arc-pt"><img src="mini/form-arc-pt.jpg" alt="form-arc-pt" loading="lazy"><span class="fmt">arte</span><span class="nm">form-arc-pt</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="foto-perfil-2026.jpg" data-n="foto-perfil-2026" data-c="foto-perfil-2026"><img src="mini/foto-perfil-2026.jpg" alt="foto-perfil-2026" loading="lazy"><span class="fmt">arte</span><span class="nm">foto-perfil-2026</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="foto-perfil-2026-escuro.jpg" data-n="foto-perfil-2026-escuro" data-c="foto-perfil-2026-escuro"><img src="mini/foto-perfil-2026-escuro.jpg" alt="foto-perfil-2026-escuro" loading="lazy"><span class="fmt">arte</span><span class="nm">foto-perfil-2026-escuro</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="lp-direcao.jpg" data-n="lp-direcao" data-c="lp-direcao"><img src="mini/lp-direcao.jpg" alt="lp-direcao" loading="lazy"><span class="fmt">arte</span><span class="nm">lp-direcao</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site.jpg" data-n="paleta-site" data-c="paleta-site"><img src="mini/paleta-site.jpg" alt="paleta-site" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site-clara.jpg" data-n="paleta-site-clara" data-c="paleta-site-clara"><img src="mini/paleta-site-clara.jpg" alt="paleta-site-clara" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site-clara</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site-foto.jpg" data-n="paleta-site-foto" data-c="paleta-site-foto"><img src="mini/paleta-site-foto.jpg" alt="paleta-site-foto" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site-foto</span></div>
+</div>
+</div>
 </section>
 <section id="fila" hidden><h2>A grade como vai ficar</h2><p class="leg">Mais novo em cima, do jeito que a aba Criados desenha — a ordem é o <b>inverso da fila</b>. As duas filas aparecem juntas: a <span class="selo promo">promo</span> sai aos sábados e não toma a vaga da narrativa. Conflito vem marcado <b>na própria fileira</b>, não numa aba à parte.</p>
 <div class="bloco"><h3>ainda vai sair <em>na ordem em que vai aparecer no feed — mais novo em cima, com a data projetada de cada fileira</em></h3></div>
