@@ -300,6 +300,43 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   color:var(--text-muted);text-decoration:none;transition:.3s}
 .rodape a:hover{color:var(--accent)}
 
+/* ═══ A OFERTA NA FRENTE ═══
+   Medido no Pinterest de 08/08 a 07/09/2026: 17.600 impressoes, 762
+   engajamentos, 106 salvos, 14 cliques de saida e ZERO inscritos. A arte
+   funciona. O que faltava e a pagina dizer, cedo, que existe alguma coisa
+   pra pessoa. A caixa de e-mail fica a 4.400 px do topo no celular: cinco
+   telas. Quem vem do Pinterest decide em segundos.
+   A capa continua intocada, por decisao dela. */
+.oferta-topo{max-width:520px;margin:34px auto 0;text-align:center}
+.oferta-topo p{font-family:var(--font-reading);font-size:.92rem;
+  color:var(--text-muted);margin:0 0 14px;line-height:1.5}
+.oferta-topo a{display:inline-block;background:var(--accent);color:var(--bg-deep);
+  padding:13px 30px;border-radius:50px;text-decoration:none;font-family:var(--font-ui);
+  font-weight:700;text-transform:uppercase;letter-spacing:1.4px;font-size:.7rem;
+  transition:.3s}
+.oferta-topo a:hover{transform:scale(1.03);opacity:.92}
+
+/* a barra que acompanha a leitura. Nasce escondida e o JS mostra: sem script,
+   ninguem ve uma tarja presa no rodape. */
+.barra-oferta{position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(1,2,4,.88);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(var(--fio),.20);
+  transform:translateY(110%);transition:transform .45s cubic-bezier(.22,.61,.36,1);
+  pointer-events:none}
+.barra-oferta.aparece{transform:translateY(0);pointer-events:auto}
+.barra-oferta span{font-family:var(--font-reading);font-size:.86rem;color:#EDEFF2}
+.barra-oferta a{background:#EDEFF2;color:#010204;padding:10px 22px;border-radius:50px;
+  text-decoration:none;font-family:var(--font-ui);font-weight:700;text-transform:uppercase;
+  letter-spacing:1.2px;font-size:.66rem;white-space:nowrap}
+@media (max-width:420px){
+  .barra-oferta{gap:10px;padding:10px 14px}
+  .barra-oferta span{font-size:.78rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .barra-oferta{transition:none}
+}
+
 /* ═══ TEMA CLARO ═══
    Nao ha botao: entra sozinho pra quem tem o aparelho no claro, e quem esta
    no escuro continua vendo exatamente o que ve hoje.
@@ -431,6 +468,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
             <div class="playlist-wrap">
                 <a id="playlist-toggle" aria-expanded="false" aria-controls="playlist-box" href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="playlist-link">Playlist ✦</a>
             <div class="playlist-box" id="playlist-box" hidden><iframe title="Playlist de Onde o Oceano Acaba" data-src="https://open.spotify.com/embed/playlist/1GTIxI5nCClAr93Z4fLXOP?theme=0" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div></div>
+            <div class="oferta-topo"><p>Os dois primeiros capítulos, de graça, em ebook de verdade.</p><a href="#pedido">Quero receber</a></div>
             <div class="reading-content">
                 <span class="date-line">Sábado, 9 de novembro de 2024. Los Angeles, CA.</span>
 
@@ -642,7 +680,25 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
     }
   }
 })();
+
+  /* a barra da oferta: entra quando a leitura comeca, sai quando a caixa de
+     verdade aparece. Nunca as duas ao mesmo tempo pedindo a mesma coisa. */
+  (function(){
+    var barra = document.querySelector('.barra-oferta');
+    var pedido = document.getElementById('pedido');
+    var leitura = document.getElementById('reading-section');
+    if(!barra || !pedido || !leitura) return;
+    var lendo = false, chegou = false;
+    function pinta(){ barra.classList.toggle('aparece', lendo && !chegou); }
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ lendo = e.boundingClientRect.top < 0 || e.isIntersecting; pinta(); });
+    }, {threshold:0}).observe(leitura);
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ chegou = e.isIntersecting; pinta(); });
+    }, {threshold:0.12}).observe(pedido);
+  })();
 </script>
 
+<div class="barra-oferta"><span>Dois capítulos, de graça</span><a href="#pedido">Quero o ebook</a></div>
 </body>
 </html>
