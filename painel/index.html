@@ -22,16 +22,34 @@ h1{font:400 clamp(26px,6vw,40px)/1.05 Lora,Georgia,serif;margin:0;letter-spacing
           font-variant-numeric:tabular-nums;margin-bottom:4px}
 .placar span{font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--fumaca)}
 
-nav{position:sticky;top:0;z-index:30;background:var(--preto);padding:18px 0 12px;
+/* 🔴 A NAVEGACAO E UM BOTAO, nao uma fila de abas — pedido dela nas duas versoes
+   do painel (31/08 e de novo em 07/09): *"talvez voltar com o botao para caber
+   melhor no celular."* Tres rotulos com contador em linha apertam a 430px, e o
+   que se perde primeiro e justamente o numero. O botao mostra a tela ATUAL e
+   abre o resto por cima, entao caber deixa de ser problema. */
+nav{position:sticky;top:0;z-index:30;background:var(--preto);padding:16px 0 12px;
     margin:14px 0 0;border-bottom:1px solid var(--linha)}
-.abas{display:flex;gap:5px}
-.abas button{flex:1;font:400 13px/1 Jost,sans-serif;color:var(--cinza);background:transparent;
-  border:1px solid var(--linha);border-radius:3px;padding:12px 8px;cursor:pointer;
-  letter-spacing:.05em}
-.abas button i{font-style:normal;color:var(--fumaca);margin-left:5px;font-variant-numeric:tabular-nums}
-.abas button[aria-selected="true"]{background:var(--gelo);color:var(--preto);border-color:var(--gelo)}
-.abas button[aria-selected="true"] i{color:var(--preto);opacity:.55}
-.abas button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+.abre{display:flex;align-items:center;gap:10px;width:100%;max-width:340px;
+  font:400 15px/1 Jost,sans-serif;color:var(--gelo);background:var(--cartao);
+  border:1px solid var(--linha);border-radius:3px;padding:14px 16px;cursor:pointer;
+  text-align:left}
+.abre .qual{flex:1;font-weight:500}
+.abre .cont{color:var(--fumaca);font-variant-numeric:tabular-nums;font-size:13px}
+.abre .seta{color:var(--fumaca);font-size:10px;transition:transform .15s}
+nav[data-aberto="1"] .abre .seta{transform:rotate(180deg)}
+.abre:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+.menu{position:absolute;z-index:40;top:calc(100% - 6px);left:0;width:100%;max-width:340px;
+  background:var(--cartao);border:1px solid var(--linha);border-radius:3px;
+  box-shadow:0 16px 38px rgba(1,2,4,.75);padding:5px;display:flex;flex-direction:column}
+.menu button{display:flex;align-items:baseline;gap:9px;width:100%;text-align:left;
+  font:400 15px/1 Jost,sans-serif;background:transparent;border:0;border-radius:2px;
+  color:var(--cinza);padding:13px 12px;cursor:pointer}
+.menu button[aria-selected="true"]{color:var(--gelo);background:var(--preto)}
+.menu button[aria-selected="true"]::before{content:"";width:3px;align-self:stretch;
+  background:var(--ambar);margin:-3px 5px -3px -5px;border-radius:2px}
+.menu i{font-style:normal;color:var(--fumaca);margin-left:auto;font-variant-numeric:tabular-nums;
+  font-size:13px}
+.menu button:focus-visible{outline:2px solid var(--ambar);outline-offset:-2px}
 
 section{padding-top:26px}
 h2{font:400 21px/1.25 Lora,Georgia,serif;margin:0 0 5px}
@@ -43,7 +61,7 @@ h2{font:400 21px/1.25 Lora,Georgia,serif;margin:0 0 5px}
 .bloco>h3:after{content:"";flex:1;border-top:1px solid var(--linha)}
 .bloco>h3 em{font-style:normal;color:var(--cinza);letter-spacing:0;text-transform:none;font-size:12px}
 
-.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:620px;margin:0 0 6px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:820px;margin:0 0 6px}
 .fileira{margin:0 0 20px}
 .fileira .rot{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin:0 0 6px;
               font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--fumaca)}
@@ -56,7 +74,7 @@ h2{font:400 21px/1.25 Lora,Georgia,serif;margin:0 0 5px}
 .cel{position:relative;background:var(--carvao);border:1px solid var(--linha);
      aspect-ratio:2/3;overflow:hidden;cursor:zoom-in;border-radius:3px}
 .cel img{width:100%;height:100%;object-fit:cover;display:block}
-.cel .nm{position:absolute;bottom:0;left:0;right:0;padding:18px 6px 5px;font-size:9.5px;
+.cel .nm{position:absolute;bottom:0;left:0;right:0;padding:20px 7px 6px;font-size:10.5px;
     color:#DDE1E6;background:linear-gradient(transparent,rgba(1,2,4,.92));word-break:break-word}
 .cel .fmt{position:absolute;top:5px;left:5px;font-size:8.5px;letter-spacing:.09em;
      text-transform:uppercase;padding:2.5px 6px;border-radius:2px;
@@ -72,9 +90,13 @@ h2{font:400 21px/1.25 Lora,Georgia,serif;margin:0 0 5px}
     border-left:2px solid var(--vermelho);border-radius:2px;font-size:12.5px;
     color:var(--cinza);font-weight:300}
 .cf b{color:var(--vermelho);font-weight:400;text-transform:uppercase;font-size:10px;
-      letter-spacing:.09em;margin-right:6px}
+      letter-spacing:.09em;display:block;margin:0 0 4px}
+.cf .faz{display:block;margin:6px 0 0;padding:7px 10px;background:var(--preto);
+         border-radius:2px;color:var(--gelo);font-size:12.5px;font-weight:300}
+.cf .faz:before{content:"o que fazer · ";color:var(--verde);font-size:10px;
+                letter-spacing:.09em;text-transform:uppercase}
 
-.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:12px}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px}
 .grade .cel{cursor:zoom-in}
 .filtros{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:0 0 16px}
 .filtros .rot{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fumaca);
@@ -96,19 +118,21 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 </style>
 <div class="env">
 <header><h1>Biblioteca visual</h1>
-<p class="sub">Pinterest · 07/09/2026 às 16:16</p>
+<p class="sub">Pinterest · 07/09/2026 às 17:03</p>
 <div class="placar">
-<div><b>270</b><span>peças</span></div>
-<div><b>26</b><span>no ar</span></div>
+<div><b>267</b><span>peças</span></div>
+<div><b>30</b><span>no ar</span></div>
 <div><b>51</b><span>na fila</span></div>
 <div><b>6</b><span>promo · sábado</span></div>
-<div><b>151</b><span>em obra</span></div>
+<div><b>148</b><span>em obra</span></div>
 <div><b>7</b><span>vídeos</span></div>
 </div></header>
-<nav><div class="abas" role="tablist">
-<button role="tab" aria-selected="true" data-t="obra">Em obra<i>151</i></button>
+<nav id="nav" data-aberto="0">
+<button class="abre" id="abre" aria-haspopup="true" aria-expanded="false"><span class="qual" id="qual">Em obra</span><span class="cont" id="cont">148</span><span class="seta">▼</span></button>
+<div class="menu" id="menu" role="tablist" hidden>
+<button role="tab" aria-selected="true" data-t="obra">Em obra<i>148</i></button>
 <button role="tab" aria-selected="false" data-t="fila">A fila<i>19</i></button>
-<button role="tab" aria-selected="false" data-t="acervo">O acervo<i>270</i></button>
+<button role="tab" aria-selected="false" data-t="acervo">O acervo<i>267</i></button>
 </div></nav>
 <section id="obra"><h2>O que estamos construindo</h2><p class="leg">Isto <b>não é uma lista escrita à mão</b> — é calculado. Peça que existe no estúdio e ainda não subiu para <code>pins/</code> do site está, por definição, em obra. Não tem como desatualizar.</p>
 <div class="bloco"><h3>promo <em>17</em></h3><div class="grade">
@@ -229,14 +253,11 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site-clara.jpg" data-n="paleta-site-clara" data-c="paleta-site-clara"><img src="mini/paleta-site-clara.jpg" alt="paleta-site-clara" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site-clara</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="paleta-site-foto.jpg" data-n="paleta-site-foto" data-c="paleta-site-foto"><img src="mini/paleta-site-foto.jpg" alt="paleta-site-foto" loading="lazy"><span class="fmt">arte</span><span class="nm">paleta-site-foto</span></div>
 </div></div>
-<div class="bloco"><h3>zona <em>7</em></h3><div class="grade">
+<div class="bloco"><h3>zona <em>4</em></h3><div class="grade">
 <div class="cel f-zona " tabindex="0" role="button" data-m="calcada-noite-LIMPA.jpg" data-n="calcada-noite-LIMPA" data-c="calcada-noite-LIMPA"><img src="mini/calcada-noite-LIMPA.jpg" alt="calcada-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">calcada-noite-LIMPA</span></div>
-<div class="cel f-zona " tabindex="0" role="button" data-m="calcada-noite-MARCADA.jpg" data-n="calcada-noite-MARCADA" data-c="calcada-noite-MARCADA"><img src="mini/calcada-noite-MARCADA.jpg" alt="calcada-noite-MARCADA" loading="lazy"><span class="fmt">zona</span><span class="nm">calcada-noite-MARCADA</span></div>
 <div class="cel f-zona " tabindex="0" role="button" data-m="praia-noite-LIMPA.jpg" data-n="praia-noite-LIMPA" data-c="praia-noite-LIMPA"><img src="mini/praia-noite-LIMPA.jpg" alt="praia-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">praia-noite-LIMPA</span></div>
-<div class="cel f-zona " tabindex="0" role="button" data-m="praia-noite-MARCADA.jpg" data-n="praia-noite-MARCADA" data-c="praia-noite-MARCADA"><img src="mini/praia-noite-MARCADA.jpg" alt="praia-noite-MARCADA" loading="lazy"><span class="fmt">zona</span><span class="nm">praia-noite-MARCADA</span></div>
 <div class="cel f-zona " tabindex="0" role="button" data-m="vague-madeleine-LIMPA.jpg" data-n="vague-madeleine-LIMPA" data-c="vague-madeleine-LIMPA"><img src="mini/vague-madeleine-LIMPA.jpg" alt="vague-madeleine-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">vague-madeleine-LIMPA</span></div>
 <div class="cel f-zona " tabindex="0" role="button" data-m="xadrez-pb-LIMPA.jpg" data-n="xadrez-pb-LIMPA" data-c="xadrez-pb-LIMPA"><img src="mini/xadrez-pb-LIMPA.jpg" alt="xadrez-pb-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">xadrez-pb-LIMPA</span></div>
-<div class="cel f-zona " tabindex="0" role="button" data-m="xadrez-pb-MARCADA.jpg" data-n="xadrez-pb-MARCADA" data-c="xadrez-pb-MARCADA"><img src="mini/xadrez-pb-MARCADA.jpg" alt="xadrez-pb-MARCADA" loading="lazy"><span class="fmt">zona</span><span class="nm">xadrez-pb-MARCADA</span></div>
 </div></div>
 <div class="bloco"><h3>foto <em>35</em></h3><div class="grade">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-aeroporto.jpg" data-n="adam-aeroporto" data-c="adam-aeroporto"><img src="mini/adam-aeroporto.jpg" alt="adam-aeroporto" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-aeroporto</span></div>
@@ -280,7 +301,7 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-capa " tabindex="0" role="button" data-m="capa-02-script-preto.jpg" data-n="capa-02-script-preto" data-c="capa-02-script-preto"><img src="mini/capa-02-script-preto.jpg" alt="capa-02-script-preto" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-02-script-preto</span></div>
 <div class="cel f-capa " tabindex="0" role="button" data-m="capa-03-script-azul.jpg" data-n="capa-03-script-azul" data-c="capa-03-script-azul"><img src="mini/capa-03-script-azul.jpg" alt="capa-03-script-azul" loading="lazy"><span class="fmt">capa</span><span class="nm">capa-03-script-azul</span></div>
 </div></div>
-<div class="bloco"><h3>prontas no site, sem destino <em>36 — já estão em pins/, faltam entrar numa fila</em></h3><div class="grade">
+<div class="bloco"><h3>prontas no site, sem destino <em>32 — já estão em pins/, faltam entrar numa fila</em></h3><div class="grade">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-ballgame-cap.jpg" data-n="adam-ballgame-cap" data-c="adam-ballgame-cap"><img src="mini/adam-ballgame-cap.jpg" alt="adam-ballgame-cap" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-ballgame-cap</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-guitar-kitchen.jpg" data-n="adam-guitar-kitchen" data-c="adam-guitar-kitchen"><img src="mini/adam-guitar-kitchen.jpg" alt="adam-guitar-kitchen" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-guitar-kitchen</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-hoodie-cobbles.jpg" data-n="adam-hoodie-cobbles" data-c="adam-hoodie-cobbles"><img src="mini/adam-hoodie-cobbles.jpg" alt="adam-hoodie-cobbles" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-hoodie-cobbles</span></div>
@@ -296,7 +317,6 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-umbrella-rain.jpg" data-n="adam-mads-umbrella-rain" data-c="adam-mads-umbrella-rain"><img src="mini/adam-mads-umbrella-rain.jpg" alt="adam-mads-umbrella-rain" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-umbrella-rain</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-wall-close.jpg" data-n="adam-mads-wall-close" data-c="adam-mads-wall-close"><img src="mini/adam-mads-wall-close.jpg" alt="adam-mads-wall-close" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-wall-close</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-parede-concreto.jpg" data-n="adam-parede-concreto" data-c="adam-parede-concreto"><img src="mini/adam-parede-concreto.jpg" alt="adam-parede-concreto" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-parede-concreto</span></div>
-<div class="cel f-foto " tabindex="0" role="button" data-m="adam-pillar-nightfall.jpg" data-n="adam-pillar-nightfall" data-c="adam-pillar-nightfall"><img src="mini/adam-pillar-nightfall.jpg" alt="adam-pillar-nightfall" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-pillar-nightfall</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-polo-daylight.jpg" data-n="adam-polo-daylight" data-c="adam-polo-daylight"><img src="mini/adam-polo-daylight.jpg" alt="adam-polo-daylight" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-polo-daylight</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-studio-dark.jpg" data-n="adam-studio-dark" data-c="adam-studio-dark"><img src="mini/adam-studio-dark.jpg" alt="adam-studio-dark" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-studio-dark</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-suede-jacket.jpg" data-n="adam-suede-jacket" data-c="adam-suede-jacket"><img src="mini/adam-suede-jacket.jpg" alt="adam-suede-jacket" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-suede-jacket</span></div>
@@ -306,135 +326,132 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-arte " tabindex="0" role="button" data-m="dialogue-good-guy.jpg" data-n="dialogue-good-guy" data-c="dialogue-good-guy"><img src="mini/dialogue-good-guy.jpg" alt="dialogue-good-guy" loading="lazy"><span class="fmt">arte</span><span class="nm">dialogue-good-guy</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="dialogue-not-even-close.jpg" data-n="dialogue-not-even-close" data-c="dialogue-not-even-close"><img src="mini/dialogue-not-even-close.jpg" alt="dialogue-not-even-close" loading="lazy"><span class="fmt">arte</span><span class="nm">dialogue-not-even-close</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="dialogue-toujours.jpg" data-n="dialogue-toujours" data-c="dialogue-toujours"><img src="mini/dialogue-toujours.jpg" alt="dialogue-toujours" loading="lazy"><span class="fmt">arte</span><span class="nm">dialogue-toujours</span></div>
-<div class="cel f-foto " tabindex="0" role="button" data-m="mads-black-walk.jpg" data-n="mads-black-walk" data-c="mads-black-walk"><img src="mini/mads-black-walk.jpg" alt="mads-black-walk" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-black-walk</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-chapeu-pele.jpg" data-n="mads-chapeu-pele" data-c="mads-chapeu-pele"><img src="mini/mads-chapeu-pele.jpg" alt="mads-chapeu-pele" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-chapeu-pele</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-closet-shoulder.jpg" data-n="mads-closet-shoulder" data-c="mads-closet-shoulder"><img src="mini/mads-closet-shoulder.jpg" alt="mads-closet-shoulder" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-closet-shoulder</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-jacket-boots.jpg" data-n="mads-jacket-boots" data-c="mads-jacket-boots"><img src="mini/mads-jacket-boots.jpg" alt="mads-jacket-boots" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-jacket-boots</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-long-coat.jpg" data-n="mads-long-coat" data-c="mads-long-coat"><img src="mini/mads-long-coat.jpg" alt="mads-long-coat" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-long-coat</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-neon-hair.jpg" data-n="mads-neon-hair" data-c="mads-neon-hair"><img src="mini/mads-neon-hair.jpg" alt="mads-neon-hair" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-neon-hair</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-night-slit.jpg" data-n="mads-night-slit" data-c="mads-night-slit"><img src="mini/mads-night-slit.jpg" alt="mads-night-slit" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-night-slit</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-she-bites.jpg" data-n="quote-she-bites" data-c="quote-she-bites"><img src="mini/quote-she-bites.jpg" alt="quote-she-bites" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-she-bites</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-silence-not-empty.jpg" data-n="quote-silence-not-empty" data-c="quote-silence-not-empty"><img src="mini/quote-silence-not-empty.jpg" alt="quote-silence-not-empty" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-silence-not-empty</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="still-anything-but.jpg" data-n="still-anything-but" data-c="still-anything-but"><img src="mini/still-anything-but.jpg" alt="still-anything-but" loading="lazy"><span class="fmt">still</span><span class="nm">still-anything-but</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="still-toujours.jpg" data-n="still-toujours" data-c="still-toujours"><img src="mini/still-toujours.jpg" alt="still-toujours" loading="lazy"><span class="fmt">still</span><span class="nm">still-toujours</span></div>
 </div></div>
 </section>
 <section id="fila" hidden><h2>A grade como vai ficar</h2><p class="leg">Mais novo em cima, do jeito que a aba Criados desenha — a ordem é o <b>inverso da fila</b>. As duas filas aparecem juntas: a <span class="selo promo">promo</span> sai aos sábados e não toma a vaga da narrativa. Conflito vem marcado <b>na própria fileira</b>, não numa aba à parte.</p>
-<div class="bloco"><h3>ainda vai sair</h3></div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="bloco"><h3>ainda vai sair <em>na ordem em que vai aparecer no feed — mais novo em cima, com a data projetada de cada fileira</em></h3></div>
+<div class="fileira"><div class="rot"><b>qui 15/10</b></div><div class="trio">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-cliff-black-tee.jpg" data-n="adam-cliff-black-tee" data-c="The first morning he woke up in a house with nobody in it. Chapters 1 and 2, here. — Newly divorced movie star romance. Dual POV, slow burn."><img src="mini/adam-cliff-black-tee.jpg" alt="adam-cliff-black-tee" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-cliff-black-tee</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-a-single-weight.jpg" data-n="quote-a-single-weight" data-c="What he felt the first time she leaned on him. Chapters 1 and 2, here. — Dual POV celebrity romance. Slow burn, book one of four."><img src="mini/quote-a-single-weight.jpg" alt="quote-a-single-weight" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-a-single-weight</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-paris-balcony.jpg" data-n="adam-paris-balcony" data-c="Two weeks abroad to stop being a headline. Chapters 1 and 2, here. — Hollywood romance set between LA and Europe. Dual POV."><img src="mini/adam-paris-balcony.jpg" alt="adam-paris-balcony" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-paris-balcony</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>ter 13/10</b></div><div class="trio">
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-mirror-selfie.jpg" data-n="mads-mirror-selfie" data-c="L&#x27;Ange Blond, alone in a room nobody photographs. Chapters 1 and 2, here. — Celebrity romance with a guarded heroine. Slow burn."><img src="mini/mads-mirror-selfie.jpg" alt="mads-mirror-selfie" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-mirror-selfie</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-the-kind-that-ruins.jpg" data-n="quote-the-kind-that-ruins" data-c="How she warns him. He hears it as a dare. Chapters 1 and 2, here. — Damaged heroine romance. Dual POV, enemies to lovers."><img src="mini/quote-the-kind-that-ruins.jpg" alt="quote-the-kind-that-ruins" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-the-kind-that-ruins</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-blazer-gold-cuff.jpg" data-n="mads-blazer-gold-cuff" data-c="Everything about this photograph was somebody else&#x27;s idea. Chapters 1 and 2, here. — Celebrity romance. Dual POV, slow burn, book one of four."><img src="mini/mads-blazer-gold-cuff.jpg" alt="mads-blazer-gold-cuff" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-blazer-gold-cuff</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>dom 11/10</b></div><div class="trio">
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-it-isnt-rough.jpg" data-n="quote-it-isnt-rough" data-c="What she notices about his hands, the first time. Chapters 1 and 2, here. — Slow burn celebrity romance. Dual POV, first meeting."><img src="mini/quote-it-isnt-rough.jpg" alt="quote-it-isnt-rough" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-it-isnt-rough</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-street-standoff.jpg" data-n="adam-mads-street-standoff" data-c="The argument they have on a street with cameras on it. Chapters 1 and 2, here. — Enemies to lovers Hollywood romance, dual POV."><img src="mini/adam-mads-street-standoff.jpg" alt="adam-mads-street-standoff" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-street-standoff</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-no-mark.jpg" data-n="quote-no-mark" data-c="She has met the other kind. That is how she knows. Chapters 1 and 2, here. — Romance with a damaged heroine. Slow burn, dual POV."><img src="mini/quote-no-mark.jpg" alt="quote-no-mark" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-no-mark</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>qui 08/10</b></div><div class="trio">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-airport-navy.jpg" data-n="adam-airport-navy" data-c="Nobody looks twice at a man carrying his own bag. Chapters 1 and 2, here. — Movie star romance. Dual POV, slow burn, book one."><img src="mini/adam-airport-navy.jpg" alt="adam-airport-navy" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-airport-navy</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-this-isnt-my-hideout.jpg" data-n="quote-this-isnt-my-hideout" data-c="The moment he realizes whose place he is standing in. Chapters 1 and 2, here. — Celebrity romance set in LA. Enemies to lovers."><img src="mini/quote-this-isnt-my-hideout.jpg" alt="quote-this-isnt-my-hideout" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-this-isnt-my-hideout</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-cannes.jpg" data-n="adam-cannes" data-c="The circuit he has been on since he was nineteen. Chapters 1 and 2, here. — Child star to movie star romance. Dual POV."><img src="mini/adam-cannes.jpg" alt="adam-cannes" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-cannes</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>ter 06/10</b></div><div class="trio">
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-nobody-knows-where-i-am.jpg" data-n="quote-nobody-knows-where-i-am" data-c="One night off the record, for both of them. Chapters 1 and 2, here. — One night trope, slow burn. Dual POV celebrity romance."><img src="mini/quote-nobody-knows-where-i-am.jpg" alt="quote-nobody-knows-where-i-am" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-nobody-knows-where-i-am</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-white-wall.jpg" data-n="adam-mads-white-wall" data-c="Standing close enough that the picture would be a story. Chapters 1 and 2, here. — Hollywood romance. Forbidden, slow burn, dual POV."><img src="mini/adam-mads-white-wall.jpg" alt="adam-mads-white-wall" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-white-wall</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-deep-enough.jpg" data-n="quote-deep-enough" data-c="What she is not telling him yet. Chapters 1 and 2, here. — Slow burn romance with a secret. Dual POV, book one."><img src="mini/quote-deep-enough.jpg" alt="quote-deep-enough" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-deep-enough</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>dom 04/10</b></div><div class="trio">
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-martini-skyline.jpg" data-n="mads-martini-skyline" data-c="A whole city outside, and she is the only one at the table. Chapters 1 and 2, here. — Celebrity romance, dual POV. Lonely heroine, slow burn."><img src="mini/mads-martini-skyline.jpg" alt="mads-martini-skyline" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-martini-skyline</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-the-truth-would-destroy-us.jpg" data-n="quote-the-truth-would-destroy-us" data-c="The reason she keeps him at arm&#x27;s length. Chapters 1 and 2, here. — Secret past romance. Slow burn, dual POV, book one of four."><img src="mini/quote-the-truth-would-destroy-us.jpg" alt="quote-the-truth-would-destroy-us" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-the-truth-would-destroy-us</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-pinstripe-boots.jpg" data-n="mads-pinstripe-boots" data-c="Dressed for a room she does not want to walk into. Chapters 1 and 2, here. — Hollywood romance with a reluctant famous heroine."><img src="mini/mads-pinstripe-boots.jpg" alt="mads-pinstripe-boots" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-pinstripe-boots</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>qui 01/10</b></div><div class="trio">
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-match-and-gasoline.jpg" data-n="quote-match-and-gasoline" data-c="Her own diagnosis of what they are together. Chapters 1 and 2, here. — Enemies to lovers celebrity romance. Slow burn, dual POV."><img src="mini/quote-match-and-gasoline.jpg" alt="quote-match-and-gasoline" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-match-and-gasoline</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-times-square.jpg" data-n="adam-mads-times-square" data-c="Ten million lights, and neither of them is looking up. Chapters 1 and 2, here. — New York set Hollywood romance. Dual POV, slow burn."><img src="mini/adam-mads-times-square.jpg" alt="adam-mads-times-square" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-times-square</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-he-wants-all-of-me.jpg" data-n="quote-he-wants-all-of-me" data-c="Why one night was never going to hold. Chapters 1 and 2, here. — One night trope romance. Slow burn, dual POV."><img src="mini/quote-he-wants-all-of-me.jpg" alt="quote-he-wants-all-of-me" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-he-wants-all-of-me</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>ter 29/09</b></div><div class="trio">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-tattoo-sunset.jpg" data-n="adam-tattoo-sunset" data-c="The line he had inked before any of this started. Chapters 1 and 2, here. — Movie star romance, dual POV. Slow burn, book one of four."><img src="mini/adam-tattoo-sunset.jpg" alt="adam-tattoo-sunset" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-tattoo-sunset</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-pulling-me-under.jpg" data-n="quote-pulling-me-under" data-c="He knows it is bad for him. That is not the point. Chapters 1 and 2, here. — Obsessive slow burn celebrity romance. Dual POV."><img src="mini/quote-pulling-me-under.jpg" alt="quote-pulling-me-under" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-pulling-me-under</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-carpet-grey-suit.jpg" data-n="adam-carpet-grey-suit" data-c="The smile he puts on, and the week he actually had. Chapters 1 and 2, here. — Hollywood romance behind the red carpet. Dual POV."><img src="mini/adam-carpet-grey-suit.jpg" alt="adam-carpet-grey-suit" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-carpet-grey-suit</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>dom 27/09</b></div><div class="trio">
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-never-promised.jpg" data-n="quote-never-promised" data-c="The loophole he finds in his own rule. Chapters 1 and 2, here. — Slow burn romance. Forced proximity, dual POV."><img src="mini/quote-never-promised.jpg" alt="quote-never-promised" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-never-promised</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-snow-street.jpg" data-n="adam-mads-snow-street" data-c="Winter, a coat that isn&#x27;t hers, and nobody asking questions. Chapters 1 and 2, here. — Winter set celebrity romance. Slow burn, dual POV."><img src="mini/adam-mads-snow-street.jpg" alt="adam-mads-snow-street" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-snow-street</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-if-she-wont-i-will.jpg" data-n="quote-if-she-wont-i-will" data-c="He decides something she never asked him to. Chapters 1 and 2, here. — Protective hero romance. Dual POV, slow burn."><img src="mini/quote-if-she-wont-i-will.jpg" alt="quote-if-she-wont-i-will" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-if-she-wont-i-will</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>qui 24/09</b></div><div class="trio">
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-carpet-pink-gown.jpg" data-n="mads-carpet-pink-gown" data-c="Photographed all evening by people who have never met her. Chapters 1 and 2, here. — Celebrity romance, dual POV. Famous and alone."><img src="mini/mads-carpet-pink-gown.jpg" alt="mads-carpet-pink-gown" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-carpet-pink-gown</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-a-weight-that-was-never-there.jpg" data-n="quote-a-weight-that-was-never-there" data-c="What she misses is something she never had. Chapters 1 and 2, here. — Slow burn romance with a lonely heroine. Dual POV."><img src="mini/quote-a-weight-that-was-never-there.jpg" alt="quote-a-weight-that-was-never-there" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-a-weight-that-was-never-there</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-window-black-dress.jpg" data-n="mads-window-black-dress" data-c="Ready an hour early, with nowhere she wants to be. Chapters 1 and 2, here. — Hollywood romance. Guarded heroine, slow burn, book one."><img src="mini/mads-window-black-dress.jpg" alt="mads-window-black-dress" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-window-black-dress</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>ter 22/09</b></div><div class="trio">
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-letting-me-breathe.jpg" data-n="quote-letting-me-breathe" data-c="What he figures out on the pier, before anything has happened. Chapters 1 and 2, here. — One night trope, slow burn. Dual POV celebrity romance."><img src="mini/quote-letting-me-breathe.jpg" alt="quote-letting-me-breathe" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-letting-me-breathe</span></div>
 <div class="cel f-still " tabindex="0" role="button" data-m="still-the-good-guy.jpg" data-n="still-the-good-guy" data-c="Four hours after they met, with nothing left to perform. Chapters 1 and 2, here. — Slow burn celebrity romance, dual POV. A movie star and the woman who refuses him."><img src="mini/still-the-good-guy.jpg" alt="still-the-good-guy" loading="lazy"><span class="fmt">still</span><span class="nm">still-the-good-guy</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-flammable.jpg" data-n="quote-flammable" data-c="He knew exactly how this ends. He walked in anyway. Chapters 1 and 2, here. — Enemies to lovers slow burn, dual POV. Book one of four."><img src="mini/quote-flammable.jpg" alt="quote-flammable" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-flammable</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
+<div class="fileira"><div class="rot"><b>dom 20/09</b></div><div class="trio">
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-i-run-from-good-things.jpg" data-n="quote-i-run-from-good-things" data-c="Her pattern, and she can name it. Chapters 1 and 2, here. — Self sabotage romance. Slow burn, dual POV, book one."><img src="mini/quote-i-run-from-good-things.jpg" alt="quote-i-run-from-good-things" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-i-run-from-good-things</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-crowd-back.jpg" data-n="adam-mads-crowd-back" data-c="Leaving separately, five minutes apart, like always. Chapters 1 and 2, here. — Secret relationship celebrity romance. Dual POV."><img src="mini/adam-mads-crowd-back.jpg" alt="adam-mads-crowd-back" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-crowd-back</span></div>
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-i-only-held-the-pencil.jpg" data-n="quote-i-only-held-the-pencil" data-c="The song everyone thinks is about someone else. Chapters 1 and 2, here. — Musician heroine romance. Slow burn, dual POV."><img src="mini/quote-i-only-held-the-pencil.jpg" alt="quote-i-only-held-the-pencil" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-i-only-held-the-pencil</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"></div><div class="trio">
-<div class="cel f-arte " tabindex="0" role="button" data-m="dialogue-not-exactly.jpg" data-n="dialogue-not-exactly" data-c="Their first three minutes, and he is already losing. Chapters 1 and 2, here. — Bickering, one night trope, slow burn. Dual POV celebrity romance."><img src="mini/dialogue-not-exactly.jpg" alt="dialogue-not-exactly" loading="lazy"><span class="fmt">arte</span><span class="nm">dialogue-not-exactly</span></div>
-<div class="cel f-still " tabindex="0" role="button" data-m="still-not-even-close.jpg" data-n="still-not-even-close" data-c="Two strangers, one bar, and neither of them looks away. Chapters 1 and 2, here. — Enemies to lovers banter, one night trope. Dual POV celebrity romance."><img src="mini/still-not-even-close.jpg" alt="still-not-even-close" loading="lazy"><span class="fmt">still</span><span class="nm">still-not-even-close</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="dialogue-did-you-find-me.jpg" data-n="dialogue-did-you-find-me" data-c="The first time in his life he loses the conversation. Chapters 1 and 2, here. — Enemies to lovers banter, celebrity romance. Dual POV."><img src="mini/dialogue-did-you-find-me.jpg" alt="dialogue-did-you-find-me" loading="lazy"><span class="fmt">arte</span><span class="nm">dialogue-did-you-find-me</span></div>
-</div>
-</div>
-<div class="fileira"><div class="rot"></div><div class="trio">
-<div class="cel f-foto " tabindex="0" role="button" data-m="adam-brooklyn.jpg" data-n="adam-brooklyn" data-c="A city he picked because she is not in it. Chapters 1 and 2, here. — Slow burn celebrity romance. Dual POV, book one of four."><img src="mini/adam-brooklyn.jpg" alt="adam-brooklyn" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-brooklyn</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-empty-sheets.jpg" data-n="quote-empty-sheets" data-c="Months later, and his body still has the habit. Chapters 1 and 2, here. — Longing and slow burn. Hollywood romance, dual POV."><img src="mini/quote-empty-sheets.jpg" alt="quote-empty-sheets" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-empty-sheets</span></div>
-<div class="cel f-foto " tabindex="0" role="button" data-m="adam-beach-sunglasses.jpg" data-n="adam-beach-sunglasses" data-c="Sunlight, an empty beach, and the worst kind of quiet. Chapters 1 and 2, here. — Movie star romance. Dual POV, slow burn, first book."><img src="mini/adam-beach-sunglasses.jpg" alt="adam-beach-sunglasses" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-beach-sunglasses</span></div>
-</div>
-</div>
-<div class="fileira"><div class="rot"></div><div class="trio">
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-all-the-way-in.jpg" data-n="quote-all-the-way-in" data-c="She does not do halfway. Chapters 1 and 2, here. — Dual POV celebrity romance. Book one of four."><img src="mini/quote-all-the-way-in.jpg" alt="quote-all-the-way-in" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-all-the-way-in</span></div>
-<div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-cap-cigarette.jpg" data-n="adam-mads-cap-cigarette" data-c="Close enough to be seen. Far enough to deny it. Chapters 1 and 2, here. — Hollywood celebrity romance. Slow burn, dual POV."><img src="mini/adam-mads-cap-cigarette.jpg" alt="adam-mads-cap-cigarette" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-cap-cigarette</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-ruined-me-for-anyone-else.jpg" data-n="quote-ruined-me-for-anyone-else" data-c="One night was the rule. This is what it cost. Chapters 1 and 2, here. — Slow burn romance. One night trope, dual POV."><img src="mini/quote-ruined-me-for-anyone-else.jpg" alt="quote-ruined-me-for-anyone-else" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-ruined-me-for-anyone-else</span></div>
-</div>
-</div>
-<div class="fileira"><div class="rot"></div><div class="trio">
-<div class="cel f-foto " tabindex="0" role="button" data-m="adam-suit-concrete.jpg" data-n="adam-suit-concrete" data-c="The face on every poster, and nobody knows the man. Chapters 1 and 2, here. — Newly divorced movie star romance. Dual POV."><img src="mini/adam-suit-concrete.jpg" alt="adam-suit-concrete" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-suit-concrete</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-a-bridge-or-a-trap.jpg" data-n="quote-a-bridge-or-a-trap" data-c="The first thing he thought when she walked in. Chapters 1 and 2, here. — Enemies to lovers celebrity romance. Slow burn."><img src="mini/quote-a-bridge-or-a-trap.jpg" alt="quote-a-bridge-or-a-trap" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-a-bridge-or-a-trap</span></div>
-<div class="cel f-foto " tabindex="0" role="button" data-m="mads-dark-portrait.jpg" data-n="mads-dark-portrait" data-c="The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. — Celebrity romance with a damaged heroine. Dual POV."><img src="mini/mads-dark-portrait.jpg" alt="mads-dark-portrait" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-dark-portrait</span></div>
-</div>
-</div>
-<div class="fileira"><div class="rot"></div><div class="trio">
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-tearing-through-skin.jpg" data-n="quote-tearing-through-skin" data-c="It stopped being about the body. Chapters 1 and 2, here. — Dual POV slow burn. Hollywood romance."><img src="mini/quote-tearing-through-skin.jpg" alt="quote-tearing-through-skin" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-tearing-through-skin</span></div>
-<div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-sidewalk-table.jpg" data-n="adam-mads-sidewalk-table" data-c="A conversation neither of them planned to have. Chapters 1 and 2, here. — Slow burn celebrity romance, dual POV."><img src="mini/adam-mads-sidewalk-table.jpg" alt="adam-mads-sidewalk-table" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-sidewalk-table</span></div>
-<div class="cel f-arte " tabindex="0" role="button" data-m="quote-normal-is-a-luxury.jpg" data-n="quote-normal-is-a-luxury" data-c="What Hollywood took, and never gave back. Chapters 1 and 2, here. — Child star romance. Dual POV, slow burn."><img src="mini/quote-normal-is-a-luxury.jpg" alt="quote-normal-is-a-luxury" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-normal-is-a-luxury</span></div>
-</div>
-</div>
-<div class="fileira"><div class="rot"><span class="selo promo">promo</span></div><div class="trio">
+<div class="fileira"><div class="rot"><b>sáb 19/09</b><span class="selo promo">promo · sábado</span></div><div class="trio">
 <div class="cel f-promo " tabindex="0" role="button" data-m="promo-livro-peitoril.jpg" data-n="promo-livro-peitoril" data-c="Two chapters, yours now. — Where the Ocean Ends. A dual POV slow burn celebrity romance about two wounded people who recognise each other on sight. Start reading."><img src="mini/promo-livro-peitoril.jpg" alt="promo-livro-peitoril" loading="lazy"><span class="fmt">promo</span><span class="nm">promo-livro-peitoril</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="promo-casal-xadrez.jpg" data-n="promo-casal-xadrez" data-c="This isn&#x27;t my hideout. It&#x27;s hers. — The bar he hides in turns out to belong to someone else. Where the Ocean Ends, a dual POV slow burn celebrity romance. The first two chapters are here."><img src="mini/promo-casal-xadrez.jpg" alt="promo-casal-xadrez" loading="lazy"><span class="fmt">promo</span><span class="nm">promo-casal-xadrez</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="promo-livro-cama.jpg" data-n="promo-livro-cama" data-c="Start the book. Chapters 1 and 2. — Where the Ocean Ends. Dual POV, slow burn, celebrity romance. He gets one night. She has one rule. Neither of them keeps it."><img src="mini/promo-livro-cama.jpg" alt="promo-livro-cama" loading="lazy"><span class="fmt">promo</span><span class="nm">promo-livro-cama</span></div>
 </div>
 </div>
-<div class="fileira"><div class="rot"><span class="selo promo">promo</span></div><div class="trio">
+<div class="fileira"><div class="rot"><b>qui 17/09</b></div><div class="trio">
+<div class="cel f-arte " tabindex="0" role="button" data-m="dialogue-not-exactly.jpg" data-n="dialogue-not-exactly" data-c="Their first three minutes, and he is already losing. Chapters 1 and 2, here. — Bickering, one night trope, slow burn. Dual POV celebrity romance."><img src="mini/dialogue-not-exactly.jpg" alt="dialogue-not-exactly" loading="lazy"><span class="fmt">arte</span><span class="nm">dialogue-not-exactly</span></div>
+<div class="cel f-still " tabindex="0" role="button" data-m="still-not-even-close.jpg" data-n="still-not-even-close" data-c="Two strangers, one bar, and neither of them looks away. Chapters 1 and 2, here. — Enemies to lovers banter, one night trope. Dual POV celebrity romance."><img src="mini/still-not-even-close.jpg" alt="still-not-even-close" loading="lazy"><span class="fmt">still</span><span class="nm">still-not-even-close</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="dialogue-did-you-find-me.jpg" data-n="dialogue-did-you-find-me" data-c="The first time in his life he loses the conversation. Chapters 1 and 2, here. — Enemies to lovers banter, celebrity romance. Dual POV."><img src="mini/dialogue-did-you-find-me.jpg" alt="dialogue-did-you-find-me" loading="lazy"><span class="fmt">arte</span><span class="nm">dialogue-did-you-find-me</span></div>
+</div>
+</div>
+<div class="fileira"><div class="rot"><b>ter 15/09</b></div><div class="trio">
+<div class="cel f-foto " tabindex="0" role="button" data-m="adam-brooklyn.jpg" data-n="adam-brooklyn" data-c="A city he picked because she is not in it. Chapters 1 and 2, here. — Slow burn celebrity romance. Dual POV, book one of four."><img src="mini/adam-brooklyn.jpg" alt="adam-brooklyn" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-brooklyn</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-empty-sheets.jpg" data-n="quote-empty-sheets" data-c="Months later, and his body still has the habit. Chapters 1 and 2, here. — Longing and slow burn. Hollywood romance, dual POV."><img src="mini/quote-empty-sheets.jpg" alt="quote-empty-sheets" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-empty-sheets</span></div>
+<div class="cel f-foto " tabindex="0" role="button" data-m="adam-beach-sunglasses.jpg" data-n="adam-beach-sunglasses" data-c="Sunlight, an empty beach, and the worst kind of quiet. Chapters 1 and 2, here. — Movie star romance. Dual POV, slow burn, first book."><img src="mini/adam-beach-sunglasses.jpg" alt="adam-beach-sunglasses" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-beach-sunglasses</span></div>
+</div>
+</div>
+<div class="fileira"><div class="rot"><b>dom 13/09</b></div><div class="trio">
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-all-the-way-in.jpg" data-n="quote-all-the-way-in" data-c="She does not do halfway. Chapters 1 and 2, here. — Dual POV celebrity romance. Book one of four."><img src="mini/quote-all-the-way-in.jpg" alt="quote-all-the-way-in" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-all-the-way-in</span></div>
+<div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-cap-cigarette.jpg" data-n="adam-mads-cap-cigarette" data-c="Close enough to be seen. Far enough to deny it. Chapters 1 and 2, here. — Hollywood celebrity romance. Slow burn, dual POV."><img src="mini/adam-mads-cap-cigarette.jpg" alt="adam-mads-cap-cigarette" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-cap-cigarette</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-ruined-me-for-anyone-else.jpg" data-n="quote-ruined-me-for-anyone-else" data-c="One night was the rule. This is what it cost. Chapters 1 and 2, here. — Slow burn romance. One night trope, dual POV."><img src="mini/quote-ruined-me-for-anyone-else.jpg" alt="quote-ruined-me-for-anyone-else" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-ruined-me-for-anyone-else</span></div>
+</div>
+</div>
+<div class="fileira"><div class="rot"><b>sáb 12/09</b><span class="selo promo">promo · sábado</span></div><div class="trio">
 <div class="cel f-promo " tabindex="0" role="button" data-m="promo-livro-preta-c.jpg" data-n="promo-livro-preta-c" data-c="Read the beginning. — Where the Ocean Ends. A slow burn celebrity romance told from both sides, about damage, distance and the one person who does not flinch. Chapters 1 and 2."><img src="mini/promo-livro-preta-c.jpg" alt="promo-livro-preta-c" loading="lazy"><span class="fmt">promo</span><span class="nm">promo-livro-preta-c</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="promo-casal-calcada.jpg" data-n="promo-casal-calcada" data-c="We&#x27;re both here, pretending not to be what the world decided we are. — Two people outside a bar at two in the morning, and neither of them wants to go home. Where the Ocean Ends is a dual POV slow burn celebrity romance. Read the beginning."><img src="mini/promo-casal-calcada.jpg" alt="promo-casal-calcada" loading="lazy"><span class="fmt">promo</span><span class="nm">promo-casal-calcada</span></div>
 <div class="cel f-promo " tabindex="0" role="button" data-m="promo-livro-preta-b.jpg" data-n="promo-livro-preta-b" data-c="She could be my age, or a hundred years older in damage. — Adam Walker has spent a decade being looked at. Madeleine Bennett has spent one not being seen at all. Where the Ocean Ends, dual POV slow burn romance. Chapters 1 and 2."><img src="mini/promo-livro-preta-b.jpg" alt="promo-livro-preta-b" loading="lazy"><span class="fmt">promo</span><span class="nm">promo-livro-preta-b</span></div>
 </div>
-<div class="cf"><b>mesma cena</b>promo-livro-preta-c e promo-livro-preta-b sao variantes — fileiras diferentes (regra 1-j)</div>
+<div class="cf"><b>mesma cena</b>promo-livro-preta-c e promo-livro-preta-b são a mesma cena, só muda o enquadramento.<span class="faz">Lado a lado elas não leem como dois momentos, leem como erro (regra 1-j). Espaçar em fileiras diferentes.</span></div>
+</div>
+<div class="fileira"><div class="rot"><b>qui 10/09</b></div><div class="trio">
+<div class="cel f-foto " tabindex="0" role="button" data-m="adam-suit-concrete.jpg" data-n="adam-suit-concrete" data-c="The face on every poster, and nobody knows the man. Chapters 1 and 2, here. — Newly divorced movie star romance. Dual POV."><img src="mini/adam-suit-concrete.jpg" alt="adam-suit-concrete" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-suit-concrete</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-a-bridge-or-a-trap.jpg" data-n="quote-a-bridge-or-a-trap" data-c="The first thing he thought when she walked in. Chapters 1 and 2, here. — Enemies to lovers celebrity romance. Slow burn."><img src="mini/quote-a-bridge-or-a-trap.jpg" alt="quote-a-bridge-or-a-trap" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-a-bridge-or-a-trap</span></div>
+<div class="cel f-foto " tabindex="0" role="button" data-m="mads-dark-portrait.jpg" data-n="mads-dark-portrait" data-c="The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. — Celebrity romance with a damaged heroine. Dual POV."><img src="mini/mads-dark-portrait.jpg" alt="mads-dark-portrait" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-dark-portrait</span></div>
+</div>
+</div>
+<div class="fileira"><div class="rot"><b>ter 08/09</b></div><div class="trio">
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-tearing-through-skin.jpg" data-n="quote-tearing-through-skin" data-c="It stopped being about the body. Chapters 1 and 2, here. — Dual POV slow burn. Hollywood romance."><img src="mini/quote-tearing-through-skin.jpg" alt="quote-tearing-through-skin" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-tearing-through-skin</span></div>
+<div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-sidewalk-table.jpg" data-n="adam-mads-sidewalk-table" data-c="A conversation neither of them planned to have. Chapters 1 and 2, here. — Slow burn celebrity romance, dual POV."><img src="mini/adam-mads-sidewalk-table.jpg" alt="adam-mads-sidewalk-table" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-sidewalk-table</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-normal-is-a-luxury.jpg" data-n="quote-normal-is-a-luxury" data-c="What Hollywood took, and never gave back. Chapters 1 and 2, here. — Child star romance. Dual POV, slow burn."><img src="mini/quote-normal-is-a-luxury.jpg" alt="quote-normal-is-a-luxury" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-normal-is-a-luxury</span></div>
+</div>
 </div>
 <div class="bloco"><h3>já está no ar</h3></div>
 <div class="fileira"><div class="trio">
@@ -473,14 +490,14 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-body-goes-heart-stays.jpg" data-n="quote-body-goes-heart-stays" data-c="quote-body-goes-heart-stays"><img src="mini/quote-body-goes-heart-stays.jpg" alt="quote-body-goes-heart-stays" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-body-goes-heart-stays</span></div>
 </div></div>
 <div class="fileira"><div class="trio">
-<div class="cel vaga">fora do disco</div>
-<div class="cel vaga">fora do disco</div>
-<div class="cel vaga">fora do disco</div>
+<div class="cel f-foto " tabindex="0" role="button" data-m="mads-black-walk.jpg" data-n="mads-black-walk" data-c="mads-black-walk"><img src="mini/mads-black-walk.jpg" alt="mads-black-walk" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-black-walk</span></div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-silence-not-empty.jpg" data-n="quote-silence-not-empty" data-c="quote-silence-not-empty"><img src="mini/quote-silence-not-empty.jpg" alt="quote-silence-not-empty" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-silence-not-empty</span></div>
+<div class="cel f-foto " tabindex="0" role="button" data-m="adam-pillar-nightfall.jpg" data-n="adam-pillar-nightfall" data-c="adam-pillar-nightfall"><img src="mini/adam-pillar-nightfall.jpg" alt="adam-pillar-nightfall" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-pillar-nightfall</span></div>
 </div></div>
 <div class="fileira"><div class="trio">
 <div class="cel f-arte " tabindex="0" role="button" data-m="quote-imminent-disaster.jpg" data-n="quote-imminent-disaster" data-c="quote-imminent-disaster"><img src="mini/quote-imminent-disaster.jpg" alt="quote-imminent-disaster" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-imminent-disaster</span></div>
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-mads-fire-escape.jpg" data-n="adam-mads-fire-escape" data-c="adam-mads-fire-escape"><img src="mini/adam-mads-fire-escape.jpg" alt="adam-mads-fire-escape" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-mads-fire-escape</span></div>
-<div class="cel vaga">fora do disco</div>
+<div class="cel f-arte " tabindex="0" role="button" data-m="quote-she-bites.jpg" data-n="quote-she-bites" data-c="quote-she-bites"><img src="mini/quote-she-bites.jpg" alt="quote-she-bites" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-she-bites</span></div>
 </div></div>
 <div class="fileira"><div class="trio">
 <div class="cel f-foto " tabindex="0" role="button" data-m="adam-photoshoot-fitting.jpg" data-n="adam-photoshoot-fitting" data-c="adam-photoshoot-fitting"><img src="mini/adam-photoshoot-fitting.jpg" alt="adam-photoshoot-fitting" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-photoshoot-fitting</span></div>
@@ -488,7 +505,7 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-foto " tabindex="0" role="button" data-m="mads-studio-portrait.jpg" data-n="mads-studio-portrait" data-c="mads-studio-portrait"><img src="mini/mads-studio-portrait.jpg" alt="mads-studio-portrait" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-studio-portrait</span></div>
 </div></div>
 </section>
-<section id="acervo" hidden><h2>Tudo que existe</h2><p class="leg">Todas as peças do sistema, uma vez só. É o que impede peça repetida ir para a fila. Filtra por <b>formato</b> e por <b>estado</b>.</p><div class="filtros"><span class="rot">formato</span><button data-f="tudo" aria-pressed="true">tudo<i>270</i></button>
+<section id="acervo" hidden><h2>Tudo que existe</h2><p class="leg">Todas as peças do sistema, uma vez só. É o que impede peça repetida ir para a fila. Filtra por <b>formato</b> e por <b>estado</b>.</p><div class="filtros"><span class="rot">formato</span><button data-f="tudo" aria-pressed="true">tudo<i>267</i></button>
 <button data-f="arte" aria-pressed="false">arte<i>105</i></button>
 <button data-f="artefato" aria-pressed="false">artefato<i>3</i></button>
 <button data-f="capa" aria-pressed="false">capa<i>3</i></button>
@@ -497,13 +514,13 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <button data-f="promo" aria-pressed="false">promo<i>26</i></button>
 <button data-f="still" aria-pressed="false">still<i>12</i></button>
 <button data-f="video" aria-pressed="false">video<i>7</i></button>
-<button data-f="zona" aria-pressed="false">zona<i>7</i></button>
+<button data-f="zona" aria-pressed="false">zona<i>4</i></button>
 </div><div class="filtros"><span class="rot">estado</span><button data-e="tudo" aria-pressed="true">tudo</button>
-<button data-e="no ar" aria-pressed="false">no ar<i>26</i></button>
+<button data-e="no ar" aria-pressed="false">no ar<i>30</i></button>
 <button data-e="fila" aria-pressed="false">fila<i>51</i></button>
 <button data-e="promo" aria-pressed="false">promo<i>6</i></button>
-<button data-e="livre" aria-pressed="false">livre<i>36</i></button>
-<button data-e="obra" aria-pressed="false">obra<i>151</i></button>
+<button data-e="livre" aria-pressed="false">livre<i>32</i></button>
+<button data-e="obra" aria-pressed="false">obra<i>148</i></button>
 </div><div class="grade" id="ac">
 <div class="cel f-arte e-obra" tabindex="0" role="button" data-m="A-editorial.jpg" data-n="A-editorial" data-c="A-editorial"><img src="mini/A-editorial.jpg" alt="A-editorial" loading="lazy"><span class="fmt">arte</span><span class="nm">A-editorial</span></div>
 <div class="cel f-arte e-obra" tabindex="0" role="button" data-m="AA-casa-bancada.jpg" data-n="AA-casa-bancada" data-c="AA-casa-bancada"><img src="mini/AA-casa-bancada.jpg" alt="AA-casa-bancada" loading="lazy"><span class="fmt">arte</span><span class="nm">AA-casa-bancada</span></div>
@@ -603,8 +620,8 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-arte e-fila" tabindex="0" role="button" data-m="quote-pulling-me-under.jpg" data-n="quote-pulling-me-under" data-c="He knows it is bad for him. That is not the point. Chapters 1 and 2, here. — Obsessive slow burn celebrity romance. Dual POV."><img src="mini/quote-pulling-me-under.jpg" alt="quote-pulling-me-under" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-pulling-me-under</span></div>
 <div class="cel f-arte e-fila" tabindex="0" role="button" data-m="quote-ruined-me-for-anyone-else.jpg" data-n="quote-ruined-me-for-anyone-else" data-c="One night was the rule. This is what it cost. Chapters 1 and 2, here. — Slow burn romance. One night trope, dual POV."><img src="mini/quote-ruined-me-for-anyone-else.jpg" alt="quote-ruined-me-for-anyone-else" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-ruined-me-for-anyone-else</span></div>
 <div class="cel f-arte e-no-ar" tabindex="0" role="button" data-m="quote-same-man-twice.jpg" data-n="quote-same-man-twice" data-c="quote-same-man-twice"><img src="mini/quote-same-man-twice.jpg" alt="quote-same-man-twice" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-same-man-twice</span></div>
-<div class="cel f-arte e-livre" tabindex="0" role="button" data-m="quote-she-bites.jpg" data-n="quote-she-bites" data-c="quote-she-bites"><img src="mini/quote-she-bites.jpg" alt="quote-she-bites" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-she-bites</span></div>
-<div class="cel f-arte e-livre" tabindex="0" role="button" data-m="quote-silence-not-empty.jpg" data-n="quote-silence-not-empty" data-c="quote-silence-not-empty"><img src="mini/quote-silence-not-empty.jpg" alt="quote-silence-not-empty" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-silence-not-empty</span></div>
+<div class="cel f-arte e-no-ar" tabindex="0" role="button" data-m="quote-she-bites.jpg" data-n="quote-she-bites" data-c="quote-she-bites"><img src="mini/quote-she-bites.jpg" alt="quote-she-bites" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-she-bites</span></div>
+<div class="cel f-arte e-no-ar" tabindex="0" role="button" data-m="quote-silence-not-empty.jpg" data-n="quote-silence-not-empty" data-c="quote-silence-not-empty"><img src="mini/quote-silence-not-empty.jpg" alt="quote-silence-not-empty" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-silence-not-empty</span></div>
 <div class="cel f-arte e-fila" tabindex="0" role="button" data-m="quote-tearing-through-skin.jpg" data-n="quote-tearing-through-skin" data-c="It stopped being about the body. Chapters 1 and 2, here. — Dual POV slow burn. Hollywood romance."><img src="mini/quote-tearing-through-skin.jpg" alt="quote-tearing-through-skin" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-tearing-through-skin</span></div>
 <div class="cel f-arte e-fila" tabindex="0" role="button" data-m="quote-the-kind-that-ruins.jpg" data-n="quote-the-kind-that-ruins" data-c="How she warns him. He hears it as a dare. Chapters 1 and 2, here. — Damaged heroine romance. Dual POV, enemies to lovers."><img src="mini/quote-the-kind-that-ruins.jpg" alt="quote-the-kind-that-ruins" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-the-kind-that-ruins</span></div>
 <div class="cel f-arte e-fila" tabindex="0" role="button" data-m="quote-the-truth-would-destroy-us.jpg" data-n="quote-the-truth-would-destroy-us" data-c="The reason she keeps him at arm&#x27;s length. Chapters 1 and 2, here. — Secret past romance. Slow burn, dual POV, book one of four."><img src="mini/quote-the-truth-would-destroy-us.jpg" alt="quote-the-truth-would-destroy-us" loading="lazy"><span class="fmt">arte</span><span class="nm">quote-the-truth-would-destroy-us</span></div>
@@ -663,7 +680,7 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-foto e-fila" tabindex="0" role="button" data-m="adam-paris-balcony.jpg" data-n="adam-paris-balcony" data-c="Two weeks abroad to stop being a headline. Chapters 1 and 2, here. — Hollywood romance set between LA and Europe. Dual POV."><img src="mini/adam-paris-balcony.jpg" alt="adam-paris-balcony" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-paris-balcony</span></div>
 <div class="cel f-foto e-obra" tabindex="0" role="button" data-m="adam-paris-varanda.jpg" data-n="adam-paris-varanda" data-c="adam-paris-varanda"><img src="mini/adam-paris-varanda.jpg" alt="adam-paris-varanda" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-paris-varanda</span></div>
 <div class="cel f-foto e-no-ar" tabindex="0" role="button" data-m="adam-photoshoot-fitting.jpg" data-n="adam-photoshoot-fitting" data-c="adam-photoshoot-fitting"><img src="mini/adam-photoshoot-fitting.jpg" alt="adam-photoshoot-fitting" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-photoshoot-fitting</span></div>
-<div class="cel f-foto e-livre" tabindex="0" role="button" data-m="adam-pillar-nightfall.jpg" data-n="adam-pillar-nightfall" data-c="adam-pillar-nightfall"><img src="mini/adam-pillar-nightfall.jpg" alt="adam-pillar-nightfall" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-pillar-nightfall</span></div>
+<div class="cel f-foto e-no-ar" tabindex="0" role="button" data-m="adam-pillar-nightfall.jpg" data-n="adam-pillar-nightfall" data-c="adam-pillar-nightfall"><img src="mini/adam-pillar-nightfall.jpg" alt="adam-pillar-nightfall" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-pillar-nightfall</span></div>
 <div class="cel f-foto e-obra" tabindex="0" role="button" data-m="adam-polo-arms-crossed.jpg" data-n="adam-polo-arms-crossed" data-c="adam-polo-arms-crossed"><img src="mini/adam-polo-arms-crossed.jpg" alt="adam-polo-arms-crossed" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-polo-arms-crossed</span></div>
 <div class="cel f-foto e-livre" tabindex="0" role="button" data-m="adam-polo-daylight.jpg" data-n="adam-polo-daylight" data-c="adam-polo-daylight"><img src="mini/adam-polo-daylight.jpg" alt="adam-polo-daylight" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-polo-daylight</span></div>
 <div class="cel f-foto e-obra" tabindex="0" role="button" data-m="adam-pool-tattoo.jpg" data-n="adam-pool-tattoo" data-c="adam-pool-tattoo"><img src="mini/adam-pool-tattoo.jpg" alt="adam-pool-tattoo" loading="lazy"><span class="fmt">foto</span><span class="nm">adam-pool-tattoo</span></div>
@@ -682,7 +699,7 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-foto e-obra" tabindex="0" role="button" data-m="casal-restaurante.jpg" data-n="casal-restaurante" data-c="casal-restaurante"><img src="mini/casal-restaurante.jpg" alt="casal-restaurante" loading="lazy"><span class="fmt">foto</span><span class="nm">casal-restaurante</span></div>
 <div class="cel f-foto e-obra" tabindex="0" role="button" data-m="casal-rua-neve.jpg" data-n="casal-rua-neve" data-c="casal-rua-neve"><img src="mini/casal-rua-neve.jpg" alt="casal-rua-neve" loading="lazy"><span class="fmt">foto</span><span class="nm">casal-rua-neve</span></div>
 <div class="cel f-foto e-obra" tabindex="0" role="button" data-m="casal-times-square.jpg" data-n="casal-times-square" data-c="casal-times-square"><img src="mini/casal-times-square.jpg" alt="casal-times-square" loading="lazy"><span class="fmt">foto</span><span class="nm">casal-times-square</span></div>
-<div class="cel f-foto e-livre" tabindex="0" role="button" data-m="mads-black-walk.jpg" data-n="mads-black-walk" data-c="mads-black-walk"><img src="mini/mads-black-walk.jpg" alt="mads-black-walk" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-black-walk</span></div>
+<div class="cel f-foto e-no-ar" tabindex="0" role="button" data-m="mads-black-walk.jpg" data-n="mads-black-walk" data-c="mads-black-walk"><img src="mini/mads-black-walk.jpg" alt="mads-black-walk" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-black-walk</span></div>
 <div class="cel f-foto e-obra" tabindex="0" role="button" data-m="mads-blazer-estudio.jpg" data-n="mads-blazer-estudio" data-c="mads-blazer-estudio"><img src="mini/mads-blazer-estudio.jpg" alt="mads-blazer-estudio" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-blazer-estudio</span></div>
 <div class="cel f-foto e-fila" tabindex="0" role="button" data-m="mads-blazer-gold-cuff.jpg" data-n="mads-blazer-gold-cuff" data-c="Everything about this photograph was somebody else&#x27;s idea. Chapters 1 and 2, here. — Celebrity romance. Dual POV, slow burn, book one of four."><img src="mini/mads-blazer-gold-cuff.jpg" alt="mads-blazer-gold-cuff" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-blazer-gold-cuff</span></div>
 <div class="cel f-foto e-fila" tabindex="0" role="button" data-m="mads-carpet-pink-gown.jpg" data-n="mads-carpet-pink-gown" data-c="Photographed all evening by people who have never met her. Chapters 1 and 2, here. — Celebrity romance, dual POV. Famous and alone."><img src="mini/mads-carpet-pink-gown.jpg" alt="mads-carpet-pink-gown" loading="lazy"><span class="fmt">foto</span><span class="nm">mads-carpet-pink-gown</span></div>
@@ -769,20 +786,27 @@ dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 <div class="cel f-video e-obra" tabindex="0" role="button" data-m="montagem-05.jpg" data-n="montagem-05" data-c="montagem-05"><img src="mini/montagem-05.jpg" alt="montagem-05" loading="lazy"><span class="fmt">video</span><span class="play">▶ 16s</span><span class="nm">montagem-05</span></div>
 <div class="cel f-video e-obra" tabindex="0" role="button" data-m="montagem-06.jpg" data-n="montagem-06" data-c="montagem-06"><img src="mini/montagem-06.jpg" alt="montagem-06" loading="lazy"><span class="fmt">video</span><span class="play">▶ 13s</span><span class="nm">montagem-06</span></div>
 <div class="cel f-zona e-obra" tabindex="0" role="button" data-m="calcada-noite-LIMPA.jpg" data-n="calcada-noite-LIMPA" data-c="calcada-noite-LIMPA"><img src="mini/calcada-noite-LIMPA.jpg" alt="calcada-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">calcada-noite-LIMPA</span></div>
-<div class="cel f-zona e-obra" tabindex="0" role="button" data-m="calcada-noite-MARCADA.jpg" data-n="calcada-noite-MARCADA" data-c="calcada-noite-MARCADA"><img src="mini/calcada-noite-MARCADA.jpg" alt="calcada-noite-MARCADA" loading="lazy"><span class="fmt">zona</span><span class="nm">calcada-noite-MARCADA</span></div>
 <div class="cel f-zona e-obra" tabindex="0" role="button" data-m="praia-noite-LIMPA.jpg" data-n="praia-noite-LIMPA" data-c="praia-noite-LIMPA"><img src="mini/praia-noite-LIMPA.jpg" alt="praia-noite-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">praia-noite-LIMPA</span></div>
-<div class="cel f-zona e-obra" tabindex="0" role="button" data-m="praia-noite-MARCADA.jpg" data-n="praia-noite-MARCADA" data-c="praia-noite-MARCADA"><img src="mini/praia-noite-MARCADA.jpg" alt="praia-noite-MARCADA" loading="lazy"><span class="fmt">zona</span><span class="nm">praia-noite-MARCADA</span></div>
 <div class="cel f-zona e-obra" tabindex="0" role="button" data-m="vague-madeleine-LIMPA.jpg" data-n="vague-madeleine-LIMPA" data-c="vague-madeleine-LIMPA"><img src="mini/vague-madeleine-LIMPA.jpg" alt="vague-madeleine-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">vague-madeleine-LIMPA</span></div>
 <div class="cel f-zona e-obra" tabindex="0" role="button" data-m="xadrez-pb-LIMPA.jpg" data-n="xadrez-pb-LIMPA" data-c="xadrez-pb-LIMPA"><img src="mini/xadrez-pb-LIMPA.jpg" alt="xadrez-pb-LIMPA" loading="lazy"><span class="fmt">zona</span><span class="nm">xadrez-pb-LIMPA</span></div>
-<div class="cel f-zona e-obra" tabindex="0" role="button" data-m="xadrez-pb-MARCADA.jpg" data-n="xadrez-pb-MARCADA" data-c="xadrez-pb-MARCADA"><img src="mini/xadrez-pb-MARCADA.jpg" alt="xadrez-pb-MARCADA" loading="lazy"><span class="fmt">zona</span><span class="nm">xadrez-pb-MARCADA</span></div>
 </div></section>
 <dialog id="lupa"><img alt=""><p class="cap"></p></dialog></div>
 <script>
-const abas=[...document.querySelectorAll('.abas button')];
+const nav=document.getElementById('nav'), abre=document.getElementById('abre'),
+      menu=document.getElementById('menu');
+function abrir(v){nav.dataset.aberto=v?'1':'0';menu.hidden=!v;
+  abre.setAttribute('aria-expanded',v)}
+abre.onclick=e=>{e.stopPropagation();abrir(menu.hidden)};
+document.addEventListener('click',()=>abrir(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')abrir(false)});
+menu.onclick=e=>e.stopPropagation();
+const abas=[...menu.querySelectorAll('button')];
 abas.forEach(b=>b.onclick=()=>{
   abas.forEach(o=>o.setAttribute('aria-selected',o===b));
   ['obra','fila','acervo'].forEach(t=>document.getElementById(t).hidden=(t!==b.dataset.t));
-  window.scrollTo(0,0);
+  document.getElementById('qual').textContent=b.childNodes[0].textContent.trim();
+  document.getElementById('cont').textContent=b.querySelector('i').textContent;
+  abrir(false); window.scrollTo(0,0);
 });
 const lupa=document.getElementById('lupa');
 document.addEventListener('click',e=>{
