@@ -231,7 +231,7 @@ def escreve_no_feed(caminho, board, item):
 # garantia e passou a custar a fileira inteira: as tres pecas dependiam de tres
 # execucoes de cron, e o cron do GitHub nao entrega tres.
 PECAS_POR_FILEIRA = 3      # a fileira tem tres pecas, nunca quatro
-SEM_MARCA = ("quote-", "dialogue-", "still-")  # artes que ja trazem o titulo dentro
+SEM_MARCA = ("quote-", "dialogue-", "still-", "promo-")  # artes que ja trazem o titulo dentro
 # 🔴 `still-` entrou em 02/09: o carimbo desliza pela borda de baixo, que e exatamente
 #    onde mora a legenda do segundo frame do still. Aprovado por ela no briefing de 30/08.
 #    O prefixo proprio tambem E a medida: o utm_content e o nome do arquivo, e em 30 dias
@@ -239,6 +239,24 @@ SEM_MARCA = ("quote-", "dialogue-", "still-")  # artes que ja trazem o titulo de
 INTERVALO_FILEIRA_H = 36   # horas minimas entre uma fileira e a proxima
 FILEIRAS_POR_SEMANA = 3    # teto movel: fileiras nos ultimos 7 dias
 JANELA_DIAS = 7
+
+# ─── A LINHA DE CONVERSAO (decidida por ela em 07/09/2026) ──────────────────
+# 🔴 SABADO E DA FILEIRA PROMOCIONAL. Ela: *"nos comecamos a todo sabado, para
+#    que no domingo ja estejam na plataforma."* Nesse dia o robo le a fila promo
+#    e a fila narrativa NAO roda.
+#
+# 📌 E POR QUE ISSO NAO TIRA O LUGAR DE NINGUEM, que era a condicao dela:
+#    o teto da narrativa e "3 fileiras nos ultimos 7 dias" — janela MOVEL, nao
+#    dia fixo. Reservar o sabado deixa seis dias pra colocar as tres, e nenhuma
+#    se perde. Se o teto fosse por dia da semana, isto custaria uma fileira.
+#
+# ⚠️ O DESENHO E TROCAR OS DOIS ARQUIVOS, e so. As tres travas do robo (uma
+#    fileira por dia, 36h entre fileiras, teto de 3/7) leem FILA e PUBLICADOS —
+#    apontando as duas pro par promo, as tres passam a valer pra esta linha
+#    sozinha, sem nenhuma condicional nova espalhada pelo main.
+FILA_PROMO = os.path.join(AQUI, "fila-promo.txt")
+PUBLICADOS_PROMO = os.path.join(AQUI, "publicados-promo.txt")
+DIA_PROMO = 5              # 0=segunda ... 5=sabado
 
 
 def datas_publicadas():
@@ -259,15 +277,26 @@ def publicados_hoje(hoje):
 
 
 def main():
+    global FILA, PUBLICADOS
     simular = "--simular" in sys.argv
     forcar = "--forcar" in sys.argv
+    agora = datetime.now(ZoneInfo(FUSO))
+
+    # Sabado, ou `--promo` na mao: a rodada e da linha de conversao.
+    promo = "--promo" in sys.argv or agora.weekday() == DIA_PROMO
+    if promo:
+        if not os.path.exists(FILA_PROMO):
+            print(f"Rodada promocional, mas {FILA_PROMO} nao existe. "
+                  f"Nada publicado, e a fila narrativa nao roda no sabado.")
+            return
+        FILA, PUBLICADOS = FILA_PROMO, PUBLICADOS_PROMO
+        print("Rodada PROMOCIONAL (linha de conversao).")
 
     linhas, alvos, parada = proxima_fileira()
     if parada:
         print(parada)
         return
 
-    agora = datetime.now(ZoneInfo(FUSO))
     ultima = max(datas_publicadas(), default=None)
     saidas_hoje = publicados_hoje(agora.date())
 
