@@ -1,4 +1,8 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
 <title>Biblioteca visual · Tay Marais</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Jost:wght@300;400;500&display=swap">
 <style>
 :root{
@@ -114,11 +118,23 @@ dialog img{max-width:94vw;max-height:78vh;display:block;border:1px solid var(--l
 dialog .cap{color:var(--cinza);font-size:13px;margin:12px 2px 0;text-align:center;max-width:70ch}
 dialog .cap b{display:block;color:var(--gelo);font-weight:400;margin-bottom:4px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-@media (max-width:560px){.trio{max-width:none}.env{padding:0 12px 90px}}
-</style>
+/* 🔴 TRES POR FILEIRA NO CELULAR. Ela, 07/09: *"faz sempre tres fotos no teu
+   celular pra ela ficar mais bonitinha... abrir maiorzinha assim a fileira e eu
+   conseguir ver melhor a foto."* Tres e o numero da grade do Pinterest, entao a
+   biblioteca le igual ao feed — e com o viewport certo cada celula fica MAIOR
+   que as cinco de antes, nao menor. */
+@media (max-width:640px){
+  .trio{max-width:none;gap:5px}
+  .env{padding:0 10px 90px}
+  .grade{grid-template-columns:repeat(3,1fr);gap:5px}
+  .placar{grid-template-columns:repeat(3,1fr)}
+  .cel .nm{font-size:9px;padding:16px 4px 4px}
+  .cel .fmt{font-size:7.5px;padding:2px 4px}
+}
+</style></head><body>
 <div class="env">
 <header><h1>Biblioteca visual</h1>
-<p class="sub">Pinterest · 07/09/2026 às 17:03</p>
+<p class="sub">Pinterest · 07/09/2026 às 17:11</p>
 <div class="placar">
 <div><b>267</b><span>peças</span></div>
 <div><b>30</b><span>no ar</span></div>
@@ -839,4 +855,4 @@ document.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('[data-e]').forEach(o=>o.setAttribute('aria-pressed',o===b));
   peneira();
 });
-</script>
+</script></body></html>
