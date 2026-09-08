@@ -205,7 +205,20 @@ mads-pinstripe-boots.jpg | Dressed for a room she does not want to walk into. Ch
 quote-the-truth-would-destroy-us.jpg | The reason she keeps him at arm's length. Chapters 1 and 2, here. | Secret past romance. Slow burn, dual POV, book one of four. | Adam & Madeleine
 mads-martini-skyline.jpg | A whole city outside, and she is the only one at the table. Chapters 1 and 2, here. | Celebrity romance, dual POV. Lonely heroine, slow burn. | Adam & Madeleine
 quote-deep-enough.jpg | What she is not telling him yet. Chapters 1 and 2, here. | Slow burn romance with a secret. Dual POV, book one. | Adam & Madeleine
-adam-mads-white-wall.jpg | Standing close enough that the picture would be a story. Chapters 1 and 2, here. | Hollywood romance. Forbidden, slow burn, dual POV. | Adam & Madeleine
+# 🔴 PRIMEIRO VIDEO DA FILA (07/09/2026, decisao dela). Entra na CASA DO MEIO,
+#    entre duas quotes — regra 1-l do estrategia-de-feed: video ocupa a casa do
+#    casal, igual ao still. Aqui a fileira ja era quote | foto | quote, entao
+#    a troca respeita a gramatica da grade sem mexer nas vizinhas.
+# 📌 A adam-mads-white-wall.jpg que estava aqui NAO estava faltando: ela e a
+#    mesma imagem da adam-mads-wall-close.jpg, com outro nome. Sai da fila
+#    porque ela quis o video no lugar, nao por defeito.
+# 🔴 CORTADO PRA 2:3, nao 9:16. O video nasceu em 1080x1920 (1.78) e a grade
+#    dela e 1.50: video mais alto que as vizinhas quebra a fileira, e fileira e
+#    a unidade que a leitora ve de uma vez. Quem pegou foi o detector da
+#    biblioteca, nao eu.
+# ⚠️ Convertido de .mov pra .mp4 em crf 20: o mapa TIPO do publicar.py so
+#    conhece .mp4, e o Pinterest quer video/mp4.
+montagem-adam-mads.mp4 | Adam and Madeleine, one minute at a time. Chapters 1 and 2, here. | Where the Ocean Ends. Dual POV slow burn celebrity romance. | Adam & Madeleine
 quote-nobody-knows-where-i-am.jpg | One night off the record, for both of them. Chapters 1 and 2, here. | One night trope, slow burn. Dual POV celebrity romance. | Adam & Madeleine
 adam-cannes.jpg | The circuit he has been on since he was nineteen. Chapters 1 and 2, here. | Child star to movie star romance. Dual POV. | Adam & Madeleine
 quote-this-isnt-my-hideout.jpg | The moment he realizes whose place he is standing in. Chapters 1 and 2, here. | Celebrity romance set in LA. Enemies to lovers. | Adam & Madeleine
