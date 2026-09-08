@@ -422,6 +422,28 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
     <link rel="alternate" hreflang="en" href="https://taymarais.com/">
     <link rel="alternate" hreflang="pt-BR" href="https://taymarais.com/pt/books/onde-o-oceano-acaba.html">
     <link rel="alternate" hreflang="x-default" href="https://taymarais.com/">
+    <!-- Quem e a autora, como ENTIDADE. Sem este bloco o Google nao sabia que a
+         Tay Marais escritora existe: em 08/09/2026 o AI Overview respondia sobre
+         outra pessoa de nome parecido, citando o Instagram de um terceiro. O campo
+         que resolve e o `sameAs` — e a lista de perfis que prova de quem e o nome.
+         📌 Criou perfil novo (Instagram, Goodreads, Amazon)? A URL entra aqui, nas
+         DUAS paginas de livro, senao o sinal fica pela metade. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://taymarais.com/#tay-marais",
+      "name": "Tay Marais",
+      "url": "https://taymarais.com/",
+      "jobTitle": "Escritora",
+      "description": "Autora de romance contemporâneo. POV duplo, slow burn e romance de celebridade, com temas de cura, identidade e recomeço. Escreve em português e em inglês.",
+      "sameAs": [
+        "https://www.pinterest.com/Thetaymarais/",
+        "https://x.com/theTayMarais",
+        "https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu"
+      ]
+    }
+    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -431,11 +453,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
       "description": "Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Ele queria desaparecer. Só não esperava encontrá-la.",
       "url": "https://taymarais.com/pt/books/onde-o-oceano-acaba.html",
       "image": "https://taymarais.com/assets/og-oceano.jpg",
-      "author": {
-        "@type": "Person",
-        "name": "Tay Marais",
-        "url": "https://taymarais.com/"
-      }
+      "author": { "@id": "https://taymarais.com/#tay-marais" }
     }
     </script>
     <meta name="description" content="Adam Walker tem o mundo aos seus pés, um Oscar na estante e um vazio ensurdecedor no peito. Ele queria desaparecer. Só não esperava encontrá-la.">
