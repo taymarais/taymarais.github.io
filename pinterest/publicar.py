@@ -90,10 +90,28 @@ NAO_CONECTADOS = set()   # os quatro estao conectados desde 17/08/2026
 # precisa enviar so pra um feed, varia: Mads na Mads, Adam no Adam, quotes em
 # Where The Ocean, foto de casal em romance"*.
 #
-# ⚠️ POR QUE ISTO ERA PROIBIDO ATE HOJE, e por que deixou de ser: fileira
-# espalhada por varios feeds NAO PUBLICAVA (medido em 17 e 20/08). A causa era a
-# fileira de 3 saindo de uma vez por tres feeds lidos em horarios independentes.
-# Com UMA peca por dia isso nao existe mais: um dia, um feed, uma peca.
+# ⚠️ POR QUE ISTO ERA PROIBIDO, e ATE ONDE a prova alcanca. Sao DUAS medidas e
+# elas nao dizem a mesma coisa:
+#   17/08, 3 feeds -> publicou tudo, ORDEM TROCADA. Explicado: cada feed e
+#          varrido uma vez por dia, no horario dele, entao 3 pecas soltas no
+#          mesmo dia viram sorteio. **Uma peca por dia conserta exatamente isso**
+#          -- e era o conserto ja escrito no maquina-de-pin.md em 18/08, antes de
+#          o problema acontecer: "pra cada varredura diaria encontrar exatamente
+#          uma peca nova".
+#   20/08, 3 feeds -> NAO PUBLICOU EM DOIS DIAS. **Esta NAO esta explicada.**
+#          Nosso lado foi conferido elo por elo (XML valido, imagens no lugar,
+#          site republicado). Uma peca por dia nao promete nada contra ela.
+#
+# 🔴 POR ISSO A LISTA TEM DOIS BOARDS E NAO QUATRO. `Adam & Madeleine`
+# (pins-couple.xml) e `Where The Ocean Ends` (pins-adam-madeleine.xml) sao os
+# DOIS unicos feeds com publicacao bem-sucedida na historia deste repo -- o
+# segundo e o feed do lote 1, de 13/08. Os que falharam em 20/08 foram
+# `Adam Walker` e `Madeleine Bennett`, e eles ficam de fora ate haver medida.
+#
+# 📌 O TESTE, quando ela quiser abrir a segunda rota: mandar UMA peca de quote
+# pro `Where The Ocean Ends` e conferir a grade dois dias depois. Se aparecer, a
+# rota esta viva e da pra rotear mais. Se nao, a causa de 20/08 continua de pe e
+# a fila inteira volta pro board unico -- que, de quebra, rende ~11x mais por pin.
 #
 # ⚠️ A trava continua de pe pra board que nao esta aqui. Board fora desta lista
 # falha ALTO, porque item escrito em feed nao conectado nao vira pin e a fila
@@ -142,11 +160,12 @@ def morre(msg):
 def proxima_fileira():
     """As PECAS_POR_DIA primeiras linhas vivas da fila, em ordem.
 
-    🔴 SO DEVOLVE FILEIRA COMPLETA. Meia fileira e o unico jeito de torcer a
-    grade (a aba Criados e fluxo continuo de tres colunas, entao publicar 2 num
-    dia empurra tudo que esta embaixo uma casa, pra sempre). Qualquer coisa que
-    impeca as tres -- PAUSA no meio, fila curta -- devolve `alvos` VAZIA e o
-    motivo em `parada`. Nada sai pela metade.
+    🔴 SO DEVOLVE O LOTE DO DIA COMPLETO. Com PECAS_POR_DIA = 1 isso e trivial:
+    sai a peca ou nao sai nada. Os dois guardas abaixo (PAUSA no meio do lote,
+    fila mais curta que o lote) so voltam a ter trabalho se PECAS_POR_DIA subir
+    de novo -- e ai valem pelo motivo antigo: lote pela metade empurra tudo que
+    esta embaixo uma casa na aba Criados, pra sempre. Nao apagar so porque hoje
+    nao disparam.
     """
     if not os.path.exists(FILA):
         morre(f"{FILA} nao existe.")
@@ -163,16 +182,16 @@ def proxima_fileira():
     for i, l in vivas[:PECAS_POR_DIA]:
         if l.strip().upper().startswith(PAUSA):
             return linhas, [], (
-                f"A PAUSA esta na posicao {len(alvos) + 1} da fileira: sairiam "
-                f"{len(alvos)} pecas de {PECAS_POR_DIA}, e meia fileira "
-                f"desalinha tudo que esta embaixo. Nada publicado. Apagar a "
-                f"linha {PAUSA!r} de {FILA} pra fileira sair inteira.")
+                f"A PAUSA esta na posicao {len(alvos) + 1} do lote do dia: "
+                f"sairiam {len(alvos)} pecas de {PECAS_POR_DIA}, e lote pela "
+                f"metade desalinha tudo que esta embaixo. Nada publicado. "
+                f"Apagar a linha {PAUSA!r} de {FILA} pro lote sair inteiro.")
         alvos.append((i, l))
     if len(alvos) < PECAS_POR_DIA:
         return linhas, [], (
-            f"So restam {len(alvos)} linha(s) viva(s) e a fileira precisa de "
-            f"{PECAS_POR_DIA}. Meia fileira desalinha a grade, entao nada "
-            f"sai ate a fila voltar ao multiplo de 3.")
+            f"So restam {len(alvos)} linha(s) viva(s) e o lote do dia precisa "
+            f"de {PECAS_POR_DIA}. Lote pela metade desalinha a grade, entao "
+            f"nada sai ate a fila voltar ao multiplo de {PECAS_POR_DIA}.")
     return linhas, alvos, None
 
 
@@ -253,12 +272,28 @@ def escreve_no_feed(caminho, board, item):
 #      a ordem da fila mesmo com a fila espalhada por varios boards. Era esta a
 #      razao da trava de rota, e ela cai por construcao, nao por descuido.
 PECAS_POR_DIA = 1
+# 🔴 A LINHA PROMO NAO SEGUIU A CADENCIA NOVA, DE PROPOSITO. Ela sai UMA VEZ POR
+# SEMANA, no sabado, e a fileira dela tem forma FIXA (`livro · CASAL+CTA ·
+# livro`, regra 1-k do estrategia-de-feed.md): as tres pecas so fazem sentido
+# lado a lado. Com uma por semana, uma fileira levaria TRES SABADOS e as pecas
+# narrativas dos dias de semana cairiam no meio dela, desmontando o arranjo.
+# Entao a promo continua saindo inteira numa execucao, como em 07/09.
+PECAS_PROMO = 3
 SEM_MARCA = ("quote-", "dialogue-", "still-", "promo-")  # artes que ja trazem o titulo dentro
 # 🔴 `still-` entrou em 02/09: o carimbo desliza pela borda de baixo, que e exatamente
 #    onde mora a legenda do segundo frame do still. Aprovado por ela no briefing de 30/08.
 #    O prefixo proprio tambem E a medida: o utm_content e o nome do arquivo, e em 30 dias
 #    ele compara `still-` contra `quote-` e `dialogue-`.
-INTERVALO_H = 20           # horas minimas entre uma peca e a proxima
+# 🔴 14h, E O NUMERO TEM MOTIVO — 20h estava errado e teria custado dias.
+# A trava que garante "uma por dia" e o `publicados_hoje` logo acima, que e por
+# DIA DE CALENDARIO. Esta aqui so impede duas pecas coladas. So que o cron mais
+# tarde publica 15h17 BRT e o mais cedo do dia seguinte roda 08h07 BRT: 16h49 de
+# distancia. Com 20h, todo dia que a peca saisse depois das 12h17 BRT bloquearia
+# as tres primeiras tentativas do dia seguinte -- e como o cron do GitHub atrasa
+# e descarta execucao (medido de 26 a 30/08: 1 ou 2 entregas por dia em vez de
+# 5), sobrar so as duas ultimas e como perder o dia. 14h fica abaixo das 16h49 e
+# nunca briga com o proprio cron.
+INTERVALO_H = 14           # horas minimas entre uma peca e a proxima
 PECAS_POR_SEMANA = 7       # teto movel: dias com publicacao nos ultimos 7
 JANELA_DIAS = 7
 
@@ -273,7 +308,7 @@ JANELA_DIAS = 7
 #    se perde. Se o teto fosse por dia da semana, isto custaria uma fileira.
 #
 # ⚠️ O DESENHO E TROCAR OS DOIS ARQUIVOS, e so. As tres travas do robo (uma
-#    fileira por dia, 36h entre fileiras, teto de 3/7) leem FILA e PUBLICADOS —
+#    peca por dia, 14h entre pecas, teto de 7/7) leem FILA e PUBLICADOS —
 #    apontando as duas pro par promo, as tres passam a valer pra esta linha
 #    sozinha, sem nenhuma condicional nova espalhada pelo main.
 FILA_PROMO = os.path.join(AQUI, "fila-promo.txt")
@@ -299,7 +334,7 @@ def publicados_hoje(hoje):
 
 
 def main():
-    global FILA, PUBLICADOS
+    global FILA, PUBLICADOS, PECAS_POR_DIA
     simular = "--simular" in sys.argv
     forcar = "--forcar" in sys.argv
     agora = datetime.now(ZoneInfo(FUSO))
@@ -312,7 +347,9 @@ def main():
                   f"Nada publicado, e a fila narrativa nao roda no sabado.")
             return
         FILA, PUBLICADOS = FILA_PROMO, PUBLICADOS_PROMO
-        print("Rodada PROMOCIONAL (linha de conversao).")
+        PECAS_POR_DIA = PECAS_PROMO     # a fileira promo sai inteira, ver acima
+        print(f"Rodada PROMOCIONAL (linha de conversao), "
+              f"fileira de {PECAS_POR_DIA}.")
 
     linhas, alvos, parada = proxima_fileira()
     if parada:
@@ -323,8 +360,8 @@ def main():
     saidas_hoje = publicados_hoje(agora.date())
 
     # 🔴 UMA FILEIRA POR DIA. Antes o teto era "tres pecas por dia" porque cada
-    # execucao soltava uma; agora a fileira sai inteira numa execucao so, entao
-    # qualquer peca publicada hoje ja significa fileira feita.
+    # execucao soltava uma; hoje o lote do dia E uma peca, entao qualquer peca
+    # publicada hoje ja significa o dia feito.
     if not forcar and saidas_hoje:
         print(f"A peca de hoje ja saiu ({saidas_hoje}). A proxima e amanha.")
         return
@@ -432,7 +469,9 @@ def main():
         print(f"    {pc['titulo']}")
     restam = sum(1 for l in linhas[pecas[-1]["indice"] + 1:]
                  if l.strip() and not l.lstrip().startswith("#"))
-    print(f"  restam na fila: {restam}  ({restam // PECAS_POR_DIA} dias)")
+    unidade = "sabado(s)" if promo else "dias"
+    print(f"  restam na fila: {restam}  "
+          f"({restam // PECAS_POR_DIA} {unidade})")
 
     if simular:
         print("\n--simular: nada foi escrito.")

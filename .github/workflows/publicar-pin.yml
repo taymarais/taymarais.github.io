@@ -1,8 +1,16 @@
 name: Publicar pin
 
-# A FILEIRA INTEIRA numa execucao so. Cinco tentativas por dia, e a PRIMEIRA que
-# o GitHub entregar publica as tres pecas; as outras quatro encontram a fileira
-# do dia ja feita e passam a vez, quietas.
+# UMA PECA POR DIA desde 10/09/2026. Cinco tentativas por dia, e a PRIMEIRA que
+# o GitHub entregar publica a peca do dia; as outras quatro encontram a peca ja
+# feita e passam a vez, quietas.
+#
+# 🔴 O QUE MUDOU EM 10/09, decisao dela: *"pode fazer a fileira sair em dias
+# seguidos a partir de agora, uma postagem por dia sempre"*. A fileira de 3
+# deixou de sair numa execucao e passou a nascer em TRES DIAS. Duas razoes:
+# o Pinterest premia constancia (video da Jen Vazquez), e uma peca por dia e o
+# que faz cada varredura diaria do feed encontrar exatamente UMA peca nova --
+# que era o conserto ja escrito neste repo em 18/08 pro caso do lote 3 sair
+# torto. Saiu torto. Este e o conserto.
 #
 # 🔴 POR QUE MUDOU, em 31/08. Ate aqui era uma peca por execucao, e a fileira
 # dependia de TRES execucoes no mesmo dia, comecando antes das 11h BRT. Medido
@@ -19,8 +27,8 @@ name: Publicar pin
 #
 # 🔴 O CRON RODA TODO DIA DE PROPOSITO, e quem decide se publica e o script.
 # Dia fixo da semana (era seg/qua/sex) transformava qualquer tropeco em espera
-# de dois dias. A cadencia continua a dela: uma fileira por dia no maximo, 36h
-# entre fileiras, teto de 3 fileiras a cada 7 dias. Ver pinterest/publicar.py.
+# de dois dias. A cadencia agora e: uma peca por dia, 20h entre pecas, teto de
+# 7 dias com publicacao a cada 7. Ver pinterest/publicar.py.
 #
 # Os cinco horarios agora sao REDUNDANCIA, nao etapas: espalhados pelo dia
 # justamente porque o cron do GitHub atrasa e descarta execucao. Minuto quebrado
