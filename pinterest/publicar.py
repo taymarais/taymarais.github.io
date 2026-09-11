@@ -272,13 +272,20 @@ def escreve_no_feed(caminho, board, item):
 #      a ordem da fila mesmo com a fila espalhada por varios boards. Era esta a
 #      razao da trava de rota, e ela cai por construcao, nao por descuido.
 PECAS_POR_DIA = 1
-# 🔴 A LINHA PROMO NAO SEGUIU A CADENCIA NOVA, DE PROPOSITO. Ela sai UMA VEZ POR
-# SEMANA, no sabado, e a fileira dela tem forma FIXA (`livro · CASAL+CTA ·
-# livro`, regra 1-k do estrategia-de-feed.md): as tres pecas so fazem sentido
-# lado a lado. Com uma por semana, uma fileira levaria TRES SABADOS e as pecas
-# narrativas dos dias de semana cairiam no meio dela, desmontando o arranjo.
-# Entao a promo continua saindo inteira numa execucao, como em 07/09.
-PECAS_PROMO = 3
+# 🔴 UMA PECA POR SABADO desde 11/09/2026, e a razao e a CONTA, nao o gosto.
+# Ela: *"uma peca por sabado e melhor mesmo."*
+#
+# O `plano-de-producao.py` mediu: com fileira de 3, a linha de conversao pedia
+# **57 pecas** ate 19/01 e existiam 6. Faltavam 51 -- mais que a fila narrativa
+# inteira, e sao as pecas mais caras do sistema (foto + frase + botao, montadas
+# uma a uma no `pecas-cta.py`). Com uma por sabado cai pra 19, que e fazivel.
+#
+# ⚠️ E O QUE SE PERDE, pra ficar registrado: a forma `livro · CASAL+CTA · livro`
+# (regra 1-k do `estrategia-de-feed.md`) era uma fileira desenhada pra ser lida
+# lado a lado. Ela vale na GRADE do perfil, e a grade so importa pra quem visita
+# o perfil. A linha de conversao existe pelo CLIQUE, e clique nao precisa de
+# fileira montada. A decisao foi dela, sabendo disso.
+PECAS_PROMO = 1
 SEM_MARCA = ("quote-", "dialogue-", "still-", "promo-")  # artes que ja trazem o titulo dentro
 # 🔴 `still-` entrou em 02/09: o carimbo desliza pela borda de baixo, que e exatamente
 #    onde mora a legenda do segundo frame do still. Aprovado por ela no briefing de 30/08.
@@ -349,7 +356,7 @@ def main():
         FILA, PUBLICADOS = FILA_PROMO, PUBLICADOS_PROMO
         PECAS_POR_DIA = PECAS_PROMO     # a fileira promo sai inteira, ver acima
         print(f"Rodada PROMOCIONAL (linha de conversao), "
-              f"fileira de {PECAS_POR_DIA}.")
+              f"{PECAS_POR_DIA} peca(s) no sabado.")
 
     linhas, alvos, parada = proxima_fileira()
     if parada:

@@ -1,4 +1,14 @@
-# FILA PROMOCIONAL — a linha de conversao, uma fileira por SABADO.
+# FILA PROMOCIONAL — a linha de conversao, UMA PECA POR SABADO.
+#
+# 🔴 MUDOU EM 11/09/2026: era uma FILEIRA de 3 por sabado, virou UMA peca.
+#    Decisao dela (*"uma peca por sabado e melhor mesmo"*) contra a conta do
+#    `plano-de-producao.py`: com fileira de 3 esta linha pedia 57 pecas ate
+#    19/01 e existiam 6. Com uma por sabado pede 19.
+#
+# ⚠️ ENTAO A REGRA DOS BLOCOS DE 3 ABAIXO MORREU. As linhas saem UMA A UMA, na
+#    ordem do arquivo, de cima pra baixo. A forma fixa `livro · CASAL+CTA ·
+#    livro` era regra de GRADE, e grade so importa pra quem visita o perfil --
+#    esta linha existe pelo CLIQUE.
 #
 # 🔴 ESTA FILA NAO E A `fila.txt`. O robo le esta AQUI so aos sabados
 #    (DIA_PROMO em publicar.py), e nesse dia a fila narrativa nao roda.
