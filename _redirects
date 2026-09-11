@@ -3,6 +3,12 @@
 # vendo taymarais.com. A home antiga segue viva em /index.html se precisar.
 /                                     /books/where-the-ocean-ends      200
 
+# A mesma coisa em portugues (10/09/2026). Sem esta linha, /pt/ servia a home
+# ANTIGA em PT (a marrom) enquanto a raiz ja servia o livro: a autora abriu
+# taymarais.com/pt/ e caiu na versao velha. A canonica do livro PT continua
+# sendo a URL longa (esta nos pins e no indice); /pt/ e so atalho pra ela.
+/pt/                                  /pt/books/onde-o-oceano-acaba    200
+
 # O Cloudflare Pages corta o ".html" sozinho e devolve 308. Essas URLs sao as
 # que saem nos pins e nos links ja publicados: tem que responder no proprio
 # endereco, sem trocar de URL no meio do caminho.
