@@ -10,7 +10,10 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
     <meta name="p:domain_verify" content="fca1e83ea69aa7672cbd8318a27be208"/>
     <title>Where the Ocean Ends | Tay Marais</title>
     
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" href="/assets/favicon-2-192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/assets/favicon-2.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/assets/favicon-2-192.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -406,10 +409,32 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   gtag('js', new Date());
   gtag('config', 'G-TM5SB21FBH');
 </script>
-    <link rel="canonical" href="https://taymarais.com/books/where-the-ocean-ends.html">
-    <link rel="alternate" hreflang="en" href="https://taymarais.com/books/where-the-ocean-ends.html">
+    <link rel="canonical" href="https://taymarais.com/">
+    <link rel="alternate" hreflang="en" href="https://taymarais.com/">
     <link rel="alternate" hreflang="pt-BR" href="https://taymarais.com/pt/books/onde-o-oceano-acaba.html">
-    <link rel="alternate" hreflang="x-default" href="https://taymarais.com/books/where-the-ocean-ends.html">
+    <link rel="alternate" hreflang="x-default" href="https://taymarais.com/">
+    <!-- Quem e a autora, como ENTIDADE. Sem este bloco o Google nao sabia que a
+         Tay Marais escritora existe: em 08/09/2026 o AI Overview respondia sobre
+         outra pessoa de nome parecido, citando o Instagram de um terceiro. O campo
+         que resolve e o `sameAs` — e a lista de perfis que prova de quem e o nome.
+         📌 Criou perfil novo (Instagram, Goodreads, Amazon)? A URL entra aqui, nas
+         DUAS paginas de livro, senao o sinal fica pela metade. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://taymarais.com/#tay-marais",
+      "name": "Tay Marais",
+      "url": "https://taymarais.com/",
+      "jobTitle": "Author",
+      "description": "Contemporary romance author. Dual POV, slow burn, celebrity romance, with themes of healing, identity and recovery. Writes in Brazilian Portuguese and English.",
+      "sameAs": [
+        "https://www.pinterest.com/Thetaymarais/",
+        "https://x.com/theTayMarais",
+        "https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu"
+      ]
+    }
+    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -417,20 +442,16 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
       "name": "Where the Ocean Ends",
       "inLanguage": "en",
       "description": "Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. He wanted to disappear. He just didn't expect to find her.",
-      "url": "https://taymarais.com/books/where-the-ocean-ends.html",
+      "url": "https://taymarais.com/",
       "image": "https://taymarais.com/assets/og-wtoe.jpg",
-      "author": {
-        "@type": "Person",
-        "name": "Tay Marais",
-        "url": "https://taymarais.com/"
-      }
+      "author": { "@id": "https://taymarais.com/#tay-marais" }
     }
     </script>
     <meta name="description" content="Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. He wanted to disappear. He just didn't expect to find her.">
     <meta property="og:type" content="book">
     <meta property="og:site_name" content="Tay Marais">
     <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://taymarais.com/books/where-the-ocean-ends.html">
+    <meta property="og:url" content="https://taymarais.com/">
     <meta property="og:title" content="Where the Ocean Ends — Tay Marais">
     <meta property="og:description" content="Adam Walker has the world at feet, an Oscar on his shelf, and a deafening void in his chest. He wanted to disappear. He just didn't expect to find her.">
     <meta property="og:image" content="https://taymarais.com/assets/og-wtoe.jpg">
