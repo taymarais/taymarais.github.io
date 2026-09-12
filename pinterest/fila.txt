@@ -159,8 +159,16 @@
 #       5 P&B | comfort-is-danger | casal black tie    | loudest-noise
 #     ⚠️ As frases de gelo, vinil e varanda sao do cap. 06: este e o lote mais
 #     quente da fila. O proximo deve recuar pra faixa do cap. 01 a 03.
-quote-a-bridge-or-a-trap.jpg | The first thing he thought when she walked in. Chapters 1 and 2, here. | Enemies to lovers celebrity romance. Slow burn. | Adam & Madeleine
-adam-suit-concrete.jpg | The face on every poster, and nobody knows the man. Chapters 1 and 2, here. | Newly divorced movie star romance. Dual POV. | Adam & Madeleine
+# 🔴 FILEIRA 2 REMONTADA por ela em 12/09/2026. A `mads-dark-portrait` saiu
+#    sozinha em 11/09 (primeira peca da fileira, a direita) e ela decidiu
+#    fechar a fileira assim: dialogo no MEIO e a Mads da calcada a esquerda.
+#    Fica:  Mads calcada | dialogue-toujours | Mads retrato (no ar)
+#    As duas que estavam aqui (`quote-a-bridge-or-a-trap` e `adam-suit-concrete`)
+#    vao pra GAVETA, nao pro lixo: continuam em pins/ como livres, e a copy
+#    delas esta em `pins-lote-05.txt`/`pins-lote-06.txt` no repo do estudio.
+#    Duas saem, duas entram: as fileiras abaixo nao se movem.
+dialogue-toujours.jpg | The only language they use when they mean it. Chapters 1 and 2, here. | Slow burn celebrity romance with a French heroine. Dual POV. | Adam & Madeleine
+mads-night-slit.jpg | Sunglasses at night, and a street that knows exactly who she is. Chapters 1 and 2, here. | Celebrity romance with a guarded heroine. Dual POV, slow burn. | Adam & Madeleine
 quote-ruined-me-for-anyone-else.jpg | One night was the rule. This is what it cost. Chapters 1 and 2, here. | Slow burn romance. One night trope, dual POV. | Adam & Madeleine
 adam-mads-cap-cigarette.jpg | Close enough to be seen. Far enough to deny it. Chapters 1 and 2, here. | Hollywood celebrity romance. Slow burn, dual POV. | Adam & Madeleine
 quote-all-the-way-in.jpg | She does not do halfway. Chapters 1 and 2, here. | Dual POV celebrity romance. Book one of four. | Adam & Madeleine
