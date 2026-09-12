@@ -17,3 +17,11 @@
 /contact.html                         /contact                         200
 /pt/contact.html                      /pt/contact                      200
 /privacy.html                         /privacy                         200
+
+# Atalhos faláveis por canal (12/09/2026, PRD de medição do estúdio). Cada um
+# manda pra página certa JA com a UTM, pra canal sem link clicável (TikTok) ou
+# sem referenciador (WhatsApp) aparecer no GA com nome em vez de "(direct)".
+# Redirecionamento (302) de propósito: a URL final tem que carregar a UTM.
+/tt                                   /?utm_source=tiktok&utm_medium=bio                 302
+/ig                                   /?utm_source=instagram&utm_medium=bio              302
+/zap                                  /pt/?utm_source=whatsapp&utm_medium=grupo          302
