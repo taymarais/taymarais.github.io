@@ -139,6 +139,8 @@ h2{font:400 21px/1.25 Lora,Georgia,serif;margin:0 0 5px}
 .filtros button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
 
 dialog{border:0;padding:0;background:transparent;max-width:96vw}
+dialog .fecha{position:fixed;top:12px;right:12px;z-index:5;width:46px;height:46px;border-radius:50%;
+  border:1px solid #4a423f;background:#1c1816;color:#f2ece7;font-size:28px;line-height:1;cursor:pointer}
 dialog::backdrop{background:rgba(1,2,4,.94)}
 dialog img{max-width:94vw;max-height:78vh;display:block;border:1px solid var(--linha);border-radius:3px}
 dialog .cap{color:var(--cinza);font-size:13px;margin:12px 2px 0;text-align:center;max-width:70ch}
@@ -214,7 +216,7 @@ dialog .leg .bt{padding:10px 14px;font-size:12px;margin-right:6px}
 </style></head><body>
 <div class="env">
 <header><h1>Biblioteca visual</h1>
-<p class="sub">Pinterest · 13/09/2026 às 12:35</p>
+<p class="sub">Pinterest · 13/09/2026 às 12:49</p>
 <div class="placar">
 <div><b>215</b><span>peças</span></div>
 <div><b>35</b><span>no ar</span></div>
@@ -926,7 +928,7 @@ dialog .leg .bt{padding:10px 14px;font-size:12px;margin-right:6px}
 <div class="prom"><h4>A · a cozinha — o fundo da direita</h4><p class="frase">cap. 07 · `Quero o abismo.`<br><b>I want the drop.</b></p><p>Por que esta: o still da cozinha e o instante em que ela segura a mao dele no meio do caminho</p><button class="bt pcp" data-t="Photograph%20of%20an%20open%20plan%20kitchen%20at%20night%2C%20shot%20from%20across%20the%20room.%0AA%20white%20granite%20island%20runs%20low%20through%20the%20bottom%20third%20of%20the%20frame%2C%20lit%20by%20one%20warm%0Asource%20out%20of%20shot.%20Above%20it%20the%20wall%20and%20the%20cabinets%20fall%20away%20into%20an%20even%20shadow%20that%0Afills%20the%20upper%20two%20thirds.%20Two%20forgotten%20tumblers%20of%20amber%20spirit%20sit%20on%20the%20stone%2C%20far%20to%0Aone%20side%2C%20out%20of%20focus.%20The%20floor%20is%20wood%20and%20the%20walls%20are%20bare.%20Real%20photograph%2C%20shallow%0Adepth%20of%20field%2C%20natural%20film%20grain%2C%20muted%20contemporary%20colour%20grade.%20Vertical%202%3A3%2C%20no%20text%2C%0Ano%20letters.">copiar o prompt</button></div>
 <div class="prom"><h4>B · a varanda — o fundo da direita</h4><p class="frase">cap. 07 · `Meu coracao esta tatuado com o aviso de que nao segue a razao.`<br><b>My heart is tattooed with a warning that it doesn&#x27;t follow reason.</b></p><p>Por que esta: e a tatuagem de Pascal dita em voz alta, e o still da varanda e justamente a</p><button class="bt pcp" data-t="Photograph%20from%20a%20clifftop%20terrace%20above%20the%20Pacific%20at%20night%2C%20shot%20outward%20over%20the%20glass%0Arailing.%20The%20black%20ocean%20sits%20in%20the%20lower%20third%20of%20the%20frame.%20Above%20it%20the%20sky%20fills%20the%0Aupper%20two%20thirds%20as%20a%20single%20even%2C%20sourceless%20wash%20from%20edge%20to%20edge.%20A%20pool%20deck%20lies%20far%0Abelow%2C%20unlit%20and%20barely%20readable.%20One%20faint%20warm%20spill%20of%20light%20enters%20low%20from%20the%20left%0Aedge%2C%20from%20a%20room%20out%20of%20frame.%20No%20city%2C%20no%20city%20lights%2C%20no%20skyline.%20Real%20photograph%2C%20long%0Aexposure%2C%20natural%20film%20grain%2C%20muted%20contemporary%20colour%20grade.%20Vertical%202%3A3%2C%20no%20text%2C%0Ano%20letters.">copiar o prompt</button></div>
 </section>
-<dialog id="lupa"><img alt=""><video controls playsinline hidden></video><p class="cap"></p><div class="baixa"></div></dialog></div>
+<dialog id="lupa" data-gen="Where%20the%20Ocean%20Ends.%20Chapters%201%20and%202%20at%20taymarais.com%0A%0A%23BookTok%20%23Bookstagram%20%23RomanceBooks%20%23WhereTheOceanEnds%20%23CelebrityRomance%20%23SlowBurnRomance%20%23DualPOV"><button class="fecha" id="fecha" aria-label="fechar">×</button><img alt=""><video controls playsinline hidden></video><p class="cap"></p><div class="baixa"></div></dialog></div>
 <script>
 const nav=document.getElementById('nav'), abre=document.getElementById('abre'),
       menu=document.getElementById('menu');
@@ -945,6 +947,8 @@ abas.forEach(b=>b.onclick=()=>{
   abrir(false); window.scrollTo(0,0);
 });
 const lupa=document.getElementById('lupa');
+const LEG_GENERICA = decodeURIComponent(document.getElementById('lupa').dataset.gen || '');
+document.getElementById('fecha').onclick = e => { e.stopPropagation(); lupa.close(); };
 document.addEventListener('click',e=>{
   const c=e.target.closest('.cel:not(.vaga)'); if(!c) return;
   const im=lupa.querySelector('img'), vd=lupa.querySelector('video'),
@@ -965,6 +969,12 @@ document.addEventListener('click',e=>{
   //    sozinho, o que come o rodape WHERE THE OCEAN ENDS em 27 de 40 pecas.
   if(c.dataset.ig){
     h += '<a class="bt" download href="'+c.dataset.ig+'">baixar · Instagram (4:5)</a>';
+  }
+  // 🔴 A LEGENDA GENERICA VEM PRIMEIRO, EM TODA PECA (13/09): um bloco, todas as redes.
+  if (LEG_GENERICA) {
+    h += '<div class="leg"><h4>legenda · todas as redes</h4>'
+       + '<p>'+LEG_GENERICA.split(String.fromCharCode(10)).join('<br>')+'</p>'
+       + '<button class="bt cp" data-t="'+encodeURIComponent(LEG_GENERICA)+'">copiar legenda + hashtags</button></div>';
   }
   let L = {};
   try { L = JSON.parse(c.dataset.leg || '{}'); } catch(e) { L = {}; }
