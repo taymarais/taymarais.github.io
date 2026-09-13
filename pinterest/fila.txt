@@ -307,6 +307,10 @@ adam-cliff-black-tee.jpg | The first morning he woke up in a house with nobody i
 # 🔴 A COPY AINDA NAO FOI APROVADA POR ELA. A PAUSA abaixo segura o lote: o robo para
 #    quando chegar aqui (novembro). Ela aprova pela lupa da biblioteca; ai a PAUSA sai.
 PAUSA — lote 9: copy esperando o ok dela (13/09)
+# --- PROMO, trinca 4 (lote 10, aprovado por ela em 13/09). Na grade: preta-b | CASAL cafe | molhado
+promo-livro-molhado.jpg | Two chapters, before the night is over. | Where the Ocean Ends. A dual POV slow burn celebrity romance about two people who should have stayed strangers. Chapters 1 and 2. | Adam & Madeleine
+promo-casal-cafe.jpg | Outside a bar at two in the morning, and nobody is going home. | Adam Walker and Madeleine Bennett, the night nothing was supposed to happen. Where the Ocean Ends, dual POV slow burn romance. Read the beginning. | Adam & Madeleine
+promo-livro-preta-b.jpg | Where it all starts. | Where the Ocean Ends. Slow burn celebrity romance told from both sides. Book one of four. Chapters 1 and 2. | Adam & Madeleine
 # --- F1 · Adam · claro. Na grade: adam-guitar-kitchen | quote-grey-fog | adam-polo-daylight
 adam-polo-daylight.jpg | Out in daylight for the first time in weeks, and pretending it is nothing. Chapters 1 and 2, here. | Newly divorced movie star romance. Slow burn, dual POV. | Adam & Madeleine
 quote-grey-fog.jpg | The first thing he notices about her, before her name. Chapters 1 and 2, here. | Instalove meets slow burn. Celebrity romance, dual POV, book one of four. | Adam & Madeleine
@@ -331,6 +335,10 @@ adam-lago.jpg | The quiet he drove a long way to find. Chapters 1 and 2, here. |
 quote-our-language.jpg | The thing they have in common, and neither of them says out loud. Chapters 1 and 2, here. | Two wounded hearts romance. Slow burn, dual POV, book one. | Adam & Madeleine
 adam-mads-sunny-sidewalk.jpg | Walking side by side, half a step apart, on purpose. Chapters 1 and 2, here. | Secret relationship celebrity romance. Dual POV, slow burn. | Adam & Madeleine
 quote-stilettos.jpg | How she handles a lie, and the shoes she does it in. Chapters 1 and 2, here. | Sharp heroine romance. Enemies to lovers, dual POV. | Adam & Madeleine
+# --- PROMO, trinca 5 (lote 10). Na grade: lencol | CASAL opera | preta-a
+promo-livro-preta-a.jpg | Start with the first two chapters. | Where the Ocean Ends. Dual POV, slow burn, celebrity romance. He gets one night. She has one rule. | Adam & Madeleine
+promo-casal-opera.jpg | The deal was one night. Neither of them is keeping count. | Adam Walker and Madeleine Bennett, seen in public for the first time. Where the Ocean Ends, dual POV slow burn romance. Chapters 1 and 2. | Adam & Madeleine
+promo-livro-lencol.jpg | His rule, her rule, and the night that breaks both. | Where the Ocean Ends. A dual POV slow burn celebrity romance. Read the beginning. | Adam & Madeleine
 # --- F7 · Madeleine · escuro. Na grade: mads-jacket-boots | quote-key-to-his-house | mads-long-coat
 mads-long-coat.jpg | Leaving at two in the morning, alone, the way she prefers it. Chapters 1 and 2, here. | Celebrity romance with a guarded heroine. Dual POV, slow burn. | Adam & Madeleine
 quote-key-to-his-house.jpg | What she hears when he talks about Malibu. Chapters 1 and 2, here. | Slow burn romance set by the ocean. Dual POV, book one of four. | Adam & Madeleine
