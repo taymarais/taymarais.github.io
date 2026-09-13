@@ -87,10 +87,9 @@
 2026-09-09 12:04 | quote-normal-is-a-luxury.jpg | What Hollywood took, and never gave back. Chapters 1 and 2, here. | Child star romance. Dual POV, slow burn. | Adam & Madeleine
 2026-09-09 12:05 | adam-mads-sidewalk-table.jpg | A conversation neither of them planned to have. Chapters 1 and 2, here. | Slow burn celebrity romance, dual POV. | Adam & Madeleine
 2026-09-09 12:06 | quote-tearing-through-skin.jpg | It stopped being about the body. Chapters 1 and 2, here. | Dual POV slow burn. Hollywood romance. | Adam & Madeleine
-# ⛔ 13/09 — ELA APAGA O PIN `mads-dark-portrait` no Pinterest (decisao dela: e a peca solta
-#    que deixa a grade fora do multiplo de 3). A peca volta na fila como `#r2`, na frente da
-#    fileira que ela desenhou (Mads dark · toujours · Mads calcada). Linha comentada:
-#2026-09-11 11:57 | mads-dark-portrait.jpg | The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. | Celebrity romance with a damaged heroine. Dual POV. | Adam & Madeleine
+# 📌 13/09 — a `mads-dark-portrait` FICA no ar (decisao dela): a `toujours` sai hoje e a
+#    `night-slit` amanha, fechando a fileira em 3 com ela. Nada foi publicado entre 11/09 e 13/09.
+2026-09-11 11:57 | mads-dark-portrait.jpg | The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. | Celebrity romance with a damaged heroine. Dual POV. | Adam & Madeleine
 # ⛔ 12/09 11:00 — o robo escreveu `promo-livro-praia.jpg` no feed, sozinha, no sabado.
 #    13/09, ela: *"no Pinterest nao tem nada de praia"* — o Pinterest NAO chegou a criar o
 #    pin (o <item> saiu do feed no mesmo dia). Linha comentada: nao conta na grade.
