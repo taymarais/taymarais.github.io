@@ -299,3 +299,51 @@ adam-cliff-black-tee.jpg | The first morning he woke up in a house with nobody i
 # ✅ SUBIU PRA FILA VIVA em 02/09, ladeando um still. Nao reativar aqui.
 #    dialogue-not-exactly.jpg
 # mads-closet-shoulder.jpg | Getting dressed for a night she has no intention of enjoying. Chapters 1 and 2, here. | Guarded heroine, Hollywood romance. Dual POV, book one of four. | Adam & Madeleine
+
+# ============================================================================
+# --- Lote 9 "as 15 artes de frase" (desenho aprovado por ela em 13/09 na biblioteca).
+#     10 fileiras, rebalanceadas pelo TOM; 15 artes novas (AK a AY), 10 solos, 3 casais,
+#     2 montagens. Registro no repo do estudio: fundos/prompts-lote-09.md e pins-lote-09.txt.
+# 🔴 A COPY AINDA NAO FOI APROVADA POR ELA. A PAUSA abaixo segura o lote: o robo para
+#    quando chegar aqui (novembro). Ela aprova pela lupa da biblioteca; ai a PAUSA sai.
+PAUSA — lote 9: copy esperando o ok dela (13/09)
+# --- F1 · Adam · claro. Na grade: adam-guitar-kitchen | quote-grey-fog | adam-polo-daylight
+adam-polo-daylight.jpg | Out in daylight for the first time in weeks, and pretending it is nothing. Chapters 1 and 2, here. | Newly divorced movie star romance. Slow burn, dual POV. | Adam & Madeleine
+quote-grey-fog.jpg | The first thing he notices about her, before her name. Chapters 1 and 2, here. | Instalove meets slow burn. Celebrity romance, dual POV, book one of four. | Adam & Madeleine
+adam-guitar-kitchen.jpg | A kitchen, a guitar, and a house that is too quiet. Chapters 1 and 2, here. | Movie star romance set in Malibu. Dual POV, slow burn. | Adam & Madeleine
+# --- F2 · casal · P&B. Na grade: quote-goddess-mortal | adam-mads-press-portrait-pb | quote-stream-and-waterfall
+quote-stream-and-waterfall.jpg | How she reads him, once she finally lets herself look. Chapters 1 and 2, here. | Slow burn romance with a guarded heroine. Dual POV, Hollywood. | Adam & Madeleine
+adam-mads-press-portrait-pb.jpg | The one photo they agreed to, and neither of them smiled. Chapters 1 and 2, here. | Celebrity couple romance, dual POV. Enemies to lovers, slow burn. | Adam & Madeleine
+quote-goddess-mortal.jpg | What the stage gives her, and what it takes back every night. Chapters 1 and 2, here. | Rockstar heroine romance. Slow burn, dual POV, book one. | Adam & Madeleine
+# --- F3 · Madeleine · claro. Na grade: mads-closet-shoulder | quote-wings-and-scars | mads-navy-pinstripe-portrait
+mads-navy-pinstripe-portrait.jpg | L'Ange Blond, dressed for a meeting she already lost. Chapters 1 and 2, here. | Celebrity romance with a rockstar heiress. Dual POV, slow burn. | Adam & Madeleine
+quote-wings-and-scars.jpg | What she says about herself when nobody is recording. Chapters 1 and 2, here. | Damaged heroine romance. Slow burn, dual POV, Hollywood. | Adam & Madeleine
+mads-closet-shoulder.jpg | Getting ready for a night she plans to leave early. Chapters 1 and 2, here. | Slow burn celebrity romance, guarded heroine. Dual POV. | Adam & Madeleine
+# --- F4 · video · P&B. Na grade: quote-froze-herself | montagem-01 | quote-unbreakable
+quote-unbreakable.jpg | Her answer to anyone who thinks she can be hurt again. Chapters 1 and 2, here. | Survivor heroine romance. Dual POV, slow burn, book one of four. | Adam & Madeleine
+montagem-01.mp4 | The pictures the tabloids ran, and the ones they never got. Chapters 1 and 2, here. | Hollywood couple romance in motion. Slow burn, dual POV. | Adam & Madeleine
+quote-froze-herself.jpg | What he figures out about her before she says a word. Chapters 1 and 2, here. | Slow burn with a cold heroine and a patient hero. Dual POV. | Adam & Madeleine
+# --- F5 · Adam · P&B. Na grade: adam-lago | quote-peace-offering | adam-parede-concreto
+adam-parede-concreto.jpg | Against a wall, out of the frame, exactly where he wants to be. Chapters 1 and 2, here. | Movie star romance. Dual POV, slow burn, first book. | Adam & Madeleine
+quote-peace-offering.jpg | The pier, the first night, and what the kiss was actually for. Chapters 1 and 2, here. | One night trope, slow burn. Dual POV celebrity romance. | Adam & Madeleine
+adam-lago.jpg | The quiet he drove a long way to find. Chapters 1 and 2, here. | Hollywood romance, dual POV. A famous man trying to disappear. | Adam & Madeleine
+# --- F6 · casal · claro. Na grade: quote-stilettos | adam-mads-sunny-sidewalk | quote-our-language
+quote-our-language.jpg | The thing they have in common, and neither of them says out loud. Chapters 1 and 2, here. | Two wounded hearts romance. Slow burn, dual POV, book one. | Adam & Madeleine
+adam-mads-sunny-sidewalk.jpg | Walking side by side, half a step apart, on purpose. Chapters 1 and 2, here. | Secret relationship celebrity romance. Dual POV, slow burn. | Adam & Madeleine
+quote-stilettos.jpg | How she handles a lie, and the shoes she does it in. Chapters 1 and 2, here. | Sharp heroine romance. Enemies to lovers, dual POV. | Adam & Madeleine
+# --- F7 · Madeleine · escuro. Na grade: mads-jacket-boots | quote-key-to-his-house | mads-long-coat
+mads-long-coat.jpg | Leaving at two in the morning, alone, the way she prefers it. Chapters 1 and 2, here. | Celebrity romance with a guarded heroine. Dual POV, slow burn. | Adam & Madeleine
+quote-key-to-his-house.jpg | What she hears when he talks about Malibu. Chapters 1 and 2, here. | Slow burn romance set by the ocean. Dual POV, book one of four. | Adam & Madeleine
+mads-jacket-boots.jpg | Outside the bar where nobody is supposed to know her. Chapters 1 and 2, here. | Rockstar heiress romance. Dual POV, slow burn. | Adam & Madeleine
+# --- F8 · video · escuro. Na grade: quote-live-with-the-weight | montagem-02 | quote-didnt-act-with-me
+quote-didnt-act-with-me.jpg | Her one compliment, and it takes her a while to admit it. Chapters 1 and 2, here. | Actor hero romance. Enemies to lovers, slow burn, dual POV. | Adam & Madeleine
+montagem-02.mp4 | A film strip of a night that was not supposed to happen. Chapters 1 and 2, here. | Celebrity romance in motion. Dual POV, slow burn, book one. | Adam & Madeleine
+quote-live-with-the-weight.jpg | The rule she lives by, said out loud for once. Chapters 1 and 2, here. | Damaged heroine romance. Dual POV, slow burn. | Adam & Madeleine
+# --- F9 · Adam · escuro. Na grade: adam-suede-jacket | quote-hunt-you-down | adam-studio-dark
+adam-studio-dark.jpg | The face the whole world knows, in the one room with no cameras. Chapters 1 and 2, here. | Movie star romance. Dual POV, slow burn, book one of four. | Adam & Madeleine
+quote-hunt-you-down.jpg | The promise he makes with her name in it. Chapters 1 and 2, here. | Obsessive hero, slow burn celebrity romance. Dual POV. | Adam & Madeleine
+adam-suede-jacket.jpg | Photographed leaving, again, and this time he does not care. Chapters 1 and 2, here. | Newly divorced actor romance. Slow burn, dual POV. | Adam & Madeleine
+# --- F10 · casal · claro. Na grade: quote-escape-artist | adam-mads-snow-hands | quote-vanilla-and-cigarettes
+quote-vanilla-and-cigarettes.jpg | What is left of her in his house, the morning after. Chapters 1 and 2, here. | Longing and slow burn. Hollywood romance, dual POV. | Adam & Madeleine
+adam-mads-snow-hands.jpg | Holding hands where nobody is supposed to see it. Chapters 1 and 2, here. | Secret romance between two famous people. Dual POV, slow burn. | Adam & Madeleine
+quote-escape-artist.jpg | The word he finds for her, and it is not the one she expected. Chapters 1 and 2, here. | Slow burn celebrity romance. Guarded heroine, dual POV. | Adam & Madeleine
