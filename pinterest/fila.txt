@@ -10,7 +10,8 @@
 # 🔴 Board tem que ser um dos quatro do mapa em `publicar.py`, escrito igual.
 #    Nome errado para a fila com erro em vez de publicar no lugar errado.
 #
-# Linha comecando com # e ignorada. Copy so entra aqui depois de aprovada no chat.
+# Linha comecando com # e ignorada. Copy so entra aqui depois de aprovada por ela
+# (desde 12/09 ela aprova olhando a biblioteca visual, nao o chat).
 #
 # Primeira linha viva igual a PAUSA = o robo passa a vez, quieto e sem erro.
 #
@@ -173,6 +174,22 @@ quote-ruined-me-for-anyone-else.jpg | One night was the rule. This is what it co
 adam-mads-cap-cigarette.jpg | Close enough to be seen. Far enough to deny it. Chapters 1 and 2, here. | Hollywood celebrity romance. Slow burn, dual POV. | Adam & Madeleine
 quote-all-the-way-in.jpg | She does not do halfway. Chapters 1 and 2, here. | Dual POV celebrity romance. Book one of four. | Adam & Madeleine
 
+# ============================================================================
+# 🔴 12/09 — A PROMO NAO TEM MAIS DIA. Decisao dela: *"esquece o sabado pra cada
+#    promo, ela segue a contagem de um por dia, mas sempre respeitando a ordem,
+#    pra estetica da fila, que e so o que importa."* A `fila-promo.txt` morreu;
+#    a trinca promo entra AQUI, inteira, no formato `livro · CASAL+CTA · livro`,
+#    a cada ~6 fileiras narrativas (mesma conta das 19 pecas ate janeiro).
+#    A `promo-livro-praia` saiu sozinha no sabado 12/09 e torceu a grade; ela
+#    apaga o pin na mao e a peca volta aqui como `#r2` (guid novo, mesma imagem).
+#    ⚠️ Esta trinca so pode sair DEPOIS de ela apagar o pin -- por isso vem
+#    atras de uma fileira narrativa inteira, e nao logo apos a fileira aberta.
+# --- PROMO, trinca 2. Na grade: preta-c | CASAL calcada | praia
+promo-livro-praia.jpg#r2 | She could be my age, or a hundred years older in damage. | Adam Walker has spent a decade being looked at. Madeleine Bennett has spent one not being seen at all. Where the Ocean Ends, dual POV slow burn romance. Chapters 1 and 2. | Adam & Madeleine
+promo-casal-calcada.jpg | We're both here, pretending not to be what the world decided we are. | Two people outside a bar at two in the morning, and neither of them wants to go home. Where the Ocean Ends is a dual POV slow burn celebrity romance. Read the beginning. | Adam & Madeleine
+promo-livro-preta-c.jpg | Read the beginning. | Where the Ocean Ends. A slow burn celebrity romance told from both sides, about damage, distance and the one person who does not flinch. Chapters 1 and 2. | Adam & Madeleine
+
+
 # --- Lote 6 "os proximos 30 dias" (copy aprovada por ela em 29/08). 39 pins,
 #     13 fileiras, ~13 dias de publicacao no teto de 3 fileiras por semana.
 #     Primeiro lote na regra 1-c: `solteiro · quote · solteiro` intercalando com
@@ -199,6 +216,10 @@ mads-carpet-pink-gown.jpg | Photographed all evening by people who have never me
 quote-if-she-wont-i-will.jpg | He decides something she never asked him to. Chapters 1 and 2, here. | Protective hero romance. Dual POV, slow burn. | Adam & Madeleine
 adam-mads-snow-street.jpg | Winter, a coat that isn't hers, and nobody asking questions. Chapters 1 and 2, here. | Winter set celebrity romance. Slow burn, dual POV. | Adam & Madeleine
 quote-never-promised.jpg | The loophole he finds in his own rule. Chapters 1 and 2, here. | Slow burn romance. Forced proximity, dual POV. | Adam & Madeleine
+# --- PROMO, trinca 3 (a cada ~6 fileiras narrativas). Na grade: peitoril | CASAL xadrez | cama
+promo-livro-cama.jpg | Start the book. Chapters 1 and 2. | Where the Ocean Ends. Dual POV, slow burn, celebrity romance. He gets one night. She has one rule. Neither of them keeps it. | Adam & Madeleine
+promo-casal-xadrez.jpg | This isn't my hideout. It's hers. | The bar he hides in turns out to belong to someone else. Where the Ocean Ends, a dual POV slow burn celebrity romance. The first two chapters are here. | Adam & Madeleine
+promo-livro-peitoril.jpg | Two chapters, yours now. | Where the Ocean Ends. A dual POV slow burn celebrity romance about two wounded people who recognise each other on sight. Start reading. | Adam & Madeleine
 adam-carpet-grey-suit.jpg | The smile he puts on, and the week he actually had. Chapters 1 and 2, here. | Hollywood romance behind the red carpet. Dual POV. | Adam & Madeleine
 quote-pulling-me-under.jpg | He knows it is bad for him. That is not the point. Chapters 1 and 2, here. | Obsessive slow burn celebrity romance. Dual POV. | Adam & Madeleine
 adam-tattoo-sunset.jpg | The line he had inked before any of this started. Chapters 1 and 2, here. | Movie star romance, dual POV. Slow burn, book one of four. | Adam & Madeleine

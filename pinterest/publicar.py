@@ -272,20 +272,21 @@ def escreve_no_feed(caminho, board, item):
 #      a ordem da fila mesmo com a fila espalhada por varios boards. Era esta a
 #      razao da trava de rota, e ela cai por construcao, nao por descuido.
 PECAS_POR_DIA = 1
-# 🔴 UMA PECA POR SABADO desde 11/09/2026, e a razao e a CONTA, nao o gosto.
-# Ela: *"uma peca por sabado e melhor mesmo."*
+# 🔴 A PROMO NAO TEM MAIS DIA, desde 12/09/2026. Decisao dela: *"esquece o
+#    sabado pra cada promo, ela segue a contagem de um por dia, mas sempre
+#    respeitando a ordem, pra estetica da fila, que e so o que importa."*
 #
-# O `plano-de-producao.py` mediu: com fileira de 3, a linha de conversao pedia
-# **57 pecas** ate 19/01 e existiam 6. Faltavam 51 -- mais que a fila narrativa
-# inteira, e sao as pecas mais caras do sistema (foto + frase + botao, montadas
-# uma a uma no `pecas-cta.py`). Com uma por sabado cai pra 19, que e fazivel.
+#    HISTORICO, pra ninguem reabrir: 07/09 a promo nasceu como fileira de 3 num
+#    sabado proprio (`fila-promo.txt`, DIA_PROMO); 11/09 virou UMA peca por
+#    sabado, pela conta do plano-de-producao (fileira de 3 pedia 57 pecas ate
+#    19/01). 12/09 a peca solta de sabado (`promo-livro-praia`) entrou no meio
+#    de uma fileira narrativa aberta e torceu a grade -- ela viu no perfil.
 #
-# ⚠️ E O QUE SE PERDE, pra ficar registrado: a forma `livro · CASAL+CTA · livro`
-# (regra 1-k do `estrategia-de-feed.md`) era uma fileira desenhada pra ser lida
-# lado a lado. Ela vale na GRADE do perfil, e a grade so importa pra quem visita
-# o perfil. A linha de conversao existe pelo CLIQUE, e clique nao precisa de
-# fileira montada. A decisao foi dela, sabendo disso.
-PECAS_PROMO = 1
+#    O DESENHO AGORA: uma fila so (`fila.txt`), uma peca por dia, sete dias por
+#    semana. A trinca promo entra na fila INTEIRA, no formato `livro · CASAL+CTA
+#    · livro`, como qualquer outra fileira, a cada ~6 fileiras narrativas. O
+#    prefixo `promo-` continua existindo pra MEDIR (utm_content) e pra nao
+#    carimbar marca d'agua.
 SEM_MARCA = ("quote-", "dialogue-", "still-", "promo-")  # artes que ja trazem o titulo dentro
 # 🔴 `still-` entrou em 02/09: o carimbo desliza pela borda de baixo, que e exatamente
 #    onde mora a legenda do segundo frame do still. Aprovado por ela no briefing de 30/08.
@@ -304,23 +305,6 @@ INTERVALO_H = 14           # horas minimas entre uma peca e a proxima
 PECAS_POR_SEMANA = 7       # teto movel: dias com publicacao nos ultimos 7
 JANELA_DIAS = 7
 
-# ─── A LINHA DE CONVERSAO (decidida por ela em 07/09/2026) ──────────────────
-# 🔴 SABADO E DA FILEIRA PROMOCIONAL. Ela: *"nos comecamos a todo sabado, para
-#    que no domingo ja estejam na plataforma."* Nesse dia o robo le a fila promo
-#    e a fila narrativa NAO roda.
-#
-# 📌 E POR QUE ISSO NAO TIRA O LUGAR DE NINGUEM, que era a condicao dela:
-#    o teto da narrativa e "3 fileiras nos ultimos 7 dias" — janela MOVEL, nao
-#    dia fixo. Reservar o sabado deixa seis dias pra colocar as tres, e nenhuma
-#    se perde. Se o teto fosse por dia da semana, isto custaria uma fileira.
-#
-# ⚠️ O DESENHO E TROCAR OS DOIS ARQUIVOS, e so. As tres travas do robo (uma
-#    peca por dia, 14h entre pecas, teto de 7/7) leem FILA e PUBLICADOS —
-#    apontando as duas pro par promo, as tres passam a valer pra esta linha
-#    sozinha, sem nenhuma condicional nova espalhada pelo main.
-FILA_PROMO = os.path.join(AQUI, "fila-promo.txt")
-PUBLICADOS_PROMO = os.path.join(AQUI, "publicados-promo.txt")
-DIA_PROMO = 5              # 0=segunda ... 5=sabado
 
 
 def datas_publicadas():
@@ -341,22 +325,10 @@ def publicados_hoje(hoje):
 
 
 def main():
-    global FILA, PUBLICADOS, PECAS_POR_DIA
     simular = "--simular" in sys.argv
     forcar = "--forcar" in sys.argv
     agora = datetime.now(ZoneInfo(FUSO))
 
-    # Sabado, ou `--promo` na mao: a rodada e da linha de conversao.
-    promo = "--promo" in sys.argv or agora.weekday() == DIA_PROMO
-    if promo:
-        if not os.path.exists(FILA_PROMO):
-            print(f"Rodada promocional, mas {FILA_PROMO} nao existe. "
-                  f"Nada publicado, e a fila narrativa nao roda no sabado.")
-            return
-        FILA, PUBLICADOS = FILA_PROMO, PUBLICADOS_PROMO
-        PECAS_POR_DIA = PECAS_PROMO     # a fileira promo sai inteira, ver acima
-        print(f"Rodada PROMOCIONAL (linha de conversao), "
-              f"{PECAS_POR_DIA} peca(s) no sabado.")
 
     linhas, alvos, parada = proxima_fileira()
     if parada:
@@ -476,9 +448,7 @@ def main():
         print(f"    {pc['titulo']}")
     restam = sum(1 for l in linhas[pecas[-1]["indice"] + 1:]
                  if l.strip() and not l.lstrip().startswith("#"))
-    unidade = "sabado(s)" if promo else "dias"
-    print(f"  restam na fila: {restam}  "
-          f"({restam // PECAS_POR_DIA} {unidade})")
+    print(f"  restam na fila: {restam}  ({restam // PECAS_POR_DIA} dias)")
 
     if simular:
         print("\n--simular: nada foi escrito.")

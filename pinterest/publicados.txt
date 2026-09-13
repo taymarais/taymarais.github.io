@@ -78,7 +78,19 @@
 2026-09-07 13:23 | adam-atelier.jpg | He came to disappear. The city had other plans. Chapters 1 and 2, here. | Movie star romance. Dual POV, slow burn. | Adam & Madeleine
 2026-09-07 13:24 | quote-not-the-center-of-attention.jpg | The night they both went out to be nobody. Chapters 1 and 2, here. | Celebrity romance, dual POV. One night. | Adam & Madeleine
 2026-09-07 13:25 | mads-event-lights.jpg | Every flash knows her name. None of them knows her. Chapters 1 and 2, here. | Celebrity romance. Slow burn, dual POV. | Adam & Madeleine
+# 🔴 12/09 — a promo deixou de ter fila propria. As 3 linhas abaixo vieram do
+#    `publicados-promo.txt` (apagado) pra esta ser a UNICA linha do tempo: e
+#    o que a grade do perfil e, entao e o que a biblioteca precisa ler.
+2026-09-07 15:42 | promo-livro-cafe.jpg | She doesn't walk in. She struts. | The night Adam Walker met Madeleine Bennett, neither of them was supposed to be there. Where the Ocean Ends is a dual POV slow burn celebrity romance. Chapters 1 and 2 are waiting. | Adam & Madeleine
+2026-09-07 15:43 | promo-casal-praia.jpg | Madeleine has a gravity of her own. | He is the actor everyone thinks they know. She is the one person who never asked him for anything. Where the Ocean Ends, a dual POV slow burn romance. Start with chapters 1 and 2. | Adam & Madeleine
+2026-09-07 15:44 | promo-livro-madeira.jpg | Chapters 1 and 2, here. | Where the Ocean Ends. A dual POV slow burn celebrity romance about two people pretending not to be what the world decided they are. Read the first two chapters. | Adam & Madeleine
 2026-09-09 12:04 | quote-normal-is-a-luxury.jpg | What Hollywood took, and never gave back. Chapters 1 and 2, here. | Child star romance. Dual POV, slow burn. | Adam & Madeleine
 2026-09-09 12:05 | adam-mads-sidewalk-table.jpg | A conversation neither of them planned to have. Chapters 1 and 2, here. | Slow burn celebrity romance, dual POV. | Adam & Madeleine
 2026-09-09 12:06 | quote-tearing-through-skin.jpg | It stopped being about the body. Chapters 1 and 2, here. | Dual POV slow burn. Hollywood romance. | Adam & Madeleine
 2026-09-11 11:57 | mads-dark-portrait.jpg | The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. | Celebrity romance with a damaged heroine. Dual POV. | Adam & Madeleine
+# ⛔ 12/09 11:00 — `promo-livro-praia.jpg` saiu SOZINHA no sabado e torceu a grade.
+#    Ela vai apagar o pin na mao (13 ou 14/09); a peca ja esta de volta na fila
+#    como `promo-livro-praia.jpg#r2`. Enquanto o pin existir, a linha fica VIVA:
+#    e o relogio do robo (uma por dia) e a grade real. Quando ela confirmar que
+#    apagou, comentar a linha abaixo.
+2026-09-12 11:00 | promo-livro-praia.jpg | She could be my age, or a hundred years older in damage. | Adam Walker has spent a decade being looked at. Madeleine Bennett has spent one not being seen at all. Where the Ocean Ends, dual POV slow burn romance. Chapters 1 and 2. | Adam & Madeleine
