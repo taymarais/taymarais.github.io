@@ -87,10 +87,12 @@
 2026-09-09 12:04 | quote-normal-is-a-luxury.jpg | What Hollywood took, and never gave back. Chapters 1 and 2, here. | Child star romance. Dual POV, slow burn. | Adam & Madeleine
 2026-09-09 12:05 | adam-mads-sidewalk-table.jpg | A conversation neither of them planned to have. Chapters 1 and 2, here. | Slow burn celebrity romance, dual POV. | Adam & Madeleine
 2026-09-09 12:06 | quote-tearing-through-skin.jpg | It stopped being about the body. Chapters 1 and 2, here. | Dual POV slow burn. Hollywood romance. | Adam & Madeleine
-2026-09-11 11:57 | mads-dark-portrait.jpg | The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. | Celebrity romance with a damaged heroine. Dual POV. | Adam & Madeleine
-# ⛔ 12/09 11:00 — `promo-livro-praia.jpg` saiu SOZINHA no sabado e torceu a grade.
-#    Ela vai apagar o pin na mao (13 ou 14/09); a peca ja esta de volta na fila
-#    como `promo-livro-praia.jpg#r2`. Enquanto o pin existir, a linha fica VIVA:
-#    e o relogio do robo (uma por dia) e a grade real. Quando ela confirmar que
-#    apagou, comentar a linha abaixo.
-2026-09-12 11:00 | promo-livro-praia.jpg | She could be my age, or a hundred years older in damage. | Adam Walker has spent a decade being looked at. Madeleine Bennett has spent one not being seen at all. Where the Ocean Ends, dual POV slow burn romance. Chapters 1 and 2. | Adam & Madeleine
+# ⛔ 13/09 — ELA APAGA O PIN `mads-dark-portrait` no Pinterest (decisao dela: e a peca solta
+#    que deixa a grade fora do multiplo de 3). A peca volta na fila como `#r2`, na frente da
+#    fileira que ela desenhou (Mads dark · toujours · Mads calcada). Linha comentada:
+#2026-09-11 11:57 | mads-dark-portrait.jpg | The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. | Celebrity romance with a damaged heroine. Dual POV. | Adam & Madeleine
+# ⛔ 12/09 11:00 — o robo escreveu `promo-livro-praia.jpg` no feed, sozinha, no sabado.
+#    13/09, ela: *"no Pinterest nao tem nada de praia"* — o Pinterest NAO chegou a criar o
+#    pin (o <item> saiu do feed no mesmo dia). Linha comentada: nao conta na grade.
+#    A peca volta na fila como `#r2` por seguranca (nao se sabe se o guid foi lido).
+#2026-09-12 11:00 | promo-livro-praia.jpg | She could be my age, or a hundred years older in damage. | Adam Walker has spent a decade being looked at. Madeleine Bennett has spent one not being seen at all. Where the Ocean Ends, dual POV slow burn romance. Chapters 1 and 2. | Adam & Madeleine

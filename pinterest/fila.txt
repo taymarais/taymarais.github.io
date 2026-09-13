@@ -171,6 +171,9 @@
 # 🔴 13/09 00h — PAUSA pedida por ela: "nada mais sai sem antes eu entender o que rolou".
 #    Apagar a linha PAUSA abaixo quando ela liberar.
 PAUSA — ela quer entender a grade antes de sair mais alguma peca (13/09)
+# 🔴 13/09 — a `mads-dark-portrait` saiu sozinha em 11/09 e ela decidiu APAGAR o pin e
+#    reenviar: a fileira dela fecha inteira em tres dias, na ordem que ela desenhou.
+mads-dark-portrait.jpg#r2 | The blond angel Hollywood devoured and spat back out. Chapters 1 and 2, here. | Celebrity romance with a damaged heroine. Dual POV. | Adam & Madeleine
 dialogue-toujours.jpg | The only language they use when they mean it. Chapters 1 and 2, here. | Slow burn celebrity romance with a French heroine. Dual POV. | Adam & Madeleine
 mads-night-slit.jpg | Sunglasses at night, and a street that knows exactly who she is. Chapters 1 and 2, here. | Celebrity romance with a guarded heroine. Dual POV, slow burn. | Adam & Madeleine
 quote-ruined-me-for-anyone-else.jpg | One night was the rule. This is what it cost. Chapters 1 and 2, here. | Slow burn romance. One night trope, dual POV. | Adam & Madeleine
