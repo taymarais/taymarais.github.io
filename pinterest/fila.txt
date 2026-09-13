@@ -168,6 +168,9 @@
 #    vao pra GAVETA, nao pro lixo: continuam em pins/ como livres, e a copy
 #    delas esta em `pins-lote-05.txt`/`pins-lote-06.txt` no repo do estudio.
 #    Duas saem, duas entram: as fileiras abaixo nao se movem.
+# 🔴 13/09 00h — PAUSA pedida por ela: "nada mais sai sem antes eu entender o que rolou".
+#    Apagar a linha PAUSA abaixo quando ela liberar.
+PAUSA — ela quer entender a grade antes de sair mais alguma peca (13/09)
 dialogue-toujours.jpg | The only language they use when they mean it. Chapters 1 and 2, here. | Slow burn celebrity romance with a French heroine. Dual POV. | Adam & Madeleine
 mads-night-slit.jpg | Sunglasses at night, and a street that knows exactly who she is. Chapters 1 and 2, here. | Celebrity romance with a guarded heroine. Dual POV, slow burn. | Adam & Madeleine
 quote-ruined-me-for-anyone-else.jpg | One night was the rule. This is what it cost. Chapters 1 and 2, here. | Slow burn romance. One night trope, dual POV. | Adam & Madeleine
