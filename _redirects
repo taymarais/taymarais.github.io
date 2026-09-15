@@ -18,6 +18,14 @@
 /pt/contact.html                      /pt/contact                      200
 /privacy.html                         /privacy                         200
 
+# A PORTA CURTA (14/09/2026): a LP de uma tela so, pros canais onde alguem ja
+# apresentou o livro (os grupos da mae, o link da bio). A pagina do livro
+# continua sendo a porta larga, pra quem chega frio. Mesma regra das de cima:
+# o Pages corta o ".html" e devolve 308, e o endereco que vai pra fora tem que
+# responder no proprio lugar.
+/beta.html                            /beta                            200
+/pt/beta.html                         /pt/beta                         200
+
 # Atalhos faláveis por canal (12/09/2026, PRD de medição do estúdio). Cada um
 # manda pra página certa JA com a UTM, pra canal sem link clicável (TikTok) ou
 # sem referenciador (WhatsApp) aparecer no GA com nome em vez de "(direct)".
