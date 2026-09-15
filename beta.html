@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* taymarais.github.io virou so o deposito das imagens dos pins.
+   O site vive em taymarais.com. So as paginas desviam; /pins/ fica intacto. */
+if(location.hostname==="taymarais.github.io"){location.replace("https://taymarais.com"+location.pathname+location.search+location.hash);}</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Where the Ocean Ends | Tay Marais</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" href="/assets/favicon-2-192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/assets/favicon-2.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/assets/favicon-2-192.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Pinterest Tag -->
+    <script>
+    !function(e){if(!window.pintrk){window.pintrk = function () {
+    window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+    pintrk('load', '2613912141256');
+    pintrk('page');
+    </script>
+    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613912141256&noscript=1" /></noscript>
+
+    <style>
+        /* A paleta vigente do site: a parede da historia e preta e branca.
+           Medida da BORDA do cover.webp, igual a da pagina do livro. */
+        :root {
+            --bg-deep: #010204;
+            --surface: #0F1218;
+            --accent: #EDEFF2;
+            --text-main: #EDEFF2;
+            --text-muted: #98A0A9;
+            --fio: 237, 239, 241;
+            --font-heading: 'Playfair Display SC', serif;
+            --font-ui: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { background-color: var(--bg-deep); color: var(--text-main); }
+
+        body {
+            font-family: var(--font-ui);
+            -webkit-font-smoothing: antialiased;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            /* ⚠️ A TRAVA DE LARGURA. Sem o `minmax(0, 1fr)` a coluna do grid
+               cresce ate o conteudo mais largo: o titulo em `nowrap` esticou a
+               pagina inteira pra fora da tela e o texto saiu cortado na direita.
+               Item de grid nao encolhe sozinho abaixo do proprio min-content. */
+            grid-template-columns: minmax(0, 1fr);
+            padding: 24px 22px;
+        }
+
+        /* UMA TELA. O `100svh` e de proposito: o `vh` do iOS conta a barra do
+           navegador que some, e a pagina nascia com um pedaco escondido. */
+
+        /* ⚠️ A ESCALA DE ESPACO E DECLARADA, e a primeira versao nao tinha: havia
+           um `gap` so na coluna de fora e os filhos do bloco do pedido ficavam
+           COLADOS uns nos outros (a oferta encostava no campo, o botao encostava
+           na letra miuda). A autora viu na hora. Duas medidas, e todo respiro da
+           pagina sai de uma das duas. */
+        :root {
+            --espaco-bloco: clamp(16px, 3svh, 26px);  /* entre blocos */
+            --espaco-item: 10px;                      /* dentro de um bloco */
+        }
+
+        .porta {
+            width: 100%;
+            max-width: min(520px, 100%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--espaco-bloco);
+        }
+
+        /* A capa e o unico peso da pagina, e ela NAO se degrada pra ganhar
+           byte (regra dura da autora). O que se controla e o carregamento:
+           dimensao declarada pra nao pular o layout, e prioridade alta. */
+        .capa {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: min(72%, 260px);
+            max-height: 34svh;
+            object-fit: contain;
+        }
+
+        /* 🔴 UMA LINHA, SEMPRE. A primeira versao quebrava em duas e deixava a
+           ultima palavra sozinha embaixo, e a autora riscou.
+           ⚠️ `nowrap` NAO garante que cabe: garante que nao quebra, e o que nao
+           cabe vaza pra fora da tela (foi o que aconteceu na segunda tentativa).
+           Por isso o tamanho e MEDIDO, nao chutado: a frase foi renderizada na
+           fonte real pra achar quantos px de largura ela gasta por px de corpo,
+           e o `vw` abaixo e essa conta com 4% de folga. O valor e POR LINGUA,
+           porque a frase em ingles e mais comprida. Mexeu na frase, remede. */
+        h1 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            font-size: min(5.05vw, 1.6rem);
+            line-height: 1.3;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+
+        /* 🔴 SEM PALAVRA ORFA. Antes as duas frases eram um paragrafo so e a
+           ultima linha terminava em "visto." sozinho. Agora cada frase e um
+           paragrafo, e o `text-wrap: balance` distribui as linhas em vez de
+           empurrar o resto pra baixo. Onde o navegador nao souber balancear, o
+           pior caso e a quebra normal de antes. */
+        .premissa {
+            display: flex;
+            flex-direction: column;
+            gap: var(--espaco-item);
+            max-width: 40ch;
+        }
+
+        .premissa p {
+            font-size: clamp(0.84rem, 3.5vw, 0.98rem);
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-wrap: balance;
+        }
+
+        .oferta {
+            font-size: clamp(0.84rem, 3.3vw, 0.94rem);
+            line-height: 1.5;
+            color: var(--text-main);
+            text-wrap: balance;
+        }
+
+        /* O bloco do pedido respira por dentro, nao so por fora. */
+        #pedido {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--espaco-bloco);
+        }
+
+        form { width: 100%; }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(var(--fio), 0.26);
+            background: var(--surface);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            font-size: 1rem; /* 16px: abaixo disso o iOS da zoom sozinho no foco */
+            text-align: center;
+        }
+
+        input[type="email"]::placeholder { color: var(--text-muted); }
+        input[type="email"]:focus { outline: none; border-color: rgba(var(--fio), 0.6); }
+
+        .btn {
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 50px;
+            background: var(--accent);
+            color: var(--bg-deep);
+            font-family: var(--font-ui);
+            font-weight: 600;
+            /* 🔴 O ROTULO CABE EM UMA LINHA, medido igual ao titulo: "Quero os
+               dois primeiros capitulos" quebrava em duas e a autora pediu
+               harmonia. Menos entreletra compra mais espaco que diminuir corpo,
+               entao o 1.5px virou 1px antes de o corpo encolher. */
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:disabled { opacity: 0.6; cursor: default; }
+
+        .fineprint {
+            font-size: 0.7rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+            max-width: 34ch;
+            text-wrap: balance;
+        }
+
+        /* A ENTREGA ACONTECE AQUI, na propria tela: nada de esperar e-mail.
+           O e-mail sai igual e vira o primeiro contato. */
+        #entrega { display: none; width: 100%; flex-direction: column; align-items: center; gap: var(--espaco-bloco); }
+        #entrega.aberta { display: flex; }
+        .porta.entregue #pedido { display: none; }
+
+        [hidden] { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="porta" id="porta">
+        <img class="capa" src="/assets/cover.webp" alt="Where the Ocean Ends, by Tay Marais" width="1600" height="2560" fetchpriority="high">
+
+        <h1>It was supposed to be one night.</h1>
+
+        <div class="premissa">
+            <p>An award-winning actor and a French heiress turned rock star, involved in secret and unable to stop.</p>
+            <p>With the whole world watching, neither of them is ready to be seen.</p>
+        </div>
+
+        <div id="pedido">
+            <p class="oferta">The first two chapters, yours to read now.</p>
+
+            <form id="lead-form" novalidate>
+                <input type="hidden" name="lang" value="en">
+                <input type="hidden" name="origem" id="origem" value="beta-en">
+                <div class="campo">
+                    <input type="email" name="email" placeholder="Your email" required autocomplete="email" inputmode="email">
+                    <button type="submit" class="btn" id="btn-enviar">Send me the first two chapters</button>
+                </div>
+            </form>
+
+            <p class="fineprint">It opens on the next screen, and a copy goes to your inbox.</p>
+        </div>
+
+        <div id="entrega">
+            <p class="oferta">Here they are. Open the first two chapters.</p>
+            <a class="btn" id="link-entrega" href="#" target="_blank" rel="noopener">Open the chapters</a>
+            <p class="fineprint">The same link is in your inbox. If it is not there, check spam.</p>
+        </div>
+    </main>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
+
+        // A pasta do Drive desta lingua, escrita aqui de proposito como REDE DE
+        // SEGURANCA. O Apps Script (V7) devolve `link` no JSON e e ele que manda;
+        // mas se o navegador barrar a leitura da resposta, a leitora ainda recebe
+        // o arquivo. Entregar errado nao acontece: as duas pontas sao a mesma pasta.
+        const LINK_RESERVA = 'https://drive.google.com/drive/folders/1u4KZB9X0pU5jXGLxnI6QHgF1bnGVBKzK?usp=drive_link';
+
+        // De onde a pessoa veio. Sem isto a linha cai na planilha muda, e canal
+        // que nao se mede nao se decide.
+        (function () {
+            const p = new URLSearchParams(location.search);
+            const origem = p.get('origem') || p.get('utm_source');
+            if (origem) document.getElementById('origem').value = origem.slice(0, 120);
+        })();
+
+        const porta = document.getElementById('porta');
+        const form = document.getElementById('lead-form');
+        const btn = document.getElementById('btn-enviar');
+        const entrega = document.getElementById('entrega');
+        const linkEntrega = document.getElementById('link-entrega');
+        const ROTULO = btn.innerText;
+
+        function entregar(link) {
+            linkEntrega.href = link || LINK_RESERVA;
+            porta.classList.add('entregue');
+            entrega.classList.add('aberta');
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = form.querySelector('input[type="email"]');
+            if (!email.value || email.value.indexOf('@') < 1) { email.focus(); return; }
+
+            btn.disabled = true;
+            btn.innerText = 'SENDING...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(function (r) { return r.json().catch(function () { return {}; }); })
+                .then(function (dados) {
+                    pintrk('track', 'lead');
+                    entregar(dados && dados.link);
+                })
+                .catch(function () {
+                    btn.disabled = false;
+                    btn.innerText = ROTULO;
+                    alert('The tide is too strong. Try again in a moment.');
+                });
+        });
+    </script>
+</body>
+</html>
