@@ -62,7 +62,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
                pagina inteira pra fora da tela e o texto saiu cortado na direita.
                Item de grid nao encolhe sozinho abaixo do proprio min-content. */
             grid-template-columns: minmax(0, 1fr);
-            padding: 24px 22px;
+            padding: 24px clamp(14px, 4.5vw, 22px);
         }
 
         /* UMA TELA. O `100svh` e de proposito: o `vh` do iOS conta a barra do
@@ -74,8 +74,9 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
            na letra miuda). A autora viu na hora. Duas medidas, e todo respiro da
            pagina sai de uma das duas. */
         :root {
-            --espaco-bloco: clamp(16px, 3svh, 26px);  /* entre blocos */
+            --espaco-bloco: clamp(12px, 2.6svh, 26px); /* entre blocos */
             --espaco-item: 10px;                      /* dentro de um bloco */
+            --espaco-caixa: clamp(12px, 2.2svh, 16px); /* dentro da caixa */
         }
 
         .porta {
@@ -96,7 +97,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
             width: auto;
             height: auto;
             max-width: min(72%, 260px);
-            max-height: 34svh;
+            max-height: 28svh;
             object-fit: contain;
         }
 
@@ -143,13 +144,25 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
             text-wrap: balance;
         }
 
-        /* O bloco do pedido respira por dentro, nao so por fora. */
-        #pedido {
+        /* 🔴 A CAIXA DO PEDIDO. A primeira versao empilhava tudo no mesmo plano
+           preto, centralizado, e a autora disse o que era: "estranho e vazio",
+           "nao da nem vontade de ler". O que faltava nao era enfeite, era
+           HIERARQUIA. A caixa parte a tela em duas zonas — em cima a historia,
+           aqui embaixo a porta — e nao inventa componente novo: e o mesmo cartao
+           da pagina do livro (surface + fio + raio 6px).
+           ⚠️ O campo de e-mail PRECISA escurecer aqui dentro. Ele tambem era
+           `--surface`; dentro de um cartao da mesma cor ele sumia. No preto do
+           fundo ele volta a ler como buraco de digitar. */
+        .caixa {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: var(--espaco-bloco);
+            gap: var(--espaco-caixa);
+            background: var(--surface);
+            border: 1px solid rgba(var(--fio), 0.20);
+            border-radius: 6px;
+            padding: clamp(14px, 2.6svh, 24px) clamp(12px, 3.6vw, 22px);
         }
 
         form { width: 100%; }
@@ -166,7 +179,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
             padding: 15px 20px;
             border-radius: 50px;
             border: 1px solid rgba(var(--fio), 0.26);
-            background: var(--surface);
+            background: var(--bg-deep);
             color: var(--text-main);
             font-family: var(--font-ui);
             font-size: 1rem; /* 16px: abaixo disso o iOS da zoom sozinho no foco */
@@ -178,7 +191,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
 
         .btn {
             width: 100%;
-            padding: 16px 24px;
+            padding: 16px 10px;
             border: none;
             border-radius: 50px;
             background: var(--accent);
@@ -190,7 +203,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
                harmonia. Menos entreletra compra mais espaco que diminuir corpo,
                entao o 1.5px virou 1px antes de o corpo encolher. */
             font-size: 0.75rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
             white-space: nowrap;
             cursor: pointer;
@@ -212,7 +225,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
 
         /* A ENTREGA ACONTECE AQUI, na propria tela: nada de esperar e-mail.
            O e-mail sai igual e vira o primeiro contato. */
-        #entrega { display: none; width: 100%; flex-direction: column; align-items: center; gap: var(--espaco-bloco); }
+        #entrega { display: none; }
         #entrega.aberta { display: flex; }
         .porta.entregue #pedido { display: none; }
 
@@ -230,7 +243,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
             <p>With the whole world watching, neither of them is ready to be seen.</p>
         </div>
 
-        <div id="pedido">
+        <div class="caixa" id="pedido">
             <p class="oferta">The first two chapters, yours to read now.</p>
 
             <form id="lead-form" novalidate>
@@ -245,7 +258,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
             <p class="fineprint">It opens on the next screen, and a copy goes to your inbox.</p>
         </div>
 
-        <div id="entrega">
+        <div class="caixa" id="entrega">
             <p class="oferta">Here they are. Open the first two chapters.</p>
             <a class="btn" id="link-entrega" href="#" target="_blank" rel="noopener">Open the chapters</a>
             <p class="fineprint">The same link is in your inbox. If it is not there, check spam.</p>
