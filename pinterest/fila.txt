@@ -168,7 +168,6 @@
 #    vao pra GAVETA, nao pro lixo: continuam em pins/ como livres, e a copy
 #    delas esta em `pins-lote-05.txt`/`pins-lote-06.txt` no repo do estudio.
 #    Duas saem, duas entram: as fileiras abaixo nao se movem.
-quote-all-the-way-in.jpg | She does not do halfway. Chapters 1 and 2, here. | Dual POV celebrity romance. Book one of four. | Adam & Madeleine
 
 # ============================================================================
 # 🔴 12/09 — A PROMO NAO TEM MAIS DIA. Decisao dela: *"esquece o sabado pra cada
