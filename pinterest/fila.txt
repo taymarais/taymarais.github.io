@@ -180,7 +180,6 @@
 #    ⚠️ Esta trinca so pode sair DEPOIS de ela apagar o pin -- por isso vem
 #    atras de uma fileira narrativa inteira, e nao logo apos a fileira aberta.
 # --- PROMO, trinca 2. Na grade: preta-c | CASAL calcada | praia
-promo-casal-calcada.jpg | We're both here, pretending not to be what the world decided we are. | Two people outside a bar at two in the morning, and neither of them wants to go home. Where the Ocean Ends is a dual POV slow burn celebrity romance. Read the beginning. | Adam & Madeleine
 promo-livro-preta-c.jpg | Read the beginning. | Where the Ocean Ends. A slow burn celebrity romance told from both sides, about damage, distance and the one person who does not flinch. Chapters 1 and 2. | Adam & Madeleine
 
 

@@ -338,5 +338,14 @@
       <enclosure url="https://taymarais.github.io/pins/promo-livro-praia.jpg" type="image/jpeg" length="0"/>
       <media:content url="https://taymarais.github.io/pins/promo-livro-praia.jpg" medium="image" type="image/jpeg"/>
     </item>
+    <item>
+      <title>We're both here, pretending not to be what the world decided we are.</title>
+      <description>Two people outside a bar at two in the morning, and neither of them wants to go home. Where the Ocean Ends is a dual POV slow burn celebrity romance. Read the beginning.</description>
+      <link>https://taymarais.com/books/where-the-ocean-ends.html?utm_source=Pinterest&amp;utm_medium=organic&amp;utm_content=promo-casal-calcada</link>
+      <guid isPermaLink="false">https://taymarais.github.io/pins/promo-casal-calcada.jpg</guid>
+      <pubDate>Sat, 19 Sep 2026 11:18:39 -0300</pubDate>
+      <enclosure url="https://taymarais.github.io/pins/promo-casal-calcada.jpg" type="image/jpeg" length="0"/>
+      <media:content url="https://taymarais.github.io/pins/promo-casal-calcada.jpg" medium="image" type="image/jpeg"/>
+    </item>
   </channel>
 </rss>
