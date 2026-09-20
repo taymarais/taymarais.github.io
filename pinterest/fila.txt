@@ -180,7 +180,6 @@
 #    ⚠️ Esta trinca so pode sair DEPOIS de ela apagar o pin -- por isso vem
 #    atras de uma fileira narrativa inteira, e nao logo apos a fileira aberta.
 # --- PROMO, trinca 2. Na grade: preta-c | CASAL calcada | praia
-promo-livro-preta-c.jpg | Read the beginning. | Where the Ocean Ends. A slow burn celebrity romance told from both sides, about damage, distance and the one person who does not flinch. Chapters 1 and 2. | Adam & Madeleine
 
 
 # --- Lote 6 "os proximos 30 dias" (copy aprovada por ela em 29/08). 39 pins,
