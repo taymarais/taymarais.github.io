@@ -1,0 +1,11 @@
+# Cabecalhos do Cloudflare Pages. Uma regra por bloco: o caminho na primeira
+# linha, os cabecalhos indentados embaixo.
+
+# 🔴 A BIBLIOTECA VISUAL NAO VAI PRA BUSCA (16/09/2026). /painel/ responde 200
+# sem senha, e dentro dela estao a fila de publicacao, as legendas que ainda nao
+# sairam e a arte que ainda nao e publica. O `noindex` do HTML ja esta la; este
+# cabecalho cobre o resto da pasta (os .jpg dos miniaturas, os .mp4), que meta
+# tag nenhuma alcanca. robots.txt nao serve aqui: bloquear o rastreio impediria
+# o Google de ler o proprio noindex.
+/painel/*
+  X-Robots-Tag: noindex, nofollow
