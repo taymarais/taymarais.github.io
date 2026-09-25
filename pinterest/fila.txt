@@ -189,7 +189,6 @@
 #     01 a 05 -- o recuo que o lote 5 pediu.
 #     Rascunho e registro de aprovacao: `pins-lote-06.txt` no repo do estudio.
 # --- fileira 7: o BAR, cap-01 (still) — posicao pedida por ela em 02/09
-still-not-even-close.jpg | Two strangers, one bar, and neither of them looks away. Chapters 1 and 2, here. | Enemies to lovers banter, one night trope. Dual POV celebrity romance. | Adam & Madeleine
 dialogue-not-exactly.jpg | Their first three minutes, and he is already losing. Chapters 1 and 2, here. | Bickering, one night trope, slow burn. Dual POV celebrity romance. | Adam & Madeleine
 quote-i-only-held-the-pencil.jpg | The song everyone thinks is about someone else. Chapters 1 and 2, here. | Musician heroine romance. Slow burn, dual POV. | Adam & Madeleine
 adam-mads-crowd-back.jpg | Leaving separately, five minutes apart, like always. Chapters 1 and 2, here. | Secret relationship celebrity romance. Dual POV. | Adam & Madeleine
