@@ -49,6 +49,7 @@ repo do estúdio, em `projetos/tay-marais/marketing/maquina-de-pin.md` — aqui 
 
 ```
 pins/                      # as artes e fotos, 1200x1800. Nome de arquivo é PÚBLICO
+tiktok/                    # a versao 9:16 da mesma peca, MESMO nome do pin (so a linha print da pagina, 26/09). O robo nao le; a biblioteca pendura na celula
 pins-<algo>.xml            # os feeds RSS, um por board. Conectados em Configurações -> Publicar automaticamente
 pinterest/publicar.py      # o robô: uma peça por execução, da fila para o feed
 pinterest/fila.txt         # o que ainda vai sair, em ordem de PUBLICAÇÃO (o inverso da grade)
