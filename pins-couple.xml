@@ -410,5 +410,14 @@
       <enclosure url="https://taymarais.github.io/pins/dialogue-not-exactly.jpg" type="image/jpeg" length="0"/>
       <media:content url="https://taymarais.github.io/pins/dialogue-not-exactly.jpg" medium="image" type="image/jpeg"/>
     </item>
+    <item>
+      <title>The song everyone thinks is about someone else. Chapters 1 and 2, here.</title>
+      <description>Musician heroine romance. Dual POV.</description>
+      <link>https://taymarais.com/books/where-the-ocean-ends.html?utm_source=Pinterest&amp;utm_medium=organic&amp;utm_content=motion-i-only-held-the-pencil</link>
+      <guid isPermaLink="false">https://taymarais.github.io/pins/motion-i-only-held-the-pencil.mp4</guid>
+      <pubDate>Sun, 27 Sep 2026 14:03:22 -0300</pubDate>
+      <enclosure url="https://taymarais.github.io/pins/motion-i-only-held-the-pencil.mp4" type="video/mp4" length="0"/>
+      <media:content url="https://taymarais.github.io/pins/motion-i-only-held-the-pencil.mp4" medium="video" type="video/mp4"/>
+    </item>
   </channel>
 </rss>
