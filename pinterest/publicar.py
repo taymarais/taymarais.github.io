@@ -145,7 +145,7 @@ CANAL = """<?xml version="1.0" encoding="UTF-8"?>
   <channel>
     <title>Tay Marais | {board}</title>
     <link>{site}</link>
-    <description>Where the Ocean Ends. Dual POV slow burn celebrity romance.</description>
+    <description>Where the Ocean Ends. Dual POV celebrity romance.</description>
     <language>en</language>
   </channel>
 </rss>

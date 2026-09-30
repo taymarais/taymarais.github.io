@@ -34,12 +34,11 @@ name: Publicar pin
 # justamente porque o cron do GitHub atrasa e descarta execucao. Minuto quebrado
 # de proposito -- o comeco da hora e o pico de fila do GitHub.
 on:
-  schedule:
-    - cron: '7 11 * * *'    # 08h07 BRT
-    - cron: '23 12 * * *'   # 09h23 BRT — o horario de origem
-    - cron: '47 13 * * *'   # 10h47 BRT
-    - cron: '17 15 * * *'   # 12h17 BRT
-    - cron: '17 18 * * *'   # 15h17 BRT — a rede, pro dia em que as quatro atrasam
+  # ⛔ PARADO EM 30/09/2026, ordem dela: *"eu quero parar aquele robo!"*. O Pinterest
+  # passa a sair pelo Post for Me, junto com Instagram e TikTok, a partir da fila unica
+  # (a mesma `pinterest/fila.txt`). Os horarios antigos ficam aqui so como registro:
+  #   '7 11 * * *'  '23 12 * * *'  '47 13 * * *'  '17 15 * * *'  '17 18 * * *'
+  # Nao religar sem ela pedir: com os dois rodando, o mesmo pin sai duas vezes.
   workflow_dispatch:
     inputs:
       simular:
