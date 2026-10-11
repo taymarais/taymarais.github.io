@@ -527,6 +527,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
                     <p class="offer">Os dois primeiros capítulos de <em>Onde o Oceano Acaba</em>, em ebook de verdade. EPUB para o seu Kindle, PDF para ler em qualquer outro lugar.</p>
                     <form id="lead-form">
                         <input type="hidden" name="lang" value="pt">
+                        <input type="hidden" name="origem" id="origem" value="livro-pt">
                         <div class="form-group">
                             <input type="email" name="email" placeholder="Seu e-mail" required>
                             <button type="submit" class="btn-capsule">Quero o ebook</button>
@@ -590,7 +591,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.innerText = "ENVIANDO...";
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => { pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Quero o ebook"; })
+            .then(response => { if (window.tmLead) tmLead(); pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Quero o ebook"; })
             .catch(error => { btn.disabled = false; btn.innerText = "Quero o ebook"; alert("A maré está muito forte. Tente novamente em instantes."); });
         });
         document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
@@ -725,5 +726,26 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 </script>
 
 <div class="barra-oferta"><span>Dois capítulos, de graça</span><a href="#pedido">Quero o ebook</a></div>
+    <script>
+        /* O BOTAO VIRA NUMERO (10/10/2026, pedido dela: "tem como saber quem clica no bt pelo menos?").
+           Conta no Google Analytics o clique no botao do pedido, o pedido que chegou e, na /beta, quem
+           abriu os capitulos. Conta QUANTOS e de onde, nunca quem: quem e a planilha Leads.
+           A aba Numeros do painel le isso pelo `ga-eventos-*.csv`. */
+        (function () {
+            var campo = document.getElementById('origem');
+            var p = new URLSearchParams(location.search);
+            var o = p.get('origem') || p.get('utm_source');
+            // setAttribute, nao .value: o form.reset() da pagina do livro devolve o valor do atributo
+            if (campo && o) campo.setAttribute('value', o.slice(0, 120));
+            function ev(nome) {
+                try { if (window.gtag) gtag('event', nome, { pagina: location.pathname, origem: campo ? campo.value : '' }); } catch (e) {}
+            }
+            var b = document.querySelector('#lead-form button[type="submit"]');
+            if (b) b.addEventListener('click', function () { ev('clique_pedido'); });
+            var l = document.getElementById('link-entrega');
+            if (l) l.addEventListener('click', function () { ev('abriu_capitulos'); });
+            window.tmLead = function () { ev('generate_lead'); };
+        })();
+    </script>
 </body>
 </html>
