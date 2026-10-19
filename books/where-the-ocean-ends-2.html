@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* taymarais.github.io virou so o deposito das imagens dos pins.
+   O site vive em taymarais.com. So as paginas desviam; /pins/ fica intacto. */
+if(location.hostname==="taymarais.github.io"){location.replace("https://taymarais.com"+location.pathname+location.search+location.hash);}</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="p:domain_verify" content="fca1e83ea69aa7672cbd8318a27be208"/>
+    <title>Where the Ocean Ends | Tay Marais</title>
+    
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" href="/assets/favicon-2-192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/assets/favicon-2.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/assets/favicon-2-192.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Pinterest Tag -->
+    <script>
+    !function(e){if(!window.pintrk){window.pintrk = function () {
+    window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+    pintrk('load', '2613912141256');
+    pintrk('page');
+    </script>
+    <noscript><img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613912141256&noscript=1" /></noscript>
+
+    <style>
+        :root {
+            --bg-deep: #1A1210; --surface: #261C19; --accent: #D4A396;
+            --text-main: #EAE5DE; --text-muted: #A8A29E; --font-heading: 'Playfair Display SC', serif;
+            --font-ui: 'Montserrat', sans-serif; --font-reading: 'Lora', serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── HEADER ──────────────────────────────────────────────────────── */
+        header {
+            padding: 20px 0; display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 1px solid rgba(212, 163, 150, 0.1);
+            gap: 16px; position: relative;
+        }
+        .logo {
+            font-family: var(--font-heading); font-size: 1.1rem; text-decoration: none;
+            color: var(--text-main); letter-spacing: 2px; white-space: nowrap; flex-shrink: 0;
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-left: 20px; white-space: nowrap; }
+        .lang-selector { border: 1px solid var(--accent); padding: 4px 10px; border-radius: 50px; font-size: 0.6rem!important; margin-left: 15px!important; text-decoration: none; color: var(--text-main); transition: 0.3s; }
+        .lang-selector:hover { background: var(--accent); color: var(--bg-deep); }
+
+        .menu-toggle {
+            display: none; flex-direction: column; justify-content: center; gap: 5px;
+            width: 28px; height: 28px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0;
+        }
+        .menu-toggle span { display: block; width: 100%; height: 2px; background: var(--text-main); transition: 0.3s; }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* --- COMPACT BOOK HERO --- */
+        .book-hero { padding: 40px 0; display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+        .book-cover { width: 100%; border-radius: 2px; box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        
+        .book-info h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem); line-height: 1.1; margin-bottom: 10px; }
+
+        .meta-tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .tag { font-size: 0.6rem; padding: 6px 14px; border: 1px solid rgba(212, 163, 150, 0.3); border-radius: 50px; text-transform: uppercase; color: var(--accent); opacity: 0.9; letter-spacing: 1px; text-decoration: none; transition: 0.3s; }
+        
+        .tag-playlist { border-color: var(--accent); color: var(--accent); opacity: 1; font-weight: 600; }
+        .tag-playlist:hover { background: var(--accent); color: var(--bg-deep); }
+
+        .synopsis { font-family: var(--font-reading); font-size: 1rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 24px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+        .features-list { list-style: none; margin-bottom: 24px; color: var(--text-main); font-size: 0.95rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; font-family: var(--font-reading); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+        
+        .author-note { font-size: 0.8rem; font-style: italic; color: var(--text-muted); margin-top: 15px; border-left: 2px solid var(--accent); padding-left: 15px; line-height: 1.5; text-align: justify; }
+
+        .btn-capsule { display: inline-block; background-color: var(--accent); color: var(--bg-deep); padding: 16px 42px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; transition: 0.3s; border: none; cursor: pointer; hyphens: none; -webkit-hyphens: none; }
+        .btn-capsule:hover { transform: scale(1.03); opacity: 0.9; }
+
+        /* --- CAPTURE BLOCK NO HERO (primeira tela, sem clique) --- */
+        .capture-hero { background-color: var(--surface); border: 1px solid rgba(212, 163, 150, 0.25); border-radius: 4px; padding: 24px; margin-bottom: 24px; text-align: center; }
+        .capture-hero h2 { font-family: var(--font-heading); font-size: clamp(1.05rem, 3.5vw, 1.45rem); color: var(--text-main); margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.2; text-wrap: balance; }
+        .capture-hero .offer { font-family: var(--font-reading); font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; margin: 0 auto 18px; max-width: 40ch; text-wrap: balance; }
+        .capture-hero .form-group { max-width: 350px; margin: 0 auto; }
+        .capture-hero .fineprint { font-size: 0.72rem; font-style: italic; color: var(--text-muted); opacity: 0.8; margin: 12px auto 0; max-width: 32ch; line-height: 1.4; text-wrap: balance; }
+
+        /* --- READING AREA --- */
+        #reading-section { display: none; opacity: 0; transition: opacity 0.8s ease; max-width: 750px; margin: 60px auto; }
+
+        .chapter-header { font-family: var(--font-heading); font-weight: 700; font-size: clamp(2.2rem, 9vw, 3.2rem); letter-spacing: clamp(3px, 1.5vw, 6px); text-align: center; margin-bottom: 8px; color: var(--accent); text-transform: uppercase; }
+
+        .playlist-wrap { text-align: center; margin-bottom: 24px; }
+        .playlist-link {
+            display: inline-block;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--accent); text-decoration: none; border: 1px solid rgba(212, 163, 150, 0.35);
+            padding: 7px 18px; border-radius: 50px; transition: 0.3s;
+        }
+        .playlist-link:hover { background: var(--accent); color: var(--bg-deep); }
+
+        .date-line { display: block; font-size: 0.9rem; color: var(--text-muted); opacity: 0.85; margin-bottom: 30px; text-align: left; }
+
+        .reading-content { font-family: var(--font-reading); font-size: 1.15rem; line-height: 1.8; color: var(--text-main); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+        .reading-content p { margin-bottom: 1.8rem; }
+
+        /* Aggressive Block (Tide Gate) */
+        .tide-gate { position: relative; margin-top: -160px; padding-top: 160px; background: linear-gradient(to bottom, transparent, var(--bg-deep) 55%, var(--bg-deep) 100%); text-align: center; z-index: 10; }
+        .capture-card { background-color: var(--surface); padding: 40px; border-radius: 4px; margin-top: 10px; border: 1px solid var(--border-color); }
+
+        .capture-card h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(1rem, 5vw, 1.7rem);
+            margin-bottom: 14px;
+            color: var(--text-main);
+        }
+        .capture-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+        
+        .form-group { display: flex; flex-direction: column; gap: 12px; max-width: 350px; margin: 0 auto; }
+        input[type="email"] { padding: 14px; border-radius: 50px; border: 1px solid rgba(212, 163, 150, 0.2); background: rgba(0,0,0,0.2); color: white; text-align: center; outline: none; font-family: var(--font-ui); font-size: 0.8rem; }
+
+        #success-modal { position: fixed; inset: 0; background: rgba(26, 18, 16, 0.8); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
+        .success-box { background: var(--surface); padding: 40px; border-radius: 4px; max-width: 400px; width: 100%; position: relative; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+        .success-box h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 6.5vw, 1.9rem);
+            color: var(--accent);
+            margin-bottom: 18px;
+            white-space: nowrap;
+        }
+        .success-box p { line-height: 1.5; }
+        .close-x { position: absolute; top: 10px; right: 15px; font-size: 1.2rem; color: var(--accent); cursor: pointer; opacity: 0.6; }
+
+        @media (max-width: 850px) {
+            .book-hero { grid-template-columns: 1fr; text-align: center; padding: 20px 0; gap: 24px; }
+            .book-cover { max-width: 180px; margin: 0 auto; }
+            .meta-tags, .tags { justify-content: center; }
+            .btn-capsule { width: 100%; }
+            .capture-hero { padding: 20px; }
+        }
+
+        /* Header mobile — menu hambúrguer (consistente com a home) */
+        @media (max-width: 600px) {
+            .logo { font-size: 1.5rem; letter-spacing: 1.5px; }
+            .menu-toggle { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; align-items: flex-start; gap: 0;
+                background-color: var(--bg-deep); border-bottom: 1px solid rgba(212, 163, 150, 0.15);
+                padding: 10px 24px 20px; box-shadow: 0 12px 24px rgba(0,0,0,0.4); z-index: 50;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { width: 100%; margin-left: 0; padding: 14px 0; font-size: 0.75rem; border-bottom: 1px solid rgba(212, 163, 150, 0.1); }
+            .nav-links a:last-child { border-bottom: none; }
+            .lang-selector { display: block; margin-left: 0 !important; margin-top: 0; width: 100%; border: none; border-radius: 0; padding: 14px 0; font-size: 0.75rem !important; }
+        }
+    
+/* ═══ paleta da CAPA (medida do arquivo cover.webp) ═══ */
+:root{
+  --bg-deep:#010204; --surface:#0F1218; --accent:#EDEFF2;
+  --text-main:#EDEFF2; --text-muted:#98A0A9; --fio:237,239,241;
+}
+/* os rgba() rosa cravados fora do :root, que nao seguem o token */
+header,.nav-links,.nav-links a{border-color:rgba(var(--fio),.20)!important}
+.tag,.playlist-link,.capture-hero,input[type="email"]{border-color:rgba(var(--fio),.26)!important}
+#success-modal{background:rgba(1,2,4,.88)!important}
+
+/* o header era relative e sumia no scroll; fixo, ele emoldura a capa */
+header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
+  padding-top:16px!important;padding-bottom:14px!important}
+
+/* o capitulo abria so no clique do "Open Book". Agora ele e a entrada. */
+#reading-section{display:block!important;opacity:1!important;
+  transition:filter .9s ease,opacity .9s ease}
+
+/* ═══ a capa: sem borda nem sombra — o preto dela vaza no preto da pagina ═══
+   Sem padding proprio (a secao ja herda o do .container) e limitada pela
+   LARGURA, senao estoura a faixa e encosta num lado so em tela estreita. */
+#capa-topo{height:88svh;min-height:420px;display:grid;place-items:center;padding:0}
+.capa-mv{max-width:100%;will-change:transform}
+.capa-real{display:block;margin:0 auto;width:auto;height:auto;
+  max-width:100%;max-height:min(76svh,560px);will-change:transform,opacity}
+
+/* o espaco vai pra CIMA da data; ela cola no texto */
+.playlist-wrap{margin-bottom:0!important}
+.date-line{margin-top:46px!important;margin-bottom:8px!important}
+
+/* a playlist toca na pagina; a pilula fica igual e no mesmo lugar */
+.playlist-box{max-width:520px;margin:18px auto 0}
+.playlist-box iframe{display:block;width:100%;border:0;border-radius:12px}
+.playlist-link[aria-expanded="true"]{background:var(--accent);color:var(--bg-deep)}
+
+/* o corte: o capitulo sai em blur quando o pedido chega */
+#reading-section.desfoca{filter:blur(7px);opacity:.28!important}
+#pedido{padding:8vh 0 2vh}
+#pedido .capture-hero{transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+#pedido.longe .capture-hero{opacity:0;transform:translateY(26px)}
+/* a nota fica FORA do quadro, logo abaixo dele */
+#pedido .author-note{max-width:520px;margin:20px auto 0;font-size:.72rem;text-align:left}
+
+/* mais ar pro titulo, e as tropes viram pilulas logo abaixo dele.
+   Grade de duas colunas: em flex elas quebravam 1-2-1-1 e ficavam baguncadas. */
+.book-hero h1{margin-top:2.2rem!important;margin-bottom:1.4rem!important;line-height:1.15}
+.tropes{display:grid!important;grid-template-columns:1fr 1fr;gap:10px;
+  max-width:560px;margin:0 auto 34px}
+.tropes .tag{font-size:.6rem;padding:9px 8px;text-align:center;opacity:1;
+  display:flex;align-items:center;justify-content:center;line-height:1.3}
+.tropes .tag:nth-child(odd):last-child{grid-column:1/-1}
+
+/* a descricao: letra maior e paragrafo separado do outro */
+.synopsis{font-size:1.06rem!important;line-height:1.72!important}
+.synopsis p{margin-bottom:1.15em}
+.synopsis p:last-child{margin-bottom:0}
+
+/* as redes ficam abaixo da descricao */
+.book-hero .social-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:7vh 0}
+.btn-social{font-size:.65rem;letter-spacing:1.2px;text-transform:uppercase;padding:10px 22px;
+  border-radius:50px;text-decoration:none;color:var(--text-main);
+  border:1px solid rgba(var(--fio),.28);transition:.3s}
+.btn-social:hover{background:var(--accent);color:var(--bg-deep)}
+
+/* ═══ quem escreveu ═══
+   Um bloco na cor do quadro de e-mail, discreto: quem desce encontra, mas a
+   pagina nao para pra anunciar a autora. A foto fica ao lado do TITULO e o
+   texto corre na largura inteira — justificado em coluna estreita vira rio. */
+#sobre-a-autora{max-width:750px;margin:0 auto 7vh;background:var(--surface);
+  border:1px solid rgba(var(--fio),.20);border-radius:6px;padding:34px 26px}
+#sobre-a-autora .bio-topo{display:flex;align-items:center;gap:24px;margin-bottom:30px}
+#sobre-a-autora .profile-img{width:118px;height:118px;border-radius:50%;object-fit:cover;
+  border:1px solid rgba(var(--fio),.35);flex-shrink:0}
+#sobre-a-autora h2{font-family:var(--font-heading);font-size:clamp(1.15rem,4.4vw,1.7rem);
+  letter-spacing:2px;color:var(--accent);margin:0;text-align:left;line-height:1.35}
+#sobre-a-autora p{font-family:var(--font-reading);color:var(--text-muted);
+  margin:0 0 20px;line-height:1.8;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+#sobre-a-autora p:last-child{margin-bottom:0}
+@media (max-width:560px){
+  #sobre-a-autora .bio-topo{gap:18px;margin-bottom:26px}
+  #sobre-a-autora .profile-img{width:92px;height:92px}
+}
+
+/* ═══ DESKTOP ═══
+   Ate 06/09/2026 nao existia NADA aqui, e a tela larga herdava um layout
+   pensado pro celular. Dois defeitos reais, nao gosto:
+   1. A `.book-hero` continuava com a grade de duas colunas de quando a capa
+      morava nela (`280px 1fr`). A capa subiu pro topo em 05/09 e sobrou UMA
+      coluna de 280px com titulo, tropes e sinopse dentro, e a metade direita
+      da tela vazia. Sinopse justificada em 280px vira rio e hifeniza tudo.
+   2. O quadro do pedido ia de ponta a ponta (1000px) com o miolo em 350px:
+      uma moldura enorme em volta de uma coluna fina.
+   O eixo agora e UM so, 750px, que ja e o do capitulo e o do card de quem
+   escreveu — o bloco que ela aprovou. */
+@media (min-width: 851px) {
+  .book-hero{display:block;max-width:750px;margin:0 auto;padding:56px 0 40px}
+  /* alinhadas a esquerda como o titulo, e nao centradas no meio da coluna */
+  .tropes{margin-left:0;margin-right:0}
+  .book-hero .social-links{justify-content:flex-start}
+  #pedido .capture-hero{max-width:750px;margin:0 auto;padding:40px 44px;
+    border-color:rgba(var(--fio),.20);border-radius:6px}
+  /* o miolo tambem cresce, senao a moldura de 750px fica em volta de uma
+     coluna de 350: era o vazio que ela viu no print de 06/09 */
+  #pedido .capture-hero .offer{max-width:52ch}
+  #pedido .capture-hero .form-group{max-width:440px}
+  #pedido .capture-hero .fineprint{max-width:46ch}
+  #pedido .author-note{max-width:750px;margin-left:auto;margin-right:auto}
+  /* cinco tropes em tres colunas ocupam a largura; em duas sobrava um vao */
+  .tropes{grid-template-columns:repeat(3,1fr);max-width:100%}
+  .tropes .tag:nth-child(odd):last-child{grid-column:auto}
+}
+
+/* ═══ aparecer conforme desce — do fim da sinopse pra baixo ═══
+   Nada disso na historia: ela viu revelacao paragrafo a paragrafo no
+   capitulo e nao gostou. Aqui e o bloco inteiro, de uma vez.
+   O JS e que esconde: sem script, tudo continua visivel. */
+.revela{transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.revela.ainda-nao{opacity:0;transform:translateY(22px)}
+
+/* ═══ o fim da pagina ═══ */
+.rodape{border-top:1px solid rgba(var(--fio),.20);margin-top:6vh;padding:30px 0 40px;
+  display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;justify-content:space-between}
+.rodape p{font-size:.7rem;color:var(--text-muted);letter-spacing:.5px;margin:0}
+.rodape nav{display:flex;flex-wrap:wrap;gap:22px}
+.rodape a{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--text-muted);text-decoration:none;transition:.3s}
+.rodape a:hover{color:var(--accent)}
+
+/* ═══ A OFERTA NA FRENTE ═══
+   Medido no Pinterest de 08/08 a 07/09/2026: 17.600 impressoes, 762
+   engajamentos, 106 salvos, 14 cliques de saida e ZERO inscritos. A arte
+   funciona. O que faltava e a pagina dizer, cedo, que existe alguma coisa
+   pra pessoa. A caixa de e-mail fica a 4.400 px do topo no celular: cinco
+   telas. Quem vem do Pinterest decide em segundos.
+   A capa continua intocada, por decisao dela. */
+.oferta-topo{max-width:520px;margin:34px auto 0;text-align:center}
+.oferta-topo p{font-family:var(--font-reading);font-size:.92rem;
+  color:var(--text-muted);margin:0 0 14px;line-height:1.5}
+.oferta-topo a{display:inline-block;background:var(--accent);color:var(--bg-deep);
+  padding:13px 30px;border-radius:50px;text-decoration:none;font-family:var(--font-ui);
+  font-weight:700;text-transform:uppercase;letter-spacing:1.4px;font-size:.7rem;
+  transition:.3s}
+.oferta-topo a:hover{transform:scale(1.03);opacity:.92}
+
+/* a barra que acompanha a leitura. Nasce escondida e o JS mostra: sem script,
+   ninguem ve uma tarja presa no rodape. */
+.barra-oferta{position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(1,2,4,.88);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(var(--fio),.20);
+  transform:translateY(110%);transition:transform .45s cubic-bezier(.22,.61,.36,1);
+  pointer-events:none}
+.barra-oferta.aparece{transform:translateY(0);pointer-events:auto}
+.barra-oferta span{font-family:var(--font-reading);font-size:.86rem;color:#EDEFF2}
+.barra-oferta a{background:#EDEFF2;color:#010204;padding:10px 22px;border-radius:50px;
+  text-decoration:none;font-family:var(--font-ui);font-weight:700;text-transform:uppercase;
+  letter-spacing:1.2px;font-size:.66rem;white-space:nowrap}
+@media (max-width:420px){
+  .barra-oferta{gap:10px;padding:10px 14px}
+  .barra-oferta span{font-size:.78rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .barra-oferta{transition:none}
+}
+
+/* ═══ TEMA CLARO ═══
+   Nao ha botao: entra sozinho pra quem tem o aparelho no claro, e quem esta
+   no escuro continua vendo exatamente o que ve hoje.
+
+   🔴 A DECISAO DE ARTE E DELA (06/09/2026): "a parte da capa continuar no
+   preto, desce pro Adam, dai que ta no bloco branco". E o unico jeito que
+   funciona: a capa tem fundo preto e foi montada pra vazar no preto da
+   pagina, sem borda e sem sombra. Num fundo branco ela viraria um retangulo
+   preto com corte duro, e o efeito de abertura acabaria.
+
+   Entao a barra e a capa ficam escuras nos DOIS temas, sangrando ate as
+   bordas da tela, e o claro comeca no capitulo.
+
+   ⚠️ O sangramento e feito com um ::before de `inset:0 -100vmax`, e nao com
+   `clip-path`: o cabecalho e `sticky`, e o par overflow+clip-path e onde
+   sticky costuma morrer. Por isso tambem o corte lateral e `overflow-x:clip`
+   e nunca `hidden` -- `hidden` cria contexto de rolagem e mata o sticky. */
+@media (prefers-color-scheme: light) {
+
+  html, body { overflow-x: clip; }
+
+  :root {
+    --bg-deep: #F5F6F8;    /* branco frio, nao branco de folha */
+    --surface: #E9ECF0;    /* cards e caixas */
+    --accent: #0B0E13;     /* o preto vira a cor de acao */
+    --text-main: #0B0E13;  /* 17,88:1 sobre o fundo */
+    --text-muted: #4E5661; /* 6,87:1 sobre o fundo, 6,27:1 sobre o card */
+    --fio: 11, 14, 19;
+  }
+
+  /* ─── o bloco escuro do topo: barra + capa ─── */
+  header, #capa-topo {
+    --bg-deep: #010204; --surface: #0F1218; --accent: #EDEFF2;
+    --text-main: #EDEFF2; --text-muted: #98A0A9; --fio: 237, 239, 241;
+    background: transparent;
+    color: #EDEFF2;
+    position: relative;
+  }
+  header { position: sticky; }
+  header::before, #capa-topo::before {
+    content: ''; position: absolute; inset: 0 -100vmax;
+    background: #010204; z-index: -1;
+  }
+  header .logo, header .nav-links a { color: #EDEFF2; }
+  header .menu-toggle span { background: #EDEFF2; }
+
+  /* ─── sombras pesadas nao existem no claro ─── */
+  .success-box { box-shadow: 0 18px 40px rgba(11, 14, 19, 0.18); }
+  #success-modal { background: rgba(245, 246, 248, .92) !important; }
+
+  /* a borda de 26% de preto some no claro; 34% devolve o desenho da pilula */
+  .tag, .playlist-link, .capture-hero, input[type="email"] {
+    border-color: rgba(var(--fio), .34) !important;
+  }
+
+  /* o campo de e-mail tinha `background:rgba(0,0,0,.2)` e `color:white`
+     cravados: no claro virava uma pilula cinza-chumbo com texto branco em
+     cima, ilegivel. Achado no print de verificacao, antes de publicar. */
+  input[type="email"] { background: #FFFFFF; color: var(--text-main); }
+  input[type="email"]::placeholder { color: var(--text-muted); }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .capa-real{opacity:1!important;transform:none!important}
+  #reading-section.desfoca{filter:none;opacity:1!important}
+  #pedido.longe .capture-hero{opacity:1;transform:none}
+  .revela.ainda-nao{opacity:1;transform:none}
+}
+
+    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TM5SB21FBH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TM5SB21FBH');
+</script>
+    <link rel="canonical" href="https://taymarais.com/">
+    <!-- GEMEA DO TESTE DE CAPA (19/10/2026, Experimento 4 do estudio): a mesma pagina do livro com a capa da PAREDE.
+         Fora do indice e do sitemap; a origem do pedido ganha "capa-parede" pra planilha separar as duas. -->
+    <meta name="robots" content="noindex, follow">
+    <!-- Quem e a autora, como ENTIDADE. Sem este bloco o Google nao sabia que a
+         Tay Marais escritora existe: em 08/09/2026 o AI Overview respondia sobre
+         outra pessoa de nome parecido, citando o Instagram de um terceiro. O campo
+         que resolve e o `sameAs` — e a lista de perfis que prova de quem e o nome.
+         📌 Criou perfil novo (Instagram, Goodreads, Amazon)? A URL entra aqui, nas
+         DUAS paginas de livro, senao o sinal fica pela metade. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://taymarais.com/#tay-marais",
+      "name": "Tay Marais",
+      "url": "https://taymarais.com/",
+      "jobTitle": "Author",
+      "description": "Contemporary romance author. Dual POV, secret relationship, celebrity romance, with themes of healing, identity and recovery. Writes in Brazilian Portuguese and English.",
+      "sameAs": [
+        "https://www.instagram.com/maraistay/",
+        "https://www.pinterest.com/maraistay/",
+        "https://www.tiktok.com/@thetaymarais",
+        "https://x.com/maraistay",
+        "https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Where the Ocean Ends",
+      "inLanguage": "en",
+      "description": "Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. He wanted to disappear. He just didn't expect to find her.",
+      "url": "https://taymarais.com/",
+      "image": "https://taymarais.com/assets/og-wtoe.jpg",
+      "author": { "@id": "https://taymarais.com/#tay-marais" }
+    }
+    </script>
+    <meta name="description" content="Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. He wanted to disappear. He just didn't expect to find her.">
+    <meta property="og:type" content="book">
+    <meta property="og:site_name" content="Tay Marais">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://taymarais.com/">
+    <meta property="og:title" content="Where the Ocean Ends — Tay Marais">
+    <meta property="og:description" content="Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. He wanted to disappear. He just didn't expect to find her.">
+    <meta property="og:image" content="https://taymarais.com/assets/og-wtoe.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Where the Ocean Ends, by Tay Marais">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Where the Ocean Ends — Tay Marais">
+    <meta name="twitter:description" content="Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. He wanted to disappear. He just didn't expect to find her.">
+    <meta name="twitter:image" content="https://taymarais.com/assets/og-wtoe.jpg">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="#capa-topo" class="logo">TAY MARAIS</a>
+            <nav class="nav-links" id="main-nav">
+                <a href="../pt/books/onde-o-oceano-acaba.html" class="lang-selector">PT</a>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </header>
+
+        <section id="capa-topo" aria-label="Where the Ocean Ends"><div class="capa-mv"><img class="capa-real" src="../assets/cover-parede.webp" alt="Where the Ocean Ends"></div></section><section id="reading-section">
+            <h2 class="chapter-header">ADAM</h2>
+            <div class="playlist-wrap">
+                <a id="playlist-toggle" aria-expanded="false" aria-controls="playlist-box" href="https://open.spotify.com/playlist/1GTIxI5nCClAr93Z4fLXOP?si=X_43k6ZQSmakAqVgvG6HtA" target="_blank" class="playlist-link">Playlist ✦</a>
+            <div class="playlist-box" id="playlist-box" hidden><iframe title="Where the Ocean Ends playlist" data-src="https://open.spotify.com/embed/playlist/1GTIxI5nCClAr93Z4fLXOP?theme=0" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div></div>
+            <div class="oferta-topo"><p>The first two chapters, free, as a real ebook.</p><a href="#pedido">Send it to me</a></div>
+            <div class="reading-content">
+                <span class="date-line">Saturday, November 9, 2024, Los Angeles, CA.</span>
+                
+                <p>The heavy wooden door slams shut. A beam of light cuts through the dark, muffling the chords of Fleetwood Mac's Dreams. The sound of the latch echoes through the empty bar.</p>
+                <p>She doesn't enter. She struts in. Stiletto heels click against the worn floorboards. Her bare legs draw the eye up to the hem of her black satin dress, clinging to her body like a second skin.</p>
+                <p>My posture stiffens. Without turning my neck, I adjust my shoulders, and the stool creaks under my weight. The stained mirror behind the bottles shows the whole scene. The brim of my cap dips an inch, enough to mask the ice-blue of my irises, but not my vision.</p>
+                <p>Champagne hair falls in waves over her shoulders, a Renaissance painting set against the grit of Los Angeles. Confidence walks in first. She ignores the few stares in the room, not out of arrogance, but out of training.</p>
+                <p>She walks to the bar and stops two stools away. The air turns heavy, thick with a vanilla scent that doesn't belong to old wood and stale beer. The brim of my cap dips. Stay invisible.</p>
+                <p>But she turns her face toward the counter light. Invisibility becomes irrelevant. Recognition lands like a punch.</p>
+                <p>Madeleine. The ghost from Dylan's stories, Thomas's best friend. "Mad" always sounded like a stupid tabloid nickname, until I saw her in person. What the hell is she doing in my sanctuary?</p>
+                <p>"Madi, what are you doing here?" Magnus's voice breaks her silence.</p>
+                <p>My jaw clenches. I shift my gaze, studying the amber liquid. I'm an actor. I recognize when someone is acting. And she's delivering the performance of her life.</p>
+                <p>The old bartender, whose default expression swings between indifference and hostility, breaks into a smile I've never seen on him.</p>
+                <p>Magnus comes around the counter, wiping his hands on his apron, arms thrown open, embracing the expensive satin and the untouchable woman like she's his own flesh and blood.</p>
+                <p>"Magnus, it's been too long..." Her answer comes out raspy against his shoulder. A slight crack in her voice that makes me tilt my head.</p>
+                <p>I shouldn't be listening. But observing human behavior is a vice, and right now, I'm addicted to the scene unfolding beside me.</p>
+                <p>"Happy birthday!" Magnus pulls back to hold her hands with a familiarity that puts me on edge. "And I'm so sorry, my dear. Your grandfather meant a great deal to me."</p>
+                <p>The contrast is violent. Congratulations and condolences in the same breath. Madeleine pulls her hands free to fidget with her own finger. Her ring spins. I bring mine to the mark my wedding band left, now just a lighter patch on my skin.</p>
+                <p>"Merci..." Her tone drops to absolute zero. Cold. Mechanical. A quick defense against crumbling at the mention of Henri Bennett. And it works.</p>
+                <p>"You've been too busy to stop by, haven't you?" His playful tone tries to soften the heavy air. He gets a quick laugh out of her. "The usual?"</p>
+                <p>Magnus is already heading back behind the counter, reaching for the glass.</p>
+                <p>"Yes, please. With lots of ice."</p>
+                <p>She slides onto the high stool, her posture natural yet sculpted. She sets her designer bag on the dirty counter without a second thought. Close enough to be noticed. Far enough to stay in control.</p>
+                <p>Every move is choreographed: the upturned nose, the aristocratic disdain, the elegance that screams for no one to get close. But she's hiding a mine in the way she bites her lower lip. Suppressing something that could shatter the mirror between us.</p>
+                <p>Madeleine Bennett. "L'Ange Blond", Hollywood's blond angel, devoured and spat back out. Child star, prodigy singer, a whole childhood stolen by spotlights. We're both here. Pretending not to be what the world decided we are.</p>
+                <p>I force my eyes back to the old TV in the corner, trying to find my focus again, but my peripheral vision betrays me.</p>
+
+                
+            </div>
+        </section><section id="pedido"><div class="capture-hero">
+                    <h2>Two chapters. Yours now.</h2>
+                    <p class="offer">The first two chapters of <em>Where the Ocean Ends</em>, as a real ebook. EPUB for your Kindle, PDF for anywhere else.</p>
+                    <form id="lead-form">
+                        <input type="hidden" name="lang" value="en">
+                        <input type="hidden" name="origem" id="origem" value="livro-en">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your email" required>
+                            <button type="submit" class="btn-capsule">Send me the ebook</button>
+                        </div>
+                    </form>
+                    <p class="fineprint">No spam. Just the book, and a note when the next one lands.</p>
+                </div><p class="author-note">
+                    Please note: Contains detailed intimacy, swearing, and themes of trauma recovery, past abuse, and substance use. Recommended for mature readers.
+                </p><p class="author-note">
+                    Yes, I use AI. It's been next to me for a long time now, and I'm not going to apologize for it. The voice is mine. The hours are mine. The difference between a book written with AI and a book vomited out by one is clear.
+                </p></section>
+
+        <section class="book-hero" id="book-hero">
+            
+            <div class="book-info">
+                <h1>WHERE THE OCEAN ENDS</h1><div class="meta-tags tropes"><span class="tag">Celebrity Romance</span><span class="tag">Secret Relationship</span><span class="tag">Dual POV Dynamic</span><span class="tag">He Falls First</span><span class="tag">Series Starter (HFN)</span></div>
+                
+
+                
+
+                <div class="synopsis">
+                    <p>Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.</p>
+                    <p>She is France's "L'Ange Blond". Madeleine Bennett, a prodigy heiress living under the constant, suffocating surveillance of a world that idolizes her but never protected her. With a history of abuse and control, Madeleine hides behind a shield of sharp sarcasm.</p>
+                    <p>What begins as an undeniable physical attraction on her birthday night turns into a dangerous agreement: an escape with no tomorrows. But as the flashing lights of Hollywood pale before the raw honesty of their desire, Adam and Madeleine realize they can no longer pretend.</p>
+                </div><div class="social-links">
+                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
+                    <a href="https://x.com/maraistay" target="_blank" class="btn-social">Twitter</a>
+                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
+                </div>
+                
+                
+
+                
+
+                
+            </div>
+        </section><section id="sobre-a-autora">
+            
+            <div class="bio-content">
+                <div class="bio-topo"><img src="../assets/profile.webp" alt="Tay Marais" class="profile-img"><h2>THE HEART HAS MANY VOICES.</h2></div>
+                
+                <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
+                
+            </div>
+        </section><footer class="rodape"><p>© 2026 Tay Marais</p><nav><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav></footer>
+    </div>
+
+    <div id="success-modal">
+        <div class="success-box"><span class="close-x" id="close-modal">×</span>
+            <h2>The tide is turning...</h2>
+            <p>Your journey has begun!<br>Check your inbox.</p>
+        </div>
+    </div>
+
+    <script>
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
+        const form = document.getElementById('lead-form');
+        const modal = document.getElementById('success-modal');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.innerText = "SENDING...";
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => { if (window.tmLead) tmLead(); pintrk('track', 'lead'); modal.style.display = 'flex'; form.reset(); btn.disabled = false; btn.innerText = "Send me the ebook"; })
+            .catch(error => { btn.disabled = false; btn.innerText = "Send me the ebook"; alert("The tide is too strong. Try again later."); });
+        });
+        document.getElementById('close-modal').addEventListener('click', () => { modal.style.display = 'none'; });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('open');
+        });
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('open');
+            });
+        });
+    </script>
+
+<script>
+(function(){
+  var calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var leitura = document.getElementById("reading-section"),
+      capa    = document.querySelector(".capa-real"),
+      topo    = document.getElementById("capa-topo");
+
+  /* um segundo de capa, e a pagina sobe sozinha ate o capitulo.
+     A capa fica acima no documento: da pra voltar e olhar. */
+  if(!calmo && leitura && scrollY < 8 && !location.hash){
+    var cabeca = document.querySelector("header");
+    var t = setTimeout(function(){
+      var y = leitura.getBoundingClientRect().top + scrollY - (cabeca ? cabeca.offsetHeight : 0) - 52;
+      try { scrollTo({top:y, behavior:"smooth"}); } catch(e) { scrollTo(0, y); }
+    }, 1100);
+    ["touchstart","wheel","scroll","keydown","pointerdown"].forEach(function(ev){
+      addEventListener(ev, function(){ clearTimeout(t); }, {passive:true, once:true});
+    });
+  }
+
+  /* a capa clareia e sobe conforme se desce — quem move e o dedo */
+  if(!calmo && capa && topo){
+    var pendente = false;
+    function pinta(){
+      pendente = false;
+      var faixa = Math.max(topo.offsetHeight * 0.78, 1);
+      var p = Math.min(Math.max(scrollY / faixa, 0), 1);
+      capa.style.opacity = (1 - p).toFixed(3);
+      capa.style.transform = "translateY(" + (-p*70).toFixed(1) + "px) scale(" + (1 - p*0.07).toFixed(4) + ")";
+    }
+    addEventListener("scroll", function(){
+      if(!pendente){ pendente = true; requestAnimationFrame(pinta); }
+    }, {passive:true});
+    pinta();
+  }
+
+  /* a playlist toca aqui dentro. O <a> continua valendo se o JS nao rodar. */
+  var pil = document.getElementById("playlist-toggle"),
+      cx  = document.getElementById("playlist-box");
+  if(pil && cx){
+    pil.addEventListener("click", function(e){
+      e.preventDefault();
+      var abrindo = cx.hidden;
+      cx.hidden = !abrindo;
+      pil.setAttribute("aria-expanded", abrindo ? "true" : "false");
+      var f = cx.querySelector("iframe");
+      if(abrindo && f && !f.src) f.src = f.getAttribute("data-src");
+    });
+  }
+
+  /* do fim da sinopse pra baixo, cada bloco entra conforme se desce */
+  if(!calmo && "IntersectionObserver" in window){
+    var blocos = [].slice.call(document.querySelectorAll(
+      ".book-hero .social-links, #sobre-a-autora, .rodape"));
+    blocos.forEach(function(el){ el.classList.add("revela","ainda-nao"); });
+    function olho(margem, alvos){
+      if(!alvos.length) return;
+      var ob = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.remove("ainda-nao"); ob.unobserve(e.target); }
+        });
+      }, {rootMargin:margem});
+      alvos.forEach(function(el){ ob.observe(el); });
+    }
+    function eRodape(el){ return el.classList.contains("rodape"); }
+    /* no meio da pagina o bloco so entra quando entra de verdade... */
+    olho("0px 0px -28% 0px", blocos.filter(function(el){ return !eRodape(el); }));
+    /* ...mas o ULTIMO elemento da pagina nunca sairia desses 28% cortados la
+       embaixo: no fim do scroll ele encosta no rodape da tela e jamais entraria.
+       Por isso o rodape tem observador proprio, sem margem. */
+    olho("0px", blocos.filter(eRodape));
+
+    /* rede de seguranca: se o observador falhar, revela o que ja esta na tela —
+       nunca o que ainda esta la embaixo, senao quem desce devagar chega e ja achou. */
+    setTimeout(function(){
+      blocos.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.top < innerHeight && r.bottom > 0) el.classList.remove("ainda-nao");
+      });
+    }, 8000);
+  }
+
+  /* o capitulo desfoca quando a caixa de e-mail entra */
+  if(!calmo && "IntersectionObserver" in window){
+    var pedido = document.getElementById("pedido");
+    if(pedido && leitura){
+      pedido.classList.add("longe");
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){ pedido.classList.remove("longe"); leitura.classList.add("desfoca"); }
+          else { leitura.classList.remove("desfoca"); }
+        });
+      }, {threshold:0.35}).observe(pedido);
+    }
+  }
+})();
+
+  /* a barra da oferta: entra quando a leitura comeca, sai quando a caixa de
+     verdade aparece. Nunca as duas ao mesmo tempo pedindo a mesma coisa. */
+  (function(){
+    var barra = document.querySelector('.barra-oferta');
+    var pedido = document.getElementById('pedido');
+    var leitura = document.getElementById('reading-section');
+    if(!barra || !pedido || !leitura) return;
+    var lendo = false, chegou = false;
+    function pinta(){ barra.classList.toggle('aparece', lendo && !chegou); }
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ lendo = e.boundingClientRect.top < 0 || e.isIntersecting; pinta(); });
+    }, {threshold:0}).observe(leitura);
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ chegou = e.isIntersecting; pinta(); });
+    }, {threshold:0.12}).observe(pedido);
+  })();
+</script>
+
+<div class="barra-oferta"><span>Two chapters, free</span><a href="#pedido">Get the ebook</a></div>
+    <script>
+        /* O BOTAO VIRA NUMERO (10/10/2026, pedido dela: "tem como saber quem clica no bt pelo menos?").
+           Conta no Google Analytics o clique no botao do pedido, o pedido que chegou e, na /beta, quem
+           abriu os capitulos. Conta QUANTOS e de onde, nunca quem: quem e a planilha Leads.
+           A aba Numeros do painel le isso pelo `ga-eventos-*.csv`. */
+        (function () {
+            var campo = document.getElementById('origem');
+            var p = new URLSearchParams(location.search);
+            var o = p.get('origem') || p.get('utm_source');
+            // setAttribute, nao .value: o form.reset() da pagina do livro devolve o valor do atributo
+            o = (o ? o.slice(0, 100) + '|' : '') + 'capa-parede';   // gemea do teste de capa
+            if (campo) campo.setAttribute('value', o);
+            function ev(nome) {
+                try { if (window.gtag) gtag('event', nome, { pagina: location.pathname, origem: campo ? campo.value : '' }); } catch (e) {}
+            }
+            var b = document.querySelector('#lead-form button[type="submit"]');
+            if (b) b.addEventListener('click', function () { ev('clique_pedido'); });
+            var l = document.getElementById('link-entrega');
+            if (l) l.addEventListener('click', function () { ev('abriu_capitulos'); });
+            window.tmLead = function () { ev('generate_lead'); };
+        })();
+    </script>
+</body>
+</html>
