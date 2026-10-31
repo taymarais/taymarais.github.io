@@ -2,3 +2,7 @@ __pycache__/
 
 # O painel mora so no disco e so vai pro taymarais.com, com senha (02/10/2026).
 painel/
+
+# Os dois primeiros capitulos moram so no disco (31/10/2026): repo publico + KU em 14/01.
+chapters/
+pt/capitulos/

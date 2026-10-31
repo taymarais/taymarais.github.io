@@ -268,7 +268,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
 
         <div class="caixa" id="entrega">
             <p class="oferta">Prontinho. Abre os dois primeiros capítulos.</p>
-            <a class="btn" id="link-entrega" href="#" target="_blank" rel="noopener">Abrir os capítulos</a>
+            <a class="btn" id="link-entrega" href="/pt/capitulos/">Abrir os capítulos</a>
             <p class="fineprint">O mesmo link foi pro seu e-mail. Se não estiver lá, confere o spam.</p>
         </div>
     </main>
@@ -276,11 +276,10 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
 
-        // A pasta do Drive desta lingua, escrita aqui de proposito como REDE DE
-        // SEGURANCA. O Apps Script (V7) devolve `link` no JSON e e ele que manda;
-        // mas se o navegador barrar a leitura da resposta, a leitora ainda recebe
-        // o arquivo. Entregar errado nao acontece: as duas pontas sao a mesma pasta.
-        const LINK_RESERVA = 'https://drive.google.com/drive/folders/1COnwQbu5pv6a8cSjsknrGQ8BfgcTP8_O?usp=drive_link';
+        // 31/10/2026: a entrega saiu do Drive e mora no site (ler aqui, EPUB, PDF).
+        // O `link` que o Apps Script devolve ainda e o do Drive ate o Code.gs novo
+        // ser colado, entao a tela ignora ele e manda sempre pra pagina do site.
+        const LINK_ENTREGA = '/pt/capitulos/';
 
         // De onde a pessoa veio. Sem isto a linha cai na planilha muda, e canal
         // que nao se mede nao se decide.
@@ -298,7 +297,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
         const ROTULO = btn.innerText;
 
         function entregar(link) {
-            linkEntrega.href = link || LINK_RESERVA;
+            linkEntrega.href = LINK_ENTREGA;
             porta.classList.add('entregue');
             entrega.classList.add('aberta');
         }

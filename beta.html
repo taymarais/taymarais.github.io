@@ -268,7 +268,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
 
         <div class="caixa" id="entrega">
             <p class="oferta">Here they are. Open the first two chapters.</p>
-            <a class="btn" id="link-entrega" href="#" target="_blank" rel="noopener">Open the chapters</a>
+            <a class="btn" id="link-entrega" href="/chapters/">Open the chapters</a>
             <p class="fineprint">The same link is in your inbox. If it is not there, check spam.</p>
         </div>
     </main>
@@ -276,11 +276,10 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKGY2ToAnlte06JjJ1kiEyxdICuYmFTXe-cBQNwkFgh0Dv2FmZ1hieQw4TJAfgrQzr/exec';
 
-        // A pasta do Drive desta lingua, escrita aqui de proposito como REDE DE
-        // SEGURANCA. O Apps Script (V7) devolve `link` no JSON e e ele que manda;
-        // mas se o navegador barrar a leitura da resposta, a leitora ainda recebe
-        // o arquivo. Entregar errado nao acontece: as duas pontas sao a mesma pasta.
-        const LINK_RESERVA = 'https://drive.google.com/drive/folders/1u4KZB9X0pU5jXGLxnI6QHgF1bnGVBKzK?usp=drive_link';
+        // 31/10/2026: a entrega saiu do Drive e mora no site (ler aqui, EPUB, PDF).
+        // O `link` que o Apps Script devolve ainda e o do Drive ate o Code.gs novo
+        // ser colado, entao a tela ignora ele e manda sempre pra pagina do site.
+        const LINK_ENTREGA = '/chapters/';
 
         // De onde a pessoa veio. Sem isto a linha cai na planilha muda, e canal
         // que nao se mede nao se decide.
@@ -298,7 +297,7 @@ if(location.hostname==="taymarais.github.io"){location.replace("https://taymarai
         const ROTULO = btn.innerText;
 
         function entregar(link) {
-            linkEntrega.href = link || LINK_RESERVA;
+            linkEntrega.href = LINK_ENTREGA;
             porta.classList.add('entregue');
             entrega.classList.add('aberta');
         }

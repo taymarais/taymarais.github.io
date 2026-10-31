@@ -9,3 +9,10 @@
 # o Google de ler o proprio noindex.
 /painel/*
   X-Robots-Tag: noindex, nofollow
+
+# Os dois primeiros capitulos (31/10/2026): entrega do /beta e do e-mail, fora da busca.
+# Saem do site no dia 14/01/2027 (Kindle Unlimited).
+/chapters/*
+  X-Robots-Tag: noindex, nofollow
+/pt/capitulos/*
+  X-Robots-Tag: noindex, nofollow
