@@ -249,6 +249,28 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   #sobre-a-autora .profile-img{width:92px;height:92px}
 }
 
+/* ═══ o fim: quem escreveu, com as redes dentro do card ═══
+   31/10: a grade do Instagram foi testada e recusada por ela; a bio antiga ficou. */
+#fim{max-width:750px;margin:2vh auto 7vh}
+#fim #sobre-a-autora{margin:0;max-width:none}
+#sobre-a-autora .social-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+/* caixa alta com tracking nunca abaixo de 12px (regra de 03/09) */
+.btn-social{font-size:.75rem!important;padding:10px 20px!important}
+.rodape p,.rodape a{font-size:.82rem!important}
+@media (max-width:560px){
+  #sobre-a-autora p{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+}
+
+/* as notas debaixo do pedido: sem filete, um colofao so, centrado.
+   Ela, 31/10: os dois fios brancos a esquerda liam como citacao solta, e a
+   letra (.72rem) ficava abaixo do piso de 13px. O ✦ separa as duas. */
+#pedido p.author-note{max-width:56ch;margin:22px auto 0;border:0;padding:0;
+  font-family:var(--font-reading);font-style:normal;font-size:.85rem;line-height:1.7;
+  color:var(--text-muted);text-align:center;hyphens:manual;-webkit-hyphens:manual}
+#pedido p.author-note + p.author-note{margin-top:0}
+#pedido p.author-note + p.author-note::before{content:"✦";display:block;margin:14px 0;
+  font-size:.7rem;color:rgba(var(--fio),.45)}
+
 /* ═══ DESKTOP ═══
    Ate 06/09/2026 nao existia NADA aqui, e a tela larga herdava um layout
    pensado pro celular. Dois defeitos reais, nao gosto:
@@ -542,10 +564,6 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
                     <p>Adam Walker has the world at his feet, an Oscar on his shelf, and a deafening void in his chest. After a devastating divorce that plastered his personal life across every tabloid cover, the Hollywood star flees into the shadows of Los Angeles in search of anonymity. He wanted to disappear. He just didn't expect to find her.</p>
                     <p>She is France's "L'Ange Blond". Madeleine Bennett, a prodigy heiress living under the constant, suffocating surveillance of a world that idolizes her but never protected her. With a history of abuse and control, Madeleine hides behind a shield of sharp sarcasm.</p>
                     <p>What begins as an undeniable physical attraction on her birthday night turns into a dangerous agreement: an escape with no tomorrows. But as the flashing lights of Hollywood pale before the raw honesty of their desire, Adam and Madeleine realize they can no longer pretend.</p>
-                </div><div class="social-links">
-                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
-                    <a href="https://x.com/maraistay" target="_blank" class="btn-social">Twitter</a>
-                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
                 </div>
                 
                 
@@ -554,13 +572,17 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
 
                 
             </div>
-        </section><section id="sobre-a-autora">
-            
-            <div class="bio-content">
+        </section><section id="fim">
+            <div id="sobre-a-autora">
                 <div class="bio-topo"><img src="../assets/profile.webp" alt="Tay Marais" class="profile-img"><h2>THE HEART HAS MANY VOICES.</h2></div>
-                
-                <p>An observer of human complexity and the intricate nuances of modern relationships. Writing with a deep, compelling, and magnetic voice, Tay explores the bittersweet journey of healing, the boundaries of identity, and the raw search for authenticity in a world of appearances.</p>
-                
+                <p>An observer of human complexity and the intricate nuances of modern relationships. I write contemporary romance about people who are very good at surviving and very bad at being loved. I started the On Two Wounded Hearts saga at about thirteen, as a fanfic very different from what it is today. I run on coffee and loud rock, always with my cats close by. Where the Ocean Ends is book one.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/maraistay/" target="_blank" class="btn-social">Instagram</a>
+                    <a href="https://www.tiktok.com/@thetaymarais" target="_blank" class="btn-social">TikTok</a>
+                    <a href="https://www.pinterest.com/Thetaymarais/" target="_blank" class="btn-social">Pinterest</a>
+                    <a href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu?si=9511da6218eb4d17" target="_blank" class="btn-social">Spotify</a>
+                    <a href="https://x.com/maraistay" target="_blank" class="btn-social">Twitter</a>
+                </div>
             </div>
         </section><footer class="rodape"><p>© 2026 Tay Marais</p><nav><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav></footer>
     </div>
@@ -653,7 +675,7 @@ header{position:sticky!important;top:0;z-index:50;background:var(--bg-deep);
   /* do fim da sinopse pra baixo, cada bloco entra conforme se desce */
   if(!calmo && "IntersectionObserver" in window){
     var blocos = [].slice.call(document.querySelectorAll(
-      ".book-hero .social-links, #sobre-a-autora, .rodape"));
+      "#sobre-a-autora, .rodape"));
     blocos.forEach(function(el){ el.classList.add("revela","ainda-nao"); });
     function olho(margem, alvos){
       if(!alvos.length) return;
