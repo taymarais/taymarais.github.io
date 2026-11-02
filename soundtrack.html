@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>if(location.hostname==="taymarais.github.io"){location.replace("https://taymarais.com"+location.pathname+location.search+location.hash);}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The soundtrack | Where the Ocean Ends | Tay Marais</title>
+    <meta name="description" content="Every chapter has its own playlist, and the first song is the one playing in the scene. Pick the chapter you&#x27;re reading and press play.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="/assets/favicon-2-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;600&family=Playfair+Display+SC:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #010204; --surface: #0F1218; --accent: #EDEFF2;
+            --text-main: #EDEFF2; --text-muted: #98A0A9; --fio: 237, 239, 241;
+            --font-heading: 'Playfair Display SC', serif; --font-ui: 'Montserrat', sans-serif;
+            --font-reading: 'Lora', serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-deep); color: var(--text-main); font-family: var(--font-ui);
+               -webkit-font-smoothing: antialiased; }
+        .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px 64px; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+        .logo { font-family: var(--font-heading); letter-spacing: 3px; color: var(--text-main); text-decoration: none; }
+        .lang { border: 1px solid rgba(var(--fio), .26); padding: 4px 12px; border-radius: 50px;
+                 font-size: .65rem; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+        .topo { text-align: center; padding: 28px 0 8px; }
+        .livro { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); }
+        h1 { font-family: var(--font-heading); font-weight: 400; font-size: clamp(2rem, 6vw, 3.2rem); margin: 10px 0 6px; }
+        .sub { font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .intro { font-family: var(--font-reading); font-size: 1.02rem; line-height: 1.75; max-width: 560px;
+                  margin: 22px auto 6px; color: var(--text-main); }
+        .dica { font-family: var(--font-reading); font-style: italic; font-size: .9rem; color: var(--text-muted); }
+        .player { position: sticky; top: 0; z-index: 5; background: var(--bg-deep); padding: 18px 0 14px;
+                   border-bottom: 1px solid rgba(var(--fio), .14); margin-top: 26px; }
+        .player-rotulo { font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);
+                          margin-bottom: 10px; display: flex; justify-content: space-between; gap: 12px; }
+        .player-rotulo a { color: var(--text-muted); }
+        .player iframe { width: 100%; height: 152px; border: 0; border-radius: 12px; display: block; }
+        .grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; margin-top: 26px; }
+        .cap { background: var(--surface); border: 1px solid rgba(var(--fio), .12); border-radius: 8px; padding: 0 0 10px;
+                color: var(--text-main); cursor: pointer; text-align: left; overflow: hidden; font-family: var(--font-ui);
+                transition: border-color .25s, transform .25s; }
+        .cap:hover, .cap:focus-visible { border-color: rgba(var(--fio), .5); transform: translateY(-2px); outline: none; }
+        .cap[aria-pressed="true"] { border-color: var(--accent); }
+        .cap img { width: 100%; height: auto; display: block; aspect-ratio: 1; }
+        /* A capa ja traz o numero e a palavra: o texto fica so pro leitor de tela e pro player. */
+        .cap-n, .cap-nome { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+        .cap { padding: 0; }
+        .rodape { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 40px; }
+        .botao { background: var(--accent); color: var(--bg-deep); border-radius: 50px; padding: 14px 34px; font-size: .78rem;
+                  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; font-weight: 600; }
+        .botao.vazado { background: transparent; color: var(--text-main); border: 1px solid rgba(var(--fio), .4); }
+        @media (max-width: 480px) { .grade { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+    </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a href="/" class="logo">TAY MARAIS</a>
+      <a href="/trilha" class="lang">PT</a>
+    </header>
+    <section class="topo">
+      <p class="livro">Where the Ocean Ends</p>
+      <h1>The soundtrack</h1>
+      <p class="sub">31 chapters, 31 playlists</p>
+      <p class="intro">Every chapter has its own playlist, and the first song is the one playing in the scene. Pick the chapter you&#x27;re reading and press play.</p>
+      <p class="dica">Turn off shuffle to follow along with the scene.</p>
+    </section>
+    <section class="player" aria-live="polite">
+      <div class="player-rotulo"><span id="tocando">Chapter 1 · Entrance</span>
+        <a id="abrir" href="https://open.spotify.com/playlist/6edX4nUoPqJmxpyxPbaJA7" target="_blank" rel="noopener">Open in Spotify</a></div>
+      <iframe id="tocador" title="Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        src="https://open.spotify.com/embed/playlist/6edX4nUoPqJmxpyxPbaJA7?theme=0"></iframe>
+    </section>
+    <section class="grade">
+      <button class="cap" data-id="6edX4nUoPqJmxpyxPbaJA7" data-url="https://open.spotify.com/playlist/6edX4nUoPqJmxpyxPbaJA7" aria-label="Chapter 1, Entrance"><img src="/assets/trilha/01.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">01</span><span class="cap-nome">Entrance</span></button>
+      <button class="cap" data-id="1S75tAfZsIU47EVKccSOST" data-url="https://open.spotify.com/playlist/1S75tAfZsIU47EVKccSOST" aria-label="Chapter 2, Static"><img src="/assets/trilha/02.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">02</span><span class="cap-nome">Static</span></button>
+      <button class="cap" data-id="4u70Tc8VeC2LMoTfMCFkty" data-url="https://open.spotify.com/playlist/4u70Tc8VeC2LMoTfMCFkty" aria-label="Chapter 3, Patience"><img src="/assets/trilha/03.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">03</span><span class="cap-nome">Patience</span></button>
+      <button class="cap" data-id="3iwEzR8bMiYoejjrFhFolm" data-url="https://open.spotify.com/playlist/3iwEzR8bMiYoejjrFhFolm" aria-label="Chapter 4, Undertow"><img src="/assets/trilha/04.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">04</span><span class="cap-nome">Undertow</span></button>
+      <button class="cap" data-id="2v9ObN5lEacgJ7XaUGNMrH" data-url="https://open.spotify.com/playlist/2v9ObN5lEacgJ7XaUGNMrH" aria-label="Chapter 5, Aftermath"><img src="/assets/trilha/05.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">05</span><span class="cap-nome">Aftermath</span></button>
+      <button class="cap" data-id="6P3ew3Y90rkgNfA6iNkDHE" data-url="https://open.spotify.com/playlist/6P3ew3Y90rkgNfA6iNkDHE" aria-label="Chapter 6, Curtain"><img src="/assets/trilha/06.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">06</span><span class="cap-nome">Curtain</span></button>
+      <button class="cap" data-id="3rkNnfPbMmZnVpXD2nJOxx" data-url="https://open.spotify.com/playlist/3rkNnfPbMmZnVpXD2nJOxx" aria-label="Chapter 7, Alley"><img src="/assets/trilha/07.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">07</span><span class="cap-nome">Alley</span></button>
+      <button class="cap" data-id="1VLn13baTBOBqFWtmIHSyy" data-url="https://open.spotify.com/playlist/1VLn13baTBOBqFWtmIHSyy" aria-label="Chapter 8, Wheel"><img src="/assets/trilha/08.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">08</span><span class="cap-nome">Wheel</span></button>
+      <button class="cap" data-id="4YiA6WF1fy3DdTmF1cAiS1" data-url="https://open.spotify.com/playlist/4YiA6WF1fy3DdTmF1cAiS1" aria-label="Chapter 9, Balcony"><img src="/assets/trilha/09.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">09</span><span class="cap-nome">Balcony</span></button>
+      <button class="cap" data-id="2XNTVWnOrKE9UrJKIPnQI2" data-url="https://open.spotify.com/playlist/2XNTVWnOrKE9UrJKIPnQI2" aria-label="Chapter 10, Vanilla"><img src="/assets/trilha/10.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">10</span><span class="cap-nome">Vanilla</span></button>
+      <button class="cap" data-id="3FpcC2YOT3ty2ddjs9ZLhl" data-url="https://open.spotify.com/playlist/3FpcC2YOT3ty2ddjs9ZLhl" aria-label="Chapter 11, Notebook"><img src="/assets/trilha/11.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">11</span><span class="cap-nome">Notebook</span></button>
+      <button class="cap" data-id="3JUWTvc2l1BxHWS3xoJSjf" data-url="https://open.spotify.com/playlist/3JUWTvc2l1BxHWS3xoJSjf" aria-label="Chapter 12, Coincidence"><img src="/assets/trilha/12.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">12</span><span class="cap-nome">Coincidence</span></button>
+      <button class="cap" data-id="6XuZdNr3umtSU5KY3Thp0S" data-url="https://open.spotify.com/playlist/6XuZdNr3umtSU5KY3Thp0S" aria-label="Chapter 13, Inertia"><img src="/assets/trilha/13.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">13</span><span class="cap-nome">Inertia</span></button>
+      <button class="cap" data-id="7I4QG44yVsyJX9gOiH0mjC" data-url="https://open.spotify.com/playlist/7I4QG44yVsyJX9gOiH0mjC" aria-label="Chapter 14, Dashboard"><img src="/assets/trilha/14.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">14</span><span class="cap-nome">Dashboard</span></button>
+      <button class="cap" data-id="267jJUvkYpu3HYbd2zGgUG" data-url="https://open.spotify.com/playlist/267jJUvkYpu3HYbd2zGgUG" aria-label="Chapter 15, Étoile"><img src="/assets/trilha/15.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">15</span><span class="cap-nome">Étoile</span></button>
+      <button class="cap" data-id="4QZl7zdSrC2kpwFUxwFQph" data-url="https://open.spotify.com/playlist/4QZl7zdSrC2kpwFUxwFQph" aria-label="Chapter 16, Doorbell"><img src="/assets/trilha/16.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">16</span><span class="cap-nome">Doorbell</span></button>
+      <button class="cap" data-id="09AObaGPQKZRP0hkAdXfVx" data-url="https://open.spotify.com/playlist/09AObaGPQKZRP0hkAdXfVx" aria-label="Chapter 17, Headphones"><img src="/assets/trilha/17.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">17</span><span class="cap-nome">Headphones</span></button>
+      <button class="cap" data-id="3Jhgx7l3xQwrgA8fT16efN" data-url="https://open.spotify.com/playlist/3Jhgx7l3xQwrgA8fT16efN" aria-label="Chapter 18, Corridor"><img src="/assets/trilha/18.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">18</span><span class="cap-nome">Corridor</span></button>
+      <button class="cap" data-id="2JWHvwOkj8EDCEetXIBH5F" data-url="https://open.spotify.com/playlist/2JWHvwOkj8EDCEetXIBH5F" aria-label="Chapter 19, Necktie"><img src="/assets/trilha/19.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">19</span><span class="cap-nome">Necktie</span></button>
+      <button class="cap" data-id="35LCxcaCoNYtKDrvvwzLio" data-url="https://open.spotify.com/playlist/35LCxcaCoNYtKDrvvwzLio" aria-label="Chapter 20, Maddam"><img src="/assets/trilha/20.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">20</span><span class="cap-nome">Maddam</span></button>
+      <button class="cap" data-id="5FsD206qtNJEkntjDvZYCN" data-url="https://open.spotify.com/playlist/5FsD206qtNJEkntjDvZYCN" aria-label="Chapter 21, Blanket"><img src="/assets/trilha/21.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">21</span><span class="cap-nome">Blanket</span></button>
+      <button class="cap" data-id="7lANua1MyV3PPCDEOyAQgZ" data-url="https://open.spotify.com/playlist/7lANua1MyV3PPCDEOyAQgZ" aria-label="Chapter 22, Silas"><img src="/assets/trilha/22.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">22</span><span class="cap-nome">Silas</span></button>
+      <button class="cap" data-id="2cx82H9EfstiohQwjvErTa" data-url="https://open.spotify.com/playlist/2cx82H9EfstiohQwjvErTa" aria-label="Chapter 23, Tracklist"><img src="/assets/trilha/23.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">23</span><span class="cap-nome">Tracklist</span></button>
+      <button class="cap" data-id="6EqL3F86kYpGwDwYHXjIDR" data-url="https://open.spotify.com/playlist/6EqL3F86kYpGwDwYHXjIDR" aria-label="Chapter 24, Sandman"><img src="/assets/trilha/24.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">24</span><span class="cap-nome">Sandman</span></button>
+      <button class="cap" data-id="15qCE2ROrpQneOjrAl1lNt" data-url="https://open.spotify.com/playlist/15qCE2ROrpQneOjrAl1lNt" aria-label="Chapter 25, Bathtub"><img src="/assets/trilha/25.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">25</span><span class="cap-nome">Bathtub</span></button>
+      <button class="cap" data-id="2xsIyVMvyDNWPRCQyzadZQ" data-url="https://open.spotify.com/playlist/2xsIyVMvyDNWPRCQyzadZQ" aria-label="Chapter 26, Breakfast"><img src="/assets/trilha/26.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">26</span><span class="cap-nome">Breakfast</span></button>
+      <button class="cap" data-id="2AJIairY1SLGqme1pgnD0E" data-url="https://open.spotify.com/playlist/2AJIairY1SLGqme1pgnD0E" aria-label="Chapter 27, Bare"><img src="/assets/trilha/27.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">27</span><span class="cap-nome">Bare</span></button>
+      <button class="cap" data-id="0Nm7QLVZItkdCJJyTVAV6B" data-url="https://open.spotify.com/playlist/0Nm7QLVZItkdCJJyTVAV6B" aria-label="Chapter 28, Whisper"><img src="/assets/trilha/28.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">28</span><span class="cap-nome">Whisper</span></button>
+      <button class="cap" data-id="6lzTODw8DQvT6ibnT6Bmrq" data-url="https://open.spotify.com/playlist/6lzTODw8DQvT6ibnT6Bmrq" aria-label="Chapter 29, Shower"><img src="/assets/trilha/29.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">29</span><span class="cap-nome">Shower</span></button>
+      <button class="cap" data-id="40G0Ei7vKBxSAK4aNBwa57" data-url="https://open.spotify.com/playlist/40G0Ei7vKBxSAK4aNBwa57" aria-label="Chapter 30, Amor"><img src="/assets/trilha/30.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">30</span><span class="cap-nome">Amor</span></button>
+      <button class="cap" data-id="7bHgBTR5JgSb01KJH5Fab7" data-url="https://open.spotify.com/playlist/7bHgBTR5JgSb01KJH5Fab7" aria-label="Chapter 31, Flash"><img src="/assets/trilha/31.webp" alt="" loading="lazy" width="320" height="320"><span class="cap-n">31</span><span class="cap-nome">Flash</span></button>
+    </section>
+    <div class="rodape">
+      <a class="botao" href="https://open.spotify.com/user/31jetqqg34tiyhiq2f2dehbtgmuu" target="_blank" rel="noopener">Follow on Spotify</a>
+      <a class="botao vazado" href="/">Back to the book</a>
+    </div>
+  </div>
+  <script>
+    const tocador = document.getElementById("tocador"), tocando = document.getElementById("tocando"),
+          abrir = document.getElementById("abrir"), caps = document.querySelectorAll(".cap");
+    caps[0].setAttribute("aria-pressed", "true");
+    caps.forEach(c => c.addEventListener("click", () => {
+      caps.forEach(o => o.setAttribute("aria-pressed", "false"));
+      c.setAttribute("aria-pressed", "true");
+      tocador.src = "https://open.spotify.com/embed/playlist/" + c.dataset.id + "?theme=0";
+      abrir.href = c.dataset.url;
+      tocando.textContent = "Chapter " + parseInt(c.querySelector(".cap-n").textContent, 10) +
+                            " · " + c.querySelector(".cap-nome").textContent;
+      document.querySelector(".player").scrollIntoView({behavior: "smooth"});
+    }));
+  </script>
+</body>
+</html>

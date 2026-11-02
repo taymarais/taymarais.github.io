@@ -33,3 +33,9 @@
 /tt                                   /?utm_source=tiktok&utm_medium=bio                 302
 /ig                                   /?utm_source=instagram&utm_medium=bio              302
 /zap                                  /pt/?utm_source=whatsapp&utm_medium=grupo          302
+
+# A TRILHA (02/11/2026): o destino do QR impresso no paperback do L1. O papel nao muda;
+# se a pagina mudar de lugar, muda so esta linha. Gerada por scripts/trilha-pagina.py (repo do estudio).
+/trilha                               /pt/trilha                       200
+/soundtrack.html                      /soundtrack                      200
+/pt/trilha.html                       /pt/trilha                       200
